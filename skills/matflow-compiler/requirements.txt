@@ -1,0 +1,7 @@
+# MatFlow Compiler 依赖
+# 仅 retrieve_si.py 需要 PyMuPDF 用于 PDF 文本提取
+# 其他脚本（validate_protocol.py, generate_sop.py）仅使用 Python 标准库
+#
+# 安装方式: pip install -r requirements.txt
+
+PyMuPDF>=1.23.0
