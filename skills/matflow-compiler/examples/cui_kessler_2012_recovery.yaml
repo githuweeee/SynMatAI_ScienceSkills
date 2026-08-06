@@ -1,0 +1,513 @@
+# 恢复与检查点方案
+# 玻璃纤维增强ROMP生物可再生聚合物复合材料——硅烷偶联剂界面增强
+# 协议ID: MF-REAL-001
+# 来源: Cui & Kessler, Composites Science and Technology 72 (2012) 1264-1272
+# DOI: 10.1016/j.compscitech.2012.04.013
+
+recovery_plan:
+  protocol_id: "MF-REAL-001"
+  current_status: "blocked"
+  target_status: "executable"
+
+  # ============================================================
+  # 阻塞项解决步骤（按优先级排序）
+  # ============================================================
+  resolution_steps:
+
+    # === Critical 阻塞项 ===
+
+    - step: 1
+      priority: critical
+      type: missing_parameter
+      field: "duration.value"
+      step_id: "S02"
+      description: "补充THF回流干燥的持续时间"
+      action: "user_input"
+      prompt: "请输入THF回流干燥的持续时间（单位h）："
+      expected_format: "数值 + 单位"
+      example: "12 h 或 24 h"
+      evidence_note: "原文仅写'refluxing with benzophenone and sodium'，未给出时间"
+      resolves_block: true
+      auto_recompile: true
+
+    - step: 2
+      priority: critical
+      type: missing_parameter
+      field: "temperature.value"
+      step_id: "S03"
+      description: "补充Grubbs催化剂冷冻干燥重结晶的温度"
+      action: "user_input_or_reference_lookup"
+      prompt: "请输入冷冻干燥温度（单位C），或提供参考文献[23]的完整信息："
+      expected_format: "数值 + 单位 或 文献信息"
+      example: "-50 C (冷阱温度)"
+      evidence_note: "详细条件在参考文献[23]中，原文未提供"
+      resolves_block: true
+      auto_recompile: true
+
+    - step: 3
+      priority: critical
+      type: missing_parameter
+      field: "duration.value"
+      step_id: "S03"
+      description: "补充Grubbs催化剂冷冻干燥的时间"
+      action: "user_input_or_reference_lookup"
+      prompt: "请输入冷冻干燥时间（单位h），或提供参考文献[23]的完整信息："
+      expected_format: "数值 + 单位 或 文献信息"
+      example: "48 h"
+      evidence_note: "同上"
+      resolves_block: true
+      auto_recompile: true
+
+    - step: 4
+      priority: critical
+      type: missing_parameter
+      field: "atmosphere"
+      step_id: "S03"
+      description: "确认催化剂重结晶的气氛"
+      action: "user_choice"
+      options:
+        - "nitrogen (N2)"
+        - "argon (Ar)"
+        - "vacuum"
+        - "air (不推荐，催化剂可能失活)"
+      evidence_note: "Grubbs催化剂水氧敏，原文未指定气氛"
+      resolves_block: true
+      auto_recompile: true
+
+    - step: 5
+      priority: critical
+      type: missing_parameter
+      field: "amount.pyridine"
+      step_id: "S04"
+      description: "补充吡啶用量"
+      action: "user_input"
+      prompt: "请输入吡啶用量（单位mL或mol），或说明与硅烷的比例关系："
+      expected_format: "数值 + 单位 或 比例关系"
+      example: "等摩尔于硅烷 或 5 mL"
+      evidence_note: "原文提及吡啶存在但未给出用量"
+      resolves_block: true
+      auto_recompile: true
+
+    - step: 6
+      priority: critical
+      type: missing_parameter
+      field: "temperature.value"
+      step_id: "S07"
+      description: "补充树脂混合温度"
+      action: "user_input"
+      prompt: "请输入树脂混合温度（单位C）："
+      expected_format: "数值 + 单位"
+      example: "25 C (室温)"
+      evidence_note: "原文仅写'mixed well'，未给温度"
+      resolves_block: true
+      auto_recompile: true
+
+    - step: 7
+      priority: critical
+      type: missing_parameter
+      field: "duration.value"
+      step_id: "S07"
+      description: "补充树脂混合时间"
+      action: "user_input"
+      prompt: "请输入树脂混合时间（单位min）："
+      expected_format: "数值 + 单位"
+      example: "10 min"
+      evidence_note: "原文仅写'mixed well'和'stirred evenly'，未给时间"
+      resolves_block: true
+      auto_recompile: true
+
+    # === 安全确认步骤 ===
+
+    - step: 8
+      priority: high
+      type: safety_confirmation
+      field: "fume_hood"
+      description: "确认通风橱可用"
+      action: "user_choice"
+      question: "所有涉及挥发性试剂的操作(S02-S06, S07)是否在通风橱内进行？"
+      options: ["是", "否"]
+      resolves_block: false
+      auto_recompile: false
+
+    - step: 9
+      priority: high
+      type: safety_confirmation
+      field: "reflux_condenser"
+      description: "确认回流冷凝管可用"
+      action: "user_choice"
+      question: "S02和S05的回流装置是否配备有效冷凝管和持续冷却水供应？"
+      options: ["是", "否"]
+      resolves_block: false
+      auto_recompile: false
+
+    - step: 10
+      priority: high
+      type: safety_confirmation
+      field: "sodium_quench_plan"
+      description: "确认金属钠安全处理方案"
+      action: "user_choice"
+      question: "S02中金属钠残余物的淬灭方案是否已制定（异丙醇缓慢淬灭）？"
+      options: ["是，方案已制定", "否，需制定"]
+      resolves_block: false
+      auto_recompile: false
+
+    - step: 11
+      priority: high
+      type: safety_confirmation
+      field: "benzene_ppe"
+      description: "确认苯操作安全措施"
+      action: "user_choice"
+      question: "S03中苯操作是否配备防毒面具(有机蒸气滤盒)、丁腈手套和护目镜？是否考虑使用甲苯替代？"
+      options: ["是，PPE已备", "否，需准备", "使用甲苯替代苯"]
+      resolves_block: false
+      auto_recompile: false
+
+    - step: 12
+      priority: high
+      type: safety_confirmation
+      field: "hot_press_certification"
+      description: "确认热压机安全"
+      action: "user_choice"
+      question: "S09热压机是否具备压力容器认证和泄压装置？压力表量程是否匹配(>=689 kPa)？"
+      options: ["是，认证和泄压装置就位", "否，需确认"]
+      resolves_block: false
+      auto_recompile: false
+
+    - step: 13
+      priority: medium
+      type: safety_confirmation
+      field: "inert_atmosphere"
+      description: "确认惰性气氛需求"
+      action: "user_choice"
+      question: "S02, S03, S04, S05, S07涉及水敏/氧敏试剂，是否使用惰性气氛(N2/Ar)保护？"
+      options: ["是，全部使用", "部分使用", "不使用"]
+      resolves_block: false
+      auto_recompile: false
+
+    # === Medium 风险缺失项 ===
+
+    - step: 14
+      priority: medium
+      type: missing_parameter
+      field: "stirring_speed"
+      step_id: "S02, S04, S05, S07"
+      description: "补充各步骤搅拌速度"
+      action: "user_input"
+      prompt: "请输入各步骤的搅拌速度（单位rpm）："
+      expected_format: "步骤: 数值 rpm"
+      example: "S02: 300 rpm, S04: 300 rpm, S05: 200 rpm, S07: 200 rpm"
+      resolves_block: false
+      auto_recompile: true
+
+    - step: 15
+      priority: medium
+      type: missing_parameter
+      field: "temperature.ramp_rate"
+      step_id: "S01, S05, S09, S10"
+      description: "补充各加热步骤升温速率"
+      action: "user_input"
+      prompt: "请输入各加热步骤的升温速率（单位C/min）："
+      expected_format: "步骤: 数值 C/min"
+      example: "S01: 5 C/min, S05: 3 C/min, S09: 3 C/min, S10: 3 C/min"
+      resolves_block: false
+      auto_recompile: true
+
+    - step: 16
+      priority: medium
+      type: missing_parameter
+      field: "wash.repetitions"
+      step_id: "S06"
+      description: "补充THF清洗次数"
+      action: "user_input"
+      prompt: "请输入THF清洗次数："
+      expected_format: "整数"
+      example: "3"
+      resolves_block: false
+      auto_recompile: true
+
+  # ============================================================
+  # 检查点定义
+  # ============================================================
+  checkpoints:
+
+    - checkpoint_id: "CP-01"
+      after_step: "S01"
+      description: "玻璃纤维热清洗完成检查点"
+      stored_state:
+        - name: "fiber_type"
+          type: "string"
+          description: "纤维类型(unidirectional/plain_weave)"
+        - name: "heat_clean_temperature"
+          type: "number"
+          unit: "celsius"
+          description: "实际热清洗温度"
+        - name: "heat_clean_duration"
+          type: "number"
+          unit: "hour"
+          description: "实际热清洗时间"
+        - name: "heat_clean_status"
+          type: "boolean"
+          description: "热清洗是否完成"
+        - name: "residual_sizing"
+          type: "string"
+          description: "残留sizing目视检查结果"
+      recovery_policy:
+        power_failure: "restart_step"
+        temperature_deviation:
+          threshold: 10
+          unit: "celsius"
+          action: "hold"
+        notes: "马弗炉断电后需重新从室温开始加热；温度偏差>10C需暂停并评估"
+
+    - checkpoint_id: "CP-02"
+      after_step: "S02"
+      description: "THF干燥完成检查点"
+      stored_state:
+        - name: "thf_water_content"
+          type: "number"
+          unit: "ppm"
+          description: "THF含水量(Karl Fischer法)"
+        - name: "benzophenone_color"
+          type: "string"
+          description: "二苯甲酮酮自由基颜色(蓝色=干燥)"
+        - name: "drying_completion"
+          type: "boolean"
+          description: "干燥是否完成"
+        - name: "sodium_residue_disposed"
+          type: "boolean"
+          description: "钠残余物是否已安全处置"
+      recovery_policy:
+        power_failure: "restart_step"
+        temperature_deviation:
+          threshold: 5
+          unit: "celsius"
+          action: "alert"
+        notes: "回流中断需重新开始干燥；钠残余物必须先安全淬灭再重新开始"
+
+    - checkpoint_id: "CP-03"
+      after_step: "S03"
+      description: "催化剂重结晶完成检查点"
+      stored_state:
+        - name: "catalyst_recrystallized"
+          type: "boolean"
+          description: "重结晶是否完成"
+        - name: "catalyst_mass"
+          type: "number"
+          unit: "mg"
+          description: "重结晶后催化剂质量"
+        - name: "catalyst_color"
+          type: "string"
+          description: "催化剂颜色(应为棕色/绿色)"
+        - name: "catalyst_dissolution_test"
+          type: "boolean"
+          description: "在树脂中溶解性测试结果"
+      recovery_policy:
+        power_failure: "restart_step"
+        temperature_deviation:
+          threshold: 2
+          unit: "celsius"
+          action: "abort"
+        notes: "冷冻干燥中断可能导致催化剂暴露于空气/水分，需废弃重来"
+
+    - checkpoint_id: "CP-04"
+      after_step: "S05"
+      description: "表面改性反应完成检查点"
+      stored_state:
+        - name: "silane_type"
+          type: "string"
+          description: "使用的硅烷类型(MCS/TCS)"
+        - name: "reaction_temperature"
+          type: "number"
+          unit: "celsius"
+          description: "实际反应温度"
+        - name: "reaction_duration"
+          type: "number"
+          unit: "hour"
+          description: "实际反应时间"
+        - name: "reaction_progress"
+          type: "number"
+          description: "反应进度(0-100%)"
+        - name: "fiber_treatment_status"
+          type: "string"
+          description: "纤维处理状态"
+        - name: "condenser_water_flow"
+          type: "boolean"
+          description: "冷凝水是否持续流动"
+      recovery_policy:
+        power_failure: "resume_from_checkpoint"
+        temperature_deviation:
+          threshold: 5
+          unit: "celsius"
+          action: "hold"
+        notes: "48h反应中断后可从断点恢复，但需评估中断时长对反应的影响；冷凝水中断>30min需评估溶剂损失"
+
+    - checkpoint_id: "CP-05"
+      after_step: "S06"
+      description: "纤维清洗干燥完成检查点"
+      stored_state:
+        - name: "wash_cycles_completed"
+          type: "number"
+          description: "实际清洗次数"
+        - name: "fiber_dry_status"
+          type: "boolean"
+          description: "干燥是否完成"
+        - name: "residual_thf"
+          type: "number"
+          unit: "ppm"
+          description: "残留THF含量"
+        - name: "fiber_type_treated"
+          type: "string"
+          description: "已处理的纤维类型"
+      recovery_policy:
+        power_failure: "restart_step"
+        temperature_deviation:
+          threshold: 10
+          unit: "celsius"
+          action: "continue"
+        notes: "烘箱断电后可继续干燥(温度恢复后)；需重新计时"
+
+    - checkpoint_id: "CP-06"
+      after_step: "S07"
+      description: "树脂配制完成检查点"
+      stored_state:
+        - name: "resin_mass"
+          type: "number"
+          unit: "g"
+          description: "树脂总质量"
+        - name: "dilulin_mass"
+          type: "number"
+          unit: "g"
+          description: "Dilulin质量"
+        - name: "dcpd_mass"
+          type: "number"
+          unit: "g"
+          description: "DCPD质量"
+        - name: "catalyst_mass"
+          type: "number"
+          unit: "mg"
+          description: "催化剂质量"
+        - name: "catalyst_added"
+          type: "boolean"
+          description: "催化剂是否已加入"
+        - name: "resin_viscosity"
+          type: "string"
+          description: "树脂粘度状态(液态/粘稠/凝胶化)"
+        - name: "romp_initiated"
+          type: "boolean"
+          description: "ROMP反应是否已开始"
+        - name: "pot_life_remaining"
+          type: "number"
+          unit: "minute"
+          description: "剩余适用期(估算)"
+      recovery_policy:
+        power_failure: "abort"
+        temperature_deviation:
+          threshold: 3
+          unit: "celsius"
+          action: "alert"
+        notes: "催化剂加入后ROMP即开始，树脂有有限适用期；断电或温度异常需立即评估树脂状态，可能需要废弃重来"
+
+    - checkpoint_id: "CP-07"
+      after_step: "S09"
+      description: "预固化完成检查点"
+      stored_state:
+        - name: "pre_cure_temperature"
+          type: "number"
+          unit: "celsius"
+          description: "实际预固化温度"
+        - name: "applied_pressure"
+          type: "number"
+          unit: "kPa"
+          description: "实际施加压力"
+        - name: "pre_cure_duration"
+          type: "number"
+          unit: "hour"
+          description: "实际预固化时间"
+        - name: "pre_cure_progress"
+          type: "number"
+          description: "预固化进度(0-100%)"
+        - name: "laminate_thickness"
+          type: "number"
+          unit: "mm"
+          description: "层压板厚度"
+        - name: "resin_flow_status"
+          type: "string"
+          description: "树脂流动状态"
+      recovery_policy:
+        power_failure: "resume_from_checkpoint"
+        temperature_deviation:
+          threshold: 5
+          unit: "celsius"
+          action: "hold"
+        notes: "热压中断可从断点恢复，但需重新加压加温；长时间中断可能导致预固化不完全"
+
+    - checkpoint_id: "CP-08"
+      after_step: "S10"
+      description: "后固化完成检查点"
+      stored_state:
+        - name: "post_cure_temperature"
+          type: "number"
+          unit: "celsius"
+          description: "实际后固化温度"
+        - name: "post_cure_duration"
+          type: "number"
+          unit: "hour"
+          description: "实际后固化时间"
+        - name: "post_cure_progress"
+          type: "number"
+          description: "后固化进度(0-100%)"
+        - name: "composite_glass_transition"
+          type: "number"
+          unit: "celsius"
+          description: "复合材料玻璃化转变温度(如已测)"
+        - name: "final_fiber_weight_fraction"
+          type: "number"
+          unit: "wt_percent"
+          description: "最终纤维重量分数"
+        - name: "composite_appearance"
+          type: "string"
+          description: "复合材料外观检查结果"
+      recovery_policy:
+        power_failure: "resume_from_checkpoint"
+        temperature_deviation:
+          threshold: 5
+          unit: "celsius"
+          action: "hold"
+        notes: "后固化中断可从断点恢复；烘箱温度恢复后重新计时"
+
+  # ============================================================
+  # 执行条件
+  # ============================================================
+  execution_conditions:
+    all_critical_resolved: true
+    all_safety_confirmed: true
+    equipment_check_passed: true
+    minimum_required_fields:
+      - "S02.duration.value"
+      - "S03.temperature.value"
+      - "S03.duration.value"
+      - "S03.atmosphere"
+      - "S04.amount.pyridine"
+      - "S07.temperature.value"
+      - "S07.duration.value"
+    minimum_safety_confirmations:
+      - "fume_hood_available"
+      - "reflux_condenser_available"
+      - "sodium_quench_plan"
+      - "benzene_ppe_or_substitute"
+      - "hot_press_certification"
+
+  # ============================================================
+  # 恢复后预期状态
+  # ============================================================
+  post_recovery:
+    expected_status: "executable"
+    remaining_confirmations:
+      - "stirring_speed (medium risk)"
+      - "ramp_rate (medium risk)"
+      - "wash_repetitions (medium risk)"
+    auto_generate_outputs:
+      - "protocol.json (updated)"
+      - "SOP.md (updated)"
+      - "safety_report.md (updated)"
+    notes: "恢复后协议状态从blocked变为executable；medium risk缺失项仍需人工确认但不阻止执行"

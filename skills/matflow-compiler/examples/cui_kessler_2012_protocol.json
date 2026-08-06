@@ -1,0 +1,1387 @@
+{
+  "protocol_id": "MF-REAL-001",
+  "material": "Glass fiber reinforced ROMP-based bio-renewable polymer composite (DCPD/Dilulin resin + silane-treated glass fiber)",
+  "source_documents": [
+    {
+      "doc_id": "DOC-001",
+      "title": "Glass fiber reinforced ROMP-based bio-renewable polymers: Enhancement of the interface with silane coupling agents",
+      "file_path": "papers/cui_kessler_2012.pdf",
+      "doc_type": "paper",
+      "authors": [
+        "Hongyu Cui",
+        "Michael R. Kessler"
+      ],
+      "journal": "Composites Science and Technology",
+      "volume": 72,
+      "pages": "1264-1272",
+      "year": 2012,
+      "doi": "10.1016/j.compscitech.2012.04.013"
+    }
+  ],
+  "reagents": [
+    {
+      "name": "Dicyclopentadiene (DCPD)",
+      "cas_number": "77-73-6",
+      "role": "monomer",
+      "supplier": "Sigma-Aldrich (Milwaukee, WI)",
+      "total_amount": {
+        "value": 56,
+        "unit": "g",
+        "relative_to": "80g resin batch (70 wt%)"
+      },
+      "hazard_class": "flammable",
+      "evidence": {
+        "document": "DOC-001",
+        "page": 1265,
+        "section": "2.1. Materials",
+        "quote": "Dicyclopentadiene (DCPD) and 2nd generation Grubbs' catalyst were purchased from Sigma-Aldrich (Milwaukee, WI).",
+        "evidence_type": "explicit",
+        "confidence": 0.98
+      }
+    },
+    {
+      "name": "Dilulin (modified linseed oil)",
+      "cas_number": null,
+      "role": "monomer",
+      "supplier": "Cargill (MN)",
+      "total_amount": {
+        "value": 24,
+        "unit": "g",
+        "relative_to": "80g resin batch (30 wt%)"
+      },
+      "hazard_class": null,
+      "evidence": {
+        "document": "DOC-001",
+        "page": 1265,
+        "section": "2.1. Materials",
+        "quote": "Dilulin is a commercially available modified linseed oil from Cargill (MN), which is synthesized from linseed oil and cyclopentadiene. The resulting Dilulin monomer has approximately one norbornyl ring per triglyceride.",
+        "evidence_type": "explicit",
+        "confidence": 0.97
+      }
+    },
+    {
+      "name": "2nd generation Grubbs' catalyst",
+      "cas_number": "246047-72-3",
+      "role": "catalyst",
+      "supplier": "Sigma-Aldrich (Milwaukee, WI)",
+      "total_amount": {
+        "value": 100,
+        "unit": "mg",
+        "relative_to": "80g resin batch (0.125 wt%)"
+      },
+      "hazard_class": "moisture_sensitive",
+      "evidence": {
+        "document": "DOC-001",
+        "page": 1265,
+        "section": "2.1. Materials",
+        "quote": "100 mg (0.125 wt.%) recrystallized 2nd generation Grubbs' catalyst was added and stirred evenly.",
+        "evidence_type": "explicit",
+        "confidence": 0.98
+      }
+    },
+    {
+      "name": "Norbornenylethyldimethylchlorosilane (MCS)",
+      "cas_number": null,
+      "role": "coupling_agent",
+      "supplier": "Hybrid Plastics (Hattiesburg, MS)",
+      "total_amount": {
+        "value": null,
+        "unit": "mL",
+        "relative_to": "2% v/v in THF"
+      },
+      "hazard_class": "moisture_sensitive",
+      "evidence": {
+        "document": "DOC-001",
+        "page": 1265,
+        "section": "2.1. Materials",
+        "quote": "Norbornenylethyldimethylchlorosilane (MCS) was obtained from Hybrid Plastics (Hattiesburg, MS).",
+        "evidence_type": "explicit",
+        "confidence": 0.97
+      }
+    },
+    {
+      "name": "Norbornenylethyltrichlorosilane (TCS)",
+      "cas_number": null,
+      "role": "coupling_agent",
+      "supplier": "Gelest (Morrisville, PA)",
+      "total_amount": {
+        "value": null,
+        "unit": "mL",
+        "relative_to": "2% v/v in THF"
+      },
+      "hazard_class": "moisture_sensitive",
+      "evidence": {
+        "document": "DOC-001",
+        "page": 1265,
+        "section": "2.1. Materials",
+        "quote": "Norbornenylethyltrichlorosilane (TCS) was purchased from Gelest (Morrisville, PA).",
+        "evidence_type": "explicit",
+        "confidence": 0.97
+      }
+    },
+    {
+      "name": "Tetrahydrofuran (THF)",
+      "cas_number": "109-99-9",
+      "role": "solvent",
+      "supplier": "Fisher Scientific (Pittsburgh, PA)",
+      "total_amount": {
+        "value": null,
+        "unit": "mL"
+      },
+      "hazard_class": "flammable (flash point -14C, boiling point 66C)",
+      "evidence": {
+        "document": "DOC-001",
+        "page": 1265,
+        "section": "2.1. Materials",
+        "quote": "Tetrahydrofuran (THF) was purchased from Fisher Scientific (Pittsburgh, PA). THF was dried and distilled by refluxing with benzophenone and sodium.",
+        "evidence_type": "explicit",
+        "confidence": 0.98
+      }
+    },
+    {
+      "name": "Pyridine",
+      "cas_number": "110-86-1",
+      "role": "base",
+      "supplier": null,
+      "total_amount": {
+        "value": null,
+        "unit": "mL"
+      },
+      "hazard_class": "flammable, toxic",
+      "evidence": {
+        "document": "DOC-001",
+        "page": 1266,
+        "section": "2.1. Surface modification",
+        "quote": "Silane (MCS or TCS) and pyridine were mixed in dried THF to yield a silane concentration of 2% v/v",
+        "evidence_type": "explicit",
+        "confidence": 0.95
+      }
+    },
+    {
+      "name": "Benzophenone",
+      "cas_number": "119-61-9",
+      "role": "drying_indicator",
+      "supplier": null,
+      "total_amount": {
+        "value": null,
+        "unit": "g"
+      },
+      "hazard_class": "irritant",
+      "evidence": {
+        "document": "DOC-001",
+        "page": 1265,
+        "section": "2.1. Materials",
+        "quote": "THF was dried and distilled by refluxing with benzophenone and sodium.",
+        "evidence_type": "explicit",
+        "confidence": 0.97
+      }
+    },
+    {
+      "name": "Sodium (metal)",
+      "cas_number": "7440-23-5",
+      "role": "drying_agent",
+      "supplier": null,
+      "total_amount": {
+        "value": null,
+        "unit": "g"
+      },
+      "hazard_class": "water_reactive, flammable",
+      "evidence": {
+        "document": "DOC-001",
+        "page": 1265,
+        "section": "2.1. Materials",
+        "quote": "THF was dried and distilled by refluxing with benzophenone and sodium.",
+        "evidence_type": "explicit",
+        "confidence": 0.97
+      }
+    },
+    {
+      "name": "Benzene",
+      "cas_number": "71-43-2",
+      "role": "solvent",
+      "supplier": null,
+      "total_amount": {
+        "value": null,
+        "unit": "mL"
+      },
+      "hazard_class": "carcinogenic, flammable",
+      "evidence": {
+        "document": "DOC-001",
+        "page": 1265,
+        "section": "2.1. Materials",
+        "quote": "Second generation Grubbs' catalyst was recrystallized by freeze-drying from benzene [23]",
+        "evidence_type": "explicit",
+        "confidence": 0.95
+      }
+    },
+    {
+      "name": "Unidirectional glass fiber",
+      "cas_number": null,
+      "role": "reinforcement",
+      "supplier": "Pella Company",
+      "total_amount": {
+        "value": null,
+        "unit": "g"
+      },
+      "hazard_class": "mechanical_irritant",
+      "evidence": {
+        "document": "DOC-001",
+        "page": 1265,
+        "section": "2.1. Materials",
+        "quote": "Two types of glass fiber materials were used, unidirectional glass fiber and plain weave glass fabric (3.2 oz/sq yd), both of which were provided by Pella Company.",
+        "evidence_type": "explicit",
+        "confidence": 0.97
+      }
+    },
+    {
+      "name": "Plain weave glass fabric (3.2 oz/sq yd)",
+      "cas_number": null,
+      "role": "reinforcement",
+      "supplier": "Pella Company",
+      "total_amount": {
+        "value": null,
+        "unit": "g"
+      },
+      "hazard_class": "mechanical_irritant",
+      "evidence": {
+        "document": "DOC-001",
+        "page": 1265,
+        "section": "2.1. Materials",
+        "quote": "Two types of glass fiber materials were used, unidirectional glass fiber and plain weave glass fabric (3.2 oz/sq yd), both of which were provided by Pella Company.",
+        "evidence_type": "explicit",
+        "confidence": 0.97
+      }
+    }
+  ],
+  "steps": [
+    {
+      "step_id": "S01",
+      "action": "heat",
+      "material": "Glass fiber (unidirectional and plain weave fabric)",
+      "description": "Heat-clean glass fiber at 450C to remove pre-existing sizing and impurities",
+      "temperature": {
+        "value": 450,
+        "unit": "celsius",
+        "ramp_rate": null,
+        "hold": true
+      },
+      "duration": {
+        "value": 3,
+        "unit": "hour"
+      },
+      "stirring_speed": null,
+      "atmosphere": "air",
+      "pressure": null,
+      "evidence": [
+        {
+          "document": "DOC-001",
+          "page": 1266,
+          "section": "2.1. Surface modification",
+          "quote": "the glass fiber was heat-cleaned at 450 C for 3 h to remove pre-existing sizing and other impurities.",
+          "evidence_type": "explicit",
+          "confidence": 0.98
+        }
+      ],
+      "confidence": 0.95,
+      "status": "warning",
+      "missing_fields": [
+        {
+          "field_name": "temperature.ramp_rate",
+          "step_id": "S01",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "Typical muffle furnace ramp rate 5-10 C/min; confirm with equipment manual",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        }
+      ],
+      "device_binding": {
+        "device_id": null,
+        "capability_check": "unchecked"
+      },
+      "notes": "Requires high-temperature furnace (muffle furnace) capable of 450C+; atmosphere inferred as air since heat-cleaning is typically done in air"
+    },
+    {
+      "step_id": "S02",
+      "action": "heat",
+      "material": "Tetrahydrofuran (THF) with benzophenone and sodium",
+      "description": "Dry and distill THF by refluxing with benzophenone and sodium",
+      "temperature": {
+        "value": 66,
+        "unit": "celsius",
+        "ramp_rate": null,
+        "hold": true
+      },
+      "duration": {
+        "value": null,
+        "unit": "hour"
+      },
+      "stirring_speed": null,
+      "atmosphere": null,
+      "pressure": null,
+      "evidence": [
+        {
+          "document": "DOC-001",
+          "page": 1265,
+          "section": "2.1. Materials",
+          "quote": "THF was dried and distilled by refluxing with benzophenone and sodium.",
+          "evidence_type": "explicit",
+          "confidence": 0.97
+        },
+        {
+          "document": "DOC-001",
+          "page": 1265,
+          "section": "2.1. Materials",
+          "quote": "THF was dried and distilled by refluxing with benzophenone and sodium.",
+          "evidence_type": "inferred",
+          "confidence": 0.7,
+          "derivation": "Reflux temperature inferred as THF boiling point (66C); duration not specified in original text",
+          "require_confirmation": true
+        }
+      ],
+      "confidence": 0.6,
+      "status": "blocked",
+      "missing_fields": [
+        {
+          "field_name": "duration.value",
+          "step_id": "S02",
+          "risk_level": "high",
+          "blocks_execution": true,
+          "suggestion": "THF reflux drying typically requires 12-24h until benzophenone ketyl radical persists (blue color); must be confirmed by operator",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        },
+        {
+          "field_name": "stirring_speed",
+          "step_id": "S02",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "Magnetic stirring at 200-400 rpm typical for reflux drying",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        },
+        {
+          "field_name": "atmosphere",
+          "step_id": "S02",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "Reflux setup with condenser; inert atmosphere (N2/Ar) recommended to exclude moisture",
+          "suggestion_source": "safety_rule",
+          "requires_confirmation": true
+        }
+      ],
+      "device_binding": {
+        "device_id": null,
+        "capability_check": "unchecked"
+      },
+      "notes": "SAFETY: Sodium is water-reactive; THF is extremely flammable (flash point -14C); reflux heating of flammable solvent requires condenser and ventilation"
+    },
+    {
+      "step_id": "S03",
+      "action": "dry",
+      "material": "2nd generation Grubbs' catalyst",
+      "description": "Recrystallize Grubbs catalyst by freeze-drying from benzene",
+      "temperature": {
+        "value": null,
+        "unit": "celsius",
+        "ramp_rate": null,
+        "hold": null
+      },
+      "duration": {
+        "value": null,
+        "unit": "hour"
+      },
+      "stirring_speed": null,
+      "atmosphere": null,
+      "pressure": null,
+      "evidence": [
+        {
+          "document": "DOC-001",
+          "page": 1265,
+          "section": "2.1. Materials",
+          "quote": "Second generation Grubbs' catalyst was recrystallized by freeze-drying from benzene [23] to allow better dissolution in the resin.",
+          "evidence_type": "explicit",
+          "confidence": 0.9
+        }
+      ],
+      "confidence": 0.5,
+      "status": "blocked",
+      "missing_fields": [
+        {
+          "field_name": "temperature.value",
+          "step_id": "S03",
+          "risk_level": "high",
+          "blocks_execution": true,
+          "suggestion": "Freeze-drying conditions (sublimation temperature, condenser temperature) not specified; details in reference [23] which is not available in source text",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        },
+        {
+          "field_name": "duration.value",
+          "step_id": "S03",
+          "risk_level": "high",
+          "blocks_execution": true,
+          "suggestion": "Freeze-drying duration not specified; details in reference [23]",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        },
+        {
+          "field_name": "atmosphere",
+          "step_id": "S03",
+          "risk_level": "high",
+          "blocks_execution": true,
+          "suggestion": "Grubbs catalyst is moisture/oxygen sensitive; freeze-drying atmosphere not specified; details in reference [23]",
+          "suggestion_source": "safety_rule",
+          "requires_confirmation": true
+        },
+        {
+          "field_name": "benzene_amount",
+          "step_id": "S03",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "Amount of benzene for recrystallization not specified; details in reference [23]",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        }
+      ],
+      "device_binding": {
+        "device_id": null,
+        "capability_check": "unchecked"
+      },
+      "notes": "Critical procedure details are in reference [23] which is not available in the source text. Benzene is a known carcinogen (IARC Group 1). Grubbs catalyst is air/moisture sensitive."
+    },
+    {
+      "step_id": "S04",
+      "action": "dissolve",
+      "material": "Silane (MCS or TCS) and pyridine in dried THF",
+      "description": "Prepare silane solution: mix silane (MCS or TCS) and pyridine in dried THF to yield 2% v/v silane concentration",
+      "amount": {
+        "value": 2,
+        "unit": "vol%",
+        "relative_to": "THF volume"
+      },
+      "temperature": {
+        "value": null,
+        "unit": "celsius",
+        "ramp_rate": null,
+        "hold": null
+      },
+      "duration": {
+        "value": null,
+        "unit": "minute"
+      },
+      "stirring_speed": null,
+      "atmosphere": null,
+      "pressure": null,
+      "evidence": [
+        {
+          "document": "DOC-001",
+          "page": 1266,
+          "section": "2.1. Surface modification",
+          "quote": "Silane (MCS or TCS) and pyridine were mixed in dried THF to yield a silane concentration of 2% v/v",
+          "evidence_type": "explicit",
+          "confidence": 0.97
+        }
+      ],
+      "confidence": 0.7,
+      "status": "warning",
+      "missing_fields": [
+        {
+          "field_name": "amount.pyridine",
+          "step_id": "S04",
+          "risk_level": "high",
+          "blocks_execution": true,
+          "suggestion": "Pyridine amount not specified; pyridine serves as base to scavenge HCl from silane reaction; stoichiometric or excess amount needed",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        },
+        {
+          "field_name": "temperature.value",
+          "step_id": "S04",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "Mixing temperature not specified; room temperature mixing is typical",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        },
+        {
+          "field_name": "duration.value",
+          "step_id": "S04",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "Mixing duration not specified",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        },
+        {
+          "field_name": "stirring_speed",
+          "step_id": "S04",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "Stirring speed not specified",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        },
+        {
+          "field_name": "atmosphere",
+          "step_id": "S04",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "MCS and TCS are moisture-sensitive (chlorosilane); inert atmosphere (N2/Ar) recommended",
+          "suggestion_source": "safety_rule",
+          "requires_confirmation": true
+        }
+      ],
+      "device_binding": {
+        "device_id": null,
+        "capability_check": "unchecked"
+      },
+      "notes": "Two parallel preparations: one with MCS, one with TCS. Chlorosilanes are moisture-sensitive and react with water to produce HCl."
+    },
+    {
+      "step_id": "S05",
+      "action": "heat",
+      "material": "Heat-cleaned glass fibers in silane/THF/pyridine solution",
+      "description": "Surface modification reaction: reflux at 90C for 48h",
+      "temperature": {
+        "value": 90,
+        "unit": "celsius",
+        "ramp_rate": null,
+        "hold": true
+      },
+      "duration": {
+        "value": 48,
+        "unit": "hour"
+      },
+      "stirring_speed": null,
+      "atmosphere": null,
+      "pressure": null,
+      "evidence": [
+        {
+          "document": "DOC-001",
+          "page": 1266,
+          "section": "2.1. Surface modification",
+          "quote": "Surface modification reaction was carried out under reflux conditions at 90 C for 48 h.",
+          "evidence_type": "explicit",
+          "confidence": 0.98
+        }
+      ],
+      "confidence": 0.85,
+      "status": "warning",
+      "missing_fields": [
+        {
+          "field_name": "stirring_speed",
+          "step_id": "S05",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "Stirring speed not specified; gentle stirring recommended to ensure fiber immersion",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        },
+        {
+          "field_name": "atmosphere",
+          "step_id": "S05",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "Reflux setup with condenser; inert atmosphere (N2/Ar) recommended to exclude moisture for chlorosilane reaction",
+          "suggestion_source": "safety_rule",
+          "requires_confirmation": true
+        },
+        {
+          "field_name": "temperature.ramp_rate",
+          "step_id": "S05",
+          "risk_level": "low",
+          "blocks_execution": false,
+          "suggestion": "Ramp rate to 90C not specified",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        }
+      ],
+      "device_binding": {
+        "device_id": null,
+        "capability_check": "unchecked"
+      },
+      "notes": "Reflux at 90C with THF (bp 66C) implies the solution is heated above THF boiling point under reflux condenser. SAFETY: THF is extremely flammable (flash point -14C); heating THF requires condenser and ventilation."
+    },
+    {
+      "step_id": "S06",
+      "action": "wash",
+      "material": "Surface-modified glass fibers",
+      "description": "Rinse glass fabric thoroughly with THF, then dry in oven at 110C for 10h",
+      "temperature": {
+        "value": 110,
+        "unit": "celsius",
+        "ramp_rate": null,
+        "hold": true
+      },
+      "duration": {
+        "value": 10,
+        "unit": "hour"
+      },
+      "stirring_speed": null,
+      "atmosphere": "air",
+      "pressure": null,
+      "evidence": [
+        {
+          "document": "DOC-001",
+          "page": 1266,
+          "section": "2.1. Surface modification",
+          "quote": "glass fabric was rinsed thoroughly with THF and then dried in an oven at 110 C for 10 h.",
+          "evidence_type": "explicit",
+          "confidence": 0.97
+        }
+      ],
+      "confidence": 0.8,
+      "status": "warning",
+      "missing_fields": [
+        {
+          "field_name": "wash.repetitions",
+          "step_id": "S06",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "Number of THF rinse cycles not specified; 'thoroughly' implies multiple washes",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        },
+        {
+          "field_name": "wash.solvent_volume",
+          "step_id": "S06",
+          "risk_level": "low",
+          "blocks_execution": false,
+          "suggestion": "THF volume per rinse not specified",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        },
+        {
+          "field_name": "temperature.ramp_rate",
+          "step_id": "S06",
+          "risk_level": "low",
+          "blocks_execution": false,
+          "suggestion": "Oven heating ramp rate not specified",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        }
+      ],
+      "device_binding": {
+        "device_id": null,
+        "capability_check": "unchecked"
+      },
+      "notes": "Drying at 110C in oven; atmosphere inferred as air (convection oven). SAFETY: THF rinsing must be done in fume hood; residual THF in oven may create flammable atmosphere."
+    },
+    {
+      "step_id": "S07",
+      "action": "stir",
+      "material": "Dilulin (30 wt%) + DCPD (70 wt%) + Grubbs catalyst (0.125 wt%)",
+      "description": "Prepare resin: mix Dilulin and DCPD, then add recrystallized Grubbs catalyst and stir evenly",
+      "amount": {
+        "value": 80,
+        "unit": "g",
+        "tolerance": null
+      },
+      "temperature": {
+        "value": null,
+        "unit": "celsius",
+        "ramp_rate": null,
+        "hold": null
+      },
+      "duration": {
+        "value": null,
+        "unit": "minute"
+      },
+      "stirring_speed": null,
+      "atmosphere": null,
+      "pressure": null,
+      "evidence": [
+        {
+          "document": "DOC-001",
+          "page": 1266,
+          "section": "2.2. Composite fabrication",
+          "quote": "a composition of 30 wt.% Dilulin and 70 wt.% DCPD was selected because of its relatively high mechanical properties (strength and stiffness) compared to other compositions. Resin was prepared on an 80 g scale.",
+          "evidence_type": "explicit",
+          "confidence": 0.98
+        },
+        {
+          "document": "DOC-001",
+          "page": 1266,
+          "section": "2.2. Composite fabrication",
+          "quote": "After Dilulin and DCPD were mixed well, 100 mg (0.125 wt.%) recrystallized 2nd generation Grubbs' catalyst was added and stirred evenly.",
+          "evidence_type": "explicit",
+          "confidence": 0.97
+        }
+      ],
+      "confidence": 0.65,
+      "status": "inferred",
+      "missing_fields": [
+        {
+          "field_name": "temperature.value",
+          "step_id": "S07",
+          "risk_level": "high",
+          "blocks_execution": true,
+          "suggestion": "Mixing temperature not explicitly specified; room temperature mixing is inferred but ROMP is exothermic and catalyst addition may trigger polymerization",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true,
+          "require_confirmation": true
+        },
+        {
+          "field_name": "duration.value",
+          "step_id": "S07",
+          "risk_level": "high",
+          "blocks_execution": true,
+          "suggestion": "Mixing duration not specified; 'mixed well' and 'stirred evenly' are qualitative descriptions without quantitative time",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        },
+        {
+          "field_name": "stirring_speed",
+          "step_id": "S07",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "Stirring speed not specified; 'stirred evenly' is qualitative",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        },
+        {
+          "field_name": "atmosphere",
+          "step_id": "S07",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "Atmosphere not specified; Grubbs catalyst is moisture/oxygen sensitive, inert atmosphere recommended",
+          "suggestion_source": "safety_rule",
+          "requires_confirmation": true
+        }
+      ],
+      "device_binding": {
+        "device_id": null,
+        "capability_check": "unchecked"
+      },
+      "notes": "Derived: Dilulin amount = 80g * 30% = 24g; DCPD amount = 80g * 70% = 56g; catalyst = 100mg = 0.125 wt% of 80g. ROMP catalyst addition triggers ring-opening metathesis polymerization which is exothermic.",
+      "require_confirmation": true
+    },
+    {
+      "step_id": "S08",
+      "action": "add",
+      "material": "Plain weave glass fabric (20 plies) + resin",
+      "description": "Hand-layup: place 20 plies glass fabric in mold one by one, add resin after each fabric to wet it out",
+      "amount": {
+        "value": 20,
+        "unit": "plies",
+        "tolerance": null
+      },
+      "temperature": {
+        "value": null,
+        "unit": "celsius",
+        "ramp_rate": null,
+        "hold": null
+      },
+      "duration": {
+        "value": null,
+        "unit": "minute"
+      },
+      "stirring_speed": null,
+      "atmosphere": null,
+      "pressure": null,
+      "evidence": [
+        {
+          "document": "DOC-001",
+          "page": 1266,
+          "section": "2.2. Composite fabrication",
+          "quote": "Twenty plies glass fabric were placed in a mold one by one and resin was added after each fabric to wet it out.",
+          "evidence_type": "explicit",
+          "confidence": 0.97
+        },
+        {
+          "document": "DOC-001",
+          "page": 1266,
+          "section": "2.2. Composite fabrication",
+          "quote": "The composites were made by hand-layup method.",
+          "evidence_type": "explicit",
+          "confidence": 0.97
+        }
+      ],
+      "confidence": 0.85,
+      "status": "warning",
+      "missing_fields": [
+        {
+          "field_name": "duration.value",
+          "step_id": "S08",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "Layup duration not specified; depends on operator skill and resin pot life",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        },
+        {
+          "field_name": "temperature.value",
+          "step_id": "S08",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "Layup temperature not specified; room temperature is typical for hand-layup",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        },
+        {
+          "field_name": "resin_amount_per_ply",
+          "step_id": "S08",
+          "risk_level": "low",
+          "blocks_execution": false,
+          "suggestion": "Resin amount per ply not specified; target 50 wt% glass fiber",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        }
+      ],
+      "device_binding": {
+        "device_id": null,
+        "capability_check": "unchecked"
+      },
+      "notes": "Manual operation; resulting composites had nominal weight fraction of glass fiber of 50%. Mold type and dimensions not specified."
+    },
+    {
+      "step_id": "S09",
+      "action": "heat",
+      "material": "Composite laminate in mold",
+      "description": "Pre-cure on hot press at 65C and 689 kPa for 1h",
+      "temperature": {
+        "value": 65,
+        "unit": "celsius",
+        "ramp_rate": null,
+        "hold": true
+      },
+      "duration": {
+        "value": 1,
+        "unit": "hour"
+      },
+      "stirring_speed": null,
+      "atmosphere": null,
+      "pressure": {
+        "value": 689,
+        "unit": "kPa"
+      },
+      "evidence": [
+        {
+          "document": "DOC-001",
+          "page": 1266,
+          "section": "2.2. Composite fabrication",
+          "quote": "the mold was pre-cured on a hot press at 65 C and 689 kPa for 1 h",
+          "evidence_type": "explicit",
+          "confidence": 0.98
+        }
+      ],
+      "confidence": 0.9,
+      "status": "warning",
+      "missing_fields": [
+        {
+          "field_name": "temperature.ramp_rate",
+          "step_id": "S09",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "Heating ramp rate to 65C not specified",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        },
+        {
+          "field_name": "pressure.ramp_rate",
+          "step_id": "S09",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "Pressurization ramp rate not specified",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        },
+        {
+          "field_name": "atmosphere",
+          "step_id": "S09",
+          "risk_level": "low",
+          "blocks_execution": false,
+          "suggestion": "Atmosphere not specified; hot press typically operates in air",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        }
+      ],
+      "device_binding": {
+        "device_id": null,
+        "capability_check": "unchecked"
+      },
+      "notes": "Pressure 689 kPa = 0.689 MPa = ~100 psi. Requires hot press with temperature and pressure control."
+    },
+    {
+      "step_id": "S10",
+      "action": "heat",
+      "material": "Pre-cured composite laminate",
+      "description": "Post-cure at 150C for 3h in convection oven",
+      "temperature": {
+        "value": 150,
+        "unit": "celsius",
+        "ramp_rate": null,
+        "hold": true
+      },
+      "duration": {
+        "value": 3,
+        "unit": "hour"
+      },
+      "stirring_speed": null,
+      "atmosphere": "air",
+      "pressure": null,
+      "evidence": [
+        {
+          "document": "DOC-001",
+          "page": 1266,
+          "section": "2.2. Composite fabrication",
+          "quote": "followed by post-cure at 150 C for 3 h in a convection oven.",
+          "evidence_type": "explicit",
+          "confidence": 0.98
+        }
+      ],
+      "confidence": 0.9,
+      "status": "warning",
+      "missing_fields": [
+        {
+          "field_name": "temperature.ramp_rate",
+          "step_id": "S10",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "Heating ramp rate from room temperature to 150C not specified",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        }
+      ],
+      "device_binding": {
+        "device_id": null,
+        "capability_check": "unchecked"
+      },
+      "notes": "Atmosphere inferred as air (convection oven). Temperature change from 65C (pre-cure) to 150C (post-cure) is 85C delta; ramp rate not specified."
+    }
+  ],
+  "equipment": [
+    {
+      "device_id": null,
+      "device_type": "oven",
+      "device_name": "High-temperature muffle furnace (for 450C heat cleaning)",
+      "config_path": null
+    },
+    {
+      "device_id": null,
+      "device_type": "hotplate_stirrer",
+      "device_name": "Reflux setup with condenser (for THF drying and surface modification)",
+      "config_path": null
+    },
+    {
+      "device_id": null,
+      "device_type": "vacuum_oven",
+      "device_name": "Freeze-dryer (for Grubbs catalyst recrystallization)",
+      "config_path": null
+    },
+    {
+      "device_id": null,
+      "device_type": "oven",
+      "device_name": "Convection oven (for fiber drying at 110C and post-cure at 150C)",
+      "config_path": null
+    },
+    {
+      "device_id": null,
+      "device_type": "reactor",
+      "device_name": "Hot press (for pre-cure at 65C, 689 kPa)",
+      "config_path": null
+    },
+    {
+      "device_id": null,
+      "device_type": "balance",
+      "device_name": "Analytical balance (for resin preparation, 80g scale)",
+      "config_path": null
+    }
+  ],
+  "metadata": {
+    "version": "1.0.0",
+    "generated_at": "2026-08-06T12:00:00Z",
+    "compiler_version": "matflow-compiler/0.3.0",
+    "source_hash": "sha256:cui_kessler_2012_compscitech_72_1264",
+    "operator": "auto",
+    "lab_id": null,
+    "compilation_notes": "Protocol compiled from Cui & Kessler 2012, Composites Science and Technology 72:1264-1272. DOI: 10.1016/j.compscitech.2012.04.013. Characterization section (2.3) excluded as per scope. Reference [23] for catalyst recrystallization procedure not available in source text."
+  },
+  "safety_checks": [
+    {
+      "check_id": "SAFE-001",
+      "check_type": "temperature_limit",
+      "rule_id": "SAFE-H-001",
+      "target_step": "S01",
+      "status": "warning",
+      "message": "Step S01 requires 450C heat cleaning; this exceeds 200C threshold for high-temperature operation confirmation. Requires muffle furnace capable of 450C+.",
+      "details": {
+        "actual_value": 450,
+        "threshold": 200,
+        "unit": "celsius"
+      }
+    },
+    {
+      "check_id": "SAFE-002",
+      "check_type": "flammable_solvent_heating",
+      "rule_id": "SAFE-C-004",
+      "target_step": "S02",
+      "status": "blocked",
+      "message": "Step S02 involves heating THF (flash point -14C, boiling point 66C) with sodium metal. THF is extremely flammable and sodium is water-reactive. Reflux setup with condenser and fume hood required.",
+      "details": {
+        "solvent": "THF",
+        "flash_point": -14,
+        "boiling_point": 66,
+        "reagent": "sodium",
+        "hazard": "water_reactive"
+      }
+    },
+    {
+      "check_id": "SAFE-003",
+      "check_type": "water_sensitive_reagent",
+      "rule_id": "SAFE-C-003",
+      "target_step": "S02",
+      "status": "warning",
+      "message": "Step S02 uses sodium metal (water-reactive). Ensure all glassware is dry and no water sources nearby.",
+      "details": {
+        "reagent": "sodium",
+        "hazard_class": "water_reactive"
+      }
+    },
+    {
+      "check_id": "SAFE-004",
+      "check_type": "carcinogen_handling",
+      "rule_id": "SAFE-H-003",
+      "target_step": "S03",
+      "status": "warning",
+      "message": "Step S03 uses benzene (IARC Group 1 carcinogen). Must be handled in fume hood with appropriate PPE. Consider substituting with toluene if possible.",
+      "details": {
+        "reagent": "benzene",
+        "carcinogenicity": "IARC_Group_1"
+      }
+    },
+    {
+      "check_id": "SAFE-005",
+      "check_type": "moisture_sensitive_reagent",
+      "rule_id": "SAFE-A-002",
+      "target_step": "S03",
+      "status": "warning",
+      "message": "Step S03 involves Grubbs catalyst (moisture/oxygen sensitive). Inert atmosphere required but not specified in source text.",
+      "details": {
+        "reagent": "2nd_generation_Grubbs_catalyst",
+        "sensitivity": "moisture_and_oxygen"
+      }
+    },
+    {
+      "check_id": "SAFE-006",
+      "check_type": "flammable_solvent_heating",
+      "rule_id": "SAFE-C-004",
+      "target_step": "S05",
+      "status": "warning",
+      "message": "Step S05 involves refluxing THF (flash point -14C) at 90C for 48h. Extended heating of flammable solvent requires condenser, fume hood, and unattended-operation safety protocols.",
+      "details": {
+        "solvent": "THF",
+        "flash_point": -14,
+        "temperature": 90,
+        "duration_hours": 48
+      }
+    },
+    {
+      "check_id": "SAFE-007",
+      "check_type": "moisture_sensitive_reagent",
+      "rule_id": "SAFE-A-002",
+      "target_step": "S04",
+      "status": "warning",
+      "message": "Step S04 uses chlorosilanes (MCS/TCS) which are moisture-sensitive and produce HCl upon contact with water. Inert atmosphere recommended but not specified.",
+      "details": {
+        "reagents": [
+          "MCS",
+          "TCS"
+        ],
+        "sensitivity": "moisture",
+        "byproduct": "HCl"
+      }
+    },
+    {
+      "check_id": "SAFE-008",
+      "check_type": "high_pressure_operation",
+      "rule_id": "SAFE-H-002",
+      "target_step": "S09",
+      "status": "warning",
+      "message": "Step S09 applies 689 kPa (0.689 MPa) pressure on hot press. This exceeds 0.5 MPa threshold for high-pressure operation confirmation.",
+      "details": {
+        "actual_pressure": 689,
+        "unit": "kPa",
+        "threshold": 500,
+        "threshold_unit": "kPa"
+      }
+    },
+    {
+      "check_id": "SAFE-009",
+      "check_type": "inferred_parameter",
+      "rule_id": "SAFE-H-004",
+      "target_step": "S07",
+      "status": "warning",
+      "message": "Step S07 contains inferred parameters (temperature, duration, stirring_speed, atmosphere). Resin mixing conditions are qualitative ('mixed well', 'stirred evenly') without quantitative specifications. ROMP is exothermic; uncontrolled mixing may lead to thermal runaway.",
+      "details": {
+        "inferred_fields": [
+          "temperature.value",
+          "duration.value",
+          "stirring_speed",
+          "atmosphere"
+        ]
+      }
+    },
+    {
+      "check_id": "SAFE-010",
+      "check_type": "temperature_limit",
+      "rule_id": "SAFE-H-001",
+      "target_step": "S10",
+      "status": "warning",
+      "message": "Step S10 post-cure at 150C; below 200C threshold but ramp rate not specified. Temperature change from 65C to 150C (delta 85C) without ramp rate may cause thermal stress.",
+      "details": {
+        "actual_value": 150,
+        "previous_value": 65,
+        "delta": 85,
+        "unit": "celsius"
+      }
+    }
+  ],
+  "checkpoints": [
+    {
+      "checkpoint_id": "CP-01",
+      "after_step": "S01",
+      "stored_state": [
+        {
+          "name": "fiber_type",
+          "type": "string"
+        },
+        {
+          "name": "heat_clean_status",
+          "type": "boolean"
+        },
+        {
+          "name": "residual_sizing",
+          "type": "string"
+        }
+      ],
+      "recovery_policy": {
+        "power_failure": "restart_step",
+        "temperature_deviation": {
+          "threshold": 10,
+          "action": "hold"
+        }
+      }
+    },
+    {
+      "checkpoint_id": "CP-02",
+      "after_step": "S02",
+      "stored_state": [
+        {
+          "name": "thf_water_content",
+          "type": "number",
+          "unit": "ppm"
+        },
+        {
+          "name": "drying_completion",
+          "type": "boolean"
+        },
+        {
+          "name": "benzophenone_color",
+          "type": "string"
+        }
+      ],
+      "recovery_policy": {
+        "power_failure": "restart_step",
+        "temperature_deviation": {
+          "threshold": 5,
+          "action": "alert"
+        }
+      }
+    },
+    {
+      "checkpoint_id": "CP-03",
+      "after_step": "S03",
+      "stored_state": [
+        {
+          "name": "catalyst_recrystallized",
+          "type": "boolean"
+        },
+        {
+          "name": "catalyst_mass",
+          "type": "number",
+          "unit": "mg"
+        },
+        {
+          "name": "catalyst_dissolution_test",
+          "type": "boolean"
+        }
+      ],
+      "recovery_policy": {
+        "power_failure": "restart_step",
+        "temperature_deviation": {
+          "threshold": 2,
+          "action": "abort"
+        }
+      }
+    },
+    {
+      "checkpoint_id": "CP-04",
+      "after_step": "S05",
+      "stored_state": [
+        {
+          "name": "silane_type",
+          "type": "string"
+        },
+        {
+          "name": "reaction_temperature",
+          "type": "number",
+          "unit": "celsius"
+        },
+        {
+          "name": "reaction_progress",
+          "type": "number"
+        },
+        {
+          "name": "fiber_treatment_status",
+          "type": "string"
+        }
+      ],
+      "recovery_policy": {
+        "power_failure": "resume_from_checkpoint",
+        "temperature_deviation": {
+          "threshold": 5,
+          "action": "hold"
+        }
+      }
+    },
+    {
+      "checkpoint_id": "CP-05",
+      "after_step": "S06",
+      "stored_state": [
+        {
+          "name": "fiber_dry_status",
+          "type": "boolean"
+        },
+        {
+          "name": "residual_thf",
+          "type": "number",
+          "unit": "ppm"
+        },
+        {
+          "name": "fiber_type_treated",
+          "type": "string"
+        }
+      ],
+      "recovery_policy": {
+        "power_failure": "restart_step",
+        "temperature_deviation": {
+          "threshold": 10,
+          "action": "continue"
+        }
+      }
+    },
+    {
+      "checkpoint_id": "CP-06",
+      "after_step": "S07",
+      "stored_state": [
+        {
+          "name": "resin_mass",
+          "type": "number",
+          "unit": "g"
+        },
+        {
+          "name": "catalyst_added",
+          "type": "boolean"
+        },
+        {
+          "name": "resin_viscosity",
+          "type": "string"
+        },
+        {
+          "name": "romp_initiated",
+          "type": "boolean"
+        }
+      ],
+      "recovery_policy": {
+        "power_failure": "abort",
+        "temperature_deviation": {
+          "threshold": 3,
+          "action": "alert"
+        }
+      }
+    },
+    {
+      "checkpoint_id": "CP-07",
+      "after_step": "S09",
+      "stored_state": [
+        {
+          "name": "pre_cure_temperature",
+          "type": "number",
+          "unit": "celsius"
+        },
+        {
+          "name": "applied_pressure",
+          "type": "number",
+          "unit": "kPa"
+        },
+        {
+          "name": "pre_cure_progress",
+          "type": "number"
+        },
+        {
+          "name": "laminate_thickness",
+          "type": "number",
+          "unit": "mm"
+        }
+      ],
+      "recovery_policy": {
+        "power_failure": "resume_from_checkpoint",
+        "temperature_deviation": {
+          "threshold": 5,
+          "action": "hold"
+        }
+      }
+    },
+    {
+      "checkpoint_id": "CP-08",
+      "after_step": "S10",
+      "stored_state": [
+        {
+          "name": "post_cure_temperature",
+          "type": "number",
+          "unit": "celsius"
+        },
+        {
+          "name": "post_cure_progress",
+          "type": "number"
+        },
+        {
+          "name": "composite_glass_transition",
+          "type": "number",
+          "unit": "celsius"
+        },
+        {
+          "name": "final_fiber_weight_fraction",
+          "type": "number",
+          "unit": "wt_percent"
+        }
+      ],
+      "recovery_policy": {
+        "power_failure": "resume_from_checkpoint",
+        "temperature_deviation": {
+          "threshold": 5,
+          "action": "hold"
+        }
+      }
+    }
+  ],
+  "overall_confidence": 0.72,
+  "overall_status": "blocked",
+  "confidence_score": {
+    "overall": 0.72,
+    "dimensions": {
+      "evidence_coverage": 0.8,
+      "explicit_ratio": 0.65,
+      "safety_pass_rate": 0.6,
+      "missing_field_penalty": 0.65
+    }
+  },
+  "block_reasons": [
+    "S02: duration.value is null (critical) - THF drying duration not specified in source text",
+    "S03: temperature.value, duration.value, atmosphere are null (critical) - Catalyst recrystallization details in reference [23] not available",
+    "S04: amount.pyridine is null (critical) - Pyridine amount not specified in source text",
+    "S07: temperature.value, duration.value are null (critical) - Resin mixing conditions are qualitative only"
+  ]
+}

@@ -1,0 +1,893 @@
+# 设备无关实验中间表示 (EIR)
+# 玻璃纤维增强ROMP生物可再生聚合物复合材料——硅烷偶联剂界面增强
+# 协议ID: MF-REAL-001
+# 来源: Cui & Kessler, Composites Science and Technology 72 (2012) 1264-1272
+# DOI: 10.1016/j.compscitech.2012.04.013
+# 编译器: matflow-compiler/0.3.0
+# 生成时间: 2026-08-06T12:00:00Z
+
+protocol:
+  protocol_id: "MF-REAL-001"
+  material: "Glass fiber reinforced ROMP-based bio-renewable polymer composite (DCPD/Dilulin resin + silane-treated glass fiber)"
+  overall_status: "blocked"
+  overall_confidence: 0.72
+
+  # ============================================================
+  # 源文档
+  # ============================================================
+  source_documents:
+    - doc_id: "DOC-001"
+      title: "Glass fiber reinforced ROMP-based bio-renewable polymers: Enhancement of the interface with silane coupling agents"
+      file_path: "papers/cui_kessler_2012.pdf"
+      doc_type: "paper"
+      authors: ["Hongyu Cui", "Michael R. Kessler"]
+      journal: "Composites Science and Technology"
+      volume: 72
+      pages: "1264-1272"
+      year: 2012
+      doi: "10.1016/j.compscitech.2012.04.013"
+
+  # ============================================================
+  # 试剂清单
+  # ============================================================
+  reagents:
+    - name: "Dicyclopentadiene (DCPD)"
+      cas_number: "77-73-6"
+      role: "monomer"
+      supplier: "Sigma-Aldrich (Milwaukee, WI)"
+      total_amount:
+        value: 56
+        unit: "g"
+        relative_to: "80g resin batch (70 wt%)"
+        derivation: "80g * 70% = 56g"
+      hazard_class: "flammable"
+      evidence:
+        document: "DOC-001"
+        page: 1265
+        section: "2.1. Materials"
+        quote: "Dicyclopentadiene (DCPD) and 2nd generation Grubbs' catalyst were purchased from Sigma-Aldrich"
+        evidence_type: "explicit"
+        confidence: 0.98
+
+    - name: "Dilulin (modified linseed oil)"
+      cas_number: null
+      role: "monomer"
+      supplier: "Cargill (MN)"
+      total_amount:
+        value: 24
+        unit: "g"
+        relative_to: "80g resin batch (30 wt%)"
+        derivation: "80g * 30% = 24g"
+      hazard_class: null
+      evidence:
+        document: "DOC-001"
+        page: 1265
+        section: "2.1. Materials"
+        quote: "Dilulin is a commercially available modified linseed oil from Cargill (MN)"
+        evidence_type: "explicit"
+        confidence: 0.97
+
+    - name: "2nd generation Grubbs' catalyst"
+      cas_number: "246047-72-3"
+      role: "catalyst"
+      supplier: "Sigma-Aldrich (Milwaukee, WI)"
+      total_amount:
+        value: 100
+        unit: "mg"
+        relative_to: "80g resin batch (0.125 wt%)"
+      hazard_class: "moisture_sensitive"
+      evidence:
+        document: "DOC-001"
+        page: 1266
+        section: "2.2. Composite fabrication"
+        quote: "100 mg (0.125 wt.%) recrystallized 2nd generation Grubbs' catalyst"
+        evidence_type: "explicit"
+        confidence: 0.98
+
+    - name: "Norbornenylethyldimethylchlorosilane (MCS)"
+      cas_number: null
+      role: "coupling_agent"
+      supplier: "Hybrid Plastics (Hattiesburg, MS)"
+      total_amount:
+        value: null
+        unit: "mL"
+        relative_to: "2% v/v in THF"
+      hazard_class: "moisture_sensitive"
+      evidence:
+        document: "DOC-001"
+        page: 1265
+        section: "2.1. Materials"
+        quote: "Norbornenylethyldimethylchlorosilane (MCS) was obtained from Hybrid Plastics"
+        evidence_type: "explicit"
+        confidence: 0.97
+
+    - name: "Norbornenylethyltrichlorosilane (TCS)"
+      cas_number: null
+      role: "coupling_agent"
+      supplier: "Gelest (Morrisville, PA)"
+      total_amount:
+        value: null
+        unit: "mL"
+        relative_to: "2% v/v in THF"
+      hazard_class: "moisture_sensitive"
+      evidence:
+        document: "DOC-001"
+        page: 1265
+        section: "2.1. Materials"
+        quote: "Norbornenylethyltrichlorosilane (TCS) was purchased from Gelest"
+        evidence_type: "explicit"
+        confidence: 0.97
+
+    - name: "Tetrahydrofuran (THF)"
+      cas_number: "109-99-9"
+      role: "solvent"
+      supplier: "Fisher Scientific (Pittsburgh, PA)"
+      total_amount:
+        value: null
+        unit: "mL"
+      hazard_class: "flammable (flash_point: -14C, boiling_point: 66C)"
+      evidence:
+        document: "DOC-001"
+        page: 1265
+        section: "2.1. Materials"
+        quote: "Tetrahydrofuran (THF) was purchased from Fisher Scientific"
+        evidence_type: "explicit"
+        confidence: 0.98
+
+    - name: "Pyridine"
+      cas_number: "110-86-1"
+      role: "base"
+      supplier: null
+      total_amount:
+        value: null
+        unit: "mL"
+      hazard_class: "flammable, toxic"
+      evidence:
+        document: "DOC-001"
+        page: 1266
+        section: "2.1. Surface modification"
+        quote: "Silane (MCS or TCS) and pyridine were mixed in dried THF"
+        evidence_type: "explicit"
+        confidence: 0.95
+
+    - name: "Benzophenone"
+      cas_number: "119-61-9"
+      role: "drying_indicator"
+      supplier: null
+      total_amount:
+        value: null
+        unit: "g"
+      hazard_class: "irritant"
+      evidence:
+        document: "DOC-001"
+        page: 1265
+        section: "2.1. Materials"
+        quote: "refluxing with benzophenone and sodium"
+        evidence_type: "explicit"
+        confidence: 0.97
+
+    - name: "Sodium (metal)"
+      cas_number: "7440-23-5"
+      role: "drying_agent"
+      supplier: null
+      total_amount:
+        value: null
+        unit: "g"
+      hazard_class: "water_reactive, flammable"
+      evidence:
+        document: "DOC-001"
+        page: 1265
+        section: "2.1. Materials"
+        quote: "refluxing with benzophenone and sodium"
+        evidence_type: "explicit"
+        confidence: 0.97
+
+    - name: "Benzene"
+      cas_number: "71-43-2"
+      role: "solvent"
+      supplier: null
+      total_amount:
+        value: null
+        unit: "mL"
+      hazard_class: "carcinogenic (IARC Group 1), flammable"
+      evidence:
+        document: "DOC-001"
+        page: 1265
+        section: "2.1. Materials"
+        quote: "recrystallized by freeze-drying from benzene [23]"
+        evidence_type: "explicit"
+        confidence: 0.95
+
+    - name: "Unidirectional glass fiber"
+      cas_number: null
+      role: "reinforcement"
+      supplier: "Pella Company"
+      total_amount:
+        value: null
+        unit: "g"
+      hazard_class: "mechanical_irritant"
+      evidence:
+        document: "DOC-001"
+        page: 1265
+        section: "2.1. Materials"
+        quote: "unidirectional glass fiber and plain weave glass fabric (3.2 oz/sq yd), both of which were provided by Pella Company"
+        evidence_type: "explicit"
+        confidence: 0.97
+
+    - name: "Plain weave glass fabric (3.2 oz/sq yd)"
+      cas_number: null
+      role: "reinforcement"
+      supplier: "Pella Company"
+      total_amount:
+        value: null
+        unit: "g"
+      hazard_class: "mechanical_irritant"
+      evidence:
+        document: "DOC-001"
+        page: 1265
+        section: "2.1. Materials"
+        quote: "plain weave glass fabric (3.2 oz/sq yd)"
+        evidence_type: "explicit"
+        confidence: 0.97
+
+  # ============================================================
+  # 实验步骤（原子操作序列）
+  # ============================================================
+  steps:
+
+    # --- S01: 玻璃纤维热清洗 ---
+    - step_id: "S01"
+      action: "heat"
+      description: "Heat-clean glass fiber at 450C for 3h to remove sizing"
+      material: "Glass fiber (unidirectional and plain weave fabric)"
+      temperature:
+        value: 450
+        unit: "celsius"
+        ramp_rate: null
+        hold: true
+      duration:
+        value: 3
+        unit: "hour"
+      stirring_speed: null
+      atmosphere: "air"
+      pressure: null
+      depends_on: []
+      parallel_group: null
+      evidence:
+        - document: "DOC-001"
+          page: 1266
+          section: "2.1. Surface modification"
+          quote: "the glass fiber was heat-cleaned at 450 C for 3 h to remove pre-existing sizing and other impurities."
+          evidence_type: "explicit"
+          confidence: 0.98
+      confidence: 0.95
+      status: "warning"
+      missing_fields:
+        - field_name: "temperature.ramp_rate"
+          risk_level: "medium"
+          blocks_execution: false
+          suggestion: "Typical muffle furnace ramp rate 5-10 C/min"
+          requires_confirmation: true
+      device_requirements:
+        operation_type: "heating"
+        required_capabilities:
+          - capability: "temperature"
+            min: 25
+            max: 450
+            unit: "celsius"
+      notes: "Requires muffle furnace (>=450C); atmosphere inferred as air"
+
+    # --- S02: THF干燥处理 ---
+    - step_id: "S02"
+      action: "heat"
+      description: "Dry and distill THF by refluxing with benzophenone and sodium"
+      material: "THF with benzophenone and sodium"
+      temperature:
+        value: 66
+        unit: "celsius"
+        ramp_rate: null
+        hold: true
+      duration:
+        value: null
+        unit: "hour"
+      stirring_speed: null
+      atmosphere: null
+      pressure: null
+      depends_on: []
+      parallel_group: null
+      evidence:
+        - document: "DOC-001"
+          page: 1265
+          section: "2.1. Materials"
+          quote: "THF was dried and distilled by refluxing with benzophenone and sodium."
+          evidence_type: "explicit"
+          confidence: 0.97
+        - document: "DOC-001"
+          page: 1265
+          section: "2.1. Materials"
+          quote: "THF was dried and distilled by refluxing with benzophenone and sodium."
+          evidence_type: "inferred"
+          confidence: 0.70
+          derivation: "Reflux temperature inferred as THF boiling point (66C); duration not specified"
+      confidence: 0.60
+      status: "blocked"
+      missing_fields:
+        - field_name: "duration.value"
+          risk_level: "high"
+          blocks_execution: true
+          suggestion: "12-24h until benzophenone ketyl radical persists (blue color)"
+          requires_confirmation: true
+        - field_name: "stirring_speed"
+          risk_level: "medium"
+          blocks_execution: false
+          suggestion: "200-400 rpm"
+          requires_confirmation: true
+        - field_name: "atmosphere"
+          risk_level: "medium"
+          blocks_execution: false
+          suggestion: "N2/Ar with drying tube"
+          requires_confirmation: true
+      device_requirements:
+        operation_type: "heating"
+        required_capabilities:
+          - capability: "temperature"
+            min: 25
+            max: 66
+            unit: "celsius"
+      notes: "SAFETY: THF extremely flammable (flash -14C); sodium water-reactive; reflux+condenser+fume_hood required"
+
+    # --- S03: Grubbs催化剂重结晶 ---
+    - step_id: "S03"
+      action: "dry"
+      description: "Recrystallize Grubbs catalyst by freeze-drying from benzene"
+      material: "2nd generation Grubbs' catalyst"
+      temperature:
+        value: null
+        unit: "celsius"
+        ramp_rate: null
+        hold: null
+      duration:
+        value: null
+        unit: "hour"
+      stirring_speed: null
+      atmosphere: null
+      pressure: null
+      depends_on: []
+      parallel_group: null
+      evidence:
+        - document: "DOC-001"
+          page: 1265
+          section: "2.1. Materials"
+          quote: "Second generation Grubbs' catalyst was recrystallized by freeze-drying from benzene [23]"
+          evidence_type: "explicit"
+          confidence: 0.90
+      confidence: 0.50
+      status: "blocked"
+      missing_fields:
+        - field_name: "temperature.value"
+          risk_level: "high"
+          blocks_execution: true
+          suggestion: "Details in reference [23]"
+          requires_confirmation: true
+        - field_name: "duration.value"
+          risk_level: "high"
+          blocks_execution: true
+          suggestion: "Details in reference [23]"
+          requires_confirmation: true
+        - field_name: "atmosphere"
+          risk_level: "high"
+          blocks_execution: true
+          suggestion: "N2/Ar or vacuum (catalyst is moisture/oxygen sensitive)"
+          requires_confirmation: true
+        - field_name: "benzene_amount"
+          risk_level: "medium"
+          blocks_execution: false
+          suggestion: "Details in reference [23]"
+          requires_confirmation: true
+      device_requirements:
+        operation_type: "vacuum_drying"
+        required_capabilities:
+          - capability: "temperature"
+            min: -80
+            max: 25
+            unit: "celsius"
+          - capability: "vacuum"
+            min: 1
+            max: 101325
+            unit: "Pa"
+      notes: "Critical details in reference [23]; benzene is IARC Group 1 carcinogen"
+
+    # --- S04: 硅烷溶液配制 ---
+    - step_id: "S04"
+      action: "dissolve"
+      description: "Mix silane (MCS or TCS) and pyridine in dried THF (2% v/v silane)"
+      material: "Silane (MCS or TCS) and pyridine in dried THF"
+      amount:
+        value: 2
+        unit: "vol%"
+        relative_to: "THF volume"
+      temperature:
+        value: null
+        unit: "celsius"
+        ramp_rate: null
+        hold: null
+      duration:
+        value: null
+        unit: "minute"
+      stirring_speed: null
+      atmosphere: null
+      pressure: null
+      depends_on: ["S02"]
+      parallel_group: null
+      evidence:
+        - document: "DOC-001"
+          page: 1266
+          section: "2.1. Surface modification"
+          quote: "Silane (MCS or TCS) and pyridine were mixed in dried THF to yield a silane concentration of 2% v/v"
+          evidence_type: "explicit"
+          confidence: 0.97
+      confidence: 0.70
+      status: "warning"
+      missing_fields:
+        - field_name: "amount.pyridine"
+          risk_level: "high"
+          blocks_execution: true
+          suggestion: "Equimolar or excess to silane"
+          requires_confirmation: true
+        - field_name: "temperature.value"
+          risk_level: "medium"
+          blocks_execution: false
+          suggestion: "Room temperature ~25C"
+          requires_confirmation: true
+        - field_name: "duration.value"
+          risk_level: "medium"
+          blocks_execution: false
+          suggestion: "5-10 min"
+          requires_confirmation: true
+        - field_name: "stirring_speed"
+          risk_level: "medium"
+          blocks_execution: false
+          suggestion: "200-400 rpm"
+          requires_confirmation: true
+        - field_name: "atmosphere"
+          risk_level: "medium"
+          blocks_execution: false
+          suggestion: "N2/Ar (chlorosilanes moisture-sensitive)"
+          requires_confirmation: true
+      device_requirements:
+        operation_type: "mixing"
+        required_capabilities: []
+      notes: "Two parallel preparations: MCS and TCS; chlorosilanes produce HCl with water"
+
+    # --- S05: 玻璃纤维表面改性 ---
+    - step_id: "S05"
+      action: "heat"
+      description: "Surface modification reaction under reflux at 90C for 48h"
+      material: "Heat-cleaned glass fibers in silane/THF/pyridine solution"
+      temperature:
+        value: 90
+        unit: "celsius"
+        ramp_rate: null
+        hold: true
+      duration:
+        value: 48
+        unit: "hour"
+      stirring_speed: null
+      atmosphere: null
+      pressure: null
+      depends_on: ["S01", "S04"]
+      parallel_group: null
+      evidence:
+        - document: "DOC-001"
+          page: 1266
+          section: "2.1. Surface modification"
+          quote: "Surface modification reaction was carried out under reflux conditions at 90 C for 48 h."
+          evidence_type: "explicit"
+          confidence: 0.98
+      confidence: 0.85
+      status: "warning"
+      missing_fields:
+        - field_name: "stirring_speed"
+          risk_level: "medium"
+          blocks_execution: false
+          suggestion: "Gentle stirring to ensure fiber immersion"
+          requires_confirmation: true
+        - field_name: "atmosphere"
+          risk_level: "medium"
+          blocks_execution: false
+          suggestion: "N2/Ar with reflux condenser"
+          requires_confirmation: true
+        - field_name: "temperature.ramp_rate"
+          risk_level: "low"
+          blocks_execution: false
+          suggestion: "2-5 C/min"
+          requires_confirmation: false
+      device_requirements:
+        operation_type: "heating"
+        required_capabilities:
+          - capability: "temperature"
+            min: 25
+            max: 90
+            unit: "celsius"
+          - capability: "duration_limit"
+            min: 1
+            max: 2880
+            unit: "minute"
+      notes: "90C exceeds THF bp(66C); 48h extended reflux; condenser water supply critical"
+
+    # --- S06: 纤维清洗干燥 ---
+    - step_id: "S06"
+      action: "wash"
+      description: "Rinse glass fabric thoroughly with THF, then dry at 110C for 10h"
+      material: "Surface-modified glass fibers"
+      temperature:
+        value: 110
+        unit: "celsius"
+        ramp_rate: null
+        hold: true
+      duration:
+        value: 10
+        unit: "hour"
+      stirring_speed: null
+      atmosphere: "air"
+      pressure: null
+      depends_on: ["S05"]
+      parallel_group: null
+      evidence:
+        - document: "DOC-001"
+          page: 1266
+          section: "2.1. Surface modification"
+          quote: "glass fabric was rinsed thoroughly with THF and then dried in an oven at 110 C for 10 h."
+          evidence_type: "explicit"
+          confidence: 0.97
+      confidence: 0.80
+      status: "warning"
+      missing_fields:
+        - field_name: "wash.repetitions"
+          risk_level: "medium"
+          blocks_execution: false
+          suggestion: "3-5 times"
+          requires_confirmation: true
+        - field_name: "wash.solvent_volume"
+          risk_level: "low"
+          blocks_execution: false
+          suggestion: "Sufficient to immerse fibers"
+          requires_confirmation: false
+        - field_name: "temperature.ramp_rate"
+          risk_level: "low"
+          blocks_execution: false
+          suggestion: "Default oven ramp"
+          requires_confirmation: false
+      device_requirements:
+        operation_type: "drying"
+        required_capabilities:
+          - capability: "temperature"
+            min: 25
+            max: 110
+            unit: "celsius"
+      notes: "THF rinsing in fume hood; residual THF in oven may create flammable atmosphere"
+
+    # --- S07: 树脂配制 ---
+    - step_id: "S07"
+      action: "stir"
+      description: "Mix Dilulin (30wt%) and DCPD (70wt%), add 100mg Grubbs catalyst, stir evenly"
+      material: "Dilulin + DCPD + Grubbs catalyst"
+      amount:
+        value: 80
+        unit: "g"
+      temperature:
+        value: null
+        unit: "celsius"
+        ramp_rate: null
+        hold: null
+      duration:
+        value: null
+        unit: "minute"
+      stirring_speed: null
+      atmosphere: null
+      pressure: null
+      depends_on: ["S03"]
+      parallel_group: null
+      evidence:
+        - document: "DOC-001"
+          page: 1266
+          section: "2.2. Composite fabrication"
+          quote: "a composition of 30 wt.% Dilulin and 70 wt.% DCPD was selected... Resin was prepared on an 80 g scale."
+          evidence_type: "explicit"
+          confidence: 0.98
+        - document: "DOC-001"
+          page: 1266
+          section: "2.2. Composite fabrication"
+          quote: "After Dilulin and DCPD were mixed well, 100 mg (0.125 wt.%) recrystallized 2nd generation Grubbs' catalyst was added and stirred evenly."
+          evidence_type: "explicit"
+          confidence: 0.97
+      confidence: 0.65
+      status: "inferred"
+      missing_fields:
+        - field_name: "temperature.value"
+          risk_level: "high"
+          blocks_execution: true
+          suggestion: "Room temperature ~25C"
+          requires_confirmation: true
+        - field_name: "duration.value"
+          risk_level: "high"
+          blocks_execution: true
+          suggestion: "5-15 min"
+          requires_confirmation: true
+        - field_name: "stirring_speed"
+          risk_level: "medium"
+          blocks_execution: false
+          suggestion: "100-300 rpm"
+          requires_confirmation: true
+        - field_name: "atmosphere"
+          risk_level: "medium"
+          blocks_execution: false
+          suggestion: "N2/Ar (catalyst moisture/oxygen sensitive)"
+          requires_confirmation: true
+      device_requirements:
+        operation_type: "stirring"
+        required_capabilities:
+          - capability: "stirring_speed"
+            min: 0
+            max: 1500
+            unit: "rpm"
+      notes: "Derived: Dilulin=24g, DCPD=56g; ROMP exothermic after catalyst addition"
+
+    # --- S08: 手工铺层 ---
+    - step_id: "S08"
+      action: "add"
+      description: "Hand-layup: place 20 plies glass fabric in mold, add resin after each ply"
+      material: "Plain weave glass fabric (20 plies) + resin"
+      amount:
+        value: 20
+        unit: "plies"
+      temperature:
+        value: null
+        unit: "celsius"
+        ramp_rate: null
+        hold: null
+      duration:
+        value: null
+        unit: "minute"
+      stirring_speed: null
+      atmosphere: null
+      pressure: null
+      depends_on: ["S06", "S07"]
+      parallel_group: null
+      evidence:
+        - document: "DOC-001"
+          page: 1266
+          section: "2.2. Composite fabrication"
+          quote: "Twenty plies glass fabric were placed in a mold one by one and resin was added after each fabric to wet it out."
+          evidence_type: "explicit"
+          confidence: 0.97
+        - document: "DOC-001"
+          page: 1266
+          section: "2.2. Composite fabrication"
+          quote: "The composites were made by hand-layup method."
+          evidence_type: "explicit"
+          confidence: 0.97
+      confidence: 0.85
+      status: "warning"
+      missing_fields:
+        - field_name: "duration.value"
+          risk_level: "medium"
+          blocks_execution: false
+          suggestion: "Depends on operator skill and resin pot life"
+          requires_confirmation: true
+        - field_name: "temperature.value"
+          risk_level: "medium"
+          blocks_execution: false
+          suggestion: "Room temperature ~25C"
+          requires_confirmation: true
+        - field_name: "resin_amount_per_ply"
+          risk_level: "low"
+          blocks_execution: false
+          suggestion: "Calculate for 50 wt% fiber content"
+          requires_confirmation: false
+      device_requirements:
+        operation_type: "manual_operation"
+        required_capabilities: []
+      notes: "Manual operation; target 50 wt% glass fiber; must complete within resin pot life"
+
+    # --- S09: 热压预固化 ---
+    - step_id: "S09"
+      action: "heat"
+      description: "Pre-cure on hot press at 65C and 689 kPa for 1h"
+      material: "Composite laminate in mold"
+      temperature:
+        value: 65
+        unit: "celsius"
+        ramp_rate: null
+        hold: true
+      duration:
+        value: 1
+        unit: "hour"
+      stirring_speed: null
+      atmosphere: null
+      pressure:
+        value: 689
+        unit: "kPa"
+      depends_on: ["S08"]
+      parallel_group: null
+      evidence:
+        - document: "DOC-001"
+          page: 1266
+          section: "2.2. Composite fabrication"
+          quote: "the mold was pre-cured on a hot press at 65 C and 689 kPa for 1 h"
+          evidence_type: "explicit"
+          confidence: 0.98
+      confidence: 0.90
+      status: "warning"
+      missing_fields:
+        - field_name: "temperature.ramp_rate"
+          risk_level: "medium"
+          blocks_execution: false
+          suggestion: "2-5 C/min"
+          requires_confirmation: true
+        - field_name: "pressure.ramp_rate"
+          risk_level: "medium"
+          blocks_execution: false
+          suggestion: "Gradual pressurization"
+          requires_confirmation: true
+        - field_name: "atmosphere"
+          risk_level: "low"
+          blocks_execution: false
+          suggestion: "Air (typical for hot press)"
+          requires_confirmation: false
+      device_requirements:
+        operation_type: "heating"
+        required_capabilities:
+          - capability: "temperature"
+            min: 25
+            max: 65
+            unit: "celsius"
+          - capability: "pressure"
+            min: 0
+            max: 689
+            unit: "kPa"
+      notes: "689 kPa = 0.689 MPa ~ 100 psi; requires hot press with T+P control"
+
+    # --- S10: 后固化 ---
+    - step_id: "S10"
+      action: "heat"
+      description: "Post-cure at 150C for 3h in convection oven"
+      material: "Pre-cured composite laminate"
+      temperature:
+        value: 150
+        unit: "celsius"
+        ramp_rate: null
+        hold: true
+      duration:
+        value: 3
+        unit: "hour"
+      stirring_speed: null
+      atmosphere: "air"
+      pressure: null
+      depends_on: ["S09"]
+      parallel_group: null
+      evidence:
+        - document: "DOC-001"
+          page: 1266
+          section: "2.2. Composite fabrication"
+          quote: "followed by post-cure at 150 C for 3 h in a convection oven."
+          evidence_type: "explicit"
+          confidence: 0.98
+      confidence: 0.90
+      status: "warning"
+      missing_fields:
+        - field_name: "temperature.ramp_rate"
+          risk_level: "medium"
+          blocks_execution: false
+          suggestion: "2-5 C/min (delta 85C from 65C to 150C)"
+          requires_confirmation: true
+      device_requirements:
+        operation_type: "heating"
+        required_capabilities:
+          - capability: "temperature"
+            min: 25
+            max: 150
+            unit: "celsius"
+      notes: "Atmosphere inferred as air (convection oven); delta 85C from pre-cure"
+
+  # ============================================================
+  # 安全检查结果
+  # ============================================================
+  safety_checks:
+    - check_id: "SAFE-001"
+      check_type: "high_temperature_confirmation"
+      rule_id: "SAFE-H-001"
+      target_step: "S01"
+      status: "warning"
+      message: "S01: 450C exceeds 200C high-temperature threshold"
+    - check_id: "SAFE-002"
+      check_type: "flammable_solvent_heating"
+      rule_id: "SAFE-C-004"
+      target_step: "S02"
+      status: "blocked"
+      message: "S02: THF (flash -14C) reflux heating with sodium (water-reactive)"
+    - check_id: "SAFE-003"
+      check_type: "water_sensitive_reagent"
+      rule_id: "SAFE-C-003"
+      target_step: "S02"
+      status: "warning"
+      message: "S02: Sodium metal is water-reactive"
+    - check_id: "SAFE-004"
+      check_type: "carcinogen_handling"
+      rule_id: "SAFE-H-003"
+      target_step: "S03"
+      status: "warning"
+      message: "S03: Benzene is IARC Group 1 carcinogen"
+    - check_id: "SAFE-005"
+      check_type: "moisture_sensitive_reagent"
+      rule_id: "SAFE-A-002"
+      target_step: "S03"
+      status: "warning"
+      message: "S03: Grubbs catalyst is moisture/oxygen sensitive"
+    - check_id: "SAFE-006"
+      check_type: "flammable_solvent_heating"
+      rule_id: "SAFE-C-004"
+      target_step: "S05"
+      status: "warning"
+      message: "S05: THF reflux at 90C for 48h (extended unattended operation)"
+    - check_id: "SAFE-007"
+      check_type: "moisture_sensitive_reagent"
+      rule_id: "SAFE-A-002"
+      target_step: "S04"
+      status: "warning"
+      message: "S04: Chlorosilanes (MCS/TCS) are moisture-sensitive"
+    - check_id: "SAFE-008"
+      check_type: "high_pressure_confirmation"
+      rule_id: "SAFE-H-002"
+      target_step: "S09"
+      status: "warning"
+      message: "S09: 689 kPa (0.689 MPa) exceeds 0.5 MPa high-pressure threshold"
+    - check_id: "SAFE-009"
+      check_type: "inferred_parameter"
+      rule_id: "SAFE-H-004"
+      target_step: "S07"
+      status: "warning"
+      message: "S07: Inferred parameters (temperature, duration); ROMP exothermic risk"
+    - check_id: "SAFE-010"
+      check_type: "temperature_gradient"
+      rule_id: "SAFE-T-004"
+      target_step: "S10"
+      status: "warning"
+      message: "S10: Temperature delta 85C (65C to 150C) without ramp rate"
+
+  # ============================================================
+  # 阻塞原因
+  # ============================================================
+  block_reasons:
+    - "S02: duration.value is null (critical) - THF drying duration not specified"
+    - "S03: temperature.value, duration.value, atmosphere are null (critical) - Details in reference [23]"
+    - "S04: amount.pyridine is null (critical) - Pyridine amount not specified"
+    - "S07: temperature.value, duration.value are null (critical) - Resin mixing conditions qualitative only"
+
+  # ============================================================
+  # 可信度评分
+  # ============================================================
+  confidence_score:
+    overall: 0.72
+    dimensions:
+      evidence_coverage: 0.80
+      explicit_ratio: 0.65
+      safety_pass_rate: 0.60
+      missing_field_penalty: 0.65
+
+  # ============================================================
+  # 元数据
+  # ============================================================
+  metadata:
+    version: "1.0.0"
+    generated_at: "2026-08-06T12:00:00Z"
+    compiler_version: "matflow-compiler/0.3.0"
+    source_hash: "sha256:cui_kessler_2012_compscitech_72_1264"
+    operator: "auto"
+    lab_id: null
+    compilation_notes: >
+      Protocol compiled from Cui & Kessler 2012, Composites Science and Technology 72:1264-1272.
+      DOI: 10.1016/j.compscitech.2012.04.013.
+      Characterization section (2.3) excluded as per scope.
+      Reference [23] for catalyst recrystallization procedure not available in source text.
+      Equipment-agnostic EIR: no device binding performed (lab_profile not provided).

@@ -87,6 +87,15 @@ execution_mode: "protocol_generation"   # analysis_only | protocol_generation | 
     │  Extractor │  标注 evidence_type 与 confidence
     └────┬───────┘
          │
+         │ 实验步骤不完整？
+         │     │
+         │  ┌──▼──────────────┐
+         │  │ SI Retriever    │  提取 DOI → 下载 SI；
+         │  │ (补充材料获取)   │  无 DOI → 按标题检索网页获取 SI
+         │  └──┬──────────────┘
+         │     │ 获取到 SI 后重新抽取证据
+         └─────┘
+         │
     ┌────▼───────────────┐
     │ Material & Sample  │  解析材料名称、CAS 号、纯度、供应商，
     │     Resolver       │  统一为标准物质标识
@@ -129,6 +138,7 @@ execution_mode: "protocol_generation"   # analysis_only | protocol_generation | 
 7. **Device Capability Binder（设备绑定）**：若提供设备清单，匹配设备能力并绑定；否则输出设备无关协议。
 8. **Safety Auditor（安全审计）**：审计温度/压力/不相容试剂/通风需求，标记阻断项与人工确认点。
 9. **Final Validator（最终验证）**：校验证据完整性、缺失字段标记、安全检查覆盖、确认不存在静默补全。
+10. **SI Retriever（补充材料获取）**：当 Evidence Extractor 发现实验步骤不完整时触发。提取论文 DOI，通过 DOI 解析出版商页面并下载 Supplementary Information（SI）；若 DOI 不可用，则按论文标题检索网页，从出版商页面定位并下载 SI。获取 SI 后将其作为补充文档输入，重新执行证据抽取。
 
 ## 7. 核心设计原则
 
@@ -397,8 +407,44 @@ confidence_score:
 | 设备不匹配 | 生成设备无关协议，`safety_report.md` 标记不匹配项 |
 | 安全风险 | 生成协议但状态设为 `blocked`，`safety_report.md` 列出阻断原因 |
 | 无实验方法章节 | 输出 `no_method_section`，不生成协议 |
+| 实验步骤不完整 | 触发 SI Retriever 获取补充材料，重新抽取（见第 16 节） |
 
-## 16. 附属文件引用
+## 16. 补充材料（SI）自动获取
+
+> 当 Evidence Extractor 判定主文档中实验步骤不完整（关键参数缺失率 >30% 或核心操作步骤缺失），自动触发 SI Retriever。详细策略见 `references/si_retrieval.md`，可执行脚本见 `scripts/retrieve_si.py`。
+
+### 16.1 触发条件
+
+- 缺失字段比例 > 30%
+- 核心操作步骤（如合成、固化）缺失
+- 实验方法章节存在但不完整
+
+### 16.2 获取流程
+
+```
+论文 PDF → 提取 DOI → Crossref 验证 → 解析出版商页面 → 下载 SI → 解析 SI 内容
+                ↓ (DOI 不可用)
+          按标题检索 → Crossref/Scholar 匹配 → 出版商页面 → 下载 SI
+```
+
+- **DOI 提取优先级**：PDF 元数据 > 正文正则匹配 > 首脚注扫描
+- **DOI 验证**：通过 Crossref API (`https://api.crossref.org/works/{doi}`) 验证
+- **出版商适配**：ACS/RSC/Wiley/Elsevier/Springer/Nature，按 DOI 前缀自动识别
+- **标题检索回退**：DOI 不可用时，从 PDF 首页提取标题，通过 Crossref 标题搜索匹配
+
+### 16.3 SI 获取后
+
+将 SI 作为补充文档加入 `source_documents`，重新执行证据抽取。SI 中的证据标注 `source_type: supplementary_information`。
+
+### 16.4 SI 获取失败
+
+不阻塞流程。在 `missing_conditions.md` 标注"已尝试获取 SI 但未成功"，继续基于主文档生成协议，缺失字段保持 `null`。
+
+### 16.5 网络访问约束
+
+仅访问公开科学数据源白名单（doi.org、api.crossref.org、出版商官网）。若沙箱网络受限，SI 获取自动跳过并降级。
+
+## 17. 附属文件引用
 
 详细规范拆分至 `references/` 目录：
 
@@ -407,10 +453,10 @@ confidence_score:
 | `references/data_model.md` | 数据模型与完整 JSON Schema 定义 |
 | `references/safety_rules.md` | 安全规则详细条文与阈值表 |
 | `references/device_schema.md` | 设备描述 Schema 与能力校验逻辑 |
-| `references/examples.md` | 完整端到端示例（含输入输出） |
 | `references/edge_cases.md` | 反例与边界案例处理 |
+| `references/si_retrieval.md` | 补充材料获取策略与出版商适配详情 |
 
-## 17. 最终检查清单
+## 18. 最终检查清单
 
 - [ ] SKILL.md frontmatter 合法（name/description 字段存在且符合规范）
 - [ ] 每个步骤都有 evidence 绑定
@@ -422,3 +468,5 @@ confidence_score:
 - [ ] 协议状态正确（ready/blocked/needs_review）
 - [ ] 可信度评分已计算
 - [ ] 恢复检查点方案已生成
+- [ ] 若实验步骤不完整，已尝试触发 SI Retriever 获取补充材料
+- [ ] SI 获取结果（成功/失败）已记录在 missing_conditions.md 中
