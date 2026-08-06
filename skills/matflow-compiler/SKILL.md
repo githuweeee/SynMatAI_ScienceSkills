@@ -408,6 +408,8 @@ confidence_score:
 | 安全风险 | 生成协议但状态设为 `blocked`，`safety_report.md` 列出阻断原因 |
 | 无实验方法章节 | 输出 `no_method_section`，不生成协议 |
 | 实验步骤不完整 | 触发 SI Retriever 获取补充材料，重新抽取（见第 16 节） |
+| OCR 扫描版 PDF | 检测 OCR 质量（good/moderate/poor）；质量为 poor 时调用 MinerU 进行高质量 OCR；MinerU 不可用时尝试基本修复；在缺失报告中提示"文本可能包含识别错误" |
+| 纯扫描版 PDF（无文字层） | 输出 `scan_only_pdf`，调用 MinerU OCR 模式处理；MinerU 不可用时标记无法解析，建议安装 MinerU (pip install mineru) |
 
 ## 16. 补充材料（SI）自动获取
 

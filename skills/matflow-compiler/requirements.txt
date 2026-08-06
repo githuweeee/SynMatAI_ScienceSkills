@@ -1,7 +1,16 @@
 # MatFlow Compiler 依赖
-# 仅 retrieve_si.py 需要 PyMuPDF 用于 PDF 文本提取
-# 其他脚本（validate_protocol.py, generate_sop.py）仅使用 Python 标准库
+#
+# 核心依赖（必需）:
+#   PyMuPDF - PDF 文本提取与元数据分析
+#
+# 可选依赖（推荐安装，用于 OCR 扫描版 PDF 处理）:
+#   mineru - 高精度文档解析引擎，支持 OCR、公式识别、表格识别
+#   安装后当检测到 OCR 质量差的 PDF 时自动调用
 #
 # 安装方式: pip install -r requirements.txt
+# 完整安装（含OCR）: pip install PyMuPDF mineru
 
 PyMuPDF>=1.23.0
+
+# 可选: MinerU 用于 OCR 扫描版 PDF 的高质量解析
+# mineru>=2.0.0

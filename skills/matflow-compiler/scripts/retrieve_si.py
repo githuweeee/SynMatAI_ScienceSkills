@@ -238,18 +238,295 @@ def download_file(url, output_dir, filename=None):
         return None
 
 
+def detect_ocr_pdf(doc):
+    """
+    检测 PDF 是否为 OCR 扫描版
+    
+    通过元数据中的关键词和文本质量判断
+    
+    返回: (is_ocr, ocr_quality, details)
+      is_ocr: bool
+      ocr_quality: "good" | "moderate" | "poor"
+      details: dict
+    """
+    details = {"reasons": []}
+    
+    # 1. 检查元数据中的 OCR 关键词
+    metadata = doc.metadata or {}
+    producer = (metadata.get("producer", "") or "").lower()
+    creator = (metadata.get("creator", "") or "").lower()
+    
+    ocr_keywords = ["paper capture", "ocr", "tesseract", "abbyy", "omnipage", "cuneiform"]
+    for kw in ocr_keywords:
+        if kw in producer or kw in creator:
+            details["reasons"].append(f"元数据包含OCR关键词: '{kw}'")
+            is_ocr = True
+            break
+    else:
+        is_ocr = False
+    
+    # 2. 检查文本质量（OCR 错误特征）
+    total_text = ""
+    for page in doc:
+        total_text += page.get_text()
+    
+    if not total_text.strip():
+        # 完全无文本 → 纯扫描版
+        return True, "poor", {"reasons": ["PDF无文字层，纯扫描版"]}
+    
+    # 3. 检测 OCR 常见错误特征
+    total_chars = len(total_text)
+    error_indicators = 0
+    
+    # 检查乱码比例（非ASCII可打印字符的异常分布）
+    import re
+    # 检查常见的OCR错误模式
+    ocr_error_patterns = [
+        (r'[\x00-\x08\x0e-\x1f]', '控制字符'),  # 控制字符
+        (r'fiir|uber|khylene|auibau|Nachwcis', '德语变音符号丢失'),  # 变音符号丢失
+        (r'(?<![A-Z]){3,}', '异常大写连续'),  # 异常大写
+    ]
+    
+    for pattern, desc in ocr_error_patterns:
+        matches = re.findall(pattern, total_text)
+        if matches:
+            error_count = len(matches)
+            if error_count > 3:
+                details["reasons"].append(f"{desc}: {error_count}处")
+                error_indicators += error_count
+    
+    # 4. 计算文本质量评分
+    if total_chars > 0:
+        error_ratio = error_indicators / (total_chars / 1000)  # 每千字符错误数
+        if error_ratio > 5:
+            ocr_quality = "poor"
+            is_ocr = True
+        elif error_ratio > 1:
+            ocr_quality = "moderate"
+            is_ocr = True
+        else:
+            ocr_quality = "good"
+    else:
+        ocr_quality = "poor"
+    
+    # 5. 检查页面中的图片比例（扫描版通常每页有大图）
+    for i in range(min(3, doc.page_count)):
+        page = doc[i]
+        images = page.get_images()
+        text_len = len(page.get_text().strip())
+        if len(images) > 0 and text_len < 50:
+            details["reasons"].append(f"第{i+1}页: 有图片但文本极少")
+            is_ocr = True
+            if ocr_quality == "good":
+                ocr_quality = "moderate"
+            break
+    
+    return is_ocr, ocr_quality, details
+
+
+def fix_ocr_text(text):
+    """
+    尝试修复 OCR 文本中的常见错误
+    
+    主要处理:
+    - 德语变音符号丢失 (uber→über, fiir→für)
+    - 常见 OCR 字符替换错误
+    - 多余的空格和换行
+    """
+    import re
+    
+    # 德语变音符号修复（常见OCR丢失模式）
+    german_fixes = {
+        'uber': 'über', 'Uber': 'Über',
+        'fiir': 'für', 'Fiir': 'Für',
+        'khylene': 'Äthylene', 'athylene': 'äthylene',
+        'auibau': 'Aufbau', 'Auibau': 'Aufbau',
+        'Nachwcis': 'Nachweis',
+        'Bo': 'ße',  # 常见 ß 识别错误
+        'oL3': 'daß',  # 常见 daß 识别错误
+    }
+    
+    for wrong, correct in german_fixes.items():
+        text = text.replace(wrong, correct)
+    
+    # 修复多余的空格（OCR常见问题）
+    text = re.sub(r' {3,}', '  ', text)  # 多空格压缩
+    text = re.sub(r'\n{3,}', '\n\n', text)  # 多换行压缩
+    
+    # 修复断词（OCR常在行尾断词）
+    text = re.sub(r'(\w)-\n(\w)', r'\1\2', text)
+    
+    return text
+
+
+def try_mineru_ocr(pdf_path, output_dir=None):
+    """
+    尝试使用 MinerU 进行高质量 OCR 处理
+    
+    MinerU 是一个开源的高精度文档解析工具，支持:
+    - OCR 文字识别（109种语言）
+    - 数学公式识别 → LaTeX
+    - 表格结构识别
+    - 多栏排版处理
+    
+    安装: pip install mineru
+    使用: mineru -p input.pdf -o output_dir -m ocr
+    
+    参数:
+        pdf_path: PDF 文件路径
+        output_dir: 输出目录（默认为临时目录）
+    
+    返回:
+        str: 提取的文本（Markdown格式），如果 MinerU 不可用则返回 None
+    """
+    import subprocess
+    import shutil
+    
+    # 检查 mineru 是否安装
+    mineru_cmd = shutil.which("mineru")
+    if not mineru_cmd:
+        # 尝试 python -m mineru
+        try:
+            result = subprocess.run(
+                [sys.executable, "-m", "mineru", "--version"],
+                capture_output=True, text=True, timeout=10
+            )
+            if result.returncode != 0:
+                return None
+            mineru_cmd = f"{sys.executable} -m mineru"
+        except Exception:
+            return None
+    
+    # 创建临时输出目录
+    if not output_dir:
+        output_dir = tempfile.mkdtemp(prefix="mineru_output_")
+    
+    try:
+        print(f"  📄 调用 MinerU 进行 OCR 处理...")
+        print(f"     输入: {pdf_path}")
+        print(f"     输出: {output_dir}")
+        
+        # 构建 mineru 命令
+        # -p: 输入文件路径
+        # -o: 输出目录
+        # -m ocr: 强制 OCR 模式（适用于扫描版）
+        cmd = [
+            sys.executable, "-m", "mineru",
+            "-p", pdf_path,
+            "-o", output_dir,
+            "-m", "ocr",  # OCR 模式
+        ]
+        
+        # 运行 MinerU
+        result = subprocess.run(
+            cmd,
+            capture_output=True,
+            text=True,
+            timeout=300,  # 5分钟超时
+            encoding='utf-8',
+            errors='ignore'
+        )
+        
+        if result.returncode != 0:
+            print(f"  ⚠️ MinerU 执行失败 (退出码: {result.returncode})")
+            if result.stderr:
+                print(f"     错误: {result.stderr[:200]}")
+            return None
+        
+        # 查找输出文件（MinerU 输出 Markdown 格式）
+        # MinerU 通常输出到 output_dir/<filename>/auto/<filename>.md
+        md_files = []
+        for root, dirs, files in os.walk(output_dir):
+            for f in files:
+                if f.endswith('.md'):
+                    md_files.append(os.path.join(root, f))
+        
+        if not md_files:
+            print(f"  ⚠️ MinerU 未生成 Markdown 输出文件")
+            return None
+        
+        # 读取所有 Markdown 文件内容
+        all_text = []
+        for md_path in md_files:
+            with open(md_path, 'r', encoding='utf-8', errors='ignore') as f:
+                content = f.read()
+                all_text.append(content)
+                print(f"  ✅ MinerU 输出: {md_path} ({len(content)} 字符)")
+        
+        if all_text:
+            return "\n\n".join(all_text)
+        else:
+            return None
+            
+    except subprocess.TimeoutExpired:
+        print(f"  ⚠️ MinerU 处理超时（5分钟）")
+        return None
+    except FileNotFoundError:
+        print(f"  ⚠️ MinerU 未安装 (pip install mineru)")
+        return None
+    except Exception as e:
+        print(f"  ⚠️ MinerU 调用异常: {e}")
+        return None
+
+
 def parse_si_file(filepath):
-    """解析 SI 文件内容"""
+    """
+    解析 SI 文件内容
+    
+    支持 PDF（含OCR扫描版检测和修复）、ZIP、TXT、CIF、HTML
+    当检测到 OCR 质量为 poor 时，尝试调用 MinerU 进行高质量 OCR
+    返回: (text, parse_info)
+      text: 提取的文本
+      parse_info: dict，包含解析状态和OCR信息
+    """
+    parse_info = {"format": None, "is_ocr": False, "ocr_quality": "good", "warnings": []}
+    
     if filepath.endswith('.pdf'):
         if HAS_FITZ:
             doc = fitz.open(filepath)
+            
+            # 检测是否为OCR扫描版
+            is_ocr, ocr_quality, ocr_details = detect_ocr_pdf(doc)
+            parse_info["is_ocr"] = is_ocr
+            parse_info["ocr_quality"] = ocr_quality
+            parse_info["ocr_details"] = ocr_details
+            
+            if is_ocr:
+                parse_info["warnings"].append(
+                    f"检测到OCR扫描版PDF (质量: {ocr_quality})"
+                )
+                if ocr_details.get("reasons"):
+                    parse_info["warnings"].extend(ocr_details["reasons"])
+            
+            # 提取文本
             text = ""
             for page in doc:
                 text += page.get_text()
             doc.close()
-            return text
+            
+            # 如果是OCR版且质量差，尝试使用 MinerU 进行高质量 OCR
+            if is_ocr and ocr_quality == "poor":
+                mineru_text = try_mineru_ocr(filepath)
+                if mineru_text:
+                    parse_info["warnings"].append("已使用 MinerU 进行高质量 OCR 重处理")
+                    text = mineru_text
+                else:
+                    # MinerU 不可用，尝试基本修复
+                    text = fix_ocr_text(text)
+                    parse_info["warnings"].append("MinerU 不可用，已尝试基本 OCR 文本修复")
+            elif is_ocr and ocr_quality != "good":
+                # 中等质量，尝试修复
+                text = fix_ocr_text(text)
+                parse_info["warnings"].append("已尝试修复OCR文本错误")
+            
+            # 如果文本极少，标记为无法解析
+            if len(text.strip()) < 50:
+                parse_info["warnings"].append("文本提取量极少，可能需要专业OCR工具")
+                text = f"[OCR解析失败] PDF可能为扫描版，提取文本仅{len(text.strip())}字符。建议使用MinerU (pip install mineru) 或Tesseract OCR处理后重新输入。"
+            
+            return text, parse_info
         else:
-            return "[PyMuPDF 未安装，无法解析 PDF]"
+            return "[PyMuPDF 未安装，无法解析 PDF]", parse_info
 
     elif filepath.endswith('.zip'):
         texts = []
@@ -268,14 +545,14 @@ def parse_si_file(filepath):
                 elif name.endswith('.txt') or name.endswith('.cif'):
                     with zf.open(name) as f:
                         texts.append(f.read().decode('utf-8', errors='ignore'))
-        return "\n".join(texts)
+        return "\n".join(texts), parse_info
 
     elif filepath.endswith('.txt') or filepath.endswith('.cif') or filepath.endswith('.html'):
         with open(filepath, 'r', encoding='utf-8', errors='ignore') as f:
-            return f.read()
+            return f.read(), parse_info
 
     else:
-        return f"[未知文件格式: {filepath}]"
+        return f"[未知文件格式: {filepath}]", parse_info
 
 
 def retrieve_si(pdf_path, output_dir="downloaded_si", title=None):
@@ -399,10 +676,18 @@ def retrieve_si(pdf_path, output_dir="downloaded_si", title=None):
     print(f"\n[5/5] 解析 SI 内容...")
     si_texts = []
     for filepath in downloaded:
-        text = parse_si_file(filepath)
+        text, parse_info = parse_si_file(filepath)
         if text:
             si_texts.append(text)
             print(f"  ✅ 解析完成: {os.path.basename(filepath)} ({len(text)} 字符)")
+            # 输出OCR警告
+            if parse_info.get("is_ocr"):
+                print(f"  ⚠️ OCR扫描版PDF (质量: {parse_info.get('ocr_quality', 'unknown')})")
+                for w in parse_info.get("warnings", []):
+                    print(f"     - {w}")
+                result["ocr_detected"] = True
+                result["ocr_quality"] = parse_info.get("ocr_quality")
+                result["ocr_warnings"] = parse_info.get("warnings", [])
 
     if si_texts:
         result["si_text"] = "\n\n".join(si_texts)
