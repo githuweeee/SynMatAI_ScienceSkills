@@ -1,0 +1,1554 @@
+{
+  "protocol_id": "MF-REAL-003",
+  "material": "Oxazolidinone epoxy resin / carbon fiber reinforced plastic (CFRP) composite",
+  "source_documents": [
+    {
+      "doc_id": "DOC-001",
+      "title": "Significantly improving mechanical properties of epoxy resin-based carbon fiber-reinforced plastic composites via introducing oxazolidinone segments",
+      "file_path": "papers/yiwen_2022_polymers_composites.pdf",
+      "doc_type": "paper",
+      "authors": [
+        "Ye Yiwen",
+        "Liu Beijun",
+        "Peng Li"
+      ],
+      "journal": "Polymers and Polymer Composites",
+      "volume": 30,
+      "year": 2022,
+      "doi": "10.1177/09673911211065196"
+    }
+  ],
+  "reagents": [
+    {
+      "name": "Methylene diphenyl diisocyanate (MDI)",
+      "cas_number": "101-68-8",
+      "role": "monomer",
+      "supplier": "Wanhua Chemical Group Co., Ltd. (Shandong, China)",
+      "total_amount": {
+        "value": 50,
+        "unit": "g",
+        "relative_to": "Table 1 polymerization recipe"
+      },
+      "hazard_class": "respiratory_sensitizer, irritant",
+      "evidence": {
+        "document": "DOC-001",
+        "page": 1,
+        "section": "Materials",
+        "quote": "Methylene diphenyl diisocyanate (MDI) was purchased from Wanhua Chemical Group Co., Ltd. (Shandong, China).",
+        "evidence_type": "explicit",
+        "confidence": 0.98
+      }
+    },
+    {
+      "name": "Diglycidyl ether of bisphenol A (DGEBA) epoxy resin",
+      "cas_number": "1675-54-3",
+      "role": "monomer",
+      "supplier": "Boshun",
+      "total_amount": {
+        "value": 240,
+        "unit": "g",
+        "relative_to": "Table 1 polymerization recipe; epoxy equivalent = 196 g.eq^-1"
+      },
+      "hazard_class": "irritant",
+      "evidence": {
+        "document": "DOC-001",
+        "page": 1,
+        "section": "Materials",
+        "quote": "Diglycidyl ether of bisphenol A (DGEBA) epoxy resin (epoxy equivalent = 196 g.eq⁻¹) ... were provided by Boshun",
+        "evidence_type": "explicit",
+        "confidence": 0.98
+      }
+    },
+    {
+      "name": "2-methyl imidazole (2-MI)",
+      "cas_number": "693-98-1",
+      "role": "catalyst",
+      "supplier": "Guangzhou Hongcheng",
+      "total_amount": {
+        "value": 0.024,
+        "unit": "g",
+        "relative_to": "one in ten thousand of DGEBA (240g x 0.0001 = 0.024g); confirmed by Table 1"
+      },
+      "hazard_class": "irritant",
+      "evidence": {
+        "document": "DOC-001",
+        "page": 1,
+        "section": "Materials; Table 1",
+        "quote": "2-methyl imidazole (2-MI) as the catalyst agent were ... provided by ... Guangzhou Hongcheng",
+        "evidence_type": "explicit",
+        "confidence": 0.97
+      }
+    },
+    {
+      "name": "Dicyandiamide",
+      "cas_number": "461-58-5",
+      "role": "crosslinker",
+      "supplier": "Azken Chemical",
+      "total_amount": {
+        "value": null,
+        "unit": "g",
+        "relative_to": "a certain amount (not specified)"
+      },
+      "hazard_class": "irritant",
+      "evidence": {
+        "document": "DOC-001",
+        "page": 1,
+        "section": "Materials",
+        "quote": "Dicyandiamide was obtained from Azken Chemical.",
+        "evidence_type": "explicit",
+        "confidence": 0.97
+      }
+    },
+    {
+      "name": "Butanone (methyl ethyl ketone, MEK)",
+      "cas_number": "78-93-3",
+      "role": "solvent",
+      "supplier": "Jiacheng, Dongguan",
+      "total_amount": {
+        "value": null,
+        "unit": "mL",
+        "relative_to": "until density reaches 0.96 g/cm3"
+      },
+      "hazard_class": "flammable (flash point -6C, boiling point 79.6C)",
+      "evidence": {
+        "document": "DOC-001",
+        "page": 1,
+        "section": "Materials",
+        "quote": "Butanone was supplied by Jiacheng, Dongguan.",
+        "evidence_type": "explicit",
+        "confidence": 0.97
+      }
+    },
+    {
+      "name": "T1100 carbon fiber",
+      "cas_number": null,
+      "role": "additive",
+      "supplier": "Toray Industries (Tokyo, Japan)",
+      "total_amount": {
+        "value": 67,
+        "unit": "wt%",
+        "relative_to": "mass fraction in carbon fiber prepreg"
+      },
+      "hazard_class": "mechanical_irritant",
+      "evidence": {
+        "document": "DOC-001",
+        "page": 1,
+        "section": "Materials",
+        "quote": "T1100 carbon fiber was provided by Toray Industries (Tokyo, Japan).",
+        "evidence_type": "explicit",
+        "confidence": 0.98
+      }
+    }
+  ],
+  "steps": [
+    {
+      "step_id": "S01",
+      "action": "stir",
+      "material": "DGEBA + 2-MI",
+      "description": "Mix DGEBA with 2-MI (0.024g, one in ten thousand of DGEBA) at 90C for 30 min in three-necked flask under nitrogen protection",
+      "amount": {
+        "value": 240,
+        "unit": "g",
+        "tolerance": null,
+        "note": "DGEBA amount; 2-MI = 0.024g (derived: 240g x 0.0001, confirmed by Table 1)"
+      },
+      "temperature": {
+        "value": 90,
+        "unit": "celsius",
+        "ramp_rate": null,
+        "hold": true
+      },
+      "duration": {
+        "value": 30,
+        "unit": "minute"
+      },
+      "stirring_speed": null,
+      "atmosphere": "nitrogen",
+      "pressure": null,
+      "evidence": [
+        {
+          "document": "DOC-001",
+          "page": 1,
+          "section": "Synthesis of the oxazolidinone epoxy resin",
+          "quote": "Diglycidyl ether of bisphenol A was mixed with 2-MI (one in ten thousand of DGEBA) at 90°C for 30 min in a three-necked flask under nitrogen protection.",
+          "evidence_type": "explicit",
+          "confidence": 0.98
+        },
+        {
+          "document": "DOC-001",
+          "page": 1,
+          "section": "Table 1",
+          "quote": "DGEBA 240g, 2-MI 0.024g",
+          "evidence_type": "explicit",
+          "confidence": 0.98,
+          "derivation": "2-MI amount = 240g x 0.0001 = 0.024g; confirmed by Table 1"
+        }
+      ],
+      "confidence": 0.92,
+      "status": "warning",
+      "missing_fields": [
+        {
+          "field_name": "stirring_speed",
+          "step_id": "S01",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "Stirring speed not specified; typical mixing 200-400 rpm",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        },
+        {
+          "field_name": "temperature.ramp_rate",
+          "step_id": "S01",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "Ramp rate to 90C not specified; typical 2-5 C/min",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        }
+      ],
+      "device_binding": {
+        "device_id": null,
+        "capability_check": "unchecked"
+      },
+      "notes": "Three-necked flask under N2 protection; 2-MI amount is derived (240g x 0.0001 = 0.024g) and confirmed by Table 1"
+    },
+    {
+      "step_id": "S02",
+      "action": "drop",
+      "material": "MDI",
+      "description": "Add MDI dropwise via dropping apparatus; molar ratio of epoxy functional group to isocyanate = 3:1",
+      "amount": {
+        "value": 50,
+        "unit": "g",
+        "tolerance": null,
+        "note": "Total MDI from Table 1; added in stages across S02-S04"
+      },
+      "temperature": {
+        "value": 90,
+        "unit": "celsius",
+        "ramp_rate": null,
+        "hold": true
+      },
+      "duration": {
+        "value": 1,
+        "unit": "hour",
+        "note": "Duration before temperature raised to 110C (S03)"
+      },
+      "stirring_speed": null,
+      "atmosphere": "nitrogen",
+      "pressure": null,
+      "evidence": [
+        {
+          "document": "DOC-001",
+          "page": 1,
+          "section": "Synthesis of the oxazolidinone epoxy resin",
+          "quote": "MDI (the molar ratio of the epoxy-functional group and isocyanate was 3:1) was added dropwise by the dropping apparatus",
+          "evidence_type": "explicit",
+          "confidence": 0.97
+        },
+        {
+          "document": "DOC-001",
+          "page": 1,
+          "section": "Table 1",
+          "quote": "MDI 50g",
+          "evidence_type": "explicit",
+          "confidence": 0.98
+        }
+      ],
+      "confidence": 0.7,
+      "status": "blocked",
+      "missing_fields": [
+        {
+          "field_name": "addition_rate",
+          "step_id": "S02",
+          "risk_level": "high",
+          "blocks_execution": true,
+          "suggestion": "MDI dropwise addition rate not specified; critical for controlling exothermic reaction between isocyanate and epoxy groups",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        },
+        {
+          "field_name": "stirring_speed",
+          "step_id": "S02",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "Stirring speed not specified",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        },
+        {
+          "field_name": "temperature.ramp_rate",
+          "step_id": "S02",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "Temperature maintained at 90C from S01; ramp rate not applicable if holding",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        }
+      ],
+      "device_binding": {
+        "device_id": null,
+        "capability_check": "unchecked"
+      },
+      "notes": "MDI added dropwise; molar ratio epoxy:NCO = 3:1. MDI total = 50g (Table 1) but distributed across S02-S04 stages. Dropwise addition rate is a critical missing parameter."
+    },
+    {
+      "step_id": "S03",
+      "action": "heat",
+      "material": "Reaction mixture (DGEBA + MDI + 2-MI)",
+      "description": "After 1h, raise temperature to 110C and continue adding MDI",
+      "temperature": {
+        "value": 110,
+        "unit": "celsius",
+        "ramp_rate": null,
+        "hold": true
+      },
+      "duration": {
+        "value": 3,
+        "unit": "hour",
+        "note": "Duration before temperature raised to 120C (S04)"
+      },
+      "stirring_speed": null,
+      "atmosphere": "nitrogen",
+      "pressure": null,
+      "evidence": [
+        {
+          "document": "DOC-001",
+          "page": 1,
+          "section": "Synthesis of the oxazolidinone epoxy resin",
+          "quote": "After 1 h, the temperature was raised to 110°C and MDI was continued to be added.",
+          "evidence_type": "explicit",
+          "confidence": 0.95
+        }
+      ],
+      "confidence": 0.8,
+      "status": "warning",
+      "missing_fields": [
+        {
+          "field_name": "temperature.ramp_rate",
+          "step_id": "S03",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "Ramp rate from 90C to 110C not specified; typical 2-5 C/min",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        },
+        {
+          "field_name": "stirring_speed",
+          "step_id": "S03",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "Stirring speed not specified",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        },
+        {
+          "field_name": "addition_rate",
+          "step_id": "S03",
+          "risk_level": "high",
+          "blocks_execution": true,
+          "suggestion": "MDI continued addition rate at 110C not specified",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        }
+      ],
+      "device_binding": {
+        "device_id": null,
+        "capability_check": "unchecked"
+      },
+      "notes": "Temperature raised from 90C to 110C after 1h; MDI addition continues. Ramp rate missing."
+    },
+    {
+      "step_id": "S04",
+      "action": "heat",
+      "material": "Reaction mixture (DGEBA + MDI + 2-MI)",
+      "description": "After 3h at 110C, raise temperature to 120C and continue adding MDI until all MDI is added",
+      "temperature": {
+        "value": 120,
+        "unit": "celsius",
+        "ramp_rate": null,
+        "hold": true
+      },
+      "duration": {
+        "value": null,
+        "unit": "hour",
+        "note": "Duration until all MDI added; not explicitly specified"
+      },
+      "stirring_speed": null,
+      "atmosphere": "nitrogen",
+      "pressure": null,
+      "evidence": [
+        {
+          "document": "DOC-001",
+          "page": 1,
+          "section": "Synthesis of the oxazolidinone epoxy resin",
+          "quote": "Then after 3 h, the temperature was raised to 120°C until all MDI was added.",
+          "evidence_type": "explicit",
+          "confidence": 0.95
+        }
+      ],
+      "confidence": 0.75,
+      "status": "warning",
+      "missing_fields": [
+        {
+          "field_name": "temperature.ramp_rate",
+          "step_id": "S04",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "Ramp rate from 110C to 120C not specified",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        },
+        {
+          "field_name": "stirring_speed",
+          "step_id": "S04",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "Stirring speed not specified",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        },
+        {
+          "field_name": "duration.value",
+          "step_id": "S04",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "Duration at 120C until all MDI added is not explicitly specified",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        }
+      ],
+      "device_binding": {
+        "device_id": null,
+        "capability_check": "unchecked"
+      },
+      "notes": "Temperature raised from 110C to 120C after 3h; MDI addition continues until all MDI added. Duration at this stage is not explicitly given."
+    },
+    {
+      "step_id": "S05",
+      "action": "heat",
+      "material": "Reaction mixture (OX epoxy resin)",
+      "description": "Maintain reaction at 120C for 1h after all MDI is added",
+      "temperature": {
+        "value": 120,
+        "unit": "celsius",
+        "ramp_rate": null,
+        "hold": true
+      },
+      "duration": {
+        "value": 1,
+        "unit": "hour"
+      },
+      "stirring_speed": null,
+      "atmosphere": "nitrogen",
+      "pressure": null,
+      "evidence": [
+        {
+          "document": "DOC-001",
+          "page": 1,
+          "section": "Synthesis of the oxazolidinone epoxy resin",
+          "quote": "Furthermore, the reaction was maintained for 1 h.",
+          "evidence_type": "explicit",
+          "confidence": 0.95
+        }
+      ],
+      "confidence": 0.9,
+      "status": "warning",
+      "missing_fields": [
+        {
+          "field_name": "stirring_speed",
+          "step_id": "S05",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "Stirring speed not specified",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        }
+      ],
+      "device_binding": {
+        "device_id": null,
+        "capability_check": "unchecked"
+      },
+      "notes": "Reaction maintained at 120C for 1h after all MDI added. Temperature held from S04."
+    },
+    {
+      "step_id": "S06",
+      "action": "cool",
+      "material": "OX epoxy resin product",
+      "description": "Pour out product and cool at room temperature",
+      "temperature": {
+        "value": 25,
+        "unit": "celsius",
+        "ramp_rate": null,
+        "hold": false
+      },
+      "duration": {
+        "value": null,
+        "unit": "hour"
+      },
+      "stirring_speed": null,
+      "atmosphere": "air",
+      "pressure": null,
+      "evidence": [
+        {
+          "document": "DOC-001",
+          "page": 1,
+          "section": "Synthesis of the oxazolidinone epoxy resin",
+          "quote": "In the end, the product was poured out and cooled at room temperature.",
+          "evidence_type": "explicit",
+          "confidence": 0.95
+        }
+      ],
+      "confidence": 0.85,
+      "status": "warning",
+      "missing_fields": [
+        {
+          "field_name": "duration.value",
+          "step_id": "S06",
+          "risk_level": "low",
+          "blocks_execution": false,
+          "suggestion": "Cooling duration not specified; natural cooling to room temperature",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        }
+      ],
+      "device_binding": {
+        "device_id": null,
+        "capability_check": "unchecked"
+      },
+      "notes": "Product poured out and cooled naturally at room temperature; atmosphere inferred as air"
+    },
+    {
+      "step_id": "S07",
+      "action": "stir",
+      "material": "15 wt% OX epoxy resin + DGEBA",
+      "description": "Add synthesized 15 wt% OX epoxy resin together with DGEBA into three-necked flask at 120C and stir for 30 min",
+      "temperature": {
+        "value": 120,
+        "unit": "celsius",
+        "ramp_rate": null,
+        "hold": true
+      },
+      "duration": {
+        "value": 30,
+        "unit": "minute"
+      },
+      "stirring_speed": null,
+      "atmosphere": null,
+      "pressure": null,
+      "evidence": [
+        {
+          "document": "DOC-001",
+          "page": 1,
+          "section": "Synthesis of the cured oxazolidinone epoxies",
+          "quote": "The synthesized 15 wt% OX epoxy resin together with DGEBA was added into a three-necked flask at 120°C and stirred for 30 min.",
+          "evidence_type": "explicit",
+          "confidence": 0.97
+        }
+      ],
+      "confidence": 0.8,
+      "status": "warning",
+      "missing_fields": [
+        {
+          "field_name": "stirring_speed",
+          "step_id": "S07",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "Stirring speed not specified",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        },
+        {
+          "field_name": "temperature.ramp_rate",
+          "step_id": "S07",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "Ramp rate to 120C not specified",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        },
+        {
+          "field_name": "amount.DGEBA",
+          "step_id": "S07",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "Exact amounts of OX resin and DGEBA not specified (only 15 wt% OX ratio given)",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        },
+        {
+          "field_name": "atmosphere",
+          "step_id": "S07",
+          "risk_level": "low",
+          "blocks_execution": false,
+          "suggestion": "Atmosphere not specified for this step",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        }
+      ],
+      "device_binding": {
+        "device_id": null,
+        "capability_check": "unchecked"
+      },
+      "notes": "15 wt% OX epoxy resin mixed with DGEBA; exact masses of each component not specified"
+    },
+    {
+      "step_id": "S08",
+      "action": "cool",
+      "material": "OX epoxy resin + DGEBA mixture",
+      "description": "Cool flask down to 80C",
+      "temperature": {
+        "value": 80,
+        "unit": "celsius",
+        "ramp_rate": null,
+        "hold": false
+      },
+      "duration": {
+        "value": null,
+        "unit": "minute"
+      },
+      "stirring_speed": null,
+      "atmosphere": null,
+      "pressure": null,
+      "evidence": [
+        {
+          "document": "DOC-001",
+          "page": 1,
+          "section": "Synthesis of the cured oxazolidinone epoxies",
+          "quote": "The flask was cooled down to 80°C.",
+          "evidence_type": "explicit",
+          "confidence": 0.95
+        }
+      ],
+      "confidence": 0.85,
+      "status": "warning",
+      "missing_fields": [
+        {
+          "field_name": "temperature.ramp_rate",
+          "step_id": "S08",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "Cooling rate from 120C to 80C not specified",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        },
+        {
+          "field_name": "duration.value",
+          "step_id": "S08",
+          "risk_level": "low",
+          "blocks_execution": false,
+          "suggestion": "Cooling duration not specified",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        }
+      ],
+      "device_binding": {
+        "device_id": null,
+        "capability_check": "unchecked"
+      },
+      "notes": "Cooling from 120C to 80C; cooling rate not specified"
+    },
+    {
+      "step_id": "S09",
+      "action": "add",
+      "material": "Dicyandiamide",
+      "description": "Add a certain amount of dicyandiamide into the flask and thoroughly mix",
+      "amount": {
+        "value": null,
+        "unit": "g",
+        "tolerance": null,
+        "note": "a certain amount - no specific value given"
+      },
+      "temperature": {
+        "value": 80,
+        "unit": "celsius",
+        "ramp_rate": null,
+        "hold": true
+      },
+      "duration": {
+        "value": null,
+        "unit": "minute"
+      },
+      "stirring_speed": null,
+      "atmosphere": null,
+      "pressure": null,
+      "evidence": [
+        {
+          "document": "DOC-001",
+          "page": 1,
+          "section": "Synthesis of the cured oxazolidinone epoxies",
+          "quote": "Then a certain amount of dicyandiamide was added into the flask and thoroughly mixed.",
+          "evidence_type": "explicit",
+          "confidence": 0.9
+        }
+      ],
+      "confidence": 0.5,
+      "status": "blocked",
+      "missing_fields": [
+        {
+          "field_name": "amount.value",
+          "step_id": "S09",
+          "risk_level": "high",
+          "blocks_execution": true,
+          "suggestion": "Dicyandiamide amount not specified ('a certain amount'); critical for curing reaction stoichiometry and final properties",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        },
+        {
+          "field_name": "stirring_speed",
+          "step_id": "S09",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "Stirring speed not specified; 'thoroughly mixed' is qualitative",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        },
+        {
+          "field_name": "duration.value",
+          "step_id": "S09",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "Mixing duration not specified",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        }
+      ],
+      "device_binding": {
+        "device_id": null,
+        "capability_check": "unchecked"
+      },
+      "notes": "BLOCKED: Dicyandiamide amount is described as 'a certain amount' with no specific value. This is a critical parameter for the curing reaction."
+    },
+    {
+      "step_id": "S10",
+      "action": "dry",
+      "material": "Resin + dicyandiamide mixture",
+      "description": "Place mixture into vacuum oven at 80C for 30 min for degassing",
+      "temperature": {
+        "value": 80,
+        "unit": "celsius",
+        "ramp_rate": null,
+        "hold": true
+      },
+      "duration": {
+        "value": 30,
+        "unit": "minute"
+      },
+      "stirring_speed": null,
+      "atmosphere": "vacuum",
+      "pressure": null,
+      "evidence": [
+        {
+          "document": "DOC-001",
+          "page": 1,
+          "section": "Synthesis of the cured oxazolidinone epoxies",
+          "quote": "The mixture was placed into a vacuum oven at 80°C for 30 min.",
+          "evidence_type": "explicit",
+          "confidence": 0.97
+        }
+      ],
+      "confidence": 0.85,
+      "status": "warning",
+      "missing_fields": [
+        {
+          "field_name": "pressure.value",
+          "step_id": "S10",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "Vacuum level (absolute pressure) not specified; typical vacuum oven ~1-10 kPa",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        },
+        {
+          "field_name": "temperature.ramp_rate",
+          "step_id": "S10",
+          "risk_level": "low",
+          "blocks_execution": false,
+          "suggestion": "Temperature held at 80C from S08/S09",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        }
+      ],
+      "device_binding": {
+        "device_id": null,
+        "capability_check": "unchecked"
+      },
+      "notes": "Vacuum oven degassing at 80C for 30 min; vacuum level not specified"
+    },
+    {
+      "step_id": "S11",
+      "action": "heat",
+      "material": "Resin mixture in mold",
+      "description": "Cure in mold: 80C/1h -> 130C/3h -> 190C/2h (Table 2)",
+      "temperature": {
+        "value": 190,
+        "unit": "celsius",
+        "ramp_rate": null,
+        "hold": true,
+        "note": "Multi-stage curing: Stage 1: 80C/1h, Stage 2: 130C/3h, Stage 3: 190C/2h"
+      },
+      "duration": {
+        "value": 6,
+        "unit": "hour",
+        "note": "Total: 1h + 3h + 2h = 6h across three stages"
+      },
+      "stirring_speed": null,
+      "atmosphere": null,
+      "pressure": null,
+      "evidence": [
+        {
+          "document": "DOC-001",
+          "page": 1,
+          "section": "Synthesis of the cured oxazolidinone epoxies; Table 2",
+          "quote": "The mixture was poured into the mold and cured. The curing process is shown in Table 2.",
+          "evidence_type": "explicit",
+          "confidence": 0.97
+        },
+        {
+          "document": "DOC-001",
+          "page": 1,
+          "section": "Table 2",
+          "quote": "80C / 1h; 130C / 3h; 190C / 2h",
+          "evidence_type": "explicit",
+          "confidence": 0.98
+        }
+      ],
+      "confidence": 0.9,
+      "status": "warning",
+      "missing_fields": [
+        {
+          "field_name": "temperature.ramp_rate",
+          "step_id": "S11",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "Ramp rates between curing stages (80->130->190C) not specified",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        },
+        {
+          "field_name": "atmosphere",
+          "step_id": "S11",
+          "risk_level": "low",
+          "blocks_execution": false,
+          "suggestion": "Curing atmosphere not specified; likely air in conventional oven",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        },
+        {
+          "field_name": "pressure",
+          "step_id": "S11",
+          "risk_level": "low",
+          "blocks_execution": false,
+          "suggestion": "Curing pressure not specified for this step (pressure applied in S15)",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        }
+      ],
+      "device_binding": {
+        "device_id": null,
+        "capability_check": "unchecked"
+      },
+      "notes": "Multi-stage curing per Table 2: 80C/1h -> 130C/3h -> 190C/2h. Total 6h. Ramp rates between stages not specified. 190C exceeds 200C threshold? No, 190C is below 200C but still high temperature."
+    },
+    {
+      "step_id": "S12",
+      "action": "dissolve",
+      "material": "OX epoxy resin + DGEBA + dicyandiamide in butanone (methyl ethyl ketone)",
+      "description": "Add OX epoxy resin, DGEBA, and dicyandiamide into methyl ethyl ketone until density reaches 0.96 g/cm3 at room temperature",
+      "amount": {
+        "value": 0.96,
+        "unit": "g/cm3",
+        "relative_to": "target density of mixed solution",
+        "tolerance": null
+      },
+      "temperature": {
+        "value": 25,
+        "unit": "celsius",
+        "ramp_rate": null,
+        "hold": false
+      },
+      "duration": {
+        "value": null,
+        "unit": "minute"
+      },
+      "stirring_speed": null,
+      "atmosphere": "air",
+      "pressure": null,
+      "evidence": [
+        {
+          "document": "DOC-001",
+          "page": 1,
+          "section": "Preparation of the carbon fiber-reinforced plastic composites",
+          "quote": "The as-prepared 15 wt% OX epoxy resin, DGEBA, and dicyandiamide were added into methyl ethyl ketone until the density of the mixed solution reached up to 0.96 g/cm³ at room temperature.",
+          "evidence_type": "explicit",
+          "confidence": 0.97
+        }
+      ],
+      "confidence": 0.75,
+      "status": "warning",
+      "missing_fields": [
+        {
+          "field_name": "stirring_speed",
+          "step_id": "S12",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "Stirring speed for dissolution not specified",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        },
+        {
+          "field_name": "duration.value",
+          "step_id": "S12",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "Dissolution duration not specified",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        },
+        {
+          "field_name": "amount.butanone",
+          "step_id": "S12",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "Butanone volume not specified; only target density given",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        }
+      ],
+      "device_binding": {
+        "device_id": null,
+        "capability_check": "unchecked"
+      },
+      "notes": "Solution prepared to target density 0.96 g/cm3; butanone (MEK) is flammable (flash point -6C); room temperature operation. SAFETY: MEK flammable, ensure ventilation."
+    },
+    {
+      "step_id": "S13",
+      "action": "add",
+      "material": "T1100 carbon fiber + resin solution",
+      "description": "Prepare T1100 carbon fiber prepreg via solvent method; mass fraction of carbon fiber = 67 wt%",
+      "amount": {
+        "value": 67,
+        "unit": "wt%",
+        "relative_to": "mass fraction of carbon fiber in prepreg",
+        "tolerance": null
+      },
+      "temperature": {
+        "value": null,
+        "unit": "celsius",
+        "ramp_rate": null,
+        "hold": null
+      },
+      "duration": {
+        "value": null,
+        "unit": "minute"
+      },
+      "stirring_speed": null,
+      "atmosphere": null,
+      "pressure": null,
+      "evidence": [
+        {
+          "document": "DOC-001",
+          "page": 1,
+          "section": "Preparation of the carbon fiber-reinforced plastic composites",
+          "quote": "The T1100 carbon fiber prepreg mixed with the above-prepared solution was prepared through the solvent method, and the mass fraction of carbon fiber in carbon fiber prepreg was 67 wt%.",
+          "evidence_type": "explicit",
+          "confidence": 0.95
+        }
+      ],
+      "confidence": 0.65,
+      "status": "warning",
+      "missing_fields": [
+        {
+          "field_name": "temperature.value",
+          "step_id": "S13",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "Prepreg preparation temperature not specified",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        },
+        {
+          "field_name": "duration.value",
+          "step_id": "S13",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "Prepreg preparation duration not specified",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        },
+        {
+          "field_name": "stirring_speed",
+          "step_id": "S13",
+          "risk_level": "low",
+          "blocks_execution": false,
+          "suggestion": "Solvent method parameters not specified",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        }
+      ],
+      "device_binding": {
+        "device_id": null,
+        "capability_check": "unchecked"
+      },
+      "notes": "Solvent method prepreg preparation; 67 wt% carbon fiber. Detailed prepreg process parameters not specified."
+    },
+    {
+      "step_id": "S14",
+      "action": "add",
+      "material": "Carbon fiber prepreg layers",
+      "description": "Laminate prepreg layers: 18 layers of 0 degree prepreg for 3.5mm laminate (impact/ILSS); 10 layers of 0 degree prepreg for 2mm laminate (flexural)",
+      "amount": {
+        "value": 18,
+        "unit": "plies",
+        "tolerance": null,
+        "note": "18 plies for 3.5mm (impact/ILSS) or 10 plies for 2mm (flexural)"
+      },
+      "temperature": {
+        "value": null,
+        "unit": "celsius",
+        "ramp_rate": null,
+        "hold": null
+      },
+      "duration": {
+        "value": null,
+        "unit": "minute"
+      },
+      "stirring_speed": null,
+      "atmosphere": null,
+      "pressure": null,
+      "evidence": [
+        {
+          "document": "DOC-001",
+          "page": 1,
+          "section": "Preparation of the carbon fiber-reinforced plastic composites",
+          "quote": "18 layers of 0° prepreg were utilized to generate 3.5 mm-thick composite laminates to analyze its impact and interlaminal shear properties, and 10 layers of 0° prepreg were used to form a 2 mm thick composite laminates to test its flexural properties.",
+          "evidence_type": "explicit",
+          "confidence": 0.97
+        }
+      ],
+      "confidence": 0.8,
+      "status": "warning",
+      "missing_fields": [
+        {
+          "field_name": "temperature.value",
+          "step_id": "S14",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "Lamination temperature not specified; likely room temperature",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        },
+        {
+          "field_name": "duration.value",
+          "step_id": "S14",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "Lamination duration not specified",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        }
+      ],
+      "device_binding": {
+        "device_id": null,
+        "capability_check": "unchecked"
+      },
+      "notes": "Two laminate configurations: 18 plies/3.5mm (impact & ILSS) and 10 plies/2mm (flexural). All 0 degree orientation."
+    },
+    {
+      "step_id": "S15",
+      "action": "heat",
+      "material": "CFRP laminate",
+      "description": "Hot press at 150C under pressure of 45 Kg for 1h (lamination, cutting, and drying)",
+      "temperature": {
+        "value": 150,
+        "unit": "celsius",
+        "ramp_rate": null,
+        "hold": true
+      },
+      "duration": {
+        "value": 1,
+        "unit": "hour"
+      },
+      "stirring_speed": null,
+      "atmosphere": null,
+      "pressure": {
+        "value": 45,
+        "unit": "kg",
+        "note": "Unit ambiguous: '45 Kg' - could be kgf, kgf/cm2, kg/cm2, or other; unit unclear"
+      },
+      "evidence": [
+        {
+          "document": "DOC-001",
+          "page": 1,
+          "section": "Preparation of the carbon fiber-reinforced plastic composites",
+          "quote": "the CFRP composites were obtained through lamination, cutting, and drying under the temperature of 150°C and the pressure of 45 Kg for 1 h.",
+          "evidence_type": "explicit",
+          "confidence": 0.9
+        }
+      ],
+      "confidence": 0.6,
+      "status": "warning",
+      "missing_fields": [
+        {
+          "field_name": "pressure.unit",
+          "step_id": "S15",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "Pressure unit 'Kg' is ambiguous; could be kgf, kgf/cm2, kg/cm2, or other. Need clarification. If kg/cm2, ~4.4 MPa; if kgf, ~441 N.",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        },
+        {
+          "field_name": "temperature.ramp_rate",
+          "step_id": "S15",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "Ramp rate to 150C not specified",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        },
+        {
+          "field_name": "atmosphere",
+          "step_id": "S15",
+          "risk_level": "low",
+          "blocks_execution": false,
+          "suggestion": "Hot press atmosphere not specified; likely air",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        }
+      ],
+      "device_binding": {
+        "device_id": null,
+        "capability_check": "unchecked"
+      },
+      "notes": "Pressure unit '45 Kg' is ambiguous - not a standard pressure unit. Could be kgf/cm2 (~4.4 MPa) which is typical for composite hot pressing. SAFETY: 150C with potential residual MEK (flash point -6C) requires ventilation."
+    }
+  ],
+  "equipment": [
+    {
+      "device_id": null,
+      "device_type": "reactor",
+      "device_name": "Three-necked flask with dropping apparatus (for OX resin synthesis, S01-S06)",
+      "config_path": null
+    },
+    {
+      "device_id": null,
+      "device_type": "hotplate_stirrer",
+      "device_name": "Heating and stirring setup for three-necked flask",
+      "config_path": null
+    },
+    {
+      "device_id": null,
+      "device_type": "vacuum_oven",
+      "device_name": "Vacuum oven (for degassing at 80C, S10)",
+      "config_path": null
+    },
+    {
+      "device_id": null,
+      "device_type": "oven",
+      "device_name": "Curing oven (for multi-stage curing 80-190C, S11)",
+      "config_path": null
+    },
+    {
+      "device_id": null,
+      "device_type": "reactor",
+      "device_name": "Hot press (for lamination at 150C, S15)",
+      "config_path": null
+    },
+    {
+      "device_id": null,
+      "device_type": "balance",
+      "device_name": "Analytical balance (for reagent weighing)",
+      "config_path": null
+    }
+  ],
+  "metadata": {
+    "version": "1.0.0",
+    "generated_at": "2026-08-07T10:00:00Z",
+    "compiler_version": "matflow-compiler/0.3.0",
+    "source_hash": "sha256:yiwen_2022_polymers_composites_30",
+    "operator": "auto",
+    "lab_id": null,
+    "compilation_notes": "Protocol compiled from Ye Yiwen, Liu Beijun, Peng Li, Polymers and Polymer Composites 2022, 30. DOI: 10.1177/09673911211065196. Key blocked parameters: MDI dropwise addition rate (S02), dicyandiamide amount (S09). Pressure unit ambiguity in S15 ('45 Kg'). 2-MI amount derived from 'one in ten thousand of DGEBA' and confirmed by Table 1."
+  },
+  "safety_checks": [
+    {
+      "check_id": "SAFE-001",
+      "check_type": "temperature_limit",
+      "rule_id": "SAFE-H-001",
+      "target_step": "S11",
+      "status": "warning",
+      "message": "Step S11 curing at 190C approaches 200C high-temperature threshold. Ensure oven capable of 190C+ with temperature monitoring.",
+      "details": {
+        "actual_value": 190,
+        "threshold": 200,
+        "unit": "celsius"
+      }
+    },
+    {
+      "check_id": "SAFE-002",
+      "check_type": "incompatible_reagents",
+      "rule_id": "SAFE-C-003",
+      "target_step": "S01",
+      "status": "warning",
+      "message": "Step S01 uses MDI (isocyanate) which is moisture-sensitive. N2 protection is specified, which is appropriate.",
+      "details": {
+        "reagent": "MDI",
+        "sensitivity": "moisture",
+        "protection": "nitrogen_atmosphere"
+      }
+    },
+    {
+      "check_id": "SAFE-003",
+      "check_type": "toxic_reagent_handling",
+      "rule_id": "SAFE-H-003",
+      "target_step": "S02",
+      "status": "warning",
+      "message": "Step S02 uses MDI which is a respiratory sensitizer (TLV 0.005 ppm). Dropwise addition may generate vapors. Fume hood required.",
+      "details": {
+        "reagent": "MDI",
+        "hazard": "respiratory_sensitizer",
+        "tlv_ppm": 0.005
+      }
+    },
+    {
+      "check_id": "SAFE-004",
+      "check_type": "flammable_solvent_handling",
+      "rule_id": "SAFE-C-004",
+      "target_step": "S12",
+      "status": "warning",
+      "message": "Step S12 uses butanone (MEK, flash point -6C) at room temperature. MEK is extremely flammable. Ensure adequate ventilation and no ignition sources.",
+      "details": {
+        "solvent": "butanone (MEK)",
+        "flash_point": -6,
+        "boiling_point": 79.6,
+        "unit": "celsius"
+      }
+    },
+    {
+      "check_id": "SAFE-005",
+      "check_type": "flammable_solvent_heating",
+      "rule_id": "SAFE-C-004",
+      "target_step": "S15",
+      "status": "warning",
+      "message": "Step S15 hot pressing at 150C may involve residual MEK (flash point -6C) from prepreg. 150C far exceeds MEK flash point. Ensure adequate ventilation and solvent removal before hot pressing.",
+      "details": {
+        "solvent": "butanone (MEK) residual",
+        "flash_point": -6,
+        "temperature": 150,
+        "unit": "celsius"
+      }
+    },
+    {
+      "check_id": "SAFE-006",
+      "check_type": "inferred_parameter",
+      "rule_id": "SAFE-H-004",
+      "target_step": "S09",
+      "status": "blocked",
+      "message": "Step S09 has critical missing parameter: dicyandiamide amount is null ('a certain amount'). Cannot execute without this value.",
+      "details": {
+        "missing_field": "amount.value",
+        "reason": "a certain amount - no specific value"
+      }
+    },
+    {
+      "check_id": "SAFE-007",
+      "check_type": "inferred_parameter",
+      "rule_id": "SAFE-H-004",
+      "target_step": "S02",
+      "status": "blocked",
+      "message": "Step S02 has critical missing parameter: MDI dropwise addition rate is null. Cannot control reaction without addition rate.",
+      "details": {
+        "missing_field": "addition_rate",
+        "reason": "dropwise addition rate not specified"
+      }
+    },
+    {
+      "check_id": "SAFE-008",
+      "check_type": "pressure_unit_ambiguity",
+      "rule_id": "SAFE-H-002",
+      "target_step": "S15",
+      "status": "warning",
+      "message": "Step S15 pressure '45 Kg' has ambiguous unit. If kg/cm2 (~4.4 MPa), exceeds 0.5 MPa high-pressure threshold. Need unit clarification.",
+      "details": {
+        "raw_value": "45 Kg",
+        "possible_interpretations": [
+          "kgf (441 N)",
+          "kgf/cm2 (4.4 MPa)",
+          "kg (mass load)"
+        ],
+        "threshold_mpa": 0.5
+      }
+    },
+    {
+      "check_id": "SAFE-009",
+      "check_type": "atmosphere_check",
+      "rule_id": "SAFE-A-002",
+      "target_step": "S01",
+      "status": "pass",
+      "message": "Step S01 uses nitrogen atmosphere for MDI (moisture-sensitive), appropriate protection specified."
+    },
+    {
+      "check_id": "SAFE-010",
+      "check_type": "ramp_rate_missing",
+      "rule_id": "SAFE-T-003",
+      "target_step": "S03",
+      "status": "warning",
+      "message": "Step S03 temperature change from 90C to 110C (delta 20C) without ramp rate specified.",
+      "details": {
+        "from_temp": 90,
+        "to_temp": 110,
+        "delta": 20,
+        "unit": "celsius"
+      }
+    },
+    {
+      "check_id": "SAFE-011",
+      "check_type": "ramp_rate_missing",
+      "rule_id": "SAFE-T-003",
+      "target_step": "S04",
+      "status": "warning",
+      "message": "Step S04 temperature change from 110C to 120C (delta 10C) without ramp rate specified.",
+      "details": {
+        "from_temp": 110,
+        "to_temp": 120,
+        "delta": 10,
+        "unit": "celsius"
+      }
+    },
+    {
+      "check_id": "SAFE-012",
+      "check_type": "ramp_rate_missing",
+      "rule_id": "SAFE-T-004",
+      "target_step": "S11",
+      "status": "warning",
+      "message": "Step S11 multi-stage curing with large temperature changes (80->130->190C, delta 110C total) without ramp rates between stages.",
+      "details": {
+        "stage_1": 80,
+        "stage_2": 130,
+        "stage_3": 190,
+        "total_delta": 110,
+        "unit": "celsius"
+      }
+    }
+  ],
+  "checkpoints": [
+    {
+      "checkpoint_id": "CP-01",
+      "after_step": "S01",
+      "stored_state": [
+        {
+          "name": "dgeba_mass",
+          "type": "number",
+          "unit": "g"
+        },
+        {
+          "name": "mi_mass",
+          "type": "number",
+          "unit": "g"
+        },
+        {
+          "name": "mixing_temperature",
+          "type": "number",
+          "unit": "celsius"
+        },
+        {
+          "name": "mi_dissolved",
+          "type": "boolean"
+        },
+        {
+          "name": "atmosphere_status",
+          "type": "enum"
+        }
+      ],
+      "recovery_policy": {
+        "power_failure": "restart_step",
+        "temperature_deviation": {
+          "threshold": 5,
+          "action": "hold"
+        }
+      }
+    },
+    {
+      "checkpoint_id": "CP-02",
+      "after_step": "S05",
+      "stored_state": [
+        {
+          "name": "reaction_temperature",
+          "type": "number",
+          "unit": "celsius"
+        },
+        {
+          "name": "mdi_added_total",
+          "type": "number",
+          "unit": "g"
+        },
+        {
+          "name": "reaction_progress",
+          "type": "number"
+        },
+        {
+          "name": "atmosphere_status",
+          "type": "enum"
+        },
+        {
+          "name": "product_appearance",
+          "type": "string"
+        }
+      ],
+      "recovery_policy": {
+        "power_failure": "restart_step",
+        "temperature_deviation": {
+          "threshold": 5,
+          "action": "hold"
+        }
+      }
+    },
+    {
+      "checkpoint_id": "CP-03",
+      "after_step": "S06",
+      "stored_state": [
+        {
+          "name": "ox_resin_synthesized",
+          "type": "boolean"
+        },
+        {
+          "name": "product_temperature",
+          "type": "number",
+          "unit": "celsius"
+        },
+        {
+          "name": "product_viscosity",
+          "type": "string"
+        }
+      ],
+      "recovery_policy": {
+        "power_failure": "resume_from_checkpoint",
+        "temperature_deviation": {
+          "threshold": 10,
+          "action": "continue"
+        }
+      }
+    },
+    {
+      "checkpoint_id": "CP-04",
+      "after_step": "S10",
+      "stored_state": [
+        {
+          "name": "mixture_temperature",
+          "type": "number",
+          "unit": "celsius"
+        },
+        {
+          "name": "degassing_complete",
+          "type": "boolean"
+        },
+        {
+          "name": "bubble_content",
+          "type": "string"
+        },
+        {
+          "name": "dicyandiamide_added",
+          "type": "boolean"
+        }
+      ],
+      "recovery_policy": {
+        "power_failure": "restart_step",
+        "temperature_deviation": {
+          "threshold": 5,
+          "action": "alert"
+        }
+      }
+    },
+    {
+      "checkpoint_id": "CP-05",
+      "after_step": "S11",
+      "stored_state": [
+        {
+          "name": "cure_stage_completed",
+          "type": "number"
+        },
+        {
+          "name": "current_temperature",
+          "type": "number",
+          "unit": "celsius"
+        },
+        {
+          "name": "cure_progress",
+          "type": "number"
+        },
+        {
+          "name": "resin_gel_point",
+          "type": "boolean"
+        },
+        {
+          "name": "laminate_thickness",
+          "type": "number",
+          "unit": "mm"
+        }
+      ],
+      "recovery_policy": {
+        "power_failure": "resume_from_checkpoint",
+        "temperature_deviation": {
+          "threshold": 5,
+          "action": "hold"
+        }
+      }
+    },
+    {
+      "checkpoint_id": "CP-06",
+      "after_step": "S15",
+      "stored_state": [
+        {
+          "name": "hot_press_temperature",
+          "type": "number",
+          "unit": "celsius"
+        },
+        {
+          "name": "applied_pressure",
+          "type": "string"
+        },
+        {
+          "name": "cfrp_cured",
+          "type": "boolean"
+        },
+        {
+          "name": "final_laminate_thickness",
+          "type": "number",
+          "unit": "mm"
+        },
+        {
+          "name": "fiber_volume_fraction",
+          "type": "number",
+          "unit": "wt_percent"
+        },
+        {
+          "name": "composite_appearance",
+          "type": "string"
+        }
+      ],
+      "recovery_policy": {
+        "power_failure": "resume_from_checkpoint",
+        "temperature_deviation": {
+          "threshold": 5,
+          "action": "hold"
+        }
+      }
+    }
+  ],
+  "overall_confidence": 0.72,
+  "overall_status": "blocked",
+  "confidence_score": {
+    "overall": 0.72,
+    "dimensions": {
+      "evidence_coverage": 0.85,
+      "explicit_ratio": 0.7,
+      "safety_pass_rate": 0.65,
+      "missing_field_penalty": 0.6
+    }
+  },
+  "block_reasons": [
+    "S02: addition_rate is null (critical) - MDI dropwise addition rate not specified in source text",
+    "S09: amount.value is null (critical) - Dicyandiamide amount described as 'a certain amount' with no specific value"
+  ]
+}

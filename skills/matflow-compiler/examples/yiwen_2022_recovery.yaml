@@ -1,0 +1,517 @@
+# 恢复与检查点方案
+# 恶唑烷酮环氧树脂/碳纤维复合材料制备
+# 协议ID: MF-REAL-003
+# 来源文献: Ye Yiwen, Liu Beijun, Peng Li. Polymers and Polymer Composites 2022, 30.
+# DOI: 10.1177/09673911211065196
+
+protocol_id: "MF-REAL-003"
+material: "Oxazolidinone epoxy resin / carbon fiber reinforced plastic (CFRP) composite"
+total_steps: 15
+checkpoints:
+  # ============================================================
+  # CP-01: S01完成后 - DGEBA+2-MI混合完成
+  # ============================================================
+  - checkpoint_id: "CP-01"
+    after_step: "S01"
+    description: "DGEBA与2-MI混合完成，2-MI完全溶解"
+    stored_state:
+      - name: "dgeba_mass"
+        type: "number"
+        unit: "g"
+        value: 240
+        source: "Table 1 (explicit)"
+      - name: "mi_mass"
+        type: "number"
+        unit: "g"
+        value: 0.024
+        source: "derived: 240g x 0.0001; Table 1 confirmed"
+      - name: "mixing_temperature"
+        type: "number"
+        unit: "celsius"
+        value: 90
+        source: "explicit"
+      - name: "mixing_duration"
+        type: "number"
+        unit: "minute"
+        value: 30
+        source: "explicit"
+      - name: "mi_dissolved"
+        type: "boolean"
+        value: null
+        source: "operator_observation"
+      - name: "atmosphere_status"
+        type: "enum"
+        values: ["nitrogen_active", "nitrogen_lost", "air"]
+        value: null
+        source: "operator_observation"
+      - name: "vessel_id"
+        type: "string"
+        value: null
+        source: "operator_input"
+    recovery_policy:
+      power_failure:
+        action: "restart_step"
+        reason: "S01为混合步骤，断电后需重新混合确保均匀性"
+        max_interruption_time: 5  # minutes
+      temperature_deviation:
+        threshold: 5  # celsius
+        action: "hold"
+        reason: "温度偏差>5C需暂停并调整"
+      nitrogen_loss:
+        action: "restart_step"
+        reason: "N2保护丢失后MDI可能已与水分反应，需重新配料"
+      mi_not_dissolved:
+        action: "extend_mixing"
+        reason: "2-MI未完全溶解则延长混合时间"
+        extension_time: 10  # minutes
+    validation_checks:
+      - check: "mi_dissolved == true"
+        description: "2-MI必须完全溶解"
+        on_fail: "extend_mixing"
+      - check: "atmosphere_status == 'nitrogen_active'"
+        description: "N2保护必须持续"
+        on_fail: "restart_step"
+
+  # ============================================================
+  # CP-02: S05完成后 - OX树脂合成反应完成
+  # ============================================================
+  - checkpoint_id: "CP-02"
+    after_step: "S05"
+    description: "OX环氧树脂合成反应完成(120C保温1h后)"
+    stored_state:
+      - name: "reaction_temperature"
+        type: "number"
+        unit: "celsius"
+        value: 120
+        source: "explicit"
+      - name: "mdi_added_total"
+        type: "number"
+        unit: "g"
+        value: 50
+        source: "Table 1 (explicit)"
+      - name: "reaction_progress"
+        type: "number"
+        unit: "percent"
+        value: null
+        source: "operator_observation"
+      - name: "atmosphere_status"
+        type: "enum"
+        values: ["nitrogen_active", "nitrogen_lost", "air"]
+        value: null
+        source: "operator_observation"
+      - name: "product_appearance"
+        type: "string"
+        value: null
+        source: "operator_observation"
+      - name: "product_viscosity"
+        type: "string"
+        values: ["low", "medium", "high", "gelled"]
+        value: null
+        source: "operator_observation"
+    recovery_policy:
+      power_failure:
+        action: "restart_step"
+        reason: "S05为保温反应，断电后温度下降需重新升温保温"
+        max_interruption_time: 10  # minutes
+      temperature_deviation:
+        threshold: 5  # celsius
+        action: "hold"
+        reason: "120C保温期间温度偏差>5C需暂停"
+      nitrogen_loss:
+        action: "alert"
+        reason: "反应后期N2丢失影响较小，但需记录"
+      product_gelled:
+        action: "abort_protocol"
+        reason: "产物凝胶化表示反应失控，需废弃重做"
+    validation_checks:
+      - check: "product_viscosity != 'gelled'"
+        description: "产物不应凝胶化"
+        on_fail: "abort_protocol"
+      - check: "mdi_added_total == 50"
+        description: "MDI必须全部加完"
+        on_fail: "continue_addition"
+
+  # ============================================================
+  # CP-03: S06完成后 - OX树脂冷却出料
+  # ============================================================
+  - checkpoint_id: "CP-03"
+    after_step: "S06"
+    description: "OX环氧树脂产物倒出冷却至室温"
+    stored_state:
+      - name: "ox_resin_synthesized"
+        type: "boolean"
+        value: null
+        source: "operator_confirmation"
+      - name: "product_temperature"
+        type: "number"
+        unit: "celsius"
+        value: 25
+        source: "explicit (room temperature)"
+      - name: "product_mass"
+        type: "number"
+        unit: "g"
+        value: null
+        source: "operator_measurement"
+      - name: "product_appearance"
+        type: "string"
+        value: null
+        source: "operator_observation"
+      - name: "product_viscosity"
+        type: "string"
+        values: ["low", "medium", "high", "solid"]
+        value: null
+        source: "operator_observation"
+    recovery_policy:
+      power_failure:
+        action: "resume_from_checkpoint"
+        reason: "S06为冷却步骤，断电不影响自然冷却"
+        max_interruption_time: 60  # minutes
+      temperature_deviation:
+        threshold: 10  # celsius
+        action: "continue"
+        reason: "室温冷却，温度波动可接受"
+      product_solidified:
+        action: "reheat"
+        reason: "产物固化需重新加热至可流动状态"
+        reheat_temperature: 120  # celsius
+    validation_checks:
+      - check: "ox_resin_synthesized == true"
+        description: "OX树脂必须成功合成"
+        on_fail: "abort_protocol"
+      - check: "product_temperature <= 30"
+        description: "产物须冷却至接近室温"
+        on_fail: "wait_for_cooling"
+
+  # ============================================================
+  # CP-04: S10完成后 - 真空脱泡完成
+  # ============================================================
+  - checkpoint_id: "CP-04"
+    after_step: "S10"
+    description: "树脂混合物真空脱泡完成"
+    stored_state:
+      - name: "mixture_temperature"
+        type: "number"
+        unit: "celsius"
+        value: 80
+        source: "explicit"
+      - name: "degassing_duration"
+        type: "number"
+        unit: "minute"
+        value: 30
+        source: "explicit"
+      - name: "degassing_complete"
+        type: "boolean"
+        value: null
+        source: "operator_observation"
+      - name: "bubble_content"
+        type: "string"
+        values: ["none", "minimal", "moderate", "excessive"]
+        value: null
+        source: "operator_observation"
+      - name: "dicyandiamide_added"
+        type: "boolean"
+        value: null
+        source: "operator_confirmation"
+      - name: "dicyandiamide_amount"
+        type: "number"
+        unit: "g"
+        value: null
+        source: "BLOCKED - requires user input"
+      - name: "vacuum_level"
+        type: "number"
+        unit: "kPa"
+        value: null
+        source: "operator_measurement"
+    recovery_policy:
+      power_failure:
+        action: "restart_step"
+        reason: "S10为真空脱泡，断电后真空丢失需重新脱泡"
+        max_interruption_time: 5  # minutes
+      temperature_deviation:
+        threshold: 5  # celsius
+        action: "alert"
+        reason: "80C脱泡温度偏差>5C需调整"
+      vacuum_loss:
+        action: "restart_step"
+        reason: "真空丢失需重新脱泡"
+      excessive_bubbles:
+        action: "extend_degassing"
+        reason: "气泡过多需延长脱泡时间"
+        extension_time: 15  # minutes
+    validation_checks:
+      - check: "degassing_complete == true"
+        description: "脱泡必须完成"
+        on_fail: "extend_degassing"
+      - check: "bubble_content in ['none', 'minimal']"
+        description: "气泡含量须为无或极少"
+        on_fail: "extend_degassing"
+      - check: "dicyandiamide_added == true"
+        description: "双氰胺必须已加入"
+        on_fail: "abort_protocol"
+      # 注意: dicyandiamide_amount为null (blocked)，此检查点无法完全验证
+
+  # ============================================================
+  # CP-05: S11完成后 - 多阶段固化完成
+  # ============================================================
+  - checkpoint_id: "CP-05"
+    after_step: "S11"
+    description: "多阶段固化完成(80C/1h -> 130C/3h -> 190C/2h)"
+    stored_state:
+      - name: "cure_stage_completed"
+        type: "number"
+        value: 3
+        source: "explicit (3 stages per Table 2)"
+      - name: "stage1_temp"
+        type: "number"
+        unit: "celsius"
+        value: 80
+        source: "Table 2 (explicit)"
+      - name: "stage1_duration"
+        type: "number"
+        unit: "hour"
+        value: 1
+        source: "Table 2 (explicit)"
+      - name: "stage2_temp"
+        type: "number"
+        unit: "celsius"
+        value: 130
+        source: "Table 2 (explicit)"
+      - name: "stage2_duration"
+        type: "number"
+        unit: "hour"
+        value: 3
+        source: "Table 2 (explicit)"
+      - name: "stage3_temp"
+        type: "number"
+        unit: "celsius"
+        value: 190
+        source: "Table 2 (explicit)"
+      - name: "stage3_duration"
+        type: "number"
+        unit: "hour"
+        value: 2
+        source: "Table 2 (explicit)"
+      - name: "current_temperature"
+        type: "number"
+        unit: "celsius"
+        value: null
+        source: "operator_measurement"
+      - name: "cure_progress"
+        type: "number"
+        unit: "percent"
+        value: null
+        source: "operator_observation"
+      - name: "resin_gel_point"
+        type: "boolean"
+        value: null
+        source: "operator_observation"
+      - name: "laminate_thickness"
+        type: "number"
+        unit: "mm"
+        value: null
+        source: "operator_measurement"
+      - name: "oven_atmosphere"
+        type: "string"
+        value: null
+        source: "operator_observation"
+    recovery_policy:
+      power_failure:
+        action: "resume_from_checkpoint"
+        reason: "固化中断后可从当前阶段恢复，但需评估固化度"
+        max_interruption_time: 30  # minutes
+      temperature_deviation:
+        threshold: 5  # celsius
+        action: "hold"
+        reason: "固化温度偏差>5C需暂停并调整"
+      stage_failure:
+        stage_1:
+          action: "restart_stage"
+          reason: "阶段1(80C)失败可重新开始"
+        stage_2:
+          action: "resume_from_current"
+          reason: "阶段2(130C)中断可恢复，但需延长保温时间"
+          extension_time: 0.5  # hours
+        stage_3:
+          action: "resume_from_current"
+          reason: "阶段3(190C)中断可恢复，但需评估固化度"
+          extension_time: 0.5  # hours
+      over_temperature:
+        threshold: 200  # celsius
+        action: "abort_protocol"
+        reason: "温度超200C可能导致树脂热降解"
+    validation_checks:
+      - check: "cure_stage_completed == 3"
+        description: "所有3个固化阶段必须完成"
+        on_fail: "resume_curing"
+      - check: "current_temperature <= 200"
+        description: "温度不得超过200C"
+        on_fail: "abort_protocol"
+      - check: "resin_gel_point == true"
+        description: "树脂必须达到凝胶点"
+        on_fail: "extend_curing"
+
+  # ============================================================
+  # CP-06: S15完成后 - 热压完成，CFRP复合材料制备完成
+  # ============================================================
+  - checkpoint_id: "CP-06"
+    after_step: "S15"
+    description: "热压完成，CFRP复合材料制备完成"
+    stored_state:
+      - name: "hot_press_temperature"
+        type: "number"
+        unit: "celsius"
+        value: 150
+        source: "explicit"
+      - name: "hot_press_duration"
+        type: "number"
+        unit: "hour"
+        value: 1
+        source: "explicit"
+      - name: "applied_pressure"
+        type: "string"
+        value: "45 Kg (unit ambiguous)"
+        source: "explicit (unit unclear)"
+      - name: "pressure_unit_confirmed"
+        type: "boolean"
+        value: null
+        source: "requires user confirmation"
+      - name: "cfrp_cured"
+        type: "boolean"
+        value: null
+        source: "operator_confirmation"
+      - name: "final_laminate_thickness"
+        type: "number"
+        unit: "mm"
+        value: null
+        source: "operator_measurement"
+      - name: "target_thickness"
+        type: "enum"
+        values: [3.5, 2.0]
+        value: null
+        source: "depends on laminate configuration (18 or 10 plies)"
+      - name: "fiber_volume_fraction"
+        type: "number"
+        unit: "wt_percent"
+        value: 67
+        source: "explicit"
+      - name: "ply_count"
+        type: "number"
+        value: null
+        source: "18 (impact/ILSS) or 10 (flexural)"
+      - name: "composite_appearance"
+        type: "string"
+        values: ["good", "minor_defects", "major_defects"]
+        value: null
+        source: "operator_observation"
+      - name: "void_content"
+        type: "string"
+        values: ["low", "moderate", "high"]
+        value: null
+        source: "operator_observation"
+      - name: "mek_residue_check"
+        type: "boolean"
+        value: null
+        source: "operator_confirmation (safety critical)"
+    recovery_policy:
+      power_failure:
+        action: "resume_from_checkpoint"
+        reason: "热压中断后可恢复，但需评估固化状态"
+        max_interruption_time: 15  # minutes
+      temperature_deviation:
+        threshold: 5  # celsius
+        action: "hold"
+        reason: "150C热压温度偏差>5C需暂停"
+      pressure_loss:
+        action: "alert"
+        reason: "压力丢失可能导致层压板分层，需评估"
+      over_temperature:
+        threshold: 180  # celsius
+        action: "abort_protocol"
+        reason: "温度超180C可能导致树脂热降解和MEK引燃"
+      mek_ignition:
+        action: "emergency_shutdown"
+        reason: "MEK引燃需立即停机并启动应急程序"
+    validation_checks:
+      - check: "cfrp_cured == true"
+        description: "CFRP必须完全固化"
+        on_fail: "extend_hot_press"
+      - check: "composite_appearance != 'major_defects'"
+        description: "复合材料外观不应有重大缺陷"
+        on_fail: "quality_assessment"
+      - check: "void_content in ['low']"
+        description: "孔隙含量须为低"
+        on_fail: "quality_assessment"
+      - check: "mek_residue_check == true"
+        description: "热压前须确认MEK已充分挥发"
+        on_fail: "abort_protocol"
+      - check: "final_laminate_thickness approx target_thickness"
+        description: "最终厚度须接近目标(3.5mm或2.0mm)"
+        tolerance: 0.2  # mm
+        on_fail: "quality_assessment"
+
+# ============================================================
+# 全局恢复策略
+# ============================================================
+global_recovery:
+  max_total_interruptions: 3  # 最多允许3次中断
+  interruption_cooldown: 300  # 中断后冷却时间(秒)
+  emergency_shutdown_temp: 200  # 紧急停机温度(C)
+  emergency_shutdown_pressure: 10  # 紧急停机压力(MPa, 若确认单位)
+
+# ============================================================
+# 中断恢复决策树
+# ============================================================
+recovery_decision_tree:
+  - condition: "power_failure"
+    sub_conditions:
+      - condition: "interruption_time < max_interruption_time"
+        action: "resume_from_checkpoint"
+        reason: "短时间中断可从检查点恢复"
+      - condition: "interruption_time >= max_interruption_time"
+        action: "restart_step"
+        reason: "长时间中断需重新执行当前步骤"
+
+  - condition: "temperature_deviation"
+    sub_conditions:
+      - condition: "deviation <= threshold"
+        action: "continue"
+        reason: "温度偏差在允许范围内"
+      - condition: "deviation > threshold and deviation <= 10"
+        action: "hold"
+        reason: "温度偏差较大，需暂停调整"
+      - condition: "deviation > 10"
+        action: "abort_step"
+        reason: "温度偏差过大，需评估产物状态"
+
+  - condition: "nitrogen_loss"
+    sub_conditions:
+      - condition: "step in ['S01', 'S02', 'S03', 'S04', 'S05']"
+        action: "restart_step"
+        reason: "MDI合成阶段N2丢失需重新执行"
+      - condition: "step not in ['S01', 'S02', 'S03', 'S04', 'S05']"
+        action: "continue"
+        reason: "非MDI合成阶段N2丢失影响较小"
+
+  - condition: "vacuum_loss"
+    sub_conditions:
+      - condition: "step == 'S10'"
+        action: "restart_step"
+        reason: "真空脱泡阶段真空丢失需重新脱泡"
+      - condition: "step != 'S10'"
+        action: "continue"
+        reason: "非真空步骤真空丢失无影响"
+
+  - condition: "product_gelled"
+    action: "abort_protocol"
+    reason: "产物凝胶化表示反应失控，需废弃重做"
+
+  - condition: "mek_ignition_risk"
+    action: "emergency_shutdown"
+    reason: "MEK引燃风险需立即停机"
+    sub_conditions:
+      - condition: "step == 'S15' and mek_residue == true"
+        action: "abort_protocol"
+        reason: "热压阶段有MEK残留，禁止执行"
+      - condition: "step == 'S15' and mek_residue == false"
+        action: "continue"
+        reason: "MEK已充分挥发，可继续热压"

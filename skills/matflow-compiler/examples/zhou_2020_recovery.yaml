@@ -1,0 +1,296 @@
+# 恢复与检查点方案
+## Zhou et al. 2020 - TiO2-SiO2 Janus 粒子合成
+# 协议ID: MF-REAL-002
+# 来源: ACS Appl. Mater. Interfaces 2020, 12, 29876-29882
+# DOI: 10.1021/acsami.0c01064
+
+protocol_id: "MF-REAL-002"
+material: "Methyl-capped TiO2-SiO2 Janus Pickering emulsifiers"
+total_steps: 14
+checkpoints:
+  - checkpoint_id: "CP-01"
+    after_step: "S04"
+    description: "无定形TiO2球体形成完成"
+    stored_state:
+      - name: "tio2_sphere_formed"
+        type: "boolean"
+        description: "TiO2球体是否已形成"
+      - name: "reaction_temperature"
+        type: "number"
+        unit: "celsius"
+        description: "反应温度记录"
+      - name: "reaction_duration"
+        type: "number"
+        unit: "minute"
+        description: "实际反应时间"
+      - name: "solution_appearance"
+        type: "string"
+        description: "溶液外观描述（颜色、浊度）"
+      - name: "solution_ph"
+        type: "number"
+        description: "溶液pH值（如可测量）"
+    recovery_policy:
+      power_failure:
+        action: "restart_step"
+        max_tolerance_minutes: 10
+        description: "断电超过10分钟则重新从S01开始配制溶液A和B"
+      temperature_deviation:
+        threshold: 5
+        unit: "celsius"
+        action: "hold"
+        description: "温度偏差超过5C则保持当前温度等待确认"
+      stirring_failure:
+        action: "restart_step"
+        description: "搅拌中断则重新开始S04"
+    verification:
+      - check: "溶液呈乳白色悬浮液"
+      - check: "无可见团聚物"
+      - check: "温度稳定在25 +/- 2 C"
+
+  - checkpoint_id: "CP-02"
+    after_step: "S07"
+    description: "锐钛矿TiO2球体水热处理完成"
+    stored_state:
+      - name: "hydrothermal_temperature"
+        type: "number"
+        unit: "celsius"
+        description: "水热温度记录"
+      - name: "hydrothermal_duration"
+        type: "number"
+        unit: "hour"
+        description: "实际水热时间"
+      - name: "autoclave_sealed"
+        type: "boolean"
+        description: "水热釜是否密封完好"
+      - name: "anatase_phase_confirmed"
+        type: "boolean"
+        description: "锐钛矿相是否确认（XRD）"
+      - name: "cooling_completed"
+        type: "boolean"
+        description: "是否已冷却至室温"
+      - name: "autoclave_pressure_max"
+        type: "number"
+        unit: "MPa"
+        description: "水热过程中最大压力（如可监测）"
+    recovery_policy:
+      power_failure:
+        action: "restart_step"
+        max_tolerance_minutes: 30
+        description: "断电超过30分钟则重新进行水热处理。若断电时温度仍>150C，等待自然冷却后重新开始"
+        safety_note: "严禁在高温状态下打开水热釜"
+      temperature_deviation:
+        threshold: 10
+        unit: "celsius"
+        action: "alert"
+        description: "温度偏差超过10C触发警报，需人工确认是否继续"
+      pressure_anomaly:
+        action: "abort"
+        description: "压力异常升高则立即终止加热，自然冷却后检查"
+    verification:
+      - check: "水热釜已完全冷却至室温"
+      - check: "釜体无变形、无泄漏"
+      - check: "产物为白色悬浮液"
+      - check: "XRD确认锐钛矿相（建议）"
+
+  - checkpoint_id: "CP-03"
+    after_step: "S10"
+    description: "MJTS反应液配制完成（TEOS已加入）"
+    stored_state:
+      - name: "teos_added"
+        type: "boolean"
+        description: "TEOS是否已加入"
+      - name: "mixture_temperature"
+        type: "number"
+        unit: "celsius"
+        description: "混合液温度"
+      - name: "reagent_addition_complete"
+        type: "boolean"
+        description: "所有试剂是否按顺序加入完毕"
+      - name: "solution_appearance"
+        type: "string"
+        description: "溶液外观描述"
+      - name: "addition_order_verified"
+        type: "boolean"
+        description: "添加顺序是否正确"
+    recovery_policy:
+      power_failure:
+        action: "restart_step"
+        max_tolerance_minutes: 5
+        description: "断电超过5分钟则重新从S09开始配制反应液"
+      reagent_addition_error:
+        action: "discard_and_restart"
+        description: "试剂添加顺序错误或遗漏则丢弃当前溶液重新配制"
+      stirring_failure:
+        action: "restart_step"
+        description: "搅拌中断则重新从S09开始"
+    verification:
+      - check: "所有试剂按顺序加入（PVP+n-pentanol -> stock -> ethanol -> citrate -> ammonia -> TEOS）"
+      - check: "每次加入后搅拌2分钟"
+      - check: "溶液均匀无分层"
+
+  - checkpoint_id: "CP-04"
+    after_step: "S11"
+    description: "Janus TiO2-SiO2粒子静置生长完成"
+    stored_state:
+      - name: "growth_time"
+        type: "number"
+        unit: "hour"
+        description: "实际静置生长时间"
+      - name: "growth_temperature"
+        type: "number"
+        unit: "celsius"
+        description: "生长温度记录"
+      - name: "janus_particles_formed"
+        type: "boolean"
+        description: "Janus粒子是否已形成（SEM/TEM确认）"
+      - name: "solution_static"
+        type: "boolean"
+        description: "溶液是否保持静止"
+      - name: "solution_appearance"
+        type: "string"
+        description: "溶液外观变化记录"
+    recovery_policy:
+      power_failure:
+        action: "resume_from_checkpoint"
+        max_tolerance_minutes: 60
+        description: "断电不影响静置生长，恢复后继续计时。若温度偏离25C超过5C，需人工确认"
+      temperature_deviation:
+        threshold: 5
+        unit: "celsius"
+        action: "continue"
+        description: "温度偏差5C以内可继续，超过5C需人工确认"
+      accidental_disturbance:
+        action: "note_and_continue"
+        description: "如溶液被意外扰动，记录事件但可继续（可能影响产物均匀性）"
+    verification:
+      - check: "溶液保持静止"
+      - check: "温度稳定在25 +/- 5 C"
+      - check: "溶液中有可见粒子形成"
+      - check: "生长时间已记录"
+
+  - checkpoint_id: "CP-05"
+    after_step: "S13"
+    description: "Janus粒子分离和洗涤完成"
+    stored_state:
+      - name: "particles_separated"
+        type: "boolean"
+        description: "粒子是否已离心分离"
+      - name: "wash_cycles_completed"
+        type: "number"
+        description: "完成的洗涤次数（应为3）"
+      - name: "particle_mass"
+        type: "number"
+        unit: "mg"
+        description: "分离后粒子质量"
+      - name: "particle_appearance"
+        type: "string"
+        description: "粒子外观描述"
+      - name: "supernatant_clarity"
+        type: "string"
+        description: "上清液澄清度"
+    recovery_policy:
+      power_failure:
+        action: "resume_from_checkpoint"
+        max_tolerance_minutes: 30
+        description: "断电后可从当前洗涤步骤恢复"
+      centrifuge_failure:
+        action: "restart_step"
+        description: "离心机故障则重新进行离心分离"
+      wash_error:
+        action: "redo_wash"
+        description: "洗涤次数不足则补充洗涤"
+    verification:
+      - check: "粒子已完全离心分离"
+      - check: "洗涤3次完成"
+      - check: "上清液澄清"
+      - check: "粒子质量已记录"
+
+  - checkpoint_id: "CP-06"
+    after_step: "S14"
+    description: "甲基化改性完成（最终产物）"
+    stored_state:
+      - name: "methylation_complete"
+        type: "boolean"
+        description: "甲基化改性是否完成"
+      - name: "reflux_temperature"
+        type: "number"
+        unit: "celsius"
+        description: "回流温度记录"
+      - name: "reflux_duration"
+        type: "number"
+        unit: "hour"
+        description: "实际回流时间"
+      - name: "mtms_amount"
+        type: "number"
+        unit: "uL"
+        description: "MTMS用量（10或100 uL）"
+      - name: "final_particle_mass"
+        type: "number"
+        unit: "mg"
+        description: "最终产物质量"
+      - name: "product_appearance"
+        type: "string"
+        description: "产物外观描述"
+      - name: "condenser_water_flow"
+        type: "boolean"
+        description: "冷凝水是否持续流动"
+    recovery_policy:
+      power_failure:
+        action: "resume_from_checkpoint"
+        max_tolerance_minutes: 15
+        description: "断电超过15分钟需人工确认是否继续回流。若回流中断导致温度下降，恢复后继续计时"
+      temperature_deviation:
+        threshold: 5
+        unit: "celsius"
+        action: "hold"
+        description: "温度偏差超过5C则保持当前状态等待确认"
+      condenser_failure:
+        action: "abort"
+        description: "冷凝水中断则立即终止加热，防止乙醇蒸气泄漏"
+        safety_note: "冷凝水故障可能导致乙醇蒸气和氨气泄漏，必须立即停止加热"
+      reflux_time_shortage:
+        action: "extend"
+        description: "若实际回流时间不足4h，需补充加热至满足总时间"
+    verification:
+      - check: "回流已持续4小时"
+      - check: "冷凝水持续流动"
+      - check: "温度稳定在78 +/- 5 C（推断值）"
+      - check: "产物已分离和干燥"
+      - check: "最终产物质量已记录"
+      - check: "产物外观符合预期"
+
+# 全局恢复策略
+global_recovery:
+  max_total_interruption_time: 120  # 分钟，总中断时间上限
+  restart_threshold: 3  # 同一步骤重启超过3次则终止协议
+  safety_priority: "high"  # 安全优先级
+  data_logging:
+    required: true
+    interval_minutes: 5  # 每5分钟记录一次状态
+  emergency_shutdown:
+    trigger: "any_blocked_safety_check"
+    action: "stop_all_heating_and_stirring"
+    notification: "alert_operator"
+
+# 检查点依赖关系
+checkpoint_dependencies:
+  - from: "CP-01"
+    to: "CP-02"
+    required: true
+    description: "必须完成无定形TiO2球体后才能进行水热处理"
+  - from: "CP-02"
+    to: "CP-03"
+    required: true
+    description: "必须完成锐钛矿TiO2球体后才能配制MJTS反应液"
+  - from: "CP-03"
+    to: "CP-04"
+    required: true
+    description: "必须完成反应液配制后才能静置生长"
+  - from: "CP-04"
+    to: "CP-05"
+    required: true
+    description: "必须完成Janus粒子生长后才能分离洗涤"
+  - from: "CP-05"
+    to: "CP-06"
+    required: true
+    description: "必须完成粒子洗涤后才能进行甲基化改性"

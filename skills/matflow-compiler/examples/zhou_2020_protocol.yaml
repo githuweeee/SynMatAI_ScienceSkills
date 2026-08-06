@@ -1,0 +1,928 @@
+# 设备无关实验中间表示 (EIR)
+# Zhou et al. 2020 - TiO2-SiO2 Janus 粒子合成
+# 协议ID: MF-REAL-002
+# 来源: ACS Appl. Mater. Interfaces 2020, 12, 29876-29882
+# DOI: 10.1021/acsami.0c01064
+# 状态: needs_review
+
+protocol_id: "MF-REAL-002"
+material: "Methyl-capped TiO2-SiO2 Janus Pickering emulsifiers"
+overall_status: "needs_review"
+overall_confidence: 0.82
+
+source_documents:
+  - doc_id: "DOC-001"
+    title: "Synthesis of Methyl-Capped TiO2-SiO2 Janus Pickering Emulsifiers for Selective Photodegradation of Water-Soluble Dyes"
+    file_path: "papers/zhou_2020_acsami_12_29876.pdf"
+    doc_type: "paper"
+    authors:
+      - "Yingyu Zhou"
+      - "Fei Shen"
+      - "Shengdi Zhang"
+      - "Qingqing Zhao"
+      - "Zhuang Xu"
+      - "Hongling Chen"
+    journal: "ACS Applied Materials & Interfaces"
+    volume: 12
+    pages: "29876-29882"
+    year: 2020
+    doi: "10.1021/acsami.0c01064"
+
+reagents:
+  - name: "Ethanol (anhydrous)"
+    cas_number: "64-17-5"
+    role: "solvent"
+    supplier: "Wuxi City Yasheng Chemical Co., Ltd. (China)"
+    purity: "anhydrous"
+    hazard_class: "flammable"
+    evidence:
+      document: "DOC-001"
+      page: 29878
+      section: "Reagents"
+      quote: "Ethanol was purchased from Wuxi City Yasheng Chemical Co., Ltd., China."
+      evidence_type: "explicit"
+      confidence: 0.98
+
+  - name: "Tetrabutyl titanate (TBT)"
+    cas_number: "5593-70-4"
+    role: "precursor"
+    supplier: "Shanghai Lingfeng Chemical Reagent Co., Ltd. (China)"
+    hazard_class: "irritant, moisture_sensitive"
+    evidence:
+      document: "DOC-001"
+      page: 29878
+      section: "Reagents"
+      quote: "Tetrabutyl titanate ... were purchased from Shanghai Lingfeng Chemical Reagent Co., Ltd., China."
+      evidence_type: "explicit"
+      confidence: 0.98
+
+  - name: "n-Pentanol"
+    cas_number: "71-41-0"
+    role: "solvent"
+    supplier: "Shanghai Lingfeng Chemical Reagent Co., Ltd. (China)"
+    hazard_class: "flammable"
+    evidence:
+      document: "DOC-001"
+      page: 29878
+      section: "Reagents"
+      quote: "n-pentanol ... were purchased from Shanghai Lingfeng Chemical Reagent Co., Ltd., China."
+      evidence_type: "explicit"
+      confidence: 0.98
+
+  - name: "Cyclohexane"
+    cas_number: "110-82-7"
+    role: "solvent"
+    supplier: "Shanghai Lingfeng Chemical Reagent Co., Ltd. (China)"
+    hazard_class: "flammable"
+    evidence:
+      document: "DOC-001"
+      page: 29878
+      section: "Reagents"
+      quote: "cyclohexane ... were purchased from Shanghai Lingfeng Chemical Reagent Co., Ltd., China."
+      evidence_type: "explicit"
+      confidence: 0.98
+
+  - name: "Ammonia solution (25 wt% NH3)"
+    cas_number: "1336-21-6"
+    role: "catalyst"
+    supplier: "Shanghai Lingfeng Chemical Reagent Co., Ltd. (China)"
+    purity: "25 wt% NH3"
+    hazard_class: "corrosive, respiratory_irritant"
+    evidence:
+      document: "DOC-001"
+      page: 29878
+      section: "Reagents"
+      quote: "ammonia solution (25%) were purchased from Shanghai Lingfeng Chemical Reagent Co., Ltd., China."
+      evidence_type: "explicit"
+      confidence: 0.98
+
+  - name: "Methyltrimethoxysilane (MTMS)"
+    cas_number: "1185-55-3"
+    role: "surface_modifier"
+    supplier: "Sinopharm (China)"
+    hazard_class: "flammable, moisture_sensitive"
+    evidence:
+      document: "DOC-001"
+      page: 29878
+      section: "Reagents"
+      quote: "Methyltrimethoxysilane ... were obtained from Sinopharm (China)."
+      evidence_type: "explicit"
+      confidence: 0.98
+
+  - name: "Octane"
+    cas_number: "111-65-9"
+    role: "solvent"
+    supplier: "Sinopharm (China)"
+    hazard_class: "flammable"
+    evidence:
+      document: "DOC-001"
+      page: 29878
+      section: "Reagents"
+      quote: "octane ... were obtained from Sinopharm (China)."
+      evidence_type: "explicit"
+      confidence: 0.98
+
+  - name: "Liquid paraffin"
+    cas_number: "8012-95-1"
+    role: "solvent"
+    supplier: "Sinopharm (China)"
+    hazard_class: "low_hazard"
+    evidence:
+      document: "DOC-001"
+      page: 29878
+      section: "Reagents"
+      quote: "liquid paraffin ... were obtained from Sinopharm (China)."
+      evidence_type: "explicit"
+      confidence: 0.98
+
+  - name: "Toluene"
+    cas_number: "108-88-3"
+    role: "solvent"
+    supplier: "Sinopharm (China)"
+    hazard_class: "flammable, toxic"
+    evidence:
+      document: "DOC-001"
+      page: 29878
+      section: "Reagents"
+      quote: "toluene ... were obtained from Sinopharm (China)."
+      evidence_type: "explicit"
+      confidence: 0.98
+
+  - name: "Polydimethylsiloxane (PDMS, viscosity 100 cS)"
+    cas_number: "9016-00-6"
+    role: "additive"
+    supplier: "Sinopharm (China)"
+    purity: "viscosity 100 cS"
+    hazard_class: "low_hazard"
+    evidence:
+      document: "DOC-001"
+      page: 29878
+      section: "Reagents"
+      quote: "polydimethylsiloxane (viscosity of 100 cS) ... were obtained from Sinopharm (China)."
+      evidence_type: "explicit"
+      confidence: 0.98
+
+  - name: "Sudan Red"
+    cas_number: null
+    role: "dye"
+    supplier: "Sinopharm (China)"
+    hazard_class: "irritant"
+    evidence:
+      document: "DOC-001"
+      page: 29878
+      section: "Reagents"
+      quote: "Sudan Red ... were obtained from Sinopharm (China)."
+      evidence_type: "explicit"
+      confidence: 0.98
+
+  - name: "Methylene blue"
+    cas_number: "61-73-4"
+    role: "dye"
+    supplier: "Sinopharm (China)"
+    hazard_class: "irritant"
+    evidence:
+      document: "DOC-001"
+      page: 29878
+      section: "Reagents"
+      quote: "methylene blue ... were obtained from Sinopharm (China)."
+      evidence_type: "explicit"
+      confidence: 0.98
+
+  - name: "Potassium chloride (KCl)"
+    cas_number: "7447-40-7"
+    role: "additive"
+    supplier: "Sinopharm (China)"
+    hazard_class: "low_hazard"
+    evidence:
+      document: "DOC-001"
+      page: 29878
+      section: "Reagents"
+      quote: "potassium chloride ... were obtained from Sinopharm (China)."
+      evidence_type: "explicit"
+      confidence: 0.98
+
+  - name: "Polyvinylpyrrolidone (PVP K30, Mw 40000 Da)"
+    cas_number: "9003-39-8"
+    role: "additive"
+    supplier: "Sinopharm (China)"
+    purity: "GR, Mw 40000 Da"
+    hazard_class: "low_hazard"
+    evidence:
+      document: "DOC-001"
+      page: 29878
+      section: "Reagents"
+      quote: "polyvinylpyrrolidone (PVP K30, Mw of 40 000 Da, GR) ... were obtained from Sinopharm (China)."
+      evidence_type: "explicit"
+      confidence: 0.98
+
+  - name: "Tetraethyl orthosilicate (TEOS)"
+    cas_number: "78-10-4"
+    role: "precursor"
+    supplier: "Sinopharm (China)"
+    hazard_class: "flammable, irritant"
+    evidence:
+      document: "DOC-001"
+      page: 29878
+      section: "Reagents"
+      quote: "tetraethyl orthosilicate ... were obtained from Sinopharm (China)."
+      evidence_type: "explicit"
+      confidence: 0.98
+
+  - name: "Trisodium citrate"
+    cas_number: "6132-04-3"
+    role: "additive"
+    supplier: "Sinopharm (China)"
+    hazard_class: "low_hazard"
+    evidence:
+      document: "DOC-001"
+      page: 29878
+      section: "Reagents"
+      quote: "trisodium citrate were obtained from Sinopharm (China)."
+      evidence_type: "explicit"
+      confidence: 0.98
+
+  - name: "Deionized water"
+    cas_number: "7732-18-5"
+    role: "solvent"
+    purity: "deionized"
+    hazard_class: "none"
+    evidence:
+      document: "DOC-001"
+      page: 29878
+      section: "Reagents"
+      quote: "Deionized water was applied for all reactions and treatment processes."
+      evidence_type: "explicit"
+      confidence: 0.98
+
+steps:
+  - step_id: "S01"
+    action: "dissolve"
+    material: "Tetrabutyl titanate in anhydrous ethanol"
+    description: "Prepare Solution A: add TBT into anhydrous ethanol with vigorous stirring"
+    parameters:
+      amount:
+        value: 2.55
+        unit: "mL"
+        note: "TBT volume; solvent: 80 mL anhydrous ethanol"
+      temperature:
+        value: 25
+        unit: "celsius"
+        evidence_type: "inferred"
+        confidence: 0.85
+        note: "Room temperature inferred"
+      duration:
+        value: null
+        unit: "minute"
+        note: "Not specified; stir until homogeneous"
+      stirring_speed:
+        value: null
+        unit: "rpm"
+        note: "'vigorous stirring' - no specific rpm"
+      atmosphere: "air"
+      pressure: null
+    depends_on: []
+    parallel_group: null
+    evidence:
+      - document: "DOC-001"
+        page: 29878
+        section: "Synthesis of Anatase TiO2 Nanospheres"
+        quote: "Solution A was prepared by adding 2.55 mL of tetrabutyl titanate into anhydrous 80 mL of ethanol with vigorous stirring."
+        evidence_type: "explicit"
+        confidence: 0.98
+    confidence: 0.85
+    status: "warning"
+    missing_fields:
+      - field_name: "stirring_speed"
+        risk_level: "medium"
+        blocks_execution: false
+      - field_name: "duration.value"
+        risk_level: "low"
+        blocks_execution: false
+
+  - step_id: "S02"
+    action: "dissolve"
+    material: "KCl solution + deionized water + anhydrous ethanol"
+    description: "Prepare Solution B: mix KCl solution, deionized water, and ethanol with vigorous stirring"
+    parameters:
+      amount:
+        value: 22.3
+        unit: "mL"
+        note: "300 uL KCl (0.1 M) + 2 mL H2O + 20 mL ethanol"
+      temperature:
+        value: 25
+        unit: "celsius"
+        evidence_type: "inferred"
+        confidence: 0.85
+      duration:
+        value: null
+        unit: "minute"
+      stirring_speed:
+        value: null
+        unit: "rpm"
+      atmosphere: "air"
+      pressure: null
+    depends_on: []
+    parallel_group: null
+    evidence:
+      - document: "DOC-001"
+        page: 29878
+        section: "Synthesis of Anatase TiO2 Nanospheres"
+        quote: "Solution B was prepared by mixing 300 uL of KCl solution (0.1 M in water), 2 mL of deionized water, and 20 mL of anhydrous ethanol together with vigorous stirring."
+        evidence_type: "explicit"
+        confidence: 0.98
+    confidence: 0.85
+    status: "warning"
+    missing_fields:
+      - field_name: "stirring_speed"
+        risk_level: "medium"
+        blocks_execution: false
+      - field_name: "duration.value"
+        risk_level: "low"
+        blocks_execution: false
+
+  - step_id: "S03"
+    action: "drop"
+    material: "Solution B added to Solution A"
+    description: "Add Solution B dropwise to Solution A at 8 mL/min"
+    parameters:
+      amount:
+        value: 22.3
+        unit: "mL"
+      addition_rate:
+        value: 8
+        unit: "mL/min"
+      temperature:
+        value: 25
+        unit: "celsius"
+        evidence_type: "inferred"
+        confidence: 0.85
+      duration:
+        value: null
+        unit: "minute"
+        note: "Derived: 22.3 mL / 8 mL/min ~ 2.8 min"
+      stirring_speed:
+        value: null
+        unit: "rpm"
+      atmosphere: "air"
+      pressure: null
+    depends_on: ["S01", "S02"]
+    parallel_group: null
+    evidence:
+      - document: "DOC-001"
+        page: 29878
+        section: "Synthesis of Anatase TiO2 Nanospheres"
+        quote: "Solution B was added dropwise to solution A at 8 mL min-1"
+        evidence_type: "explicit"
+        confidence: 0.98
+    confidence: 0.90
+    status: "warning"
+    missing_fields:
+      - field_name: "stirring_speed"
+        risk_level: "medium"
+        blocks_execution: false
+
+  - step_id: "S04"
+    action: "stir"
+    material: "Reaction mixture (Solution A + Solution B)"
+    description: "Vigorously stir at 25C for 60 min to obtain amorphous TiO2 spheres"
+    parameters:
+      temperature:
+        value: 25
+        unit: "celsius"
+        hold: true
+      duration:
+        value: 60
+        unit: "minute"
+      stirring_speed:
+        value: null
+        unit: "rpm"
+        note: "'vigorously stirred' - no specific rpm"
+      atmosphere: "air"
+      pressure: null
+    depends_on: ["S03"]
+    parallel_group: null
+    evidence:
+      - document: "DOC-001"
+        page: 29878
+        section: "Synthesis of Anatase TiO2 Nanospheres"
+        quote: "the reaction mixture was vigorously stirred at 25 C for 60 min to obtain amorphous TiO2 spheres."
+        evidence_type: "explicit"
+        confidence: 0.98
+    confidence: 0.90
+    status: "warning"
+    missing_fields:
+      - field_name: "stirring_speed"
+        risk_level: "medium"
+        blocks_execution: false
+
+  - step_id: "S05"
+    action: "wash"
+    material: "Amorphous TiO2 spheres"
+    description: "Wash with ethanol and water 2 times"
+    parameters:
+      solvent: "ethanol and water"
+      repetitions: 2
+      amount:
+        value: null
+        unit: "mL"
+        note: "Solvent volume not specified"
+      temperature:
+        value: 25
+        unit: "celsius"
+        evidence_type: "inferred"
+        confidence: 0.85
+      stirring_speed:
+        value: null
+        unit: "rpm"
+      atmosphere: "air"
+      pressure: null
+    depends_on: ["S04"]
+    parallel_group: null
+    evidence:
+      - document: "DOC-001"
+        page: 29878
+        section: "Synthesis of Anatase TiO2 Nanospheres"
+        quote: "The amorphous TiO2 spheres were washed by ethanol and water 2 times"
+        evidence_type: "explicit"
+        confidence: 0.97
+    confidence: 0.80
+    status: "warning"
+    missing_fields:
+      - field_name: "amount.value"
+        risk_level: "low"
+        blocks_execution: false
+      - field_name: "stirring_speed"
+        risk_level: "low"
+        blocks_execution: false
+
+  - step_id: "S06"
+    action: "dissolve"
+    material: "Amorphous TiO2 spheres in water"
+    description: "Disperse in water at 20 mg/mL"
+    parameters:
+      concentration:
+        value: 20
+        unit: "mg/mL"
+      temperature:
+        value: 25
+        unit: "celsius"
+        evidence_type: "inferred"
+        confidence: 0.85
+      stirring_speed:
+        value: null
+        unit: "rpm"
+      atmosphere: "air"
+      pressure: null
+    depends_on: ["S05"]
+    parallel_group: null
+    evidence:
+      - document: "DOC-001"
+        page: 29878
+        section: "Synthesis of Anatase TiO2 Nanospheres"
+        quote: "and then dispersed in water (20 mg mL-1)."
+        evidence_type: "explicit"
+        confidence: 0.98
+    confidence: 0.90
+    status: "warning"
+    missing_fields:
+      - field_name: "stirring_speed"
+        risk_level: "low"
+        blocks_execution: false
+
+  - step_id: "S07"
+    action: "heat"
+    material: "TiO2 suspension in Teflon-lined autoclave"
+    description: "Hydrothermal treatment at 200C for 10h in 50 mL Teflon-lined autoclave"
+    parameters:
+      amount:
+        value: 30
+        unit: "mL"
+        note: "30 mL suspension in 50 mL autoclave"
+      temperature:
+        value: 200
+        unit: "celsius"
+        ramp_rate: null
+        hold: true
+      duration:
+        value: 10
+        unit: "hour"
+      is_sealed: true
+      atmosphere: "air"
+      pressure: null
+      estimated_pressure: 1.6
+      pressure_unit: "MPa"
+      cooling_method: null
+    depends_on: ["S06"]
+    parallel_group: null
+    evidence:
+      - document: "DOC-001"
+        page: 29878
+        section: "Synthesis of Anatase TiO2 Nanospheres"
+        quote: "The amorphous TiO2 sphere suspension (30 mL) was transferred to a 50 mL Teflon-lined autoclave, which was tightly sealed in a stainless-steel tank and kept at 200 C for 10 h to achieve anatase TiO2 spheres."
+        evidence_type: "explicit"
+        confidence: 0.98
+    confidence: 0.85
+    status: "warning"
+    missing_fields:
+      - field_name: "temperature.ramp_rate"
+        risk_level: "medium"
+        blocks_execution: false
+      - field_name: "cooling_method"
+        risk_level: "medium"
+        blocks_execution: false
+
+  - step_id: "S08"
+    action: "dissolve"
+    material: "PVP in anatase TiO2 sphere suspension"
+    description: "Dissolve 1.0 g PVP in 10 mL TiO2 suspension (stock solution)"
+    parameters:
+      amount:
+        value: 1.0
+        unit: "g"
+        note: "PVP in 10 mL TiO2 suspension (20 mg/mL)"
+      temperature:
+        value: 25
+        unit: "celsius"
+        evidence_type: "inferred"
+        confidence: 0.85
+      duration:
+        value: null
+        unit: "minute"
+      stirring_speed:
+        value: null
+        unit: "rpm"
+      atmosphere: "air"
+      pressure: null
+    depends_on: ["S07"]
+    parallel_group: null
+    evidence:
+      - document: "DOC-001"
+        page: 29878
+        section: "Synthesis of Anatase TiO2 Nanospheres"
+        quote: "1.0 g of polyvinylpyrrolidone (Mw of 40 kDa) was dissolved in 10 mL of anatase TiO2 sphere suspension and served as a stock solution."
+        evidence_type: "explicit"
+        confidence: 0.98
+    confidence: 0.88
+    status: "warning"
+    missing_fields:
+      - field_name: "stirring_speed"
+        risk_level: "low"
+        blocks_execution: false
+      - field_name: "duration.value"
+        risk_level: "low"
+        blocks_execution: false
+
+  - step_id: "S09"
+    action: "add"
+    material: "PVP + n-pentanol + stock + ethanol + citrate + ammonia"
+    description: "Prepare MJTS reaction: dissolve PVP in n-pentanol, sequentially add stock, ethanol, citrate, ammonia, stir 2 min after each"
+    parameters:
+      reagents:
+        - name: "PVP"
+          amount: 1.0
+          unit: "g"
+        - name: "n-pentanol"
+          amount: 10.0
+          unit: "mL"
+        - name: "stock solution"
+          amount: 0.28
+          unit: "mL"
+        - name: "ethanol"
+          amount: 1.0
+          unit: "mL"
+        - name: "sodium citrate (0.18 M)"
+          amount: 67
+          unit: "uL"
+        - name: "ammonia (25 wt%)"
+          amount: 0.20
+          unit: "mL"
+      addition_order: "sequential"
+      stir_after_each:
+        value: 2
+        unit: "minute"
+      temperature:
+        value: 25
+        unit: "celsius"
+        evidence_type: "inferred"
+        confidence: 0.85
+      stirring_speed:
+        value: null
+        unit: "rpm"
+      atmosphere: "air"
+      pressure: null
+    depends_on: ["S08"]
+    parallel_group: null
+    evidence:
+      - document: "DOC-001"
+        page: 29879
+        section: "Synthesis of MJTSs"
+        quote: "1.0 g of polyvinylpyrrolidone (Mw of 40 kDa) was dissolved in 10.0 mL of n-pentanol in a 15 mL beaker. Then, 0.28 mL of the stock solution, 1.0 mL of ethanol, 67 uL of sodium citrate solution (0.18 M in water), and 0.20 mL of ammonia solution (NH3 content of 25 wt %) were added sequentially, and the mixture was stirred for 2 min after each chemical was added."
+        evidence_type: "explicit"
+        confidence: 0.98
+    confidence: 0.90
+    status: "warning"
+    missing_fields:
+      - field_name: "stirring_speed"
+        risk_level: "medium"
+        blocks_execution: false
+
+  - step_id: "S10"
+    action: "add"
+    material: "TEOS added to MJTS reaction mixture"
+    description: "Add 0.1 mL TEOS and stir for 2 min"
+    parameters:
+      amount:
+        value: 0.1
+        unit: "mL"
+      duration:
+        value: 2
+        unit: "minute"
+      temperature:
+        value: 25
+        unit: "celsius"
+        evidence_type: "inferred"
+        confidence: 0.85
+      stirring_speed:
+        value: null
+        unit: "rpm"
+      atmosphere: "air"
+      pressure: null
+    depends_on: ["S09"]
+    parallel_group: null
+    evidence:
+      - document: "DOC-001"
+        page: 29879
+        section: "Synthesis of MJTSs"
+        quote: "0.1 mL of tetraethyl orthosilicate (TEOS) was added to the above solution and stirred for 2 min."
+        evidence_type: "explicit"
+        confidence: 0.98
+    confidence: 0.92
+    status: "warning"
+    missing_fields:
+      - field_name: "stirring_speed"
+        risk_level: "medium"
+        blocks_execution: false
+
+  - step_id: "S11"
+    action: "wait"
+    material: "Janus TiO2-SiO2 particle growth solution"
+    description: "Leave solution static at 25C for different times"
+    parameters:
+      temperature:
+        value: 25
+        unit: "celsius"
+        hold: true
+      duration:
+        value: null
+        unit: "hour"
+        note: "'different times' - no specific value"
+      is_static: true
+      atmosphere: "air"
+      pressure: null
+    depends_on: ["S10"]
+    parallel_group: null
+    evidence:
+      - document: "DOC-001"
+        page: 29879
+        section: "Synthesis of MJTSs"
+        quote: "The solution was left static for different times at 25 C to obtain the Janus TiO2-SiO2 particles."
+        evidence_type: "explicit"
+        confidence: 0.95
+    confidence: 0.70
+    status: "warning"
+    missing_fields:
+      - field_name: "duration.value"
+        risk_level: "medium"
+        blocks_execution: false
+
+  - step_id: "S12"
+    action: "centrifuge"
+    material: "Janus TiO2-SiO2 particles"
+    description: "Separate Janus TiO2-SiO2 particles by centrifugation"
+    parameters:
+      centrifuge_speed:
+        value: null
+        unit: "rpm"
+      duration:
+        value: null
+        unit: "minute"
+      temperature:
+        value: 25
+        unit: "celsius"
+        evidence_type: "inferred"
+        confidence: 0.85
+      atmosphere: "air"
+      pressure: null
+    depends_on: ["S11"]
+    parallel_group: null
+    evidence:
+      - document: "DOC-001"
+        page: 29879
+        section: "Synthesis of MJTSs"
+        quote: "The Janus TiO2-SiO2 particles produced were then separated by centrifugation"
+        evidence_type: "explicit"
+        confidence: 0.95
+    confidence: 0.60
+    status: "warning"
+    missing_fields:
+      - field_name: "centrifuge_speed"
+        risk_level: "medium"
+        blocks_execution: false
+      - field_name: "duration.value"
+        risk_level: "medium"
+        blocks_execution: false
+
+  - step_id: "S13"
+    action: "wash"
+    material: "Janus TiO2-SiO2 particles"
+    description: "Wash with ethanol and water 3 times"
+    parameters:
+      solvent: "ethanol and water"
+      repetitions: 3
+      amount:
+        value: null
+        unit: "mL"
+      temperature:
+        value: 25
+        unit: "celsius"
+        evidence_type: "inferred"
+        confidence: 0.85
+      stirring_speed:
+        value: null
+        unit: "rpm"
+      atmosphere: "air"
+      pressure: null
+    depends_on: ["S12"]
+    parallel_group: null
+    evidence:
+      - document: "DOC-001"
+        page: 29879
+        section: "Synthesis of MJTSs"
+        quote: "and washed with ethanol and water 3 times, separately."
+        evidence_type: "explicit"
+        confidence: 0.97
+    confidence: 0.80
+    status: "warning"
+    missing_fields:
+      - field_name: "amount.value"
+        risk_level: "low"
+        blocks_execution: false
+      - field_name: "stirring_speed"
+        risk_level: "low"
+        blocks_execution: false
+
+  - step_id: "S14"
+    action: "heat"
+    material: "Janus TiO2-SiO2 particles + MTMS in ethanol with ammonia"
+    description: "Modify 100 mg Janus particles with MTMS (10 or 100 uL) in 50 mL ethanol, reflux 4h with 1 mL ammonia"
+    parameters:
+      amount:
+        value: 100
+        unit: "mg"
+        note: "Janus particles; MTMS: 10 or 100 uL; ethanol: 50 mL; ammonia: 1 mL"
+      temperature:
+        value: 78
+        unit: "celsius"
+        evidence_type: "inferred"
+        confidence: 0.85
+        derivation: "Ethanol boiling point; 'reflux' implies heating to solvent boiling point"
+        hold: true
+      duration:
+        value: 4
+        unit: "hour"
+      stirring_speed:
+        value: null
+        unit: "rpm"
+      atmosphere: "air"
+      pressure: null
+      is_reflux: true
+    depends_on: ["S13"]
+    parallel_group: null
+    evidence:
+      - document: "DOC-001"
+        page: 29879
+        section: "Synthesis of MJTSs"
+        quote: "100 mg of Janus TiO2-SiO2 particles was modified with different amounts (10 and 100 uL) of methyltrimethoxysilane in 50 mL of ethanol at reflux for 4 h in the presence of 1 mL of ammonia solution."
+        evidence_type: "explicit"
+        confidence: 0.98
+      - document: "DOC-001"
+        page: 29879
+        section: "Synthesis of MJTSs"
+        quote: "at reflux for 4 h in the presence of 1 mL of ammonia solution"
+        evidence_type: "inferred"
+        confidence: 0.85
+        derivation: "Reflux temperature inferred as ethanol boiling point (78C)"
+    confidence: 0.82
+    status: "inferred"
+    missing_fields:
+      - field_name: "stirring_speed"
+        risk_level: "medium"
+        blocks_execution: false
+      - field_name: "temperature.ramp_rate"
+        risk_level: "low"
+        blocks_execution: false
+
+equipment:
+  - device_id: null
+    device_type: "reactor"
+    device_name: "Beaker/vessel for Solution A and B (S01-S04)"
+  - device_id: null
+    device_type: "hotplate_stirrer"
+    device_name: "Magnetic stirrer with temperature control (S01-S06, S08-S10)"
+  - device_id: null
+    device_type: "reactor"
+    device_name: "50 mL Teflon-lined autoclave in stainless-steel tank (S07)"
+  - device_id: null
+    device_type: "centrifuge"
+    device_name: "Centrifuge for particle separation (S12)"
+  - device_id: null
+    device_type: "reactor"
+    device_name: "Reflux apparatus with condenser (S14)"
+  - device_id: null
+    device_type: "balance"
+    device_name: "Analytical balance"
+  - device_id: null
+    device_type: "fume_hood"
+    device_name: "Fume hood for ammonia and ethanol operations"
+
+safety_checks:
+  - check_id: "SAFE-001"
+    check_type: "sealed_heating"
+    target_step: "S07"
+    status: "warning"
+    message: "Sealed autoclave at 200C, estimated pressure ~1.6 MPa"
+  - check_id: "SAFE-002"
+    check_type: "high_temperature_confirmation"
+    target_step: "S07"
+    status: "warning"
+    message: "Temperature 200C reaches high-temperature threshold"
+  - check_id: "SAFE-003"
+    check_type: "flammable_solvent_heating"
+    target_step: "S14"
+    status: "warning"
+    message: "Ethanol reflux at ~78C, flash point 13C"
+  - check_id: "SAFE-004"
+    check_type: "toxic_reagent_handling"
+    target_step: "S09"
+    status: "warning"
+    message: "Ammonia solution (0.20 mL), respiratory irritant"
+  - check_id: "SAFE-005"
+    check_type: "toxic_reagent_handling"
+    target_step: "S14"
+    status: "warning"
+    message: "Ammonia solution (1 mL) at reflux temperature"
+  - check_id: "SAFE-006"
+    check_type: "ramp_rate_missing"
+    target_step: "S07"
+    status: "warning"
+    message: "Heating ramp rate to 200C not specified"
+  - check_id: "SAFE-007"
+    check_type: "inferred_parameter"
+    target_step: "S14"
+    status: "warning"
+    message: "Reflux temperature 78C is inferred from ethanol boiling point"
+  - check_id: "SAFE-008"
+    check_type: "flammable_solvent_handling"
+    target_step: "S01"
+    status: "pass"
+    message: "Ethanol at room temperature, standard handling"
+  - check_id: "SAFE-009"
+    check_type: "moisture_sensitive_reagent"
+    target_step: "S01"
+    status: "warning"
+    message: "TBT is moisture-sensitive, anhydrous ethanol used"
+  - check_id: "SAFE-010"
+    check_type: "moisture_sensitive_reagent"
+    target_step: "S10"
+    status: "warning"
+    message: "TEOS is moisture-sensitive"
+  - check_id: "SAFE-011"
+    check_type: "moisture_sensitive_reagent"
+    target_step: "S14"
+    status: "warning"
+    message: "MTMS is moisture-sensitive"
+
+confidence_score:
+  overall: 0.82
+  dimensions:
+    evidence_coverage: 0.90
+    explicit_ratio: 0.85
+    safety_pass_rate: 0.75
+    missing_field_penalty: 0.75
+
+block_reasons: []
+
+metadata:
+  version: "1.0.0"
+  generated_at: "2026-08-07T10:00:00Z"
+  compiler_version: "matflow-compiler/0.3.0"
+  operator: "auto"
+  lab_id: null
+  compilation_notes: >-
+    Protocol compiled from Zhou et al. 2020.
+    Key inferred parameter: reflux temperature (78C, ethanol boiling point) in S14.
+    Missing parameters: stirring speed (multiple steps), centrifuge parameters (S12),
+    hydrothermal ramp rate and cooling method (S07), wash solvent volumes (S05, S13),
+    variable growth time (S11).
+    All missing parameters are medium or low risk; no high-risk blocking parameters.
+    Protocol status: needs_review.
