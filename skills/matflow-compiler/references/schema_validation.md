@@ -135,6 +135,8 @@ python scripts/validate_protocol.py examples/your_protocol.json
 
 **规则**：所有包含 `suggestion` 的 `missing_fields` 必须标记 `requires_confirmation: true`，防止静默补全。
 
+**重要提示**：无论 `suggestion_source` 是 `explicit`、`literature_default` 还是其他值，只要存在 `suggestion` 字段，就必须设置 `requires_confirmation: true`。这是为了确保所有建议值都经过人工确认，避免自动填充可能不准确的值。
+
 ### 问题 4：safety_check 的 target_step 引用错误
 
 **错误示例**：
