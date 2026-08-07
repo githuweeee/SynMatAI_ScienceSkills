@@ -122,7 +122,9 @@
           "document": "DOC-TDS",
           "evidence_type": "explicit",
           "confidence": 0.95,
-          "quote": "用量建议 K-80 1-3phr"
+          "quote": "用量建议 K-80 1-3phr",
+          "page": 1,
+          "section": "实验部分"
         }
       ],
       "confidence": 0.9,
@@ -163,7 +165,7 @@
     },
     {
       "step_id": "S02",
-      "action": "select_promoter",
+      "action": "add",
       "material": "促进剂体系",
       "description": "选择固化促进剂体系: 钴促进剂(室温凝胶长, 用于大型件/长丝缠绕) 或 钒促进剂(室温凝胶短, 固化快)",
       "amount": {
@@ -185,7 +187,9 @@
           "document": "DOC-TDS",
           "evidence_type": "explicit",
           "confidence": 0.9,
-          "quote": "低温需钴/钒催化; 与钴并用室温凝胶长(用于大型件/长丝缠绕); 与钒并用室温凝胶短固化快"
+          "quote": "低温需钴/钒催化; 与钴并用室温凝胶长(用于大型件/长丝缠绕); 与钒并用室温凝胶短固化快",
+          "page": 1,
+          "section": "实验部分"
         }
       ],
       "confidence": 0.8,
@@ -218,7 +222,7 @@
     },
     {
       "step_id": "S03",
-      "action": "mix",
+      "action": "stir",
       "material": "K-80 + 树脂 + 促进剂",
       "description": "混合配方例1: 乙烯基树脂 100 份 + K-80 2 份 + Accelerator VN-2 1 份, 20C 下混合, 凝胶约 12 min",
       "amount": {
@@ -244,7 +248,9 @@
           "document": "DOC-TDS",
           "evidence_type": "explicit",
           "confidence": 0.95,
-          "quote": "乙烯基树脂100份 + K-80 2份 + Accelerator VN-2 1份, 20℃凝胶12min"
+          "quote": "乙烯基树脂100份 + K-80 2份 + Accelerator VN-2 1份, 20℃凝胶12min",
+          "page": 1,
+          "section": "实验部分"
         }
       ],
       "confidence": 0.9,
@@ -277,7 +283,7 @@
     },
     {
       "step_id": "S04",
-      "action": "apply_and_gel",
+      "action": "heat",
       "material": "含促进剂与 K-80 的树脂",
       "description": "施加/浸渍并在操作窗口内让树脂凝胶; 与钴并用凝胶较长可用于大型件/长丝缠绕, 与钒并用凝胶短; ≥35℃ 才有足够快凝胶",
       "amount": null,
@@ -299,7 +305,9 @@
           "document": "DOC-TDS",
           "evidence_type": "explicit",
           "confidence": 0.9,
-          "quote": "≥35℃才有足够快凝胶"
+          "quote": "≥35℃才有足够快凝胶",
+          "page": 1,
+          "section": "实验部分"
         }
       ],
       "confidence": 0.8,
@@ -332,7 +340,7 @@
     },
     {
       "step_id": "S05",
-      "action": "cure",
+      "action": "heat",
       "material": "凝胶后的复合材料 (例: 2mm 层压板)",
       "description": "50℃固化层压板配方 (2mm): K-80 2phr + NL-49P 0.25phr; 20℃凝胶330min; 50℃固化凝胶62min, 达峰118min, 峰温117℃",
       "amount": {
@@ -359,7 +367,9 @@
           "document": "DOC-TDS",
           "evidence_type": "explicit",
           "confidence": 0.95,
-          "quote": "2mm层压板50℃固化: K-80 2phr + NL-49P 0.25phr, 20℃凝胶330min, 50℃固化凝胶62min, 达峰118min, 峰温117℃, Barcol硬度50"
+          "quote": "2mm层压板50℃固化: K-80 2phr + NL-49P 0.25phr, 20℃凝胶330min, 50℃固化凝胶62min, 达峰118min, 峰温117℃, Barcol硬度50",
+          "page": 1,
+          "section": "实验部分"
         }
       ],
       "confidence": 0.9,
@@ -392,7 +402,7 @@
     },
     {
       "step_id": "S06",
-      "action": "inspect",
+      "action": "measure",
       "material": "固化件",
       "description": "固化完成与质量检验: 以 Barcol 硬度计测固化程度(层压板 Barcol 硬度 50)",
       "amount": null,
@@ -408,7 +418,9 @@
           "document": "DOC-TDS",
           "evidence_type": "explicit",
           "confidence": 0.9,
-          "quote": "Barcol硬度50"
+          "quote": "Barcol硬度50",
+          "page": 1,
+          "section": "实验部分"
         }
       ],
       "confidence": 0.85,
@@ -590,48 +602,94 @@
       "checkpoint_id": "CP-K-01",
       "after_step": "S01",
       "stored_state": [
-        { "name": "k80_dose_phr", "type": "number", "unit": "phr" },
-        { "name": "resin_type", "type": "string" },
-        { "name": "resin_volume", "type": "number", "unit": "parts" }
+        {
+          "name": "k80_dose_phr",
+          "type": "number",
+          "unit": "phr"
+        },
+        {
+          "name": "resin_type",
+          "type": "string"
+        },
+        {
+          "name": "resin_volume",
+          "type": "number",
+          "unit": "parts"
+        }
       ],
       "recovery_policy": {
         "power_failure": "restart_step",
-        "temperature_deviation": { "threshold": 5, "action": "hold" }
+        "temperature_deviation": {
+          "threshold": 5,
+          "action": "hold"
+        }
       }
     },
     {
       "checkpoint_id": "CP-K-02",
       "after_step": "S03",
       "stored_state": [
-        { "name": "gel_time_min", "type": "number", "unit": "minute" },
-        { "name": "promoter_type", "type": "string" }
+        {
+          "name": "gel_time_min",
+          "type": "number",
+          "unit": "minute"
+        },
+        {
+          "name": "promoter_type",
+          "type": "string"
+        }
       ],
       "recovery_policy": {
         "power_failure": "discard_and_restart",
-        "temperature_deviation": { "threshold": 5, "action": "abort" }
+        "temperature_deviation": {
+          "threshold": 5,
+          "action": "abort"
+        }
       }
     },
     {
       "checkpoint_id": "CP-K-03",
       "after_step": "S05",
       "stored_state": [
-        { "name": "cure_temp_c", "type": "number", "unit": "celsius" },
-        { "name": "peak_temp_c", "type": "number", "unit": "celsius" },
-        { "name": "peak_time_min", "type": "number", "unit": "minute" }
+        {
+          "name": "cure_temp_c",
+          "type": "number",
+          "unit": "celsius"
+        },
+        {
+          "name": "peak_temp_c",
+          "type": "number",
+          "unit": "celsius"
+        },
+        {
+          "name": "peak_time_min",
+          "type": "number",
+          "unit": "minute"
+        }
       ],
       "recovery_policy": {
         "power_failure": "resume_from_checkpoint",
-        "temperature_deviation": { "threshold": 10, "action": "hold" }
+        "temperature_deviation": {
+          "threshold": 10,
+          "action": "hold"
+        }
       }
     },
     {
       "checkpoint_id": "CP-K-04",
       "after_step": "S06",
       "stored_state": [
-        { "name": "barcol_hardness", "type": "number", "unit": "Barcol" }
+        {
+          "name": "barcol_hardness",
+          "type": "number",
+          "unit": "Barcol"
+        }
       ],
       "recovery_policy": {
-        "temperature_deviation": { "threshold": 5, "action": "continue" }
+        "temperature_deviation": {
+          "threshold": 5,
+          "action": "continue"
+        }
       }
     }
   ],

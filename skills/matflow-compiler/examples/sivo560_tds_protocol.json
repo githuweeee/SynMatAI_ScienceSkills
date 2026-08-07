@@ -80,7 +80,7 @@
   "steps": [
     {
       "step_id": "S01",
-      "action": "hydrolyze",
+      "action": "stir",
       "material": "SIVO 560 溶于去离子水",
       "description": "在搅拌下将约 1-2%(对水重)的 SIVO 560 缓慢加入去离子水中, 搅拌 20-30 min 使硅烷完全水解, 溶液变清澈",
       "amount": {
@@ -109,7 +109,9 @@
           "document": "DOC-TDS-002",
           "evidence_type": "explicit",
           "confidence": 0.95,
-          "quote": "在搅拌下将约1-2%的SIVO 560缓慢添加到去离子水中, 搅拌20-30分钟后硅烷完全水解, 溶液变清澈"
+          "quote": "在搅拌下将约1-2%的SIVO 560缓慢添加到去离子水中, 搅拌20-30分钟后硅烷完全水解, 溶液变清澈",
+          "page": 1,
+          "section": "实验部分"
         }
       ],
       "confidence": 0.9,
@@ -142,7 +144,7 @@
     },
     {
       "step_id": "S02",
-      "action": "verify_hydrolysate",
+      "action": "measure",
       "material": "SIVO 560 水解液",
       "description": "检验水解液质量: 澄清(浊度≤3.0 FNU), 1% 水溶液 20min 搅拌后表面张力降至约 40 mN/m; 若变浑浊则视为失效不可再用",
       "amount": {
@@ -164,7 +166,10 @@
         {
           "evidence_type": "explicit",
           "confidence": 0.95,
-          "quote": "1%水溶液20分钟搅拌后表面张力降至40mN/m; 浊度≤3.0FNC为澄清"
+          "quote": "1%水溶液20分钟搅拌后表面张力降至40mN/m; 浊度≤3.0FNC为澄清",
+          "document": "DOC-TDS-002",
+          "page": 1,
+          "section": "实验部分"
         }
       ],
       "confidence": 0.85,
@@ -197,7 +202,7 @@
     },
     {
       "step_id": "S03",
-      "action": "apply_coat",
+      "action": "transfer",
       "material": "水解液涂覆于玻璃纤维/布",
       "description": "将澄清水解液涂覆于玻璃纤维/布表面, 利用其极佳的润湿性处理界面, 改善电气性能(降介电常数)并桥接无机(玻璃)与有机聚合",
       "amount": null,
@@ -215,7 +220,10 @@
         {
           "evidence_type": "explicit",
           "confidence": 0.9,
-          "quote": "在玻璃纤维/布表面润湿极佳; 改善玻璃布电气性能(降介电常数); 结合无机与有机聚合"
+          "quote": "在玻璃纤维/布表面润湿极佳; 改善玻璃布电气性能(降介电常数); 结合无机与有机聚合",
+          "document": "DOC-TDS-002",
+          "page": 1,
+          "section": "实验部分"
         }
       ],
       "confidence": 0.85,
@@ -257,7 +265,7 @@
     },
     {
       "step_id": "S04",
-      "action": "consume_within_window",
+      "action": "wait",
       "material": "SIVO 560 水解液",
       "description": "水解液需在 24 小时内用完; 若变浑浊则不能再用, 需废弃并重新配制",
       "amount": null,
@@ -275,7 +283,10 @@
         {
           "evidence_type": "explicit",
           "confidence": 0.95,
-          "quote": "水解液需24h内用完, 若变浑浊则不能再用"
+          "quote": "水解液需24h内用完, 若变浑浊则不能再用",
+          "document": "DOC-TDS-002",
+          "page": 1,
+          "section": "实验部分"
         }
       ],
       "confidence": 0.9,
@@ -407,35 +418,74 @@
       "checkpoint_id": "CP-S-01",
       "after_step": "S01",
       "stored_state": [
-        { "name": "hydrolysate_volume", "type": "number", "unit": "L" },
-        { "name": "sivo_concentration_wtpc", "type": "number", "unit": "wt%" },
-        { "name": "hydrolyze_duration_min", "type": "number", "unit": "minute" },
-        { "name": "hydrolysate_clarity", "type": "string" }
+        {
+          "name": "hydrolysate_volume",
+          "type": "number",
+          "unit": "L"
+        },
+        {
+          "name": "sivo_concentration_wtpc",
+          "type": "number",
+          "unit": "wt%"
+        },
+        {
+          "name": "hydrolyze_duration_min",
+          "type": "number",
+          "unit": "minute"
+        },
+        {
+          "name": "hydrolysate_clarity",
+          "type": "string"
+        }
       ],
       "recovery_policy": {
         "power_failure": "restart_step",
-        "temperature_deviation": { "threshold": 5, "action": "continue" }
+        "temperature_deviation": {
+          "threshold": 5,
+          "action": "continue"
+        }
       }
     },
     {
       "checkpoint_id": "CP-S-02",
       "after_step": "S02",
       "stored_state": [
-        { "name": "turbidity_fnu", "type": "number", "unit": "FNU" },
-        { "name": "surface_tension_mN_per_m", "type": "number", "unit": "mN/m" },
-        { "name": "hydrolysate_valid", "type": "boolean" }
+        {
+          "name": "turbidity_fnu",
+          "type": "number",
+          "unit": "FNU"
+        },
+        {
+          "name": "surface_tension_mN_per_m",
+          "type": "number",
+          "unit": "mN/m"
+        },
+        {
+          "name": "hydrolysate_valid",
+          "type": "boolean"
+        }
       ],
       "recovery_policy": {
         "power_failure": "resume_from_checkpoint",
-        "temperature_deviation": { "threshold": 5, "action": "continue" }
+        "temperature_deviation": {
+          "threshold": 5,
+          "action": "continue"
+        }
       }
     },
     {
       "checkpoint_id": "CP-S-03",
       "after_step": "S04",
       "stored_state": [
-        { "name": "time_after_hydrolysis_hours", "type": "number", "unit": "hour" },
-        { "name": "hydrolysate_still_clear", "type": "boolean" }
+        {
+          "name": "time_after_hydrolysis_hours",
+          "type": "number",
+          "unit": "hour"
+        },
+        {
+          "name": "hydrolysate_still_clear",
+          "type": "boolean"
+        }
       ],
       "recovery_policy": {
         "time_elapsed": {
