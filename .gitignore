@@ -20,3 +20,11 @@ __pycache__/
 paper/
 PATENT/
 TDS/
+
+# 本地工作文件（不提交到GitHub）
+GIT_SUBMISSION.md
+提交表单填写内容.md
+submission_rules.md
+alder_1938_full.txt
+*.txt
+!requirements.txt
