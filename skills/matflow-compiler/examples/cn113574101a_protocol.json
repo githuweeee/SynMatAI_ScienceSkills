@@ -1,0 +1,617 @@
+{
+  "protocol_id": "MF-PAT-002",
+  "material": "Recovery of glass (GRP) / carbon (CRP) fiber from fiber-reinforced epoxy composites via boron halide (one-pot reaction)",
+  "source_documents": [
+    {
+      "doc_id": "DOC-CN02",
+      "title": "用卤化硼完全回收无机纤维增强环氧复合材料的方法",
+      "file_path": "c:\\Users\\Techsinn\\.trae\\work\\6a72e00e3feacc2f0fae5f54\\cn113574101a_full.txt",
+      "doc_type": "patent",
+      "patent_number": "CN 113574101 A",
+      "applicant": "\u514b\u52b3\u65af\u5854\u5c14\u5de5\u4e1a\u5927\u5b66 / MPM\u73af\u5883\u667a\u80fd\u6709\u9650\u516c\u53f8",
+      "pct_number": "PCT/EP2020/055166 (WO2020/182484)",
+      "priority": "DE 102019106524.0",
+      "publication_date": "2021.10.29"
+    }
+  ],
+  "reagents": [
+    {
+      "name": "G10 glass-fiber reinforced epoxy composite powder",
+      "cas_number": null,
+      "role": "feedstock to be recycled",
+      "supplier": null,
+      "purity": "~40% polymer content",
+      "total_amount": {
+        "value": 3.00,
+        "unit": "g",
+        "note": "approx 1.20g polymer; 40% organic content"
+      },
+      "hazard_class": "irritant dust",
+      "evidence": {
+        "patent": "DOC-CN02",
+        "section": "实施例3",
+        "quote": "将3.00g G10粉末(约1.20g聚合物，复合材料G10中的含量为40%)",
+        "evidence_type": "explicit",
+        "confidence": 0.98
+      }
+    },
+    {
+      "name": "Dry dichloromethane (DCM)",
+      "cas_number": "75-09-2",
+      "role": "solvent",
+      "supplier": null,
+      "purity": "dry",
+      "total_amount": {
+        "value": 20,
+        "unit": "mL",
+        "note": "10 mL to suspend G10 + 10 mL as BCl3 solvent carrier (Ex.3)"
+      },
+      "hazard_class": "carcinogenic, volatile, anesthetic",
+      "evidence": {
+        "patent": "DOC-CN02",
+        "section": "实施例3",
+        "quote": "在10mL干燥DCM中的悬浮液 ... 加入10mL在干燥DCM中的1M BCl3溶液",
+        "evidence_type": "explicit",
+        "confidence": 0.98
+      }
+    },
+    {
+      "name": "Boron trichloride (BCl3, 1M in DCM)",
+      "cas_number": "10294-34-5",
+      "role": "boron halide reagent (depolymerization)",
+      "supplier": null,
+      "purity": "1M in dry DCM",
+      "total_amount": {
+        "value": 10,
+        "unit": "mL",
+        "mass_g": 1.17,
+        "mmol": 10.0,
+        "note": "1.17g BCl3 = 10.00 mmol"
+      },
+      "hazard_class": "corrosive, releases HCl on water contact, water/moisture reactive",
+      "evidence": {
+        "patent": "DOC-CN02",
+        "section": "实施例3",
+        "quote": "加入10mL在干燥DCM中的1M BCl3溶液(0.14g，10.00mmol)",
+        "evidence_type": "explicit",
+        "confidence": 0.98
+      }
+    },
+    {
+      "name": "Ice water (quench)",
+      "cas_number": "7732-18-5",
+      "role": "quench/partition solvent",
+      "supplier": null,
+      "purity": null,
+      "total_amount": {
+        "value": 200,
+        "unit": "mL",
+        "note": "pour cooled reaction into ice water"
+      },
+      "hazard_class": "none",
+      "evidence": {
+        "patent": "DOC-CN02",
+        "section": "实施例3",
+        "quote": "将反应混合物倒入200mL冰水中并用DCM(5×50mL)萃取",
+        "evidence_type": "explicit",
+        "confidence": 0.98
+      }
+    },
+    {
+      "name": "Calcium chloride (drying)",
+      "cas_number": "10043-52-4",
+      "role": "drying agent for organic layer",
+      "supplier": null,
+      "purity": null,
+      "total_amount": null,
+      "hazard_class": "irritant (hygroscopic)",
+      "evidence": {
+        "patent": "DOC-CN02",
+        "section": "实施例3",
+        "quote": "有机层用氯化钙干燥",
+        "evidence_type": "explicit",
+        "confidence": 0.97
+      }
+    },
+    {
+      "name": "Acetone/methanol (1:1) wash",
+      "cas_number": null,
+      "role": "washing solvent (residue)",
+      "supplier": null,
+      "purity": "1:1 mixture",
+      "total_amount": {
+        "value": 90,
+        "unit": "mL",
+        "note": "3 x 30 mL"
+      },
+      "hazard_class": "flammable, toxic (methanol)",
+      "evidence": {
+        "evidence_type": "explicit",
+        "confidence": 0.97,
+        "quote": "将残余物用丙酮/甲醇1:1的混合物洗涤(3x30mL)"
+      }
+    },
+    {
+      "name": "Ethyl acetate (wash/extract)",
+      "cas_number": "141-78-6",
+      "role": "washing solvent",
+      "supplier": null,
+      "purity": null,
+      "total_amount": {
+        "value": 250,
+        "unit": "mL",
+        "note": "5 x 50 mL"
+      },
+      "hazard_class": "flammable",
+      "evidence": {
+        "evidence_type": "explicit",
+        "confidence": 0.97,
+        "section": "实施例3",
+        "quote": "然后用乙酸乙酯(5x50mL)洗涤"
+      }
+    },
+    {
+      "name": "Diethyl ether (ether precipitate)",
+      "cas_number": "60-29-7",
+      "role": "precipitation/wash solvent",
+      "supplier": null,
+      "purity": null,
+      "total_amount": {
+        "value": 30,
+        "unit": "mL",
+        "note": "30 mL ether to precipitate residue; 5 mL wash"
+      },
+      "hazard_class": "highly flammable, peroxide-former",
+      "evidence": {
+        "evidence_type": "explicit",
+        "confidence": 0.97,
+        "section": "实施例3",
+        "quote": "向残余物中加入30mL乙醚。抽滤出沉淀，用5mL乙醚洗涤"
+      }
+    },
+    {
+      "name": "Boron tribromide (BBr3)",
+      "cas_number": "10294-33-4",
+      "role": "alternative halogen borane (Ex.7/8)",
+      "supplier": null,
+      "purity": null,
+      "total_amount": {
+        "value": 2.68,
+        "unit": "g",
+        "note": "1.02 mL = 10.70 mmol (Ex.7); 0.67g/0.25 mL = 2.67 mmol (Ex.8)"
+      },
+      "hazard_class": "corrosive, moisture-reactive, releases HBr",
+      "evidence": {
+        "evidence_type": "explicit",
+        "confidence": 0.97,
+        "section": "实施例7",
+        "quote": "1.02mL(2.68g,10.70mmol)BBr3"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "step_id": "S01",
+      "action": "weigh_load",
+      "material": "G10 powder in glass pressure vessel",
+      "description": "Weigh 3.00 g G10 composite powder (containing ~1.20 g polymer, 40%) and suspend it in 10 mL dry DCM in a 100 mL glass pressure vessel.",
+      "amount": {
+        "value": 3.00,
+        "unit": "g",
+        "note": "G10 powder; DCM 10 mL"
+      },
+      "temperature": null,
+      "duration": null,
+      "stirring_speed": null,
+      "atmosphere": "air",
+      "pressure": "sealed (glass pressure vessel)",
+      "evidence": [
+        {
+          "section": "实施例3",
+          "quote": "将3.00g G10粉末在100mL玻璃压力容器中的10mL干燥DCM中的悬浮液",
+          "evidence_type": "explicit",
+          "confidence": 0.98
+        }
+      ],
+      "confidence": 0.95,
+      "status": "ok",
+      "missing_fields": [],
+      "device_binding": { "device_id": null, "capability_check": "unchecked" },
+      "notes": "SEALED pressure vessel is used (玻璃压力容器)."
+    },
+    {
+      "step_id": "S02",
+      "action": "add",
+      "description": "Add 10 mL of 1 M BCl3 in dry DCM (1.17 g, 10.00 mmol) to the G10/DCM suspension.",
+      "amount": {
+        "value": 10,
+        "unit": "mL",
+        "note": "1M BCl3 in dry DCM"
+      },
+      "temperature": null,
+      "duration": null,
+      "stirring_speed": null,
+      "atmosphere": "air",
+      "pressure": null,
+      "evidence": [
+        {
+          "section": "实施例3",
+          "quote": "加入10mL在干燥DCM中的1M BCl3溶液(1.17g，10.00mmol)",
+          "evidence_type": "explicit",
+          "confidence": 0.98
+        }
+      ],
+      "confidence": 0.95,
+      "status": "ok",
+      "missing_fields": [],
+      "device_binding": { "device_id": null, "capability_check": "unchecked" },
+      "notes": "SAFETY: BCl3 is moisture-reactive; handle under dry conditions/inert."
+    },
+    {
+      "step_id": "S03",
+      "action": "stir",
+      "description": "Stir the reaction mixture at room temperature for 24 h.",
+      "temperature": {
+        "value": 25,
+        "unit": "celsius",
+        "evidence_type": "explicit",
+        "confidence": 0.9,
+        "note": "'room temperature' in patent"
+      },
+      "duration": {
+        "value": 24,
+        "unit": "hour"
+      },
+      "stirring_speed": null,
+      "atmosphere": "sealed",
+      "pressure": null,
+      "evidence": [
+        {
+          "section": "实施例3",
+          "quote": "将反应混合物在室温下搅拌24小时",
+          "evidence_type": "explicit",
+          "confidence": 0.98
+        }
+      ],
+      "confidence": 0.9,
+      "status": "warning",
+      "missing_fields": [
+        {
+          "field_name": "stirring_speed",
+          "step_id": "S03",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "Stirring rpm not specified",
+          "requires_confirmation": true
+        }
+      ],
+      "device_binding": { "device_id": null, "capability_check": "unchecked" },
+      "notes": "Room temperature 15-30C optimal per claim; 24h soak."
+    },
+    {
+      "step_id": "S04",
+      "action": "heat",
+      "description": "Continue stirring at 55-60C in the sealed pressure vessel for 68 h to fully break ether bonds and separate fibers.",
+      "temperature": {
+        "value": 57.5,
+        "unit": "celsius",
+        "evidence_type": "explicit",
+        "confidence": 0.9,
+        "note": "range 55-60C"
+      },
+      "duration": {
+        "value": 68,
+        "unit": "hour"
+      },
+      "stirring_speed": null,
+      "atmosphere": "sealed (pressure vessel)",
+      "pressure": null,
+      "evidence": [
+        {
+          "section": "实施例3",
+          "quote": "然后在55–60℃下搅拌68h",
+          "evidence_type": "explicit",
+          "confidence": 0.98
+        }
+      ],
+      "confidence": 0.9,
+      "status": "warning",
+      "missing_fields": [
+        {
+          "field_name": "stirring_speed",
+          "step_id": "S04",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "Stirring rpm not specified",
+          "requires_confirmation": true
+        },
+        {
+          "field_name": "temperature.ramp_rate",
+          "step_id": "S04",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "Ramp from RT to 55-60C not specified",
+          "requires_confirmation": true
+        }
+      ],
+      "device_binding": { "device_id": null, "capability_check": "unchecked" },
+      "notes": "SAFETY: SEALED pressure vessel heating at ~60C with volatile DCM. DCM bp ~40C, vapor pressure significant. Confirm pressure rating; never overfill."
+    },
+    {
+      "step_id": "S05",
+      "action": "cool",
+      "description": "Cool the reaction mixture to room temperature after heating.",
+      "temperature": {
+        "value": 25,
+        "unit": "celsius",
+        "evidence_type": "explicit",
+        "confidence": 0.9
+      },
+      "duration": null,
+      "stirring_speed": null,
+      "atmosphere": "sealed",
+      "pressure": null,
+      "evidence": [
+        {
+          "section": "实施例3",
+          "quote": "冷却至室温后",
+          "evidence_type": "explicit",
+          "confidence": 0.98
+        }
+      ],
+      "confidence": 0.85,
+      "status": "warning",
+      "missing_fields": [
+        {
+          "field_name": "cooling_method",
+          "step_id": "S05",
+          "risk_level": "low",
+          "blocks_execution": false,
+          "suggestion": "Cooling method not specified; natural cooling",
+          "requires_confirmation": true
+        }
+      ],
+      "device_binding": { "device_id": null, "capability_check": "unchecked" },
+      "notes": "Ensure fully cooled before opening sealed vessel."
+    },
+    {
+      "step_id": "S06",
+      "action": "quench_extract",
+      "description": "Pour the cooled reaction mixture into 200 mL ice water and extract with DCM (5 x 50 mL).",
+      "amount": {
+        "value": 200,
+        "unit": "mL",
+        "note": "ice water; DCM extraction 5 x 50 mL"
+      },
+      "temperature": {
+        "value": 0,
+        "unit": "celsius",
+        "note": "ice water"
+      },
+      "duration": null,
+      "stirring_speed": null,
+      "atmosphere": "air",
+      "pressure": null,
+      "evidence": [
+        {
+          "section": "实施例3",
+          "quote": "将反应混合物倒入200mL冰水中并用DCM(5×50mL)萃取",
+          "evidence_type": "explicit",
+          "confidence": 0.98
+        }
+      ],
+      "confidence": 0.9,
+      "status": "warning",
+      "missing_fields": [
+        {
+          "field_name": "extraction_repeats_confirmed",
+          "step_id": "S06",
+          "risk_level": "low",
+          "blocks_execution": false,
+          "suggestion": "NaCl/ice water quench actually to neutralize/release HCl - confirm",
+          "requires_confirmation": true
+        }
+      ],
+      "device_binding": { "device_id": null, "capability_check": "unchecked" },
+      "notes": "SAFETY: pouring BCl3/DCM into ice water releases HCl (from BCl3 hydrolysis); do under fume hood, slow addition, expect effervescence, wear acid-protective gear."
+    },
+    {
+      "step_id": "S07",
+      "action": "dry_evaporate",
+      "description": "Dry the combined organic layer over anhydrous CaCl2, then remove solvent under vacuum to obtain VZ-G10-4-1 (775 mg, dark viscous oil).",
+      "temperature": null,
+      "duration": null,
+      "stirring_speed": null,
+      "atmosphere": "vacuum",
+      "pressure": null,
+      "evidence": [
+        {
+          "section": "实施例3",
+          "quote": "有机层用氯化钙干燥。真空除去溶剂得到775mg VZ-G10-4-1，为深色黏性油",
+          "evidence_type": "explicit",
+          "confidence": 0.97
+        }
+      ],
+      "confidence": 0.85,
+      "status": "warning",
+      "missing_fields": [
+        {
+          "field_name": "evaporation_temp",
+          "step_id": "S07",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "Vacuum evaporation temperature not specified",
+          "requires_confirmation": true
+        }
+      ],
+      "device_binding": { "device_id": null, "capability_check": "unchecked" },
+      "notes": "Product VZ-G10-4-1 = mixture BPA + phenol + 1,3-dichloro-2-propanol (by 1H NMR)."
+    },
+    {
+      "step_id": "S08",
+      "action": "fiber_recovery",
+      "description": "Separate and recover the glass fiber: wash fibers with methanol, water, acetone and dry under vacuum (yield ~1920 mg glass fiber).",
+      "temperature": null,
+      "duration": null,
+      "stirring_speed": null,
+      "atmosphere": "vacuum",
+      "pressure": null,
+      "evidence": [
+        {
+          "section": "实施例3",
+          "quote": "用甲醇、水、丙酮洗涤并真空干燥后的玻璃纤维量为1920mg",
+          "evidence_type": "explicit",
+          "confidence": 0.97
+        }
+      ],
+      "confidence": 0.85,
+      "status": "warning",
+      "missing_fields": [
+        {
+          "field_name": "wash_volumes",
+          "step_id": "S08",
+          "risk_level": "low",
+          "blocks_execution": false,
+          "suggestion": "Wash volumes not given"
+        }
+      ],
+      "device_binding": { "device_id": null, "capability_check": "unchecked" },
+      "notes": "Fiber recovery ~1920 mg (glass). For example 3 organic conversion 83%."
+    }
+  ],
+  "equipment": [
+    { "device_id": null, "device_type": "pressure_reactor", "device_name": "100 mL glass pressure vessel (sealed)" },
+    { "device_id": null, "device_type": "stirrer", "device_name": "Magnetic stirrer with heating for 60C (S03/S04)" },
+    { "device_id": null, "device_type": "separating_funnel", "device_name": "Separation funnel for DCM extraction (S06)" },
+    { "device_id": null, "device_type": "rotavap", "device_name": "Rotary evaporator for vacuum (S07)" },
+    { "device_id": null, "device_type": "fume_hood", "device_name": "Fume hood (DCM/BCl3/HCl)" },
+    { "device_id": null, "device_type": "balance", "device_name": "Analytical balance" }
+  ],
+  "metadata": {
+    "version": "1.0.0",
+    "generated_at": "2026-08-07T16:00:00Z",
+    "compiler_version": "matflow-compiler/0.3.0",
+    "source_hash": "sha256:cn113574101a",
+    "operator": "auto",
+    "lab_id": null,
+    "compilation_notes": "Protocol compiled from CN 113574101 A (WIPO WO2020/182484, Clausthal). Basis: Example 3 (G10 glass-epoxy + BCl3 in DCM). Key alternative boron boranes: BBr3 (Ex.7/8); CRP carbon fiber (Ex.9). Recovery 90% fibers, 75-95% epoxy conversion. Missing: stirring speeds, ramp rates, evaporation temp, wash volumes. Safety: BCl3/B3h release HCl/HBr on moisture & water (corrosive), DCM carcinogen volatile, sealed-pressure heating, ice-water exotherm. Status: needs_review."
+  },
+  "safety_checks": [
+    {
+      "check_id": "SAFE-001",
+      "check_type": "boron_halide_hydrolysis",
+      "rule_id": "SAFE-BORON-001",
+      "target_step": "S06",
+      "status": "warning",
+      "message": "BCl3 reacts with water releasing strongly corrosive/fuming HCl. Quench into ice water must be done in fume hood, slowly, with goggles and acid-resistant gloves. Sudden effervescence/exotherm.",
+      "details": { "reagent": "BCl3", "hazard": "releases HCl" }
+    },
+    {
+      "check_id": "SAFE-002",
+      "check_type": "boron_halide_hydrolysis",
+      "rule_id": "SAFE-BORON-001",
+      "target_step": "S04",
+      "status": "warning",
+      "message": "Moisture must be excluded: use dry DCM (anhydrous) to avoid premature hydrolysis raising temperature/pressure.",
+      "details": { "note": "dry DCM required" }
+    },
+    {
+      "check_id": "SAFE-003",
+      "check_type": "boron_halide_reagent",
+      "rule_id": "SAFE-BORON-002",
+      "target_step": "S02/BBr3 mention",
+      "status": "warning",
+      "message": "BBr3 (boron tribromide) is strongly corrosive and releases HBr, producing acid fumes; handle under inert/dry conditions with special PPE.",
+      "details": { "reagent": "BBr3", "hazard": "corrosive, HBr" }
+    },
+    {
+      "check_id": "SAFE-004",
+      "check_type": "carcinogen_solvent",
+      "rule_id": "SAFE-C-008",
+      "target_step": "S01-S06",
+      "status": "warning",
+      "message": "Dichloromethane is a Class-2 carcinogen and volatile; fume hood mandatory throughout.",
+      "details": { "solvent": "DCM" }
+    },
+    {
+      "check_id": "SAFE-005",
+      "check_type": "sealed_pressure_heating",
+      "rule_id": "SAFE-P-001",
+      "target_step": "S04",
+      "status": "warning",
+      "message": "Sealed glass pressure vessel heated at ~60C with volatile DCM. Ensure vessel rated for pressure; do not exceed fill limit.",
+      "details": { "temperature": 60, "is_sealed": true }
+    },
+    {
+      "check_id": "SAFE-006",
+      "check_type": "high_temperature",
+      "rule_id": "SAFE-H-001",
+      "target_step": "S04",
+      "status": "warning",
+      "message": "Operation at up to 60C and general patent allows 0-150C. Confirm temperature controller and safe handling.",
+      "details": { "temperature": 60, "unit": "celsius" }
+    },
+    {
+      "check_id": "SAFE-007",
+      "check_type": "flammable_solvent",
+      "rule_id": "SAFE-C-004",
+      "target_step": "S08/wash",
+      "status": "warning",
+      "message": "Wash solvents acetone/methanol/diether are flammable; use fume hood, no ignition.",
+      "details": { "solvents": "acetone/methanol/ether" }
+    },
+    {
+      "check_id": "SAFE-008",
+      "check_type": "moisture_control",
+      "rule_id": "SAFE-BORON-003",
+      "target_step": "S02",
+      "status": "warning",
+      "message": "BCl3 must be handled under dry/inert conditions; open/transfer in fume hood with proper PPE (moisture reactive).",
+      "details": { "reagent": "BCl3" }
+    }
+  ],
+  "checkpoints": [
+    {
+      "checkpoint_id": "CP-01",
+      "after_step": "S04",
+      "stored_state": [
+        { "name": "react_temp_c", "type": "number" },
+        { "name": "react_duration_h", "type": "number" },
+        { "name": "vessel_sealed", "type": "boolean" }
+      ],
+      "recovery_policy": { "power_failure": "restart_step", "temperature_deviation": { "threshold": 10, "action": "alert" } }
+    },
+    {
+      "checkpoint_id": "CP-02",
+      "after_step": "S06",
+      "stored_state": [
+        { "name": "quench_complete", "type": "boolean" },
+        { "name": "extraction_repeated", "type": "number" },
+        { "name": "organic_layer_collected", "type": "boolean" }
+      ],
+      "recovery_policy": { "power_failure": "resume_from_checkpoint" }
+    },
+    {
+      "checkpoint_id": "CP-03",
+      "after_step": "S08",
+      "stored_state": [
+        { "name": "fiber_recovered_mg", "type": "number" },
+        { "name": "waste_products_mg", "type": "number" },
+        { "name": "recovery_conversion", "type": "number", "unit": "percent" }
+      ],
+      "recovery_policy": { "power_failure": "resume_from_checkpoint" }
+    }
+  ],
+  "overall_confidence": 0.8,
+  "overall_status": "needs_review",
+  "confidence_score": {
+    "overall": 0.8,
+    "dimensions": {
+      "evidence_coverage": 0.88,
+      "explicit_ratio": 0.9,
+      "safety_pass_rate": 0.8,
+      "missing_field_penalty": 0.6
+    }
+  },
+  "block_reasons": []
+}

@@ -1,0 +1,305 @@
+# 设备无关实验中间表示 (EIR)
+# Trigonox K-80 技术数据表 (TDS) - 不饱和聚酯/乙烯基树脂固化应用协议
+# 协议ID: MF-T-001
+# 来源: TDS (产品技术数据表)
+# 状态: needs_review
+# 信息类型: explicit 为 TDS 原表格数值; derived 为推算值; inferred 为推断值
+
+protocol_id: "MF-T-001"
+material: "Trigonox K-80 异丙苯过氧化氢 (80% 芳烃溶液) 用于不饱和聚酯树脂固化"
+source_type: "tds"
+overall_status: "needs_review"
+overall_confidence: 0.78
+
+source_documents:
+  - doc_id: "DOC-TDS-001"
+    title: "Trigonox K-80 技术数据表 (TDS) - 异丙苯过氧化氢 80% 芳烃溶液"
+    file_path: "k80_tds_full.txt"
+    doc_type: "tds"
+    supplier: "Nouryon (AkzoNobel)"
+    product_code: "Trigonox K-80"
+
+reagents:
+  - name: "Trigonox K-80 (异丙苯过氧化氢 80% 芳烃溶液)"
+    cas_number: "80-15-9"
+    role: "curing_initiator"
+    content: "80-85% 异丙苯过氧化氢"
+    physical_properties:
+      density_20C_g_per_cm3: 1.06        # explicit
+      viscosity_20C_mPa_s: 10.4          # explicit
+      color_pt_co: 450                    # explicit
+      max_storage_temp_c: 40              # explicit
+      min_storage_temp_c: -30             # explicit
+      sadt_c: 75                          # explicit
+      shelf_life_months: 6                # explicit
+    decomposition_products:
+      - "苯乙酮"
+      - "甲烷"
+      - "2-苯基异丙醇"
+    un_number: "UN3109"
+    peroxide_class: "F型过氧化物"
+    hazard_class: "氧化剂, 易燃, 可自加速分解(SADT 75C)"
+    evidence:
+      evidence_type: "explicit"
+      confidence: 0.98
+
+  - name: "不饱和聚酯树脂(UP)/乙烯基酯树脂"
+    cas_number: null
+    role: "matrix_resin"
+    content: "100 份 (重量比基础)"
+    hazard_class: "含苯乙烯单体, 易燃"
+    evidence:
+      evidence_type: "explicit"
+      confidence: 0.85
+
+  - name: "钴促进剂 (如 NL-49P)"
+    cas_number: null
+    role: "accelerator_promoter"
+    content: "与K-80并用室温凝胶长, 适合大型件/长丝缠绕"
+    evidence:
+      evidence_type: "explicit"
+      confidence: 0.85
+
+  - name: "钒促进剂 (如 Accelerator VN-2)"
+    cas_number: null
+    role: "accelerator_promoter"
+    content: "与K-80并用室温凝胶短固化快, 可加丙酮酸加速"
+    evidence:
+      evidence_type: "explicit"
+      confidence: 0.85
+
+  - name: "对照体系 (Butanox LPT + NL-49P + NL-63-10P)"
+    cas_number: null
+    role: "comparison_curing_system"
+    content: "Butanox LPT 2份 + NL-49P 2份 + NL-63-10P 2份 (凝胶17min)"
+    evidence:
+      evidence_type: "explicit"
+      confidence: 0.9
+
+steps:
+  - step_id: "S01"
+    action: "weigh"
+    material: "树脂 + K-80"
+    description: "确定固化配方: 树脂 100 份 + K-80 1-3 phr"
+    amount:
+      value: 1
+      unit: "phr"
+      note: "TDS 建议用量 1-3 phr; 典型取 2 phr"
+    temperature:
+      value: 20          # inferred (室温)
+      unit: "celsius"
+      evidence_type: "inferred"
+      confidence: 0.85
+    missing_fields:
+      - field_name: "resin_type"
+        risk_level: "medium"
+        blocks_execution: false
+        requires_confirmation: true
+      - field_name: "resin_volume"
+        risk_level: "low"
+        blocks_execution: false
+        requires_confirmation: true
+      - field_name: "stirring_conditions"
+        risk_level: "medium"
+        blocks_execution: false
+        requires_confirmation: true
+    confidence: 0.9
+    status: "warning"
+
+  - step_id: "S02"
+    action: "select_promoter"
+    material: "促进剂体系"
+    description: "选择钴(长凝胶/大型件) 或钒(短凝胶快固) 促进剂"
+    amount:
+      value: null
+      unit: "phr"
+    temperature:
+      value: 20
+      unit: "celsius"
+      evidence_type: "inferred"
+      confidence: 0.85
+    missing_fields:
+      - field_name: "promoter_specific_product"
+        risk_level: "medium"
+        blocks_execution: false
+        requires_confirmation: true
+      - field_name: "promoter_dosage"
+        risk_level: "medium"
+        blocks_execution: false
+        requires_confirmation: true
+    confidence: 0.8
+    status: "inferred"
+
+  - step_id: "S03"
+    action: "mix"
+    material: "K-80 + 乙烯基树脂 + Accelerator VN-2"
+    description: "配方例1: 乙烯基树脂100份 + K-80 2份 + VN-2 1份, 20℃凝胶12min"
+    amount:
+      value: 2
+      unit: "phr"
+      note: "K-80 2份 + VN-2 1份, 20℃凝胶12min"
+    temperature:
+      value: 20
+      unit: "celsius"
+      evidence_type: "explicit"
+      confidence: 0.95
+    duration:
+      value: 12
+      unit: "minute"
+      note: "20℃凝胶时间 (explicit)"
+    missing_fields:
+      - field_name: "stirring_speed"
+        risk_level: "medium"
+        blocks_execution: false
+        requires_confirmation: true
+      - field_name: "gel_detection_method"
+        risk_level: "low"
+        blocks_execution: false
+        requires_confirmation: true
+    confidence: 0.9
+    status: "warning"
+
+  - step_id: "S04"
+    action: "apply_and_gel"
+    material: "含促进剂与 K-80 的树脂"
+    description: "施加/浸渍并凝胶; 与钴长凝胶(大型件), 与钒短凝胶; ≥35℃才足够快凝胶"
+    amount: null
+    temperature:
+      value: 35
+      unit: "celsius"
+      evidence_type: "explicit"
+      confidence: 0.9
+    duration:
+      value: null
+      unit: "minute"
+    missing_fields:
+      - field_name: "environment_temperature"
+        risk_level: "medium"
+        blocks_execution: false
+        requires_confirmation: true
+      - field_name: "gel_wait_condition"
+        risk_level: "low"
+        blocks_execution: false
+        requires_confirmation: true
+    confidence: 0.8
+    status: "inferred"
+
+  - step_id: "S05"
+    action: "cure"
+    material: "凝胶后复合材料 (2mm 层压板)"
+    description: "50℃固化: K-80 2phr + NL-49P 0.25phr; 20℃凝胶330min; 50℃固化凝胶62min 达峰118min 峰温117℃"
+    amount:
+      value: 2
+      unit: "phr"
+      note: "K-80 2phr + NL-49P 0.25phr (explicit)"
+    temperature:
+      value: 50
+      unit: "celsius"
+      evidence_type: "explicit"
+      confidence: 0.95
+      hold: true
+    duration:
+      value: 118
+      unit: "minute"
+      note: "50℃固化, 达峰118min, 峰温117℃ (explicit)"
+    missing_fields:
+      - field_name: "cure_ramp_rate"
+        risk_level: "low"
+        blocks_execution: false
+        requires_confirmation: true
+      - field_name: "laminate_thickness_scope"
+        risk_level: "low"
+        blocks_execution: false
+        requires_confirmation: true
+    confidence: 0.9
+    status: "warning"
+
+  - step_id: "S06"
+    action: "inspect"
+    material: "固化件"
+    description: "固化检验: 以 Barcol 硬度探测固化度 (层压板 Barcol 硬度 50)"
+    amount: null
+    temperature:
+      value: 20
+      unit: "celsius"
+      evidence_type: "inferred"
+      confidence: 0.8
+    missing_fields:
+      - field_name: "barcol_acceptance_criteria"
+        risk_level: "low"
+        blocks_execution: false
+        requires_confirmation: true
+    confidence: 0.85
+    status: "inferred"
+
+equipment:
+  - device_type: "balance"
+    device_name: "电子秤/计量泵 (精确称量树脂与K-80)"
+  - device_type: "mixer"
+    device_name: "低速搅拌器 (树脂促进剂混合)"
+  - device_type: "oven"
+    device_name: "固化烘箱 (50℃)"
+  - device_type: "curing_monitor"
+    device_name: "凝胶时间/温度记录"
+  - device_type: "hardness_measure"
+    device_name: "Barcol 硬度计"
+  - device_type: "fume_hood"
+    device_name: "通风 (苯乙烯挥发)"
+
+metadata:
+  version: "1.0.0"
+  generated_at: "2026-08-07T10:00:00Z"
+  compiler_version: "matflow-compiler/0.3.0"
+  source_type: "tds"
+  source_hash: "sha256:k80_tds"
+  operator: "auto"
+  compilation_notes: "K-80 TDS 固化应用协议。信息 explicit/derived/inferred 如实标注。缺失: 树脂类型体积、促进剂型号用量、搅拌条件、环境温度、固化升温速率等, 无致命缺失, 状态 needs_review。"
+
+safety_checks:
+  - check_id: "SAFE-K-001"
+    check_type: "self_accelerating_decomposition"
+    target_step: "S01"
+    status: "warning"
+    message: "K-80 为有机过氧化物, SADT 约75℃, 超温可自加速分解; 避开外热/火源。"
+    details: { sadt_c: 75, max_storage_c: 40 }
+  - check_id: "SAFE-K-002"
+    check_type: "flammable_decomposition_products"
+    target_step: "S05"
+    status: "warning"
+    message: "分解产物含甲烷(可燃气体), 固化需通风远离火源。"
+    details: { products: "methane, acetophenone, 2-phenyl-2-propanol" }
+  - check_id: "SAFE-K-003"
+    check_type: "oxidizer_avoid_reducing"
+    target_step: "S02"
+    status: "warning"
+    message: "严禁接触还原剂(胺)/酸/碱/重金属, 否则剧烈分解起火。"
+  - check_id: "SAFE-K-004"
+    check_type: "fire_safety"
+    target_step: "S01"
+    status: "warning"
+    message: "干燥通风, 远离热源火源; 苯乙烯单体易燃。"
+  - check_id: "SAFE-K-005"
+    check_type: "storage_limit"
+    target_step: "S01"
+    status: "warning"
+    message: "贮存温度 ≤40℃ / ≥-30℃, 保质期6个月, 超温有热失稳风险。"
+  - check_id: "SAFE-K-006"
+    check_type: "dose_limit"
+    target_step: "S01"
+    status: "warning"
+    message: "必须按 1-3 phr 使用, 不可超量以防放热失控。"
+  - check_id: "SAFE-K-007"
+    check_type: "exothermic_cure"
+    target_step: "S05"
+    status: "warning"
+    message: "固化放热峰温可达117℃(2mm板), 厚截面更热, 防局部过热。"
+  - check_id: "SAFE-K-008"
+    check_type: "detox_first_aid"
+    target_step: "S01"
+    status: "warning"
+    message: "皮肤/眼接触清水冲洗, 误服吸入就医, 备好灭火(禁水直接冲击)。"
+  - check_id: "SAFE-K-009"
+    check_type: "contamination_check"
+    target_step: "S03"
+    status: "warning"
+    message: "按配方配比混合, 避免 K-80 与还原促进剂大量直接混合。"

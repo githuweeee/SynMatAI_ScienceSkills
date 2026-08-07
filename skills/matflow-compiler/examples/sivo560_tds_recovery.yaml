@@ -1,0 +1,114 @@
+# 恢复与检查点方案
+## Dynasylan SIVO 560 - 硅烷偶联剂水解与应用处理 (TDS)
+# 协议ID: MF-T-002
+# 来源: Dynasylan SIVO 560 技术数据表
+# 状态: needs_review
+
+protocol_id: "MF-T-002"
+material: "Dynasylan SIVO 560 水解液制备与玻璃纤维/布处理"
+total_steps: 4
+checkpoints:
+  - checkpoint_id: "CP-S-01"
+    after_step: "S01"
+    description: "水解液配制完成(1-2%, 搅拌20-30min 变清澈)"
+    stored_state:
+      - name: "hydrolysate_volume"
+        type: "number"
+        unit: "L"
+        description: "水解液总量"
+      - name: "sivo_concentration_wtpc"
+        type: "number"
+        unit: "wt%"
+        description: "SIVO 560 浓度(1-2%)"
+      - name: "hydrolyze_duration_min"
+        type: "number"
+        unit: "minute"
+        description: "实际水解搅拌时长"
+      - name: "hydrolysate_clarity"
+        type: "string"
+        description: "水解液澄清度(应清澈)"
+    recovery_policy:
+      power_failure:
+        action: "restart_step"
+        description: "搅拌中断则补充搅拌至变清澈为止"
+      temperature_deviation:
+        threshold: 5
+        unit: "celsius"
+        action: "continue"
+        description: "温度小偏差可继续"
+    verification:
+      - check: "水解液清澈无浑浊"
+      - check: "记录水解完成时间(用于24h时效)"
+
+  - checkpoint_id: "CP-S-02"
+    after_step: "S02"
+    description: "水解液质量确认(澄清/浊度/表面张力)"
+    stored_state:
+      - name: "turbidity_fnu"
+        type: "number"
+        unit: "FNU"
+        description: "浊度(应≤3.0)"
+      - name: "surface_tension_mN_per_m"
+        type: "number"
+        unit: "mN/m"
+        description: "表面张力(1%,20min 约40)"
+      - name: "hydrolysate_valid"
+        type: "boolean"
+        description: "水解液是否有效(澄清)"
+    recovery_policy:
+      power_failure:
+        action: "resume_from_checkpoint"
+        description: "检验中断可重新测量"
+      turbidity_failed:
+        action: "discard"
+        description: "浑浊则整个水解液作废, 重新从S01配制"
+    verification:
+      - check: "浊度≤3.0 FNU (澄清)"
+      - check: "无水雾/颗粒/絮状物"
+
+  - checkpoint_id: "CP-S-03"
+    after_step: "S04"
+    description: "涂覆使用与24h时效管理"
+    stored_state:
+      - name: "time_after_hydrolysis_hours"
+        type: "number"
+        unit: "hour"
+        description: "距水解完成时间"
+      - name: "hydrolysate_still_clear"
+        type: "boolean"
+        description: "水解液仍澄清(未失效)"
+    recovery_policy:
+      time_elapsed:
+        threshold_hours: 24
+        action: "discard"
+        description: "超过24h水解液作废, 重新配制"
+      turbidity_appeared:
+        action: "discard"
+        description: "使用中出现浑浊即失效不可再用"
+    verification:
+      - 水解液在 24h 内使用完毕
+      - 使用全程保持澄清
+
+# 全局恢复策略
+global_recovery:
+  max_total_interruption_time: 360   # 分钟 (水解液可用窗口主导)
+  restart_threshold: 3
+  safety_priority: "high"
+  data_logging:
+    required: true
+    interval_minutes: 10
+  emergency_shutdown:
+    trigger: "hydrolysate_turbidity_failure"
+    action: "stop_use_and_discard_hydrolysate"
+    notification: "alert_operator"
+
+# 检查点依赖关系
+checkpoint_dependencies:
+  - from: "CP-S-01"
+    to: "CP-S-02"
+    required: true
+    description: "必须先完成水解并澄清才能检验"
+  - from: "CP-S-02"
+    to: "CP-S-03"
+    required: true
+    description: "必须先确认水解液有效才能涂覆使用"

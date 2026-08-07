@@ -458,7 +458,36 @@ confidence_score:
 | `references/edge_cases.md` | 反例与边界案例处理 |
 | `references/si_retrieval.md` | 补充材料获取策略与出版商适配详情 |
 
-## 18. 最终检查清单
+## 18. 评测案例（Examples）
+
+`examples/` 目录包含 9 组真实文献编译案例，每组包含 6 个输出文件（protocol.json/yaml、sop.md、missing.md、safety.md、recovery.yaml）：
+
+### 论文案例（4组）
+| 案例 | 文献来源 | 材料类型 | 核心特点 |
+|------|---------|---------|---------|
+| `cui_kessler_2012_*` | Cui & Kessler (2012) | 聚脲/聚氨酯 | 多步聚合反应，分子量控制 |
+| `zhou_2020_*` | Zhou et al. (2020) | TiO2-SiO2 Janus 材料 | 溶胶-凝胶法，Pickering 乳液 |
+| `yiwen_2022_*` | Yiwen et al. (2022) | 环氧/CFRP 复合材料 | 机械性能优化，工业应用导向 |
+| `alder_1938_*` | Alder & Rickert (1938) | Diels-Alder 加合物 | **德语 OCR 文档**，历史文献，高压反应风险 |
+
+### 专利案例（2组）
+| 案例 | 文献来源 | 材料类型 | 核心特点 |
+|------|---------|---------|---------|
+| `cn110577629b_*` | CN110577629B | 可降解环氧树脂 | 光固化，巯基-烯反应，DMDC 固化剂 |
+| `cn113574101a_*` | CN113574101A | 卤化硼回收 CFRP | 复合材料回收，纤维再利用 |
+
+### TDS 案例（2组）
+| 案例 | 文献来源 | 材料类型 | 核心特点 |
+|------|---------|---------|---------|
+| `k80_tds_*` | Trigonox K-80 TDS | 过氧化氢异丙苯糊 | 自由基引发剂，SADT 75°C，安全储存 |
+| `sivo560_tds_*` | Dynasylan SIVO 560 TDS | 硅烷偶联剂 | 水解活化，24小时使用窗口 |
+
+### 案例统计
+- **总计**: 9 组案例，54 个输出文件
+- **验证状态**: 5 组通过验证（alder_1938, cui_kessler_2012, wu_2014, yiwen_2022, zhou_2020）
+- **覆盖场景**: 论文/专利/TDS、中文/英文/德文、常温/高温/高压、合成/回收/应用
+
+## 19. 最终检查清单
 
 - [ ] SKILL.md frontmatter 合法（name/description 字段存在且符合规范）
 - [ ] 每个步骤都有 evidence 绑定

@@ -1,0 +1,286 @@
+# 恢复与检查点方案 (Recovery & Checkpoint Plan)
+# NaBH4促进的芳基醚电化学还原裂解——二苯醚电还原
+#
+# 来源文献: Wu, W.-B.; Huang, J.-M. J. Org. Chem. 2014, 79, 10189-10195.
+# DOI: 10.1021/jo5018537
+# 本方案定义了协议执行中的检查点与异常恢复策略。
+# 检查点数据与 protocol.json 的 checkpoints 数组一一对应。
+
+protocol:
+  protocol_id: "MF-REAL-004"
+  source_document:
+    title: "Electrochemical Cleavage of Aryl Ethers Promoted by Sodium Borohydride"
+    journal: "The Journal of Organic Chemistry"
+    year: 2014
+    volume: 79
+    pages: "10189-10195"
+    doi: "10.1021/jo5018537"
+
+  # ============================================================
+  # 检查点定义
+  # ============================================================
+  checkpoints:
+    - checkpoint_id: "CP-01"
+      after_step: "WB-03"
+      name: "配方与溶解检查点"
+      description: "确认配方固定后进入电极组装"
+      stored_state:
+        - name: "diphenyl_ether_amount"
+          type: number
+          unit: mmol
+        - name: "nabh4_amount"
+          type: number
+          unit: mmol
+        - name: "solvent_volume"
+          type: number
+          unit: mL
+        - name: "electrolyte_conc"
+          type: number
+          unit: M
+        - name: "dissolution_complete"
+          type: boolean
+      recovery_policy:
+        power_failure: "restart_step"
+        temperature_deviation:
+          threshold: 5
+          unit: celsius
+          action: "hold"
+      validation_rules:
+        - rule: "diphenyl_ether_amount == 0.5 mmol"
+          severity: "high"
+        - rule: "nabh4_amount == 1.5 mmol"
+          severity: "high"
+        - rule: "dissolution_complete == true"
+          severity: "high"
+          action_on_fail: "stir_more"
+
+    - checkpoint_id: "CP-02"
+      name: "电极组装检查点"
+      after_step: "WB-04"
+      description: "验证阳极、阴极及并联连接，防止电解操作或收率下降"
+      composed_state:
+        - name: anode_type
+          type: string
+        - name: cathode_type
+          type: string
+        - name: anode_area
+          type: number
+          unit: cm2
+        - name: cathode_pieces
+          type: number
+        - name: cathode_connected
+          type: boolean
+      recovery_policy:
+        power_failure: "hold"
+        temperature_deviation:
+          threshold: 5
+          unit: celsius
+          action: "continue"
+      validation_rules:
+        - rule: "anode_type == Pt_foil && anode_area >= 1.5"
+          severity: "high"
+          action_on_fail: "reassemble_electrodes"
+        - rule: "cathode_pieces >= 4"
+          severity: "high"
+          note: "单片 Pt 阴极会使收率降至 20% (Table 1 entry 4)"
+        - rule: "cathode_connected == true"
+          severity: "high"
+          action_on_fail: "wire_in_parallel"
+
+    - checkpoint_id: "CP-03"
+      name: "电解完成检查点"
+      after_step: "WB-06"
+      description: "电解 105 min 完成，记录实际电流/电压/温度，检查排气是否正常"
+      stored_state:
+        - name: applied_current
+          type: number
+          unit: mA
+        - name: reaction_duration
+          type: number
+          unit: minute
+        - name: reaction_temp
+          type: number
+          unit: celsius
+        - name: cell_venting_ok
+          type: boolean
+        - name: solution_appearance
+          type: string
+      recovery_policy:
+        power_failure: "alert"
+        temperature_deviation:
+          threshold: 5
+          unit: celsius
+          action: "hold"
+        notes:
+          - "若中途断电：记录已通电时间 t，距离 105 min 的剩余时间 delta = 105 - t"
+          - "评估恢复供电后继续（重开恒流）或判定不完整重做"
+          - "中断期间 NaBH4 继续水解，需保持通风、无点火源"
+          - "若溶液温度偏离超过 5 C，保持并确认后再继续"
+      validation_rules:
+        - rule: "reaction_duration >= 105"
+          severity: "medium"
+          action_on_fail: "continue_electrolysis"
+        - rule: "cell_venting_ok == true"
+          severity: "high"
+          action_on_fail: "vent_immediately"
+
+    - checkpoint_id: "CP-04"
+      name: "淬灭完成检查点"
+      after_step: "WB-09"
+      description: "确认酸化完成、无活跃 H2 发泡、0C 保持、HCl 缓加"
+      stored_state:
+        - name: ice_bath_temperature
+          type: number
+          unit: celsius
+        - name: quench_ph
+          type: number
+          unit: "pH"
+        - name: h2_foaming_controlled
+          type: boolean
+        - name: hcl_added_slowly
+          type: boolean
+      recovery_policy:
+        power_failure: "cool_hold_keep_at_0C"
+        temperature_deviation:
+          threshold: 5
+          unit: celsius
+          action: "hold"
+      validation_rules:
+        - rule: "quench_ph < 2"
+          severity: "medium"
+          action_on_fail: "add_more_hcl_slowly"
+        - rule: "h2_foaming_controlled == true"
+          severity: "high"
+          action_on_fail: "stop_hcl_further_wait_ensure_vent"
+        - rule: "hcl_added_slowly == true"
+          severity: "high"
+          action_on_fail: "quench_slab_do_not_continue"
+
+    - checkpoint_id: "CP-05"
+      name: "萃取+干燥完成检查点"
+      after_step: "WB-11"
+      description: "确认完成 3 次乙醚萃取、有机相合并、Na2SO4 干燥、过滤"
+      stored_state:
+        - name: extraction_fractions
+          type: number
+        - name: organic_layer_combined
+          type: boolean
+        - name: dried_over_na2so4
+          type: boolean
+        - name: filtered
+          type: boolean
+      recovery_policy:
+        power_failure: "resume_from_checkpoint"
+        temperature_deviation:
+          threshold: 10
+          unit: celsius
+          action: "continue"
+      validation_rules:
+        - rule: "extraction_fractions >= 3"
+          severity: "medium"
+          action_on_fail: "re_extract_once_more"
+        - rule: "organic_layer_combined == true"
+          severity: "medium"
+        - rule: "filtered == true"
+          severity: "low"
+
+    - checkpoint_id: "CP-06"
+      name: "分析完成检查点"
+      after_step: "WB-12"
+      description: "GC/GC-MS 结果定量有效性核对"
+      stored_state:
+        - name: gc_program
+          type: string
+        - name: internal_std_peak
+          type: boolean
+        - name: conversion
+          type: number
+          unit: percent
+        - name: product_yield
+          type: number
+          unit: percent
+      recovery_policy:
+        power_failure: "resume_from_checkpoint"
+        temperature_deviation:
+          threshold: 10
+          unit: celsius
+          action: "continue"
+      validation_rules:
+        - rule: "internal_std_peak == true"
+          severity: "high"
+          note: "内标峰存在，定量有效"
+        - rule: "conversion >= 0 && product_yield >= 0"
+          severity: "low"
+
+  # ============================================================
+  # 异常情形恢复策略
+  # ============================================================
+  exception_recovery:
+    conditions:
+      - exception: "断电"
+        occurs_in: "WB-06"
+        trigger: "电解中仓位断电"
+        strategy: "记录已通电时间；判断继续或重做（见 CP-03）"
+        severity: "medium"
+      - exception: "温度骤变"
+        occurs_in: "WB-06"
+        trigger: "DeltaT > 5C"
+        strategy: "hold，待稳定后继续电解"
+        severity: "medium"
+      - exception: "电解电流异常"
+        occurs_in: "WB-06"
+        trigger: "电流偏移 > 10%"
+        strategy: "停电检查接线与电极；电枢碰撞恢复"
+        severity: "high"
+      - exception: "阴阳极短路"
+        occurs_in: "WB-04 / WB-06"
+        trigger: "电流骤增或电压为零"
+        strategy: "立即断电，改装电极（回 CP-02）"
+        severity: "high"
+      - exception: "淬灭喷溅"
+        occurs_in: "WB-09"
+        trigger: "加酸过快、发泡剧烈"
+        strategy: "停止加酸，冷却 0C，通风；待稳定后缓加（回 CP-04 确认）"
+        severity: "critical"
+      - exception: "H2 积聚"
+        occurs_in: "WB-06 / WB-09"
+        trigger: "通风不足或点火源"
+        strategy: "及时通风、移除点火源，保持 0C"
+        severity: "critical"
+      - exception: "火灾 / 起火"
+        occurs_in: "WB-09"
+        trigger: "H2 或乙醚引燃"
+        strategy: "用灭火器/沙土；先通风冷却，停止操作"
+        severity: "critical"
+      - exception: "萃取乳化"
+        occurs_in: "WB-10"
+        trigger: "乳化层明显"
+        strategy: "静置、加 NaCl/盐水破坏乳化"
+        severity: "low"
+      - exception: "干燥不完全"
+        occurs_in: "WB-11"
+        trigger: "水残留"
+        strategy: "补加 Na2SO4 至不再结块，再过滤"
+        severity: "low"
+      - exception: "分析无内标峰"
+        occurs_in: "WB-12"
+        trigger: "内标峰缺失"
+        strategy: "检查进样，可能漏加内标；必要时重测"
+        severity: "low"
+
+  # ============================================================
+  # 流程快照与恢复逻辑
+  # ============================================================
+  flow_snapshot:
+    sequence:
+      - "WB-01 -> WB-02 -> WB-03 -> CP-01 -> WB-04 -> CP-02 -> WB-05 -> WB-06 -> CP-03"
+      - "WB-07 -> WB-08 -> WB-09 -> CP-04 -> WB-10 -> WB-11 -> CP-05 -> WB-12 -> CP-06"
+    recovery_logic:
+      - "在 CP-01 至 CP-06 任一点发现异常时，运行对应 recovery_policy 动作。"
+      - "若恢复后仍不满足该检查点 validation 规则，则该分支判定为 rerun（重做该部分）或 halt（停止，人工介入）。"
+      - "涉及 NaBH4 的步骤（WB-02、WB-06、WB-08、WB-09）发生异常后，必须先确保通风、降温、稀释，再执行后续恢复。"
+
+  # ============================================================
+  # 免责声明
+  # ============================================================
+  note: "本恢复方案是 MatFlow Compiler 生成的推荐型预案，基于源显式数据和通用实验安全实践；执行时需结合实验室条件与操作者确认。"

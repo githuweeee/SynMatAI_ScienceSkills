@@ -1,0 +1,856 @@
+{
+  "protocol_id": "MF-PAT-001",
+  "material": "Degradable spiroacetal-containing epoxy resin (thiol-ene two-step synthesis)",
+  "source_documents": [
+    {
+      "doc_id": "DOC-CN01",
+      "title": "一种可降解的环氧树脂及其制备方法 (A degradable epoxy resin and its preparation method)",
+      "file_path": "c:\\Users\\Techsinn\\.trae\\work\\6a72e00e3feacc2f0fae5f54\\cn110577629b_full.txt",
+      "doc_type": "patent",
+      "patent_number": "CN 110577629 B",
+      "applicant": "\u70df\u53f0\u5927\u5b66 (Yantai University)",
+      "inventors": [
+        "\u90d1\u8000\u81e3",
+        "\u8d75\u4e16\u5764",
+        "\u5b8b\u9e4f",
+        "\u73ed\u5e86\u798f",
+        "\u9ad8\u6b63\u56fd",
+        "\u5f20\u65b0\u6d9b"
+      ],
+      "application_number": "201910953323.5",
+      "grant_date": "2022.01.11",
+      "int_cl": "C08G 59/30; C08G 59/50"
+    }
+  ],
+  "reagents": [
+    {
+      "name": "Diallyl pentaerythritol diacetal (BTU)",
+      "cas_number": null,
+      "role": "monomer (spiroacetal crosslinker)",
+      "supplier": null,
+      "purity": null,
+      "molar_mass": {
+        "value": 212.24,
+        "unit": "g/mol",
+        "evidence_type": "explicit",
+        "evidence": {
+          "document": "DOC-CN01",
+          "page": 4,
+          "section": "chips of BTU (molecular weight)",
+          "quote": "BTU\u7684\u5206\u5b50\u91cf(212.24g/mol)",
+          "evidence_type": "explicit",
+          "confidence": 0.95
+        }
+      },
+      "total_amount": {
+        "value": 0.5872,
+        "unit": "g",
+        "moles": 2.77,
+        "mmol": "Embodiment 1, S1"
+      },
+      "hazard_class": "low_hazard",
+      "evidence": {
+        "patent": "DOC-CN01",
+        "section": "实施例1",
+        "quote": "将0.5872g (2.77mmol) BTU、0.3914g (4.16mmol)乙二硫醇和35.5mg (0.139mmol)安息香二甲醚加入烧瓶中",
+        "evidence_type": "explicit",
+        "confidence": 0.98
+      }
+    },
+    {
+      "name": "1,2-Ethanedithiol (ethylene dithiol)",
+      "cas_number": "540-63-6",
+      "role": "dithiol monomer",
+      "supplier": null,
+      "purity": null,
+      "molar_mass": {
+        "value": 94.2,
+        "unit": "g/mol",
+        "evidence_type": "derived",
+        "derivation": "standard molar mass from formula C2H6S2"
+      },
+      "total_amount": {
+        "value": 0.3914,
+        "unit": "g",
+        "moles": 4.16,
+        "mmol": "Embodiment 1, S1"
+      },
+      "hazard_class": "flammable, irritant, thiol odor (stinging)",
+      "evidence": {
+        "patent": "POC-CN01",
+        "section": "实施例1",
+        "quote": "0.3914g (4.16mmol)乙二硫醇",
+        "evidence_type": "explicit",
+        "confidence": 0.98
+      }
+    },
+    {
+      "name": "Benzoin dimethyl ether (安息香二甲醚, DMPA/BDK)",
+      "cas_number": "24650-42-8",
+      "role": "photoinitiator",
+      "supplier": null,
+      "purity": null,
+      "total_amount": {
+        "value": 0.0355,
+        "unit": "g",
+        "moles": 0.139,
+        "mmol": 0.139,
+        "note": "Embodiment 1, S1"
+      },
+      "hazard_class": "irritant, light-sensitive",
+      "evidence": {
+        "patent": "DOC-CN01",
+        "section": "实施例1",
+        "quote": "35.5mg (0.139mmol)安息香二甲醚",
+        "evidence_type": "explicit",
+        "confidence": 0.98
+      }
+    },
+    {
+      "name": "Tetrahydrofuran (THF)",
+      "cas_number": "109-99-9",
+      "role": "solvent (S1)",
+      "supplier": null,
+      "purity": null,
+      "total_amount": {
+        "value": 2.946,
+        "unit": "g",
+        "note": "Embodiment 1, S1"
+      },
+      "hazard_class": "flammable, peroxide-forming",
+      "evidence": {
+        "section": "实施例1",
+        "quote": "用2.946g四氢呋喃将其溶解",
+        "evidence_type": "explicit",
+        "confidence": 0.98
+      }
+    },
+    {
+      "name": "Anhydrous diethyl ether (ethyl ether)",
+      "cas_number": "60-29-7",
+      "role": "precipitation solvent",
+      "supplier": null,
+      "purity": "anhydrous",
+      "total_amount": {
+        "value": 20,
+        "unit": "g",
+        "note": "Embodiment 1, S1 precipitation"
+      },
+      "hazard_class": "highly flammable, peroxide-former",
+      "evidence": {
+        "section": "实施例1",
+        "quote": "产物用20g乙醚沉淀，离心分离后",
+        "evidence_type": "explicit",
+        "confidence": 0.98
+      }
+    },
+    {
+      "name": "Allyl glycidyl ether (AGE)",
+      "cas_number": "106-92-3",
+      "role": "ene monomer (S2, introduces epoxy)",
+      "supplier": null,
+      "purity": null,
+      "total_amount": {
+        "value": 1.506,
+        "unit": "g",
+        "moles": 13.2,
+        "note": "Embodiment 1, S2"
+      },
+      "hazard_class": "flammable, toxic, irritant",
+      "evidence": {
+        "section": "实施例1",
+        "quote": "1.506g (13.2mmol)烯丙基缩水甘油醚(AGE)",
+        "evidence_type": "explicit",
+        "confidence": 0.98
+      }
+    },
+    {
+      "name": "Chloroform (trichloromethane)",
+      "cas_number": "67-66-3",
+      "role": "solvent (S2)",
+      "supplier": null,
+      "purity": null,
+      "total_amount": {
+        "value": 2.935,
+        "unit": "g",
+        "note": "Embodiment 1, S2"
+      },
+      "hazard_class": "toxic, volatile, suspected carcinogen (elevated toxicity)",
+      "evidence": {
+        "section": "实施例1",
+        "quote": "和2.935g三氯甲烷置于圆底烧瓶中",
+        "evidence_type": "explicit",
+        "confidence": 0.98
+      }
+    },
+    {
+      "name": "Dichloromethane (DCM)",
+      "cas_number": "75-09-2",
+      "role": "solvent (curing/co-dissolution)",
+      "supplier": null,
+      "purity": null,
+      "total_amount": {
+        "value": 1.279,
+        "unit": "g",
+        "note": "Embodiment 1, curing step"
+      },
+      "hazard_class": "carcinogenic, volatile, anesthetic",
+      "evidence": {
+        "section": "实施例1",
+        "quote": "及1.279g二氯甲烷将环氧树脂和DMDC溶解",
+        "evidence_type": "explicit",
+        "confidence": 0.98
+      }
+    },
+    {
+      "name": "3,3'-dimethyl-4,4'-diaminodicyclohexylmethane (DMDC)",
+      "cas_number": "6864-37-5",
+      "role": "amine curing agent",
+      "supplier": null,
+      "purity": null,
+      "total_amount": {
+        "value": 0.0273,
+        "unit": "g",
+        "moles": 0.115,
+        "note": "Embodiment 1, molar ratio 2:1 (resin:DMDC)"
+      },
+      "hazard_class": "irritant, sensitizer",
+      "evidence": {
+        "section": "实施例1",
+        "quote": "0.0273g (0.115mmol)的DMDC",
+        "evidence_type": "explicit",
+        "confidence": 0.98
+      }
+    },
+    {
+      "name": "Formic acid (methanoic acid)",
+      "cas_number": "64-18-6",
+      "role": "acid degradation reagent",
+      "supplier": null,
+      "purity": null,
+      "total_amount": {
+        "value": 2.7086,
+        "unit": "g",
+        "note": "Embodiment 1, degradation of DMDC-cured resin"
+      },
+      "hazard_class": "corrosive strong acid, toxic",
+      "evidence": {
+        "section": "实施例1",
+        "quote": "2.7086g甲酸放入带盖子的小玻璃瓶内，在60℃下降解",
+        "evidence_type": "explicit",
+        "confidence": 0.98
+      }
+    },
+    {
+      "name": "Inert gas (argon/nitrogen)",
+      "cas_number": null,
+      "role": "inert atmosphere for S2",
+      "supplier": null,
+      "purity": null,
+      "total_amount": null,
+      "hazard_class": "asphyxiant (in confined space)",
+      "evidence": {
+        "section": "人员权利要求6 / 实施例1",
+        "quote": "在氮气气氛下（实施例1），优选所述惰性气体为氩气（权利要求6）",
+        "evidence_type": "explicit (Ar) / explicit (N2 in examples)",
+        "confidence": 0.9
+      }
+    }
+  ],
+  "steps": [
+    {
+      "step_id": "S01",
+      "action": "weigh",
+      "material": "BTU + 1,2-ethanedithiol + benzoin dimethyl ether (DMPA)",
+      "description": "Weigh and charge BTU (0.5872g, 2.77mmol), 1,2-ethanedithiol (0.3914g, 4.16mmol) and benzoin dimethyl ether (35.5mg, 0.139mmol) into a flask to give a molar ratio 1:1.50:0.050 for the three components respectively.",
+      "amount": {
+        "value": 1.0141,
+        "unit": "g",
+        "note": "Total solids weighed (BTU 0.5872 + 乙二汉醇 0.3914 + initiator 0.0355) for S1",
+        "molar_ratio": "BTU: 二巯基烷烃:光引发剂 = 1:1.5:0.05 (matches claim range 1:(1.5-5):(0.01-0.05))"
+      },
+      "temperature": null,
+      "duration": null,
+      "stirring_speed": null,
+      "atmosphere": "air",
+      "pressure": null,
+      "evidence": [
+        {
+          "section": "实施例1",
+          "quote": "将0.5872g (2.77mmol) BTU、0.3914g (4.16mmol)乙二硫醇和35.5mg (0.139mmol)安息香二甲醚加入烧瓶中",
+          "evidence_type": "explicit",
+          "confidence": 0.98
+        }
+      ],
+      "confidence": 0.95,
+      "status": "ok",
+      "missing_fields": [],
+      "device_binding": { "device_id": null, "capability_check": "unchecked" },
+      "notes": "Molar ratio verified: BTU:ethanediolamine:initiator = 1:1.50:0.050. within claim window (S1 ratio 1:(1.5-5):(0.01-0.05))."
+    },
+    {
+      "step_id": "S02",
+      "action": "dissolve",
+      "material": "BTU + dithiol + initiator in THF",
+      "description": "Dissolve the solids in 2.946 g tetrahydrofuran (THF) in the flask.",
+      "amount": {
+        "value": 2.946,
+        "unit": "g",
+        "note": "THF solvent mass"
+      },
+      "temperature": {
+        "value": null,
+        "unit": "celsius",
+        "note": "Room temperature inferred; no temperature specified in patent"
+      },
+      "duration": null,
+      "stirring_speed": null,
+      "atmosphere": "air",
+      "pressure": null,
+      "evidence": [
+        {
+          "section": "实施例1",
+          "quote": "用2.946g四氢呋喃将其溶解",
+          "evidence_type": "explicit",
+          "confidence": 0.98
+        }
+      ],
+      "confidence": 0.9,
+      "status": "warning",
+      "missing_fields": [
+        {
+          "field_name": "duration.value",
+          "step_id": "S02",
+          "risk_level": "low",
+          "blocks_execution": false,
+          "suggestion": "Dissolution time not specified; stir until fully dissolved",
+          "requires_confirmation": true
+        }
+      ],
+      "device_binding": { "device_id": null, "capability_check": "unchecked" },
+      "notes": "THF is volatile and flammable (boils ~66C). Dissolution at the room temperature."
+    },
+    {
+      "step_id": "S03",
+      "action": "photoirradiate",
+      "description": "Irradiate the solution with UV light (intensity 3000 uW/cm2) for 3 h to drive the thiol-ene addition (S1 step) to completion.",
+      "amount": null,
+      "temperature": {
+        "value": null,
+        "unit": "celsius",
+        "note": "Not specified; typically room temperature; exotherm possible"
+      },
+      "duration": {
+        "value": 3,
+        "unit": "hour",
+        "note": "UV irradiation time"
+      },
+      "uv_intensity": {
+        "value": 3000,
+        "unit": "uW/cm2",
+        "range": "3000-9000 uW/cm2 (claim 3)"
+      },
+      "stirring_speed": null,
+      "atmosphere": "air",
+      "pressure": null,
+      "evidence": [
+        {
+          "section": "实施例1",
+          "quote": "在紫外灯(光强为3000μW/cm2)下照射3h",
+          "evidence_type": "explicit",
+          "confidence": 0.98
+        },
+        {
+          "section": "权利要求3",
+          "quote": "紫外光的光强度为3000~9000μW/cm2",
+          "evidence_type": "explicit",
+          "confidence": 0.95
+        }
+      ],
+      "confidence": 0.95,
+      "status": "ok",
+      "missing_fields": [],
+      "device_binding": { "device_id": null, "capability_check": "unchecked" },
+      "notes": "SAFETY: UV radiation hazard - use UV-blocking goggles and face/arm protection. Thiol-ene photopolymerization initiated by DMPA (radical initiator)."
+    },
+    {
+      "step_id": "S04",
+      "action": "precipitate",
+      "description": "Precipitate the S1 product by adding 20 g diethyl ether, centrifuge to separate. Carry out precipitation three times in total.",
+      "amount": {
+        "value": 20,
+        "unit": "g",
+        "note": "Diethyl ether; precipitation repeated 三 (x3)"
+      },
+      "temperature": null,
+      "duration": null,
+      "stirring_speed": null,
+      "atmosphere": "air",
+      "pressure": null,
+      "evidence": [
+        {
+          "section": "实施例1",
+          "quote": "然后产物用20g乙醚沉淀，离心分离后",
+          "evidence_type": "explicit",
+          "confidence": 0.97
+        },
+        {
+          "section": "权利要求2 S1",
+          "quote": "得到的产物在无水乙醚中沉淀三次",
+          "evidence_type": "explicit",
+          "confidence": 0.95,
+          "note": "Patent claim states 'precipitate three times'; Embodiment 1 text gives 20g ether; frequency 3x inferred from claim"
+        }
+      ],
+      "confidence": 0.9,
+      "status": "warning",
+      "missing_fields": [
+        {
+          "field_name": "centrifuge_speed",
+          "step_id": "S04",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "Centrifuge speed (rpm) not specified; centrifuge separation mentioned ('离心分离')",
+          "requires_confirmation": true
+        }
+      ],
+      "device_binding": { "device_id": null, "capability_check": "unchecked" },
+      "notes": "Precipitation repeat count: claim states 3x; embodiment 1 states 20g ether. Centerfuge (离心) used for separation."
+    },
+    {
+      "step_id": "S05",
+      "action": "dry",
+      "description": "Dry the separated solid in a vacuum oven at 30C until constant weight to obtain thiol-terminated spiroacetal-containing intermediate.",
+      "temperature": {
+        "value": 30,
+        "unit": "celsius",
+        "note": "Vacuum oven drying temperature"
+      },
+      "duration": {
+        "value": null,
+        "unit": "hour",
+        "note": "'until constant weight' - drying to constant mass"
+      },
+      "atmosphere": "vacuum",
+      "pressure": null,
+      "evidence": [
+        {
+          "section": "权利要求2 S1",
+          "quote": "然后在30℃的真空干燥箱内干燥至恒重",
+          "evidence_type": "explicit",
+          "confidence": 0.98
+        }
+      ],
+      "confidence": 0.9,
+      "status": "warning",
+      "missing_fields": [
+        {
+          "field_name": "duration.value",
+          "step_id": "S05",
+          "risk_level": "low",
+          "blocks_execution": false,
+          "suggestion": "Dry until constant weight; actual duration depends on batch; terminal criterion specified",
+          "requires_confirmation": true
+        }
+      ],
+      "device_binding": { "device_id": null, "capability_check": "unchecked" },
+      "notes": "Product: thiol-terminated spirocyclic intermediate (S1 intermediate). For Embodiment 1 the intermediate Mw ~2645.9 g/mol (7.1 BTU repeat units) derived from NMR."
+    },
+    {
+      "step_id": "S06",
+      "action": "dissolve",
+      "description": "Under inert gas (nitrogen, per Embodiment 1; claim preferable argon), place the S1 intermediate (0.5748g, 0.22mmol), allyl glycidyl ether AGE (1.506g, 13.2mmol) and chloroform (2.935g) in a round-bottom flask.",
+      "amount": {
+        "value": 5.0158,
+        "unit": "g",
+        "note": "intermediate + AGE + chloroform total = 0.5748+1.506+2.935"
+      },
+      "temperature": null,
+      "duration": null,
+      "stirring_speed": null,
+      "atmosphere": "inert (N2 / Ar)",
+      "pressure": null,
+      "inert_gas": {
+        "value": "N2 (Ex.1) / Ar (claim 6)",
+        "evidence_type": "explicit"
+      },
+      "evidence": [
+        {
+          "section": "实施例1",
+          "quote": "在氮气气氛下，将0.5748g(0.22mmol)步骤S1的产物，1.506g(13.2mmol)烯丙基缩水甘油醚(AGE)和2.935g三氯甲烷置于圆底烧瓶中",
+          "evidence_type": "explicit",
+          "confidence": 0.97
+        },
+        {
+          "section": "权利要求6",
+          "quote": "所述惰性气体为氩气",
+          "evidence_type": "explicit",
+          "confidence": 0.95
+        }
+      ],
+      "confidence": 0.9,
+      "status": "warning",
+      "missing_fields": [
+        {
+          "field_name": "photoinitiator_S2",
+          "step_id": "S06",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "No UV-initiator amount given for S2 in embodiment 1; patent claim methodides ratio 1:(2-60):(0.01-0.05) for intermediate:AGE:photoinitiator. Need to add photoinitiator or confirm thiol-en resist relies on residual initiator.",
+          "requires_confirmation": true
+        }
+      ],
+      "device_binding": { "device_id": null, "capability_check": "unchecked" },
+      "notes": "ALTHOUGH claim right 2 states S2 includes a photoinitiator in molar ratio, the Embodiment 1 recipe lists only intermediate+AGE+chloroform (no additional initiator). Residual mercaptan-ene may proceed via photoactive radicals already. This is the main uncertainty of the protocol."
+    },
+    {
+      "step_id": "S07",
+      "action": "photoirradiate",
+      "description": "Irradiate the S2 mixture in an ice-water bath with UV light (3000 μ/cm2) for 3 h to complete the second thiol-ene addition.",
+      "temperature": {
+        "value": 0,
+        "unit": "celsius",
+        "note": "Ice-water bath (approximately 0C) - listed explicitly"
+      },
+      "duration": {
+        "value": 3,
+        "unit": "hour"
+      },
+      "uv_intensity": {
+        "value": 3000,
+        "unit": "uW/cm2"
+      },
+      "stirring_speed": null,
+      "atmosphere": "inert (N2 / Ar)",
+      "pressure": null,
+      "evidence": [
+        {
+          "section": "实施例1",
+          "quote": "然后在紫外光(光强为3000μW/cm2)下反应3h",
+          "evidence_type": "explicit",
+          "confidence": 0.97
+        },
+        {
+          "section": "权利要求2 S2",
+          "quote": "冰水浴条件下用紫外光灯照射1-3小时",
+          "evidence_type": "explicit",
+          "confidence": 0.95,
+          "note": "Ice-water bath condition (0C) from claim; embodiment temperature implicitly cold"
+        }
+      ],
+      "confidence": 0.92,
+      "status": "ok",
+      "missing_fields": [],
+      "device_binding": { "device_id": null, "capability_check": "unchecked" },
+      "notes": "Ice-water bath keeps the exothermic thiol-ene reaction cool. UV protection required. Reaction under inert N2."
+    },
+    {
+      "step_id": "S08",
+      "action": "precipitate_dry",
+      "description": "Precipitate the S2 product in diethyl ether (repeated times), separate by centrifugation, dry in vacuum oven to constant weight to obtain degradable epoxy resin.",
+      "amount": {
+        "value": 20,
+        "unit": "g",
+        "note": "Diethyl ether precipitation; repeated 3x (claim)"
+      },
+      "temperature": {
+        "value": 30,
+        "unit": "celsius",
+        "note": "vacuum drying (same as S1)"
+      },
+      "duration": {
+        "value": null,
+        "unit": "hour",
+        "note": "until constant weight"
+      },
+      "stirring_speed": null,
+      "atmosphere": "vacuum",
+      "pressure": null,
+      "evidence": [
+        {
+          "section": "实施例1",
+          "quote": "在20g乙醚中沉淀三次，离心分离后得到产物，放入真空干燥箱中烘干至恒重",
+          "evidence_type": "explicit",
+          "confidence": 0.97
+        }
+      ],
+      "confidence": 0.9,
+      "status": "warning",
+      "missing_fields": [
+        {
+          "field_name": "centrifuge_speed",
+          "step_id": "S08",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "Centrifuge speed not specified",
+          "requires_confirmation": true
+        }
+      ],
+      "device_binding": { "device_id": null, "capability_check": "unchecked" },
+      "notes": "Final product: spiroacetal-containing epoxy resin. Embodiment 1 product Mn ~2874.2 g/mol."
+    },
+    {
+      "step_id": "S09",
+      "action": "cure",
+      "description": "Mix dried epoxy resin with DMDC hardener at 2:1 molar (epoxy-resin:DMDC) in dichloromethane (1.279g). Mature for 40 min at room temperature, remove solvent in oven at 60C, then ramp to 150C for 3 h to cure.",
+      "temperature": {
+        "value": 150,
+        "unit": "celsius",
+        "note": "final cure temp; preceded by 60C solvent removal"
+      },
+      "duration": {
+        "value": 3,
+        "unit": "hour",
+        "note": "Cure time at 150C"
+      },
+      "molar_ratio": {
+        "value": "2:1",
+        "note": "resin:DMDC"
+      },
+      "stirring_speed": null,
+      "atmosphere": "air",
+      "pressure": null,
+      "evidence": [
+        {
+          "section": "实施例1",
+          "quote": "称取0.6560g(0.23mmol)实施例1终产物、0.0273g(0.115mmol)的DMDC及1.279g二氯甲烷将环氧树脂和DMDC溶解，在室温下熟化40min ... 60℃下脱除溶剂。然后，升温至150℃，固化3h。",
+          "evidence_type": "explicit",
+          "confidence": 0.97
+        }
+      ],
+      "confidence": 0.92,
+      "status": "ok",
+      "missing_fields": [
+        {
+          "field_name": "temperature.ramp_rate",
+          "step_id": "S09",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "Ramp rate from 60 to 150C not specified",
+          "requires_confirmation": true
+        }
+      ],
+      "device_binding": { "device_id": null, "capability_check": "unchecked" },
+      "notes": "Curing at 150C high temperature in oven. DCM volatile/carcinogenic - handle in fume hood."
+    },
+    {
+      "step_id": "S10",
+      "action": "degrade_acid",
+      "description": "Degrade the DMDC-cured epoxy in formic acid at 60C. Prepare 0.1352g cured resin + 2.7036g formic acid in a lidded glass vessel; heat at 60C; full dissolution/clear clarified ~100-120 min.",
+      "temperature": {
+        "value": 60,
+        "unit": "celsius"
+      },
+      "duration": {
+        "value": 2,
+        "unit": "hour",
+        "note": "approx: clear at 100-120 min; fully clear by 120 min"
+      },
+      "amount": {
+        "value": 2.7086,
+        "unit": "g",
+        "note": "formic acid; 0.1352 g cured resin"
+      },
+      "atmosphere": "air",
+      "pressure": null,
+      "stirring_speed": null,
+      "evidence": [
+        {
+          "section": "实施例1",
+          "quote": "将0.1352g由DMDC固化的环氧树脂和2.7086g甲酸放入带盖子的小玻璃瓶内，在60℃下降解... 120分钟时溶液已完全透明澄清",
+          "evidence_type": "explicit",
+          "confidence": 0.97
+        }
+      ],
+      "confidence": 0.9,
+      "status": "warning",
+      "missing_fields": [
+        {
+          "field_name": "stirring_speed",
+          "step_id": "S10",
+          "risk_level": "low",
+          "blocks_execution": false,
+          "suggestion": "Stirring not specified; static degradation in sealed container",
+          "requires_confirmation": true
+        }
+      ],
+      "device_binding": { "device_id": null, "capability_check": "unchecked" },
+      "notes": "SAFETY: formic acid is corrosive, toxic; handle in fume hood with acid-resistant gloves. Degradation temp 60C > acid-trigger threshold reported 40C."
+    }
+  ],
+  "equipment": [
+    { "device_id": null, "device_type": "balance", "device_name": "Analytical balance",
+      "note": "Weighing of reagents" },
+    { "device_id": null, "device_type": "reactor", "device_name": "Round-bottom flask for S1/S2" },
+    { "device_id": null, "device_type": "uv_source", "device_name": "UV lamp (3000-9000 uW/cm2) for S03/S07", "config_path": null },
+    { "device_id": null, "device_type": "centrifuge", "device_name": "Centrifuge for precipitation (S04/S08)" },
+    { "device_id": null, "device_type": "oven", "device_name": "Vacuum oven (30C) for drying (S05/S08)" },
+    { "device_id": null, "device_type": "oven", "device_name": "Convection/forced-air oven for cure at 150C (S09)" },
+    { "device_id": null, "device_type": "fume_hood", "device_name": "Fume hood for THF, chloroform, DCM, acid, diethyl ether ops" },
+    { "device_id": null, "device_type": "hotplate_stirrer", "device_name": "Magnetic stirrer/hotplate for curing solution (S09)" }
+  ],
+  "metadata": {
+    "version": "1.0.0",
+    "generated_at": "2026-08-07T15:00:00Z",
+    "compiler_version": "matflow-compiler/0.3.0",
+    "source_hash": "sha256:cn110577629b",
+    "operator": "auto",
+    "lab_id": null,
+    "compilation_notes": "Protocol compiled from CN 110577629 B (Yantai University granted patent). Basis: Embodiment 1 (UV thiol-ene route). Key uncertainty: photoinitiator for S2 not explicitly listed in embodiment 1 (only in claim molar ratio). Additions: derivation of molar-ratio and intermediate Mw. Missing: stirring speeds, centrifuge settings, exact dryness times. Safety: UV exposure, thiols, THF/chloroform flammability, DCM carcinogen, 150C cure, strong acid (formic/acetic) degradation, inert (Ar) atmosphere. Status: needs_review."
+  },
+  "safety_checks": [
+    {
+      "check_id": "SAFE-001",
+      "check_type": "uv_exposure",
+      "rule_id": "SAFE-UV-001",
+      "target_step": "S03",
+      "status": "warning",
+      "message": "UV lamp at 3000-9000 uW/cm2 in S03/S07. Prolonged UV exposure can cause eye and skin damage and burns. Protection required.",
+      "details": { "uv_intensity": 3000, "unit": "uW/cm2" , "duration_h": 3 }
+    },
+    {
+      "check_id": "SAFE-002",
+      "check_type": "uv_exposure",
+      "rule_id": "SAFE-UV-001",
+      "target_step": "S07",
+      "status": "warning",
+      "message": "Second UV irradiation at 3000 uW/cm2. Use black box/enclosure and UV 400+ eye protection.",
+      "details": { "uv_intensity": 3000, "unit": "uW/cm2", "duration_h": 3 }
+    },
+    {
+      "check_id": "SAFE-003",
+      "check_type": "thiol_irritant",
+      "rule_id": "SAFE-C-002",
+      "target_step": "S01",
+      "status": "warning",
+      "message": "1,2-ethanedithiol carries mercaptan/thiol group with strong stinging odor and skin/mucous irritation. Handle under fume hood.",
+      "details": { "reagent": "1,2-ethanedithiol", "amount_g": 0.3914 }
+    },
+    {
+      "check_id": "SAFE-004",
+      "check_type": "flammable_solvent",
+      "rule_id": "SAFE-C-004",
+      "target_step": "S02",
+      "status": "warning",
+      "message": "THF is flammable (boiling ~65-73C, volatile). Use in fume hood away from ignition. Store dry and avoid peroxide formation.",
+      "details": { "solvent": "tetrahydrofuran", "flashpoint": -14, "unit": "celsius" }
+    },
+    {
+      "check_id": "SAFE-005",
+      "check_type": "flammable_solvent",
+      "rule_id": "SAFE-C-004",
+      "target_step": "S04",
+      "status": "warning",
+      "message": "Diethyl ether is highly flammable with high vapor pressure; keep in fume hood, away from sparks/UV.",
+      "details": { "solvent": "anhydrous diethyl ether" }
+    },
+    {
+      "check_id": "SAFE-006",
+      "check_type": "toxic_carcinogen_solvent",
+      "rule_id": "SAFE-C-008",
+      "target_step": "S06",
+      "status": "warning",
+      "message": "Chloroform is volatile, irritant and recognized reproductive-tox hazard. Handle in ventilated hood.",
+      "details": { "solvent": "chloroform/tCM", "mass_g": 2.935 }
+    },
+    {
+      "check_id": "SAFE-007",
+      "check_type": "inert_gas",
+      "rule_id": "SAFE-G-001",
+      "target_step": "S06",
+      "status": "pass",
+      "message": "S2 reaction performed under N2/Ar inert atmosphere. Ensure adequate ventilation; inert pour for purge.",
+      "details": { "inert_gas": "N2 or Ar" }
+    },
+    {
+      "check_id": "SAFE-008",
+      "check_type": "high_temperature",
+      "rule_id": "SAFE-H-001",
+      "target_step": "S09",
+      "status": "warning",
+      "message": "Cure at 150C and pre-heat 60 ambient. High-temperature operation in oven; use heat-resistant gloves.",
+      "details": { "temperature": 150, "unit": "celsius", "duration_h": 3 }
+    },
+    {
+      "check_id": "SAFE-009",
+      "check_type": "carcinogen_solvent",
+      "rule_id": "SAFE-C-008",
+      "target_step": "S09",
+      "status": "warning",
+      "message": "Dichloromethane (DCM) is a Class 2 carcinogen and volatile; evaporate under fume hood.",
+      "details": { "solvent": "DCM" }
+    },
+    {
+      "check_id": "SAFE-010",
+      "check_type": "acid_handling",
+      "rule_id": "SAFE-A-001",
+      "target_step": "S10",
+      "status": "warning",
+      "message": "Formic acid is corrosive and toxic; 60C heated. Use acid-resistant gloves, goggles, fume hood.",
+      "details": { "reagent": "formic acid (甲酸)", "temperature": 60, "unit": "celsius" }
+    },
+    {
+      "check_id": "SAFE-011",
+      "check_type": "acid_handling",
+      "rule_id": "SAFE-A-001",
+      "target_step": "S10",
+      "status": "warning",
+      "message": "Alternative acids used in Ex.2/Ex.3: HCl/acetone (Ex.2) and acetic acid (Ex.3) also corrosive - appropriate for degradation. Handle similarly.",
+      "details": { "reagent": "Acetic acid (Ex.3) / HCl (Ex.2) alternatives" }
+    }
+  ],
+  "checkpoints": [
+    {
+      "checkpoint_id": "CP-01",
+      "after_step": "S03",
+      "stored_state": [
+        { "name": "s1_reaction_complete", "type": "boolean" },
+        { "name": "uv_duration_h", "type": "number" },
+        { "name": "uv_intensity_uwcm2", "type": "number" }
+      ],
+      "recovery_policy": { "power_failure": "restart_step", "temperature_deviation": { "threshold": 5, "action": "hold" } }
+    },
+    {
+      "checkpoint_id": "CP-02",
+      "after_step": "S08",
+      "stored_state": [
+        { "name": "product_mass_g", "type": "number" },
+        { "name": "dry_constant_reached", "type": "boolean" },
+        { "name": "product_mw", "type": "number", "unit": "g/mol" }
+      ],
+      "recovery_policy": { "power_failure": "resume_from_checkpoint", "temperature_deviation": { "threshold": 5, "action": "continue" } }
+    },
+    {
+      "checkpoint_id": "CP-03",
+      "after_step": "S09",
+      "stored_state": [
+        { "name": "cure_temp_c", "type": "number" },
+        { "name": "cure_duration_h", "type": "number" },
+        { "name": "cure_complete", "type": "boolean" }
+      ],
+      "recovery_policy": { "power_failure": "restart_step", "temperature_deviation": { "threshold": 10, "action": "alert" } }
+    },
+    {
+      "checkpoint_id": "CP-04",
+      "after_step": "S10",
+      "stored_state": [
+        { "name": "degradation_complete", "type": "boolean" },
+        { "name": "degradation_time_min", "type": "number" },
+        { "name": "solution_clarity", "type": "string" }
+      ],
+      "recovery_policy": { "power_failure": "resume_from_checkpoint", "temperature_deviation": { "threshold": 5, "action": "continue" } }
+    }
+  ],
+  "overall_confidence": 0.84,
+  "overall_status": "needs_review",
+  "confidence_score": {
+    "overall": 0.84,
+    "dimensions": {
+      "evidence_coverage": 0.9,
+      "explicit_ratio": 0.88,
+      "safety_pass_rate": 0.85,
+      "missing_field_penalty": 0.72
+    }
+  },
+  "block_reasons": []
+}

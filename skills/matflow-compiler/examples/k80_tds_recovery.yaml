@@ -1,0 +1,148 @@
+# 恢复与检查点方案
+## Trigonox K-80 - 不饱和聚酯/乙烯基树脂固化处理 (TDS)
+# 协议ID: MF-T-001
+# 来源: Trigonox K-80 技术数据表
+# 状态: needs_review
+
+protocol_id: "MF-T-001"
+material: "Trigonox K-80 异丙苯过氧化氢 (80% 芳烃溶液) 固化处理"
+total_steps: 6
+checkpoints:
+  - checkpoint_id: "CP-K-01"
+    after_step: "S01"
+    description: "配方用量确定(K-80 1-3phr)"
+    stored_state:
+      - name: "k80_dose_phr"
+        type: "number"
+        unit: "phr"
+        description: "K-80 实际用量"
+      - name: "resin_type"
+        type: "string"
+        description: "树脂类型/牌号"
+      - name: "resin_volume"
+        type: "number"
+        unit: "parts"
+        description: "树脂批量份数"
+    recovery_policy:
+      power_failure:
+        action: "restart_step"
+        description: "断电则重新称量确认后再继续等温工序"
+      temperature_deviation:
+        threshold: 5
+        unit: "celsius"
+        action: "hold"
+        description: "温度偏差>5℃ 保持确认"
+    verification:
+      - check: "K-80 用量在 1-3 phr 范围 (安全限制)"
+      - check: "未接触还原剂/酸/碱/重金属"
+
+  - checkpoint_id: "CP-K-02"
+    after_step: "S03"
+    description: "混合与凝胶(配方例1: 20℃ 凝胶约12min)"
+    stored_state:
+      - name: "gel_time_min"
+        type: "number"
+        unit: "minute"
+        description: "实测凝胶时间"
+      - name: "promoter_type"
+        type: "string"
+        description: "所用促进剂类型(钴/钒)"
+      - name: "mix_temperature"
+        type: "number"
+        unit: "celsius"
+        description: "混合温度"
+    recovery_policy:
+      power_failure:
+        action: "discard_and_restart"
+        description: "凝胶前断电较长时间则重新混合(避免局部固化)"
+      temperature_deviation:
+        threshold: 5
+        unit: "celsius"
+        action: "abort"
+        description: "处理温度偏差过大则中止并重新配料"
+      premature_gel:
+        action: "discard_and_restart"
+        description: "意外凝胶/固化则丢弃重新配制"
+    verification:
+      - check: "凝胶时间符合配方预期(例1约12min@20℃)"
+      - check: "未提前凝胶/固化"
+
+  - checkpoint_id: "CP-K-03"
+    after_step: "S05"
+    description: "50℃固化完成(2mm层压板)"
+    stored_state:
+      - name: "cure_temp_c"
+        type: "number"
+        unit: "celsius"
+        description: "固化温度"
+      - name: "peak_temp_c"
+        type: "number"
+        unit: "celsius"
+        description: "实测放热峰温"
+      - name: "peak_time_min"
+        type: "number"
+        unit: "minute"
+        description: "达峰时间"
+    recovery_policy:
+      power_failure:
+        action: "resume_from_checkpoint"
+        max_tolerance_minutes: 30
+        description: "断电重启后继续; 若温度骤降可能未完全固化需延长固化"
+      temperature_deviation:
+        threshold: 10
+        unit: "celsius"
+        action: "hold"
+        description: "峰温偏离>10℃ 需注意放热失控或固化不足"
+      overheat_peak:
+        action: "abort"
+        description: "峰温异常飙升(>130℃)立即切断热源, 防自燃"
+        safety_note: "放热失控风险: 厚件蓄热可升温超限"
+    verification:
+      - check: "峰温约117℃(2mm板) 未超限"
+      - check: "固化完成、无局部过热炭化"
+
+  - checkpoint_id: "CP-K-04"
+    after_step: "S06"
+    description: "固化检验(Barcol)"
+    stored_state:
+      - name: "barcol_hardness"
+        type: "number"
+        unit: "Barcol"
+        description: "实测Barcol硬度"
+    recovery_policy:
+      temperature_deviation:
+        threshold: 5
+        unit: "celsius"
+        action: "continue"
+        description: "检验常温进行"
+    verification:
+      - check: "Barcol 硬度约 50 (示例验收值)"
+      - check: "表面无气泡/裂纹/未固化区"
+
+# 全局恢复策略
+global_recovery:
+  max_total_interruption_time: 120   # 分钟
+  restart_threshold: 3
+  safety_priority: "high"
+  data_logging:
+    required: true
+    interval_minutes: 5
+  emergency_shutdown:
+    trigger: "any_blocked_safety_check_or_overheat"
+    action: "stop_all_heating_and_stirring"
+    notification: "alert_operator"
+
+# 检查点依赖关系
+checkpoint_dependencies:
+  - from: "CP-K-01"
+    to: "CP-K-02"
+    required: true
+    description: "必须先确定配方用量后才能混合"
+  - from: "CP-K-02"
+    to: "CP-K-03"
+    required: true
+    description: "必须先凝胶后才能固化"
+  - from: "CP-K-03"
+    to: "CP-K-04"
+    required: true
+    description: "必须先固化完成才能检验"

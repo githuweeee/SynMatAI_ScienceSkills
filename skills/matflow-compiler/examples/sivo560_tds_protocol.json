@@ -1,0 +1,461 @@
+{
+  "protocol_id": "MF-T-002",
+  "material": "Dynasylan® SIVO 560 甲基丙烯酸类硅烷偶联剂 (methacryl silane coupling agent) 水解与玻璃纤维/布处理",
+  "source_type": "tds",
+  "source_documents": [
+    {
+      "doc_id": "DOC-TDS-002",
+      "title": "Dynasylan® SIVO 560 技术数据表 (TDS) - 甲基丙烯酸类硅烷偶联剂",
+      "file_path": "sivo560_tds_full.txt",
+      "doc_type": "tds",
+      "supplier": "Evonik (前 Degussa)",
+      "product_code": "Dynasylan SIVO 560"
+    }
+  ],
+  "reagents": [
+    {
+      "name": "Dynasylan SIVO 560 (甲基丙烯酸类硅烷偶联剂)",
+      "cas": null,
+      "role": "silane_coupling_agent",
+      "supplier": "Evonik/Degussa",
+      "physical_properties": {
+        "appearance": "无色透明液体",
+        "viscosity_20c_din53015_mPa_s": 1,
+        "unsaturated_bond_content": "比标准甲基丙烯酸硅烷高约 35%",
+        "solubility": "溶于去离子水, 无需酸/催化剂",
+        "solution_ph": 5,
+        "surface_tension_1pc_20min_mN_per_m": 40,
+        "turbidity_max_fnu": 3
+      },
+      "solubility": "溶于去离子水, 无需酸/催化剂",
+      "solution_ph": 5,
+      "hazard_class": "methacrylate_irritant, silicone_reactive (遇水水解), 可燃有机硅树脂体系助剂",
+      "evidence": {
+        "document": "DOC-TDS-002",
+        "evidence_type": "explicit",
+        "confidence": 0.98,
+        "note": "物性、溶解度、pH、表面张力、浊度均来自TDS"
+      }
+    },
+    {
+      "name": "去离子水",
+      "cas": "7732-18-5",
+      "role": "solvent",
+      "content": "去离子水, 作为水解介质",
+      "hazard_class": "none",
+      "evidence": {
+        "document": "DOC-TDS-002",
+        "evidence_type": "explicit",
+        "confidence": 0.98,
+        "note": "TDS: 在去离子水中水解, 无需酸/催化剂"
+      }
+    },
+    {
+      "name": "玻璃纤维/玻璃布 (inorganic substrate)",
+      "cas": null,
+      "role": "substrate",
+      "content": "玻璃纤维/布 (需增强电气性能与界面粘接)",
+      "hazard_class": "glass_fiber_dust_irritant",
+      "evidence": {
+        "document": "DOC-TDS-002",
+        "evidence_type": "explicit",
+        "confidence": 0.9,
+        "note": "TDS: 在玻璃纤维/布表面润湿极佳"
+      }
+    },
+    {
+      "name": "有机聚合物体系 (PPE/马来酰亚胺/聚酰亚胺等)",
+      "cas": null,
+      "role": "organic_matrix",
+      "content": "与玻璃布复合的耐高温树脂体系",
+      "hazard_class": "树脂体系可燃, 含有机溶剂",
+      "evidence": {
+        "document": "DOC-TDS-002",
+        "evidence_type": "explicit",
+        "confidence": 0.85,
+        "note": "TDS: 结合无机与有机聚合 (PPE、马来酰亚胺、聚酰亚胺)"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "step_id": "S01",
+      "action": "hydrolyze",
+      "material": "SIVO 560 溶于去离子水",
+      "description": "在搅拌下将约 1-2%(对水重)的 SIVO 560 缓慢加入去离子水中, 搅拌 20-30 min 使硅烷完全水解, 溶液变清澈",
+      "amount": {
+        "value": 1,
+        "unit": "wt%",
+        "tolerance": null,
+        "note": "SIVO 560 浓度 1-2 wt% (derived: 由'约1-2%'给出); 缓慢加入并持续搅拌"
+      },
+      "temperature": {
+        "value": 20,
+        "unit": "celsius",
+        "ramp_rate": null,
+        "hold": false
+      },
+      "duration": {
+        "value": 25,
+        "unit": "minute",
+        "tolerance": null,
+        "note": "搅拌 20-30 min, 典型取 25 min"
+      },
+      "stirring_speed": null,
+      "atmosphere": "air",
+      "pressure": null,
+      "evidence": [
+        {
+          "document": "DOC-TDS-002",
+          "evidence_type": "explicit",
+          "confidence": 0.95,
+          "quote": "在搅拌下将约1-2%的SIVO 560缓慢添加到去离子水中, 搅拌20-30分钟后硅烷完全水解, 溶液变清澈"
+        }
+      ],
+      "confidence": 0.9,
+      "status": "warning",
+      "missing_fields": [
+        {
+          "field_name": "stirring_speed",
+          "step_id": "S01",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "水解搅拌转速未给出; 需人工设置(低速即可避免起泡)",
+          "suggestion_source": "tds_gap",
+          "requires_confirmation": true
+        },
+        {
+          "field_name": "ph_strict_range",
+          "step_id": "S01",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "TDS 提到避免过低/过高pH, 但未给出精确pH范围; 默认接近中性(pH~5)",
+          "suggestion_source": "tds_gap",
+          "requires_confirmation": true
+        }
+      ],
+      "device_binding": {
+        "device_id": null,
+        "capability_check": "unchecked"
+      },
+      "notes": "水解为无催化剂自水解(pH~5); 约 1-2% 浓度。浓度值由 '1-2%' 直接给出, 属于 derived/半 explicit 用量。"
+    },
+    {
+      "step_id": "S02",
+      "action": "verify_hydrolysate",
+      "material": "SIVO 560 水解液",
+      "description": "检验水解液质量: 澄清(浊度≤3.0 FNU), 1% 水溶液 20min 搅拌后表面张力降至约 40 mN/m; 若变浑浊则视为失效不可再用",
+      "amount": {
+        "value": 1,
+        "unit": "wt%",
+        "note": "指 1% 水溶液表面张力指标"
+      },
+      "temperature": {
+        "value": 20,
+        "unit": "celsius",
+        "hold": false
+      },
+      "duration": {
+        "value": 20,
+        "unit": "minute",
+        "note": "1% 水溶液 20 分钟搅拌后测表面张力"
+      },
+      "evidence": [
+        {
+          "evidence_type": "explicit",
+          "confidence": 0.95,
+          "quote": "1%水溶液20分钟搅拌后表面张力降至40mN/m; 浊度≤3.0FNC为澄清"
+        }
+      ],
+      "confidence": 0.85,
+      "status": "warning",
+      "missing_fields": [
+        {
+          "field_name": "turbidity_measurement_method",
+          "step_id": "S02",
+          "risk_level": "low",
+          "blocks_execution": false,
+          "suggestion": "浊度测量方法与澄清判定时机未细化",
+          "suggestion_source": "tds_gap",
+          "requires_confirmation": true
+        },
+        {
+          "field_name": "surface_tension_instrument",
+          "step_id": "S02",
+          "risk_level": "low",
+          "blocks_execution": false,
+          "suggestion": "表面张力测定装置(DIN)未说明",
+          "suggestion_source": "tds_gap",
+          "requires_confirmation": true
+        }
+      ],
+      "device_binding": {
+        "device_id": null,
+        "capability_check": "unchecked"
+      },
+      "notes": "关键判别: 水解液变浑浊=失效, 禁止再用。浊度≤3.0 FNU 视为澄清。"
+    },
+    {
+      "step_id": "S03",
+      "action": "apply_coat",
+      "material": "水解液涂覆于玻璃纤维/布",
+      "description": "将澄清水解液涂覆于玻璃纤维/布表面, 利用其极佳的润湿性处理界面, 改善电气性能(降介电常数)并桥接无机(玻璃)与有机聚合",
+      "amount": null,
+      "temperature": {
+        "value": 20,
+        "unit": "celsius",
+        "hold": false
+      },
+      "duration": {
+        "value": null,
+        "unit": "minute",
+        "note": "涂覆/浸渍时间未给出"
+      },
+      "evidence": [
+        {
+          "evidence_type": "explicit",
+          "confidence": 0.9,
+          "quote": "在玻璃纤维/布表面润湿极佳; 改善玻璃布电气性能(降介电常数); 结合无机与有机聚合"
+        }
+      ],
+      "confidence": 0.85,
+      "status": "inferred",
+      "missing_fields": [
+        {
+          "field_name": "coating_method",
+          "step_id": "S03",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "涂覆方式(浸渍/喷涂/刷涂)与上样量未给出",
+          "suggestion_source": "tds_gap",
+          "requires_confirmation": true
+        },
+        {
+          "field_name": "drying_conditions",
+          "step_id": "S03",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "涂覆后干燥/固化温度时间未给出",
+          "suggestion_source": "tds_gap",
+          "requires_confirmation": true
+        },
+        {
+          "field_name": "pickup_amount",
+          "step_id": "S03",
+          "risk_level": "low",
+          "blocks_execution": false,
+          "suggestion": "硅烷上载量(固体增重)未给出",
+          "suggestion_source": "tds_gap",
+          "requires_confirmation": true
+        }
+      ],
+      "device_binding": {
+        "device_id": null,
+        "capability_check": "unchecked"
+      },
+      "notes": "应用步骤; 处理方法(浸渍量、干燥)未在TDS细化, 需人工补充。"
+    },
+    {
+      "step_id": "S04",
+      "action": "consume_within_window",
+      "material": "SIVO 560 水解液",
+      "description": "水解液需在 24 小时内用完; 若变浑浊则不能再用, 需废弃并重新配制",
+      "amount": null,
+      "duration": {
+        "value": 24,
+        "unit": "hour",
+        "note": "水解液使用窗口: 24h 内用完"
+      },
+      "temperature": {
+        "value": 20,
+        "unit": "celsius",
+        "hold": false
+      },
+      "evidence": [
+        {
+          "evidence_type": "explicit",
+          "confidence": 0.95,
+          "quote": "水解液需24h内用完, 若变浑浊则不能再用"
+        }
+      ],
+      "confidence": 0.9,
+      "status": "warning",
+      "device_binding": {
+        "device_id": null,
+        "capability_check": "unchecked"
+      },
+      "notes": "24h 使用时效为关键控制点; 超过窗口或变浑浊即废弃。"
+    }
+  ],
+  "equipment": [
+    {
+      "device_id": null,
+      "device_type": "mixer",
+      "device_name": "搅拌装置(低速) 用于水解液配制",
+      "config_path": null
+    },
+    {
+      "device_id": null,
+      "device_type": "turbidity_meter",
+      "device_name": "浊度计 (FNU)",
+      "config_path": null
+    },
+    {
+      "device_id": null,
+      "device_type": "surface_tension",
+      "device_name": "表面张力仪 (DIN 53015)",
+      "config_path": null
+    },
+    {
+      "device_id": null,
+      "device_type": "coater",
+      "device_name": "涂覆/浸渍设备 (玻璃布处理)",
+      "config_path": null
+    }
+  ],
+  "metadata": {
+    "version": "1.0.0",
+    "generated_at": "2026-08-07T10:00:00Z",
+    "compiler_version": "matflow-compiler/0.3.0",
+    "source_type": "tds",
+    "source_hash": "sha256:sivo560_tds",
+    "operator": "auto",
+    "lab_id": null,
+    "compilation_notes": "从 Dynasylan SIVO 560 技术数据表(TDS)编译的硅烷偶联剂水解与应用处理协议。核心配方为 1-2% 水解液(derived浓度)。缺失项: 搅拌转速、精确pH范围、涂覆方法/干燥条件/上样量、表面张力与浊度测量装置等。无致命缺失, 状态 needs_review。"
+  },
+  "safety_checks": [
+    {
+      "check_id": "SAFE-S-001",
+      "check_type": "hydrolysate_lifespan",
+      "rule_id": "SAFE-S-001",
+      "target_step": "S04",
+      "status": "warning",
+      "message": "水解液必须在 24h 内用完; 超过24h或变浑浊即失效, 严禁使用(硅烷缩合失效影响处理效果)。",
+      "details": {
+        "shelf_life_hours": 24
+      }
+    },
+    {
+      "check_id": "SAFE-S-002",
+      "check_type": "hydrolysate_turbidity",
+      "rule_id": "SAFE-S-002",
+      "target_step": "S02",
+      "status": "warning",
+      "message": "水解液变浑浊视为失效, 不可再用, 需废弃并重新配制。",
+      "details": {
+        "turbidity_fnu": 3
+      }
+    },
+    {
+      "check_id": "SAFE-S-003",
+      "check_type": "ph_control",
+      "rule_id": "SAFE-S-003",
+      "target_step": "S01",
+      "status": "warning",
+      "message": "避免过低或过高 pH; 极端 pH 破坏硅烷水解液稳定(缩聚失稳)。默认溶液 pH~5。",
+      "details": {
+        "ph_nominal": 5
+      }
+    },
+    {
+      "check_id": "SAFE-S-004",
+      "check_type": "glass_fiber_dust",
+      "rule_id": "SAFE-S-004",
+      "target_step": "S03",
+      "status": "warning",
+      "message": "玻璃纤维/布处理时可能产生玻璃纤维粉尘, 粉尘刺激皮肤与呼吸道, 需佩戴防护(手套/护目镜/口罩)、通风。",
+      "details": {
+        "hazard": "glass_fiber_dust_irritant"
+      }
+    },
+    {
+      "check_id": "SAFE-S-005",
+      "check_type": "organic_solvent_flammable",
+      "rule_id": "SAFE-S-005",
+      "target_step": "S03",
+      "status": "warning",
+      "message": "有机聚合物树脂体系(PPE/马来酰亚胺/聚酰亚胺) 常含可燃有机溶剂; 作业区应远离火源并充分通风。",
+      "details": {
+        "hazard": "flammable_organic_matrix"
+      }
+    },
+    {
+      "check_id": "SAFE-S-006",
+      "check_type": "silane_reactive_irritant",
+      "rule_id": "SAFE-S-006",
+      "target_step": "S01",
+      "status": "warning",
+      "message": "SIVO 560 含甲基丙烯酸类不饱和双键及可水解硅烷基, 对皮肤眼有刺激, 操作佩戴手套护目镜, 接触立即冲洗。",
+      "details": {
+        "hazard": "methacrylate_irritant"
+      }
+    },
+    {
+      "check_id": "SAFE-S-007",
+      "check_type": "prepared_volume",
+      "rule_id": "SAFE-S-007",
+      "target_step": "S01",
+      "status": "warning",
+      "message": "按 24h 内可消耗量配制水解液, 避免一次配过多造成过期失效浪费。",
+      "details": {
+        "note": "batch_size < 24h usage"
+      }
+    }
+  ],
+  "checkpoints": [
+    {
+      "checkpoint_id": "CP-S-01",
+      "after_step": "S01",
+      "stored_state": [
+        { "name": "hydrolysate_volume", "type": "number", "unit": "L" },
+        { "name": "sivo_concentration_wtpc", "type": "number", "unit": "wt%" },
+        { "name": "hydrolyze_duration_min", "type": "number", "unit": "minute" },
+        { "name": "hydrolysate_clarity", "type": "string" }
+      ],
+      "recovery_policy": {
+        "power_failure": "restart_step",
+        "temperature_deviation": { "threshold": 5, "action": "continue" }
+      }
+    },
+    {
+      "checkpoint_id": "CP-S-02",
+      "after_step": "S02",
+      "stored_state": [
+        { "name": "turbidity_fnu", "type": "number", "unit": "FNU" },
+        { "name": "surface_tension_mN_per_m", "type": "number", "unit": "mN/m" },
+        { "name": "hydrolysate_valid", "type": "boolean" }
+      ],
+      "recovery_policy": {
+        "power_failure": "resume_from_checkpoint",
+        "temperature_deviation": { "threshold": 5, "action": "continue" }
+      }
+    },
+    {
+      "checkpoint_id": "CP-S-03",
+      "after_step": "S04",
+      "stored_state": [
+        { "name": "time_after_hydrolysis_hours", "type": "number", "unit": "hour" },
+        { "name": "hydrolysate_still_clear", "type": "boolean" }
+      ],
+      "recovery_policy": {
+        "time_elapsed": {
+          "threshold_hours": 24,
+          "action": "discard",
+          "description": "超过24h水解液作废, 重新配制"
+        }
+      }
+    }
+  ],
+  "overall_confidence": 0.85,
+  "overall_status": "needs_review",
+  "confidence_score": {
+    "overall": 0.85,
+    "dimensions": {
+      "evidence_coverage": 0.9,
+      "explicit_ratio": 0.85,
+      "safety_pass_rate": 0.8,
+      "missing_field_penalty": 0.8
+    }
+  },
+  "block_reasons": []
+}

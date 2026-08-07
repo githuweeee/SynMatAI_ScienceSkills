@@ -1,0 +1,1355 @@
+{
+  "protocol_id": "MF-REAL-004",
+  "material": "NaBH4-promoted electrochemical reductive cleavage of aryl C-O bonds in diaryl ethers (diphenyl ether -> phenol + benzene)",
+  "source_documents": [
+    {
+      "doc_id": "DOC-001",
+      "title": "Electrochemical Cleavage of Aryl Ethers Promoted by Sodium Borohydride",
+      "file_path": "c:/Users/Techsinn/.trae/work/6a72e00e3feacc2f0fae5f54/wu_2014_full.txt",
+      "doc_type": "paper",
+      "authors": [
+        "Wen-Bin Wu",
+        "Jing-Mei Huang"
+      ],
+      "journal": "The Journal of Organic Chemistry",
+      "volume": 79,
+      "pages": "10189-10195",
+      "year": 2014,
+      "doi": "10.1021/jo5018537"
+    }
+  ],
+  "reagents": [
+    {
+      "name": "Diphenyl ether",
+      "cas_number": "101-84-8",
+      "role": "substrate",
+      "purity": null,
+      "total_amount": {
+        "value": 0.5,
+        "unit": "mmol"
+      },
+      "hazard_class": "irritant, flammable_solid, low_acute_toxicity",
+      "evidence": {
+        "document": "DOC-001",
+        "page": 5,
+        "section": "General Procedures for Electrochemical Reductive Cleavage of Aryl Ethers",
+        "quote": "In a round-bottom flask cell, diphenyl ether (0.5 mmol) and NaBH4 (1.5 mmol) were dissolved in 5 mL of N-methyl-2-pyrrolidone (NMP) with NaBF4 (0.2 M) electrolyte.",
+        "evidence_type": "explicit",
+        "confidence": 0.97
+      }
+    },
+    {
+      "name": "Sodium borohydride (NaBH4)",
+      "cas_number": "16940-66-2",
+      "role": "promotor/reductant additive",
+      "purity": null,
+      "total_amount": {
+        "value": 1.5,
+        "unit": "mmol",
+        "note": "3.0 equiv relative to diphenyl ether (0.5 mmol)"
+      },
+      "hazard_class": "water_reactive, releases flammable hydrogen with water/acids, corrosive",
+      "evidence": {
+        "document": "DOC-001",
+        "page": 5,
+        "section": "General Procedures for Electrochemical Reductive Cleavage of Aryl Ethers",
+        "quote": "diphenyl ether (0.5 mmol) and NaBH4 (1.5 mmol) were dissolved in 5 mL of N-methyl-2-pyrrolidone (NMP) with NaBF4 (0.2 M) electrolyte.",
+        "evidence_type": "explicit",
+        "confidence": 0.97
+      }
+    },
+    {
+      "name": "N-Methyl-2-pyrrolidone (NMP)",
+      "cas_number": "872-50-4",
+      "role": "solvent",
+      "purity": "AR-grade or anhydrous (both acceptable; little water tolerated)",
+      "total_amount": {
+        "value": 5,
+        "unit": "mL"
+      },
+      "hazard_class": "reproductive_toxicant (suspected), irritant, low_flashpoint_rubber_swelling",
+      "evidence": {
+        "document": "DOC-001",
+        "page": 5,
+        "section": "General Procedures for Electrochemical Reductive Cleavage of Aryl Ethers",
+        "quote": "were dissolved in 5 mL of N-methyl-2-pyrrolidone (NMP) with NaBF4 (0.2 M) electrolyte.",
+        "evidence_type": "explicit",
+        "confidence": 0.97
+      }
+    },
+    {
+      "name": "Sodium tetrafluoroborate (NaBF4)",
+      "cas_number": "13755-29-8",
+      "role": "supporting electrolyte",
+      "purity": null,
+      "total_amount": {
+        "value": 0.2,
+        "unit": "M",
+        "note": "0.2 M in the 5 mL NMP reaction solution (~1.0 mmol)"
+      },
+      "hazard_class": "irritant",
+      "evidence": {
+        "document": "DOC-001",
+        "page": 5,
+        "section": "General Procedures for Electrochemical Reductive Cleavage of Aryl Ethers",
+        "quote": "with NaBF4 (0.2 M) electrolyte",
+        "evidence_type": "explicit",
+        "confidence": 0.97
+      }
+    },
+    {
+      "name": "n-Tetradecane",
+      "cas_number": "629-59-4",
+      "role": "internal standard (GC)",
+      "purity": null,
+      "total_amount": {
+        "value": 0.5,
+        "unit": "mmol"
+      },
+      "hazard_class": "flammable liquid, irritant",
+      "evidence": {
+        "document": "DOC-001",
+        "page": 5,
+        "section": "General Procedures for Electrochemical Reductive Cleavage of Aryl Ethers",
+        "quote": "Then, n-tetradecane (0.5 mmol) was added to the reaction mixture and stirred for 5 min.",
+        "evidence_type": "explicit",
+        "confidence": 0.97
+      }
+    },
+    {
+      "name": "Diethyl ether",
+      "cas_number": "60-29-7",
+      "role": "extraction solvent",
+      "purity": null,
+      "total_amount": {
+        "value": 60,
+        "unit": "mL",
+        "note": "3 x 20 mL portions = 60 mL total"
+      },
+      "hazard_class": "extremely_flammable (flash point -45C), peroxide_former, narcotic_vapors",
+      "evidence": {
+        "document": "DOC-001",
+        "page": 5,
+        "section": "General Procedures for Electrochemical Reductive Cleavage of Aryl Ethers",
+        "quote": "and then extracted with diethyl ether (3 x 20 mL).",
+        "evidence_type": "explicit",
+        "confidence": 0.97
+      }
+    },
+    {
+      "name": "Hydrochloric acid aqueous solution (1 M HCl)",
+      "cas_number": "7647-01-0",
+      "role": "quench reagent",
+      "purity": "1 M aqueous",
+      "total_amount": {
+        "value": null,
+        "unit": "mL"
+      },
+      "hazard_class": "corrosive, irritant",
+      "evidence": {
+        "document": "DOC-001",
+        "page": 5,
+        "section": "General Procedures for Electrochemical Reductive Cleavage of Aryl Ethers",
+        "quote": "quenched carefully under 0 C by aqueous solution of 1 M HCl",
+        "evidence_type": "explicit",
+        "confidence": 0.97
+      }
+    },
+    {
+      "name": "Sodium sulfate (Na2SO4, anhydrous)",
+      "cas_number": "7757-82-6",
+      "role": "drying agent",
+      "purity": "anhydrous",
+      "total_amount": {
+        "value": null,
+        "unit": "g"
+      },
+      "hazard_class": "irritant",
+      "evidence": {
+        "document": "DOC-001",
+        "page": 5,
+        "section": "General Procedures for Electrochemical Reductive Cleavage of Aryl Ethers",
+        "quote": "dried over Na2SO4",
+        "evidence_type": "explicit",
+        "confidence": 0.97
+      }
+    },
+    {
+      "name": "Ice water",
+      "cas_number": "7732-18-5",
+      "role": "quench/dilution medium",
+      "purity": null,
+      "total_amount": {
+        "value": null,
+        "unit": "mL"
+      },
+      "hazard_class": "none",
+      "evidence": {
+        "document": "DOC-001",
+        "page": 5,
+        "section": "General Procedures for Electrochemical Reductive Cleavage of Aryl Ethers",
+        "quote": "The solution was poured into ice water, quenched carefully under 0 C by aqueous solution of 1 M HCl",
+        "evidence_type": "explicit",
+        "confidence": 0.97
+      }
+    }
+  ],
+  "steps": [
+    {
+      "step_id": "WB-01",
+      "action": "add",
+      "material": "Diphenyl ether (0.5 mmol)",
+      "description": "Charge the round-bottom flask cell with diphenyl ether (0.5 mmol)",
+      "amount": {
+        "value": 0.5,
+        "unit": "mmol",
+        "tolerance": null,
+        "note": "Substrate loading per general procedure"
+      },
+      "temperature": {
+        "value": 25,
+        "unit": "celsius",
+        "ramp_rate": null,
+        "hold": false
+      },
+      "duration": null,
+      "stirring_speed": null,
+      "atmosphere": "air",
+      "pressure": null,
+      "depends_on": [],
+      "parallel_group": null,
+      "evidence": [
+        {
+          "document": "DOC-001",
+          "page": 5,
+          "section": "General Procedures for Electrochemical Reductive Cleavage of Aryl Ethers",
+          "quote": "In a round-bottom flask cell, diphenyl ether (0.5 mmol) and NaBH4 (1.5 mmol) were dissolved in 5 mL of N-methyl-2-pyrrolidone (NMP) with NaBF4 (0.2 M) electrolyte.",
+          "evidence_type": "explicit",
+          "confidence": 0.97
+        },
+        {
+          "document": "DOC-001",
+          "page": 5,
+          "section": "General Procedures for Electrochemical Reductive Cleavage of Aryl Ethers",
+          "quote": "The reaction was carried out at room temperature in the air without pretreatment of solvents (conclusion); reaction tolerates air and water.",
+          "evidence_type": "inferred",
+          "confidence": 0.85,
+          "derivation": "Atmosphere 'air' and temperature 25 C inferred from the abstract/conclusion stating the process is 'air- and water-tolerable' and operates 'in the undivided cell under air'; 25 C is the quantified approximation of 'room/ambient temperature'.",
+          "require_confirmation": true
+        }
+      ],
+      "confidence": 0.88,
+      "status": "inferred",
+      "missing_fields": [
+        {
+          "field_name": "temperature.value",
+          "step_id": "WB-01",
+          "risk_level": "low",
+          "blocks_execution": false,
+          "suggestion": "Room temperature approximated as 25 C; ambient lab temperature acceptable",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        }
+      ],
+      "device_binding": {
+        "device_id": null,
+        "capability_check": "unchecked"
+      },
+      "notes": "Diphenyl ether loading 0.5 mmol is explicit. Room temperature (25 C) and air atmosphere are contextual (derived)."
+    },
+    {
+      "step_id": "WB-02",
+      "action": "add",
+      "material": "NaBH4 (1.5 mmol)",
+      "description": "Add sodium borohydride (1.5 mmol, 3.0 equiv relative to diphenyl ether) to the cell",
+      "amount": {
+        "value": 1.5,
+        "unit": "mmol",
+        "tolerance": null,
+        "note": "3.0 equiv relative to 0.5 mmol diphenyl ether"
+      },
+      "temperature": {
+        "value": 25,
+        "unit": "celsius",
+        "ramp_rate": null,
+        "hold": false
+      },
+      "duration": null,
+      "stirring_speed": null,
+      "atmosphere": "air",
+      "pressure": null,
+      "depends_on": ["WB-01"],
+      "parallel_group": null,
+      "evidence": [
+        {
+          "document": "DOC-001",
+          "page": 5,
+          "section": "General Procedures for Electrochemical Reductive Cleavage of Aryl Ethers",
+          "quote": "diphenyl ether (0.5 mmol) and NaBH4 (1.5 mmol) were dissolved in 5 mL of N-methyl-2-pyrrolidone (NMP)",
+          "evidence_type": "explicit",
+          "confidence": 0.97
+        },
+        {
+          "document": "DOC-001",
+          "page": 2,
+          "section": "Optimization (Table 1 footnotes)",
+          "quote": "NaBH4, 3.0 (equiv) [Table 1, entry 3]",
+          "evidence_type": "derived",
+          "confidence": 0.9,
+          "derivation": "NaBH4 amount 1.5 mmol = 3.0 equiv x 0.5 mmol diphenyl ether, confirmed by the explicit statement 'NaBH4 (1.5 mmol)' in the general procedure.",
+          "require_confirmation": false
+        }
+      ],
+      "confidence": 0.9,
+      "status": "warning",
+      "missing_fields": [
+        {
+          "field_name": "stirring_speed",
+          "step_id": "WB-02",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "Magnetic stirring ~300-500 rpm until dissolution",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        }
+      ],
+      "device_binding": {
+        "device_id": null,
+        "capability_check": "unchecked"
+      },
+      "notes": "NaBH4 is water/moisture sensitive and releases hydrogen with water/acids. Add carefully; keep dry."
+    },
+    {
+      "step_id": "WB-03",
+      "action": "dissolve",
+      "material": "NaBH4 and diphenyl ether dissolved in 5 mL NMP (0.2 M NaBF4)",
+      "description": "Add 5 mL of NMP containing 0.2 M NaBF4 supporting electrolyte and dissolve the reagents to a homogeneous solution",
+      "amount": {
+        "value": 5,
+        "unit": "mL",
+        "tolerance": null,
+        "note": "NMP solvent volume; electrolyte 0.2 M NaBF4 in situ"
+      },
+      "temperature": {
+        "value": 25,
+        "unit": "celsius",
+        "ramp_rate": null,
+        "hold": false
+      },
+      "duration": {
+        "value": null,
+        "unit": "minute",
+        "note": "Until complete dissolution"
+      },
+      "stirring_speed": null,
+      "atmosphere": "air",
+      "pressure": null,
+      "depends_on": ["WB-01", "WB-02"],
+      "parallel_group": null,
+      "evidence": [
+        {
+          "document": "DOC-001",
+          "page": 5,
+          "section": "General Procedures for Electrochemical Reductive Cleavage of Aryl Ethers",
+          "quote": "diphenyl ether (0.5 mmol) and NaBH4 (1.5 mmol) were dissolved in 5 mL of N-methyl-2-pyrrolidone (NMP) with NaBF4 (0.2 M) electrolyte.",
+          "evidence_type": "explicit",
+          "confidence": 0.97
+        }
+      ],
+      "confidence": 0.82,
+      "status": "warning",
+      "missing_fields": [
+        {
+          "field_name": "duration.value",
+          "step_id": "WB-03",
+          "risk_level": "low",
+          "blocks_execution": false,
+          "suggestion": "Stir until all solids dissolved (NaBH4 and diphenyl ether); no time given",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        },
+        {
+          "field_name": "stirring_speed",
+          "step_id": "WB-03",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "Magnetic stirring; NaBH4 solubility in NMP is good",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        }
+      ],
+      "device_binding": {
+        "device_id": null,
+        "capability_check": "unchecked"
+      },
+      "notes": "NMP is a suspected reproductive toxicant; handle in fume hood. Dissolution in NMP required because NaBH4 has sparse solubility in MeCN/THF/dioxane."
+    },
+    {
+      "step_id": "WB-04",
+      "action": "collect",
+      "material": "Electrode assembly (Pt foil anode + Pt minigrid cathode)",
+      "description": "Equip the reaction cell with a Pt foil anode (1 x 1.5 cm2) and a Pt minigrid cathode (52 mesh, 1 x 1.5 cm2, 4 pieces in parallel)",
+      "amount": null,
+      "temperature": {
+        "value": 25,
+        "unit": "celsius",
+        "ramp_rate": null,
+        "hold": false
+      },
+      "duration": null,
+      "stirring_speed": null,
+      "atmosphere": "air",
+      "pressure": null,
+      "depends_on": ["WB-03"],
+      "parallel_group": null,
+      "evidence": [
+        {
+          "document": "DOC-001",
+          "page": 5,
+          "section": "General Procedures for Electrochemical Reductive Cleavage of Aryl Ethers",
+          "quote": "The reaction flask was equipped with a Pt foil anode (1 x 1.5 cm2) and a Pt minigrid cathode (52 mesh, 1 x 1.5 cm2, 4 pieces in parallel).",
+          "evidence_type": "explicit",
+          "confidence": 0.97
+        }
+      ],
+      "confidence": 0.85,
+      "status": "warning",
+      "missing_fields": [
+        {
+          "field_name": "electrode_spacing",
+          "step_id": "WB-04",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "Electrode-to-electrode spacing not specified; ensure electrodes do not short-circuit",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        },
+        {
+          "field_name": "cathode_connection",
+          "step_id": "WB-04",
+          "risk_level": "low",
+          "blocks_execution": false,
+          "suggestion": "4 parallel minigrid pieces must be electrically connected (same potential)",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        }
+      ],
+      "device_binding": {
+        "device_id": null,
+        "capability_check": "unchecked"
+      },
+      "notes": "Cathode surface area (4 pieces x 1 x 1.5 cm2) is critical; single Pt foil cathode drop yields (Table 1, entry 4, 20%)."
+    },
+    {
+      "step_id": "WB-05",
+      "action": "stir",
+      "material": "Reaction solution (diphenyl ether + NaBH4 in NMP/NaBF4)",
+      "description": "Stir the mixture under ambient conditions until homogeneous prior to electrolysis",
+      "temperature": {
+        "value": 25,
+        "unit": "celsius",
+        "ramp_rate": null,
+        "hold": true
+      },
+      "duration": {
+        "value": null,
+        "unit": "minute",
+        "note": "Until homogeneous, unspecified"
+      },
+      "stirring_speed": null,
+      "atmosphere": "air",
+      "pressure": null,
+      "depends_on": ["WB-03"],
+      "parallel_group": null,
+      "evidence": [
+        {
+          "document": "DOC-001",
+          "page": 5,
+          "section": "General Procedures for Electrochemical Reductive Cleavage of Aryl Ethers",
+          "quote": "The solution was electrolyzed at a constant current (30 mA) for 105 min at ambient temperature.",
+          "evidence_type": "inferred",
+          "confidence": 0.85,
+          "derivation": "A homogenization/stir period before electrolysis is inferred from the phrase 'were dissolved'; no explicit pre-mix duration is given in the source.",
+          "require_confirmation": true
+        }
+      ],
+      "confidence": 0.7,
+      "status": "inferred",
+      "missing_fields": [
+        {
+          "field_name": "duration.value",
+          "step_id": "WB-05",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "Pre-mix time not specified; stir until fully dissolved (typically 5-15 min)",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        },
+        {
+          "field_name": "stirring_speed",
+          "step_id": "WB-05",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "Magnetic stirring 300-500 rpm",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        }
+      ],
+      "device_binding": {
+        "device_id": null,
+        "capability_check": "unchecked"
+      },
+      "notes": "Pre-electrolysis homogenization step inferred from 'were dissolved'; no explicit duration provided."
+    },
+    {
+      "step_id": "WB-06",
+      "action": "wait",
+      "material": "Reaction solution under constant-current electrolysis",
+      "description": "Electrolyze the undivided-cell solution at a constant current of 30 mA for 105 min at ambient (room) temperature",
+      "amount": {
+        "value": 30,
+        "unit": "mA",
+        "tolerance": null,
+        "note": "Constant current electrolysis"
+      },
+      "temperature": {
+        "value": 25,
+        "unit": "celsius",
+        "ramp_rate": null,
+        "hold": true
+      },
+      "duration": {
+        "value": 105,
+        "unit": "minute"
+      },
+      "stirring_speed": null,
+      "atmosphere": "air",
+      "pressure": null,
+      "depends_on": ["WB-04", "WB-05"],
+      "parallel_group": null,
+      "evidence": [
+        {
+          "document": "DOC-001",
+          "page": 5,
+          "section": "General Procedures for Electrochemical Reductive Cleavage of Aryl Ethers",
+          "quote": "The solution was electrolyzed at a constant current (30 mA) for 105 min at ambient temperature.",
+          "evidence_type": "explicit",
+          "confidence": 0.97
+        },
+        {
+          "document": "DOC-001",
+          "page": 1,
+          "section": "Abstract",
+          "quote": "in the undivided cell under air.",
+          "evidence_type": "inferred",
+          "confidence": 0.85,
+          "derivation": "Ambient temperature approximated as 25 C: 'ambient temperature' is explicit in the general procedure but the numerical value 25 C is the quantified approximation; electrolysis conducted in the undivided cell under air.",
+          "require_confirmation": true
+        }
+      ],
+      "confidence": 0.9,
+      "status": "inferred",
+      "missing_fields": [
+        {
+          "field_name": "temperature.value",
+          "step_id": "WB-06",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "Ambient = ~25 C; no thermostat used, room temperature acceptable",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        },
+        {
+          "field_name": "stirring_speed",
+          "step_id": "WB-06",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "Magnetic stirring during electrolysis recommended for mass transport (not specified in text)",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        }
+      ],
+      "device_binding": {
+        "device_id": null,
+        "capability_check": "unchecked"
+      },
+      "notes": "Main reaction step. SAFETY: NaBH4 decomposition and any water/acid produce flammable H2; ensure ventilation/fume hood and absence of ignition sources during electrolysis. Cathode produces H2 possibly."
+    },
+    {
+      "step_id": "WB-07",
+      "action": "add",
+      "material": "n-Tetradecane (0.5 mmol) internal standard",
+      "description": "Add n-tetradecane (0.5 mmol) to the reaction mixture and stir for 5 min",
+      "amount": {
+        "value": 0.5,
+        "unit": "mmol",
+        "tolerance": null,
+        "note": "GC internal standard"
+      },
+      "temperature": {
+        "value": 25,
+        "unit": "celsius",
+        "ramp_rate": null,
+        "hold": false
+      },
+      "duration": {
+        "value": 5,
+        "unit": "minute"
+      },
+      "stirring_speed": null,
+      "atmosphere": "air",
+      "pressure": null,
+      "depends_on": ["WB-06"],
+      "parallel_group": null,
+      "evidence": [
+        {
+          "document": "DOC-001",
+          "page": 5,
+          "section": "General Procedures for Electrochemical Reductive Cleavage of Aryl Ethers",
+          "quote": "Then, n-tetradecane (0.5 mmol) was added to the reaction mixture and stirred for 5 min.",
+          "evidence_type": "explicit",
+          "confidence": 0.97
+        }
+      ],
+      "confidence": 0.92,
+      "status": "warning",
+      "missing_fields": [
+        {
+          "field_name": "stirring_speed",
+          "step_id": "WB-07",
+          "risk_level": "low",
+          "blocks_execution": false,
+          "suggestion": "Stirring ~300 rpm for 5 min",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        }
+      ],
+      "device_binding": {
+        "device_id": null,
+        "capability_check": "unchecked"
+      },
+      "notes": "Internal standard for GC/GC-MS yield determination."
+    },
+    {
+      "step_id": "WB-08",
+      "action": "transfer",
+      "material": "Reaction mixture into ice water",
+      "description": "Pour the reaction solution into ice water",
+      "amount": {
+        "value": null,
+        "unit": "mL",
+        "note": "Ice water volume not specified (excess to quench/dilute)"
+      },
+      "temperature": {
+        "value": 0,
+        "unit": "celsius",
+        "ramp_rate": null,
+        "hold": true
+      },
+      "duration": null,
+      "stirring_speed": null,
+      "atmosphere": "air",
+      "pressure": null,
+      "depends_on": ["WB-07"],
+      "parallel_group": null,
+      "evidence": [
+        {
+          "document": "DOC-001",
+          "page": 5,
+          "section": "General Procedures for Electrochemical Reductive Cleavage of Aryl Ethers",
+          "quote": "The solution was poured into ice water, quenched carefully under 0 C",
+          "evidence_type": "explicit",
+          "confidence": 0.97
+        }
+      ],
+      "confidence": 0.8,
+      "status": "warning",
+      "missing_fields": [
+        {
+          "field_name": "amount.value",
+          "step_id": "WB-08",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "Ice water volume not specified; typically 50-100 mL to fully dilute NMP and hydrolyze remaining NaBH4",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        }
+      ],
+      "device_binding": {
+        "device_id": null,
+        "capability_check": "unchecked"
+      },
+      "notes": "SAFETY: Pouring into ice water begins NaBH4 hydrolysis -> H2 evolution. Work slowly, cold, in fume hood."
+    },
+    {
+      "step_id": "WB-09",
+      "action": "quench",
+      "material": "React mixture quenched with 1 M HCl at 0 C",
+      "description": "Quench carefully at 0 C with aqueous 1 M HCl solution (acidification)",
+      "amount": {
+        "value": null,
+        "unit": "mL",
+        "note": "1 M HCl volume not specified; add until acidic"
+      },
+      "temperature": {
+        "value": 0,
+        "unit": "celsius",
+        "ramp_rate": null,
+        "hold": true
+      },
+      "duration": {
+        "value": null,
+        "unit": "minute",
+        "note": "Slow dropwise addition, not timed"
+      },
+      "stirring_speed": null,
+      "atmosphere": "air",
+      "pressure": null,
+      "depends_on": ["WB-08"],
+      "parallel_group": null,
+      "evidence": [
+        {
+          "document": "DOC-001",
+          "page": 5,
+          "section": "General Procedures for Electrochemical Reductive Cleavage of Aryl Ethers",
+          "quote": "quenched carefully under 0 C with aqueous solution of 1 M HCl",
+          "evidence_type": "explicit",
+          "confidence": 0.97
+        }
+      ],
+      "confidence": 0.82,
+      "status": "warning",
+      "missing_fields": [
+        {
+          "field_name": "amount.value",
+          "step_id": "WB-09",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "1 M HCl added slowly until acidic (pH<2); total volume to be determined empirically",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        },
+        {
+          "field_name": "stirring_speed",
+          "step_id": "WB-09",
+          "risk_level": "low",
+          "blocks_execution": false,
+          "suggestion": "Stir while adding to control foaming",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        }
+      ],
+      "device_binding": {
+        "device_id": null,
+        "capability_check": "unchecked"
+      },
+      "notes": "SAFETY (CRITICAL): Acid quench of residual NaBH4 produces vigorous H2 evolution -> risk of spatter/fire. Add 1 M HCl very slowly with stirring at 0 C. HCl is corrosive - PPE."
+    },
+    {
+      "step_id": "WB-10",
+      "action": "transfer",
+      "material": "Aqueous layer extracted with diethyl ether (3 x 20 mL)",
+      "description": "Extract the aqueous layer with diethyl ether by partitioning, 3 portions of 20 mL, transferring organic layers to a combined vessel",
+      "amount": {
+        "value": 20,
+        "unit": "mL",
+        "tolerance": null,
+        "note": "3 x 20 mL portions = 60 mL total"
+      },
+      "temperature": {
+        "value": 25,
+        "unit": "celsius",
+        "ramp_rate": null,
+        "hold": false
+      },
+      "duration": {
+        "value": null,
+        "unit": "minute",
+        "note": "Per extraction portion; not specified"
+      },
+      "stirring_speed": null,
+      "atmosphere": "air",
+      "pressure": null,
+      "depends_on": ["WB-09"],
+      "parallel_group": null,
+      "evidence": [
+        {
+          "document": "DOC-001",
+          "page": 5,
+          "section": "General Procedures for Electrochemical Reductive Cleavage of Aryl Ethers",
+          "quote": "and then extracted with diethyl ether (3 x 20 mL).",
+          "evidence_type": "explicit",
+          "confidence": 0.97
+        }
+      ],
+      "confidence": 0.88,
+      "status": "warning",
+      "missing_fields": [
+        {
+          "field_name": "stirring_speed",
+          "step_id": "WB-10",
+          "risk_level": "low",
+          "blocks_execution": false,
+          "suggestion": "Vortex/shake 1-2 min per extraction portion; separate funnel",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        },
+        {
+          "field_name": "atmosphere",
+          "step_id": "WB-10",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "Diethyl ether very flammable; avoid sparks, perform in fume hood",
+          "suggestion_source": "safety_rule",
+          "requires_confirmation": true
+        }
+      ],
+      "device_binding": {
+        "device_id": null,
+        "capability_check": "unchecked"
+      },
+      "notes": "SAFETY: Diethyl ether is extremely flammable (flash -45C) and a peroxide former. Use fume hood, no ignition sources, check peroxide test."
+    },
+    {
+      "step_id": "WB-11",
+      "action": "dry",
+      "material": "Combined organic layers dried over anhydrous Na2SO4",
+      "description": "Gather organic layers, dry over anhydrous sodium sulfate, and filter",
+      "amount": {
+        "value": null,
+        "unit": "g",
+        "note": "Na2SO4 amount not specified"
+      },
+      "temperature": {
+        "value": 25,
+        "unit": "celsius",
+        "ramp_rate": null,
+        "hold": false
+      },
+      "duration": {
+        "value": null,
+        "unit": "minute",
+        "note": "Drying period not specified"
+      },
+      "stirring_speed": null,
+      "atmosphere": "air",
+      "pressure": null,
+      "depends_on": ["WB-10"],
+      "parallel_group": null,
+      "evidence": [
+        {
+          "document": "DOC-001",
+          "page": 5,
+          "section": "General Procedures for Electrochemical Reductive Cleavage of Aryl Ethers",
+          "quote": "Organic layers were gathered, dried over Na2SO4, filtered",
+          "evidence_type": "explicit",
+          "confidence": 0.97
+        }
+      ],
+      "confidence": 0.78,
+      "status": "warning",
+      "missing_fields": [
+        {
+          "field_name": "duration.value",
+          "step_id": "WB-11",
+          "risk_level": "low",
+          "blocks_execution": false,
+          "suggestion": "Drying time not specified; typically 15-30 min over Na2SO4",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        },
+        {
+          "field_name": "amount.value",
+          "step_id": "WB-11",
+          "risk_level": "low",
+          "blocks_execution": false,
+          "suggestion": "Add anhydrous Na2SO4 until it no longer clumps",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        }
+      ],
+      "device_binding": {
+        "device_id": null,
+        "capability_check": "unchecked"
+      },
+      "notes": "Filtration separates drying agent. Original GC-identified products known compounds."
+    },
+    {
+      "step_id": "WB-12",
+      "action": "measure",
+      "material": "Filtered organic solution",
+      "description": "Subject the dried/filtered organic solution to GC and GC-MS analyses for conversion and yields (n-tetradecane internal standard)",
+      "amount": {
+        "value": null,
+        "unit": "uL",
+        "note": "Injection volume not specified"
+      },
+      "temperature": {
+        "value": null,
+        "unit": "celsius",
+        "ramp_rate": null,
+        "hold": false
+      },
+      "duration": {
+        "value": null,
+        "unit": "minute"
+      },
+      "stirring_speed": null,
+      "atmosphere": "air",
+      "pressure": null,
+      "depends_on": ["WB-11"],
+      "parallel_group": null,
+      "evidence": [
+        {
+          "document": "DOC-001",
+          "page": 5,
+          "section": "General Procedures for Electrochemical Reductive Cleavage of Aryl Ethers",
+          "quote": "and then subjected to GC and GC-MS analyses.",
+          "evidence_type": "explicit",
+          "confidence": 0.97
+        },
+        {
+          "document": "DOC-001",
+          "page": 2,
+          "section": "General Information (GC program)",
+          "quote": "GC analyses were carried out using a DB-5 (30 m x 0.25 mm i.d. x 0.25 um) capillary column with temperature program A or B",
+          "evidence_type": "explicit",
+          "confidence": 0.9
+        }
+      ],
+      "confidence": 0.9,
+      "status": "warning",
+      "missing_fields": [
+        {
+          "field_name": "temperature.value",
+          "step_id": "WB-12",
+          "risk_level": "low",
+          "blocks_execution": false,
+          "suggestion": "GC oven program A (40 C hold 2 min, 20 C/min to 300 C) or B used; injector temp not specified",
+          "suggestion_source": "literature_default",
+          "requires_confirmation": true
+        }
+      ],
+      "device_binding": {
+        "device_id": null,
+        "capability_check": "unchecked"
+      },
+      "notes": "Quantified by GC with n-tetradecane internal standard integration; calibration curves from authentic compounds. GC-MS EI 70 eV."
+    }
+  ],
+  "equipment": [
+    {
+      "device_id": null,
+      "device_type": "electrochemical_cell",
+      "device_name": "Round-bottom flask cell (undivided one-compartment cell)",
+      "config_path": null
+    },
+    {
+      "device_id": null,
+      "device_type": "electrode_anode",
+      "device_name": "Pt foil anode (1 x 1.5 cm2)",
+      "config_path": null
+    },
+    {
+      "device_id": null,
+      "device_type": "electrode_cathode",
+      "device_name": "Pt minigrid cathode (52 mesh, 1 x 1.5 cm2, 4 pieces in parallel)",
+      "config_path": null
+    },
+    {
+      "device_id": null,
+      "device_type": "power_supply",
+      "device_name": "Constant current source (galvanostat) delivering 30 mA",
+      "config_path": null
+    },
+    {
+      "device_id": null,
+      "device_type": "stirrer",
+      "device_name": "Magnetic stirrer",
+      "config_path": null
+    },
+    {
+      "device_id": null,
+      "device_type": "ice_bath",
+      "device_name": "Ice / lead bath at 0 C for quench",
+      "config_path": null
+    },
+    {
+      "device_id": null,
+      "device_type": "separatory_funnel",
+      "device_name": "Separatory funnel for diethyl ether extraction",
+      "config_path": null
+    },
+    {
+      "device_id": null,
+      "device_type": "analytical_instrument",
+      "device_name": "GC (DB-5 column) and GC-MS (SE 70 eV, TG-5MS column)",
+      "config_path": null
+    },
+    {
+      "device_id": null,
+      "device_type": "balance",
+      "device_name": "Analytical balance for reagent weighing",
+      "config_path": null
+    },
+    {
+      "device_id": null,
+      "device_type": "fume_hood",
+      "device_name": "Fume hood for NaBH4, NMP, diethyl ether, and HCl 1 M operations",
+      "config_path": null
+    }
+  ],
+  "metadata": {
+    "version": "1.0.0",
+    "generated_at": "2026-08-07T20:30:00Z",
+    "compiler_version": "matflow-compiler/0.3.0",
+    "source_hash": "sha256:wu_huang_2014_joc_79_10189",
+    "operator": "auto",
+    "lab_id": null,
+    "compilation_notes": "Protocol compiled from Wu, W.-B. and Huang, J.-M., J. Org. Chem. 2014, 79, 10189-10195, DOI 10.1021/jo5018537. The MAIN general procedure (General Procedures for Electrochemical Reductive Cleavage of Aryl Ethers) was compiled: diphenyl ether (0.5 mmol) + NaBH4 (1.5 mmol) in 5 mL NMP with 0.2 M NaBF4, Pt foil anode (1x1.5 cm2) + Pt minigrid cathode (52 mesh, 1x1.5 cm2, 4 pieces), constant current 30 mA, 105 min, ambient temp. Workup: add n-tetradecane internal standard, pour into ice water, quench 1 M HCl at 0 C, extract (3x20 mL diethyl ether), dry Na2SO4, GC/GC-MS. Note that substrate preparation (Cu-catalyzed coupling, PBr3 benzyl bromination) is NOT the compiled protocol but documented separately. No blocking missing fields -> overall_status 'needs_review'. Ambient temperature (25 C) is an inferred quantity. Protocol ID assigned MF-REAL-004."
+  },
+  "safety_checks": [
+    {
+      "check_id": "SAFE-001",
+      "check_type": "water_reactive_reagent",
+      "rule_id": "SAFE-C-001",
+      "target_step": "WB-02",
+      "status": "warning",
+      "message": "NaBH4 releases flammable hydrogen gas upon contact with water or moisture. Keep reagent dry and sealed; handle in fume hood and avoid open ignition sources. Account for slow H2 release during the 105 min electrolysis and workup.",
+      "details": {
+        "reagent": "sodium borohydride (NaBH4)",
+        "hazard": "water_reactive, hydrogen_release",
+        "amount": 1.5,
+        "unit": "mmol",
+        "visible_duration": "105 min electrolysis"
+      }
+    },
+    {
+      "check_id": "SAFE-002",
+      "check_type": "acid_quench_hydrogen_evolution",
+      "rule_id": "SAFE-C-002",
+      "target_step": "WB-09",
+      "status": "warning",
+      "message": "ACID QUENCH RISK: Acidifying with 1 M HCl in the presence of residual NaBH4 produces vigorous, rapid hydrogen evolution. MUST add 1 M HCl very slowly with stirring at 0 C to control foaming and spatter and to prevent flammable H2 accumulation in the hood.",
+      "details": {
+        "reagent": "NaBH4 (residual) + 1 M HCl",
+        "hazard": "rapid_h2_evolution, spattering",
+        "temperature": 0,
+        "temperature_unit": "celsius"
+      }
+    },
+    {
+      "check_id": "SAFE-003",
+      "check_type": "reproductive_toxicant_solvent",
+      "rule_id": "SAFE-H-003",
+      "target_step": "WB-03",
+      "status": "warning",
+      "message": "NMP (N-methyl-2-pyrrolidone) is a suspected reproductive toxicant (CMR) and skin irritant. Handle in fume hood with gloves and protective clothing; ensure minimal exposure.",
+      "details": {
+        "reagent": "NMP",
+        "hazard": "reproductive_toxicant_suspected, irritant",
+        "amount": 5,
+        "unit": "mL"
+      }
+    },
+    {
+      "check_id": "SAFE-004",
+      "check_type": "flammable_extraction_solvent",
+      "rule_id": "SAFE-C-004",
+      "target_step": "WB-10",
+      "status": "warning",
+      "message": "Diethyl ether is extremely flammable (flash point -45 C) and a peroxide former. Perform extraction in a fume hood away from ignition sources; use fresh/industrial-grade ether and peroxide test indicator strips if old.",
+      "details": {
+        "reagent": "diethyl ether",
+        "flash_point": -45,
+        "unit": "celsius",
+        "amount_total": 60,
+        "unit_volume": "mL"
+      }
+    },
+    {
+      "check_id": "SAFE-005",
+      "check_type": "corrosive_acid_handling",
+      "rule_id": "SAFE-H-003",
+      "target_step": "WB-09",
+      "status": "warning",
+      "message": "1 M HCl is corrosive/irritant. Wear impermeable gloves and goggles; quench at 0 C in an ice bath to reduce spatter.",
+      "details": {
+        "reagent": "1 M HCl",
+        "hazard": "corrosive",
+        "temperature": 0,
+        "temperature_unit": "celsius"
+      }
+    },
+    {
+      "check_id": "SAFE-006",
+      "check_type": "hydrogen_evolution_electrolysis",
+      "rule_id": "SAFE-E-001",
+      "target_step": "WB-06",
+      "status": "warning",
+      "message": "During electrolysis, NaBH4 decomposition and possible cathodic H2 evolution generate flammable hydrogen. Ensure the fume hood/ventilation is active, no ignition source is nearby, and gas can escape freely. A deband unit / open-top cell is recommended.",
+      "details": {
+        "current": 30,
+        "current_unit": "mA",
+        "duration": 105,
+        "duration_unit": "min",
+        "gas_generator": "H2 (borohydride hydrolysis + possible cathodic)",
+        "require_hood": true
+      }
+    },
+    {
+      "check_id": "SAFE-007",
+      "check_type": "incompatible_solvent_note",
+      "rule_id": "SAFE-C-004",
+      "target_step": "WB-03",
+      "status": "pass",
+      "message": "Note: THF (flash point -14 C) and other low-boiling solvents were tested (Table 1) but give only trace product; the compiled protocol uses NMP solvent (nonflammable high bp 202 C). Do NOT substitute fused THF for NMP, which would raise flammability and lower borohydride solubility. Informational only.",
+      "details": {
+        "thf_flash_point": -14,
+        "thf_flash_unit": "celsius",
+        "chosen_solvent": "NMP",
+        "chosen_solvent_flash_point": 87,
+        "chosen_solvent_flash_unit": "celsius"
+      }
+    },
+    {
+      "check_id": "SAFE-008",
+      "check_type": "inferred_parameter_confirmation",
+      "rule_id": "SAFE-H-004",
+      "target_step": "WB-06",
+      "status": "warning",
+      "message": "Ambient temperature is quantified as 25 C (inferred). Confirm/set the working temperature band (typically 20-30 C) before the 105 min electrolysis, since reaction yields are temperature-sensitive.",
+      "details": {
+        "inferred_field": "temperature.value",
+        "inferred_value": 25,
+        "unit": "celsius",
+        "basis": "room/ambient temperature approximation",
+        "confidence": 0.85
+      }
+    }
+  ],
+  "checkpoints": [
+    {
+      "checkpoint_id": "CP-01",
+      "after_step": "WB-03",
+      "stored_state": [
+        {
+          "name": "diphenyl_ether_amount",
+          "type": "number",
+          "unit": "mmol"
+        },
+        {
+          "name": "nabh4_amount",
+          "type": "number",
+          "unit": "mmol"
+        },
+        {
+          "name": "solvent_volume",
+          "type": "number",
+          "unit": "mL"
+        },
+        {
+          "name": "electrolyte_conc",
+          "type": "number",
+          "unit": "M"
+        },
+        {
+          "name": "dissolution_complete",
+          "type": "boolean"
+        }
+      ],
+      "recovery_policy": {
+        "power_failure": "restart_step",
+        "temperature_deviation": {
+          "threshold": 5,
+          "unit": "celsius",
+          "action": "hold"
+        }
+      }
+    },
+    {
+      "checkpoint_id": "CP-02",
+      "after_step": "WB-04",
+      "description": "Electrode assembly validated",
+      "stored_state": [
+        {
+          "name": "anode_type",
+          "type": "string"
+        },
+        {
+          "name": "cathode_type",
+          "type": "string"
+        },
+        {
+          "name": "anode_area",
+          "type": "number",
+          "unit": "cm2"
+        },
+        {
+          "name": "cathode_pieces",
+          "type": "number"
+        },
+        {
+          "name": "cathode_connected",
+          "type": "boolean"
+        }
+      ],
+      "recovery_policy": {
+        "power_failure": "hold",
+        "temperature_deviation": {
+          "threshold": 5,
+          "unit": "celsius",
+          "action": "continue"
+        }
+      }
+    },
+    {
+      "checkpoint_id": "CP-03",
+      "after_step": "WB-06",
+      "description": "Electrolysis completion checkpoint",
+      "stored_state": [
+        {
+          "name": "applied_current",
+          "type": "number",
+          "unit": "mA"
+        },
+        {
+          "name": "reaction_duration",
+          "type": "number",
+          "unit": "minute"
+        },
+        {
+          "name": "reaction_temp",
+          "type": "number",
+          "unit": "celsius"
+        },
+        {
+          "name": "cell_venting_ok",
+          "type": "boolean"
+        },
+        {
+          "name": "solution_appearance",
+          "type": "string"
+        }
+      ],
+      "recovery_policy": {
+        "power_failure": "alert",
+        "temperature_deviation": {
+          "threshold": 5,
+          "unit": "celsius",
+          "action": "hold"
+        },
+        "notes": "If electrolysis is interrupted, record elapsed time and remaining duration; evaluate whether to resume or restart. NaBH4 solution should be re-quenched if store problem."
+      }
+    },
+    {
+      "checkpoint_id": "CP-04",
+      "after_step": "WB-09",
+      "description": "Quench completion (acidification done, no active H2 foaming)",
+      "stored_state": [
+        {
+          "name": "ice_bath_temperature",
+          "type": "number",
+          "unit": "celsius"
+        },
+        {
+          "name": "quench_ph",
+          "type": "number",
+          "unit": "pH"
+        },
+        {
+          "name": "h2_foaming_controlled",
+          "type": "boolean"
+        },
+        {
+          "name": "hcl_added_slowly",
+          "type": "boolean"
+        }
+      ],
+      "recovery_policy": {
+        "power_failure": "cool_hold (keep at 0 C)",
+        "temperature_deviation": {
+          "threshold": 5,
+          "unit": "celsius",
+          "action": "hold"
+        }
+      }
+    },
+    {
+      "checkpoint_id": "CP-05",
+      "after_step": "WB-11",
+      "description": "Extraction + dryingcomplete",
+      "stored_state": [
+        {
+          "name": "extraction_fractions",
+          "type": "number"
+        },
+        {
+          "name": "organic_layer_combined",
+          "type": "boolean"
+        },
+        {
+          "name": "dried_over_na2so4",
+          "type": "boolean"
+        },
+        {
+          "name": "filtered",
+          "type": "boolean"
+        }
+      ],
+      "recovery_policy": {
+        "power_failure": "resume_from_checkpoint",
+        "temperature_deviation": {
+          "threshold": 10,
+          "unit": "celsius",
+          "action": "continue"
+        }
+      }
+    },
+    {
+      "checkpoint_id": "CP-06",
+      "after_step": "WB-12",
+      "description": "GC/GC-MS analysis checkpoint",
+      "stored_state": [
+        {
+          "name": "gc_program",
+          "type": "string"
+        },
+        {
+          "name": "internal_std_peak",
+          "type": "boolean"
+        },
+        {
+          "name": "conversion",
+          "type": "number",
+          "unit": "percent"
+        },
+        {
+          "name": "product_yield",
+          "type": "number",
+          "unit": "percent"
+        }
+      ],
+      "recovery_policy": {
+        "power_failure": "resume_from_checkpoint",
+        "temperature_deviation": {
+          "threshold": 10,
+          "unit": "celsius",
+          "action": "continue"
+        }
+      }
+    }
+  ],
+  "overall_confidence": 0.82,
+  "overall_status": "needs_review",
+  "confidence_score": {
+    "overall": 0.82,
+    "dimensions": {
+      "evidence_coverage": 0.9,
+      "explicit_ratio": 0.88,
+      "safety_pass_rate": 0.7,
+      "missing_field_penalty": 0.8
+    }
+  },
+  "block_reasons": []
+}

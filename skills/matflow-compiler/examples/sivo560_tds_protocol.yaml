@@ -1,0 +1,221 @@
+# 设备无关实验中间表示 (EIR)
+# Dynasylan SIVO 560 硅烷偶联剂 - 水解与应用处理协议
+# 协议ID: MF-T-002
+# 来源: TDS (产品技术数据表)
+# 状态: needs_review
+# 信息类型: explicit 为 TDS 原表格数值; derived 为推算值; inferred 为推断值
+
+protocol_id: "MF-T-002"
+material: "Dynasylan SIVO 560 甲基丙烯酸类硅烷偶联剂 - 水解与玻璃纤维/布处理"
+source_type: "tds"
+overall_status: "needs_review"
+overall_confidence: 0.85
+
+source_documents:
+  - doc_id: "DOC-TDS-002"
+    title: "Dynasylan SIVO 560 技术数据表 (TDS) - 甲基丙烯酸类硅烷偶联剂"
+    file_path: "sivo560_tds_full.txt"
+    doc_type: "tds"
+    supplier: "Evonik (Degussa)"
+    product_code: "Dynasylan SIVO 560"
+
+reagents:
+  - name: "Dynasylan SIVO 560"
+    cas_number: null
+    role: "silane_coupling_agent"
+    physical_properties:
+      appearance: "无色透明液体"                       # explicit
+      viscosity_20c_mPa_s: 1                            # explicit
+      unsaturated_bond_content: "比标准高~35%"          # explicit
+      surface_tension_1pc_mN_per_m: 40                  # explicit
+      turbidity_max_fnu: 3                              # explicit
+    solubility: "溶于去离子水, 无需酸/催化剂"
+    solution_ph: 5                                      # explicit
+    hazard_class: "甲基丙烯酸类刺激, 遇水水解, 有机硅助剂"
+    evidence:
+      evidence_type: "explicit"
+      confidence: 0.98
+
+  - name: "去离子水"
+    cas_number: "7732-18-5"
+    role: "solvent"
+    hazard_class: "none"
+    evidence:
+      evidence_type: "explicit"
+      confidence: 0.98
+
+  - name: "玻璃纤维/玻璃布"
+    cas_number: null
+    role: "substrate"
+    hazard_class: "glass_fiber_dust"
+    evidence:
+      evidence_type: "explicit"
+      confidence: 0.9
+
+  - name: "有机聚合物体系 (PPE/马来酰亚胺/聚酰亚胺)"
+    cas_number: null
+    role: "organic_matrix"
+    hazard_class: "树脂体系可燃, 含有机溶剂"
+    evidence:
+      evidence_type: "explicit"
+      confidence: 0.85
+
+steps:
+  - step_id: "S01"
+    action: "hydrolyze"
+    material: "SIVO 560 溶于去离子水"
+    description: "搅拌下将约 1-2% 的 SIVO 560 缓慢加入去离子水, 搅拌 20-30min 完全水解, 变清澈"
+    amount:
+      value: 1           # derived: 由 '约1-2%' (半 explicit)
+      unit: "wt%"
+      note: "SIVO 560 1-2 wt%, 缓慢加入并搅拌"
+    temperature:
+      value: 20          # inferred
+      unit: "celsius"
+      evidence_type: "inferred"
+      confidence: 0.85
+    duration:
+      value: 25          # range 20-30
+      unit: "minute"
+      evidence_type: "explicit"
+      confidence: 0.95
+    missing_fields:
+      - field_name: "stirring_speed"
+        risk_level: "medium"
+        blocks_execution: false
+        requires_confirmation: true
+      - field_name: "ph_strict_range"
+        risk_level: "medium"
+        blocks_execution: false
+        requires_confirmation: true
+    confidence: 0.9
+    status: "warning"
+
+  - step_id: "S02"
+    action: "verify_hydrolysate"
+    material: "SIVO 560 水解液"
+    description: "检验: 澄清(浊度≤3.0FNU), 1%水溶液20min后表面张力~40mN/m; 变浑浊即失效"
+    amount:
+      value: 1
+      unit: "wt%"
+    temperature:
+      value: 20
+      unit: "celsius"
+      evidence_type: "inferred"
+      confidence: 0.85
+    duration:
+      value: 20
+      unit: "minute"
+      note: "表面张力测定搅拌时间 (explicit)"
+    missing_fields:
+      - field_name: "turbidity_measurement_method"
+        risk_level: "low"
+        blocks_execution: false
+        requires_confirmation: true
+      - field_name: "surface_tension_instrument"
+        risk_level: "low"
+        blocks_execution: false
+        requires_confirmation: true
+    confidence: 0.85
+    status: "warning"
+
+  - step_id: "S03"
+    action: "apply_coat"
+    material: "水解液涂覆于玻璃纤维/布"
+    description: "将澄清水解液涂覆玻璃纤维/布, 改善润湿与电气性能(降介电常数), 桥接无机与有机"
+    amount: null
+    temperature:
+      value: 20
+      unit: "celsius"
+      evidence_type: "inferred"
+      confidence: 0.85
+    missing_fields:
+      - field_name: "coating_method"
+        risk_level: "medium"
+        blocks_execution: false
+        requires_confirmation: true
+      - field_name: "drying_conditions"
+        risk_level: "medium"
+        blocks_execution: false
+        requires_confirmation: true
+      - field_name: "pickup_amount"
+        risk_level: "low"
+        blocks_execution: false
+        requires_confirmation: true
+    confidence: 0.85
+    status: "inferred"
+
+  - step_id: "S04"
+    action: "consume_within_window"
+    material: "SIVO 560 水解液"
+    description: "水解液 24h 内用完; 变浑浊则失效不可再用, 废弃重新配制"
+    amount: null
+    temperature:
+      value: 20
+      unit: "celsius"
+      evidence_type: "inferred"
+      confidence: 0.85
+    duration:
+      value: 24
+      unit: "hour"
+      note: "使用时效窗口 (explicit)"
+    confidence: 0.9
+    status: "warning"
+
+equipment:
+  - device_type: "mixer"
+    device_name: "低速搅拌 (水解液配制)"
+  - device_type: "turbidity_meter"
+    device_name: "浊度计 (FNU)"
+  - device_type: "surface_tension"
+    device_name: "表面张力仪 (DIN53015)"
+  - device_type: "coater"
+    device_name: "涂覆/浸渍设备 (玻璃布处理)"
+
+metadata:
+  version: "1.0.0"
+  generated_at: "2026-08-07T10:00:00Z"
+  compiler_version: "matflow-compiler/0.3.0"
+  source_type: "tds"
+  source_hash: "sha256:sivo560_tds"
+  operator: "auto"
+  compilation_notes: "SIVO 560 TDS 水解与应用处理协议。核心配方 1-2% 水解液(derived 浓度)。缺失: 搅拌转速、精确pH范围、涂覆/干燥条件、测量装置等, 无致命缺失, 状态 needs_review。"
+
+safety_checks:
+  - check_id: "SAFE-S-001"
+    check_type: "hydrolysate_lifespan"
+    target_step: "S04"
+    status: "warning"
+    message: "水解液 24h 内用完; 超时或变浑浊失效。"
+    details: { shelf_life_hours: 24 }
+  - check_id: "SAFE-S-002"
+    check_type: "hydrolysate_turbidity"
+    target_step: "S02"
+    status: "warning"
+    message: "水解液变浑浊视为失效, 不可再用。"
+    details: { turbidity_fnu: 3 }
+  - check_id: "SAFE-S-003"
+    check_type: "ph_control"
+    target_step: "S01"
+    status: "warning"
+    message: "避免过低/过高pH, 默认pH~5, 极端pH破坏水解液稳定。"
+  - check_id: "SAFE-S-004"
+    check_type: "glass_fiber_dust"
+    target_step: "S03"
+    status: "warning"
+    message: "玻璃纤维粉尘刺激皮肤呼吸道, 需佩戴防护与通风。"
+  - check_id: "SAFE-S-005"
+    check_type: "organic_solvent_flammable"
+    target_step: "S03"
+    status: "warning"
+    message: "有机树脂体系(PPE/聚酰亚胺)含可燃溶剂, 远离火源通风。"
+  - check_id: "SAFE-S-006"
+    check_type: "silane_reactive_irritant"
+    target_step: "S01"
+    status: "warning"
+    message: "SIVO 560 含甲基丙烯酸不饱和键及可水解硅烷, 刺激皮肤眼, 佩戴防护。"
+  - check_id: "SAFE-S-007"
+    check_type: "prepared_volume"
+    target_step: "S01"
+    status: "warning"
+    message: "按 24h 可用量配制, 避免一次过多过期浪费。"

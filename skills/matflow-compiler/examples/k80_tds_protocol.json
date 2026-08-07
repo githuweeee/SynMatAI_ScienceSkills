@@ -1,0 +1,650 @@
+{
+  "protocol_id": "MF-T-001",
+  "material": "Trigonox K-80 异丙苯过氧化氢 (Cumene hydroperoxide, 80% 芳烃溶液) 用于不饱和聚酯树脂固化",
+  "source_type": "tds",
+  "source_documents": [
+    {
+      "doc_id": "DOC-TDS-001",
+      "title": "Trigonox K-80 技术数据表 (TDS) - 异丙苯过氧化氢 80% 芳烃溶液",
+      "file_path": "k80_tds_full.txt",
+      "doc_type": "tds",
+      "supplier": "Nouryon (AkzoNobel)",
+      "product_code": "Trigonox K-80"
+    }
+  ],
+  "reagents": [
+    {
+      "name": "Trigonox K-80 (异丙苯过氧化氢 80% 芳烃溶液)",
+      "cas_number": "80-15-9",
+      "role": "curing_initiator",
+      "supplier": "Noury (AkzoNobel)",
+      "content": "80-85% 异丙苯过氧化氢",
+      "physical_properties": {
+        "density_20C_g_per_cm3": 1.06,
+        "viscosity_20C_mPa_s": 10.4,
+        "color_pt_co": 450,
+        "max_storage_temp_c": 40,
+        "min_storage_temp_c": -30,
+        "sadt_c": 75,
+        "shelf_life_months": 6
+      },
+      "decomposition_products": [
+        "苯乙酮 (acetophenone)",
+        "甲烷 (methane)",
+        "2-苯基异丙醇 (2-phenyl-2-propanol)"
+      ],
+      "un_number": "UN3109",
+      "peroxide_class": "F型过氧化物 (F类 分类有机过氧化物)",
+      "hazard_class": "oxidizing_agent, flammable, self_accelerating_decomposition (SADT 75C)",
+      "evidence": {
+        "document": "DOC-TDS",
+        "evidence_type": "explicit",
+        "confidence": 0.98,
+        "note": "所有物性数据来自 TDS 物性栏"
+      }
+    },
+    {
+      "name": "不饱和聚酯树脂 (UP) 或 乙烯基酯树脂",
+      "cas": null,
+      "role": "matrix_resin",
+      "content": "100 份 (重量比基础)",
+      "hazard_class": "flammable (含苯乙烯单体), irritant",
+      "evidence": {
+        "document": "DOC-TDS",
+        "evidence_type": "explicit",
+        "confidence": 0.85,
+        "note": "TDS 配方例子以'树脂 100 份'为基准; 具体树脂型号未在TDS给出"
+      }
+    },
+    {
+      "name": "钴促进剂 (钴盐, 如 NL-49P / Accelerator 类钴促进剂)",
+      "cas": null,
+      "role": "accelerator_promoter",
+      "content": "与 K-80 并用可室温凝胶(凝胶长, 适合大型件/长丝缠绕)",
+      "hazard_class": "cobalt_salt_hazard, irritant",
+      "evidence": {
+        "document": "DOC-TDS",
+        "evidence_type": "explicit",
+        "confidence": 0.85,
+        "note": "TDS 提到'低温需钴/钒催化'; 具体钴盐型号 NL-49P 在层压板例子中给出"
+      }
+    },
+    {
+      "name": "钒促进剂 (如 Accelerator VN-2)",
+      "cas": null,
+      "role": "accelerator_promoter",
+      "content": "与 K-80 并用室温凝胶短固化快, 可加丙酮酸加速",
+      "hazard_class": "irritant",
+      "evidence": {
+        "document": "DOC-TDS",
+        "evidence_type": "explicit",
+        "confidence": 0.85,
+        "note": "配方例1使用 Accelerator VN-2 1 份"
+      }
+    },
+    {
+      "name": "对固化对照体系 (Butanox LPT 等 MEKP 体系)",
+      "cas": null,
+      "role": "comparison_curing_system",
+      "content": "Butanox LPT 2份 + NL-49P 2份 + NL-63-10P 2份 (对照凝胶17min)",
+      "hazard_class": "oxidizing_agent",
+      "evidence": {
+        "document": "DOC-TDS",
+        "evidence_type": "explicit",
+        "confidence": 0.9,
+        "note": "TDS 给出的对比配方, 非本协议主配方"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "step_id": "S01",
+      "action": "weigh",
+      "material": "树脂 + K-80",
+      "description": "确定固化配方: 不饱和聚酯/乙烯基酯树脂 100 份, 加入 K-80 固化剂 1-3 phr",
+      "amount": {
+        "value": 1,
+        "unit": "phr",
+        "tolerance": null,
+        "note": "TDS 建议用量 K-80 1-3 phr (每 100 份树脂); 典型取 2 phr"
+      },
+      "temperature": {
+        "value": 20,
+        "unit": "celsius",
+        "ramp_rate": null,
+        "hold": false
+      },
+      "duration": null,
+      "stirring_speed": null,
+      "atmosphere": "air",
+      "evidence": [
+        {
+          "document": "DOC-TDS",
+          "evidence_type": "explicit",
+          "confidence": 0.95,
+          "quote": "用量建议 K-80 1-3phr"
+        }
+      ],
+      "confidence": 0.9,
+      "status": "warning",
+      "missing_fields": [
+        {
+          "field_name": "resin_type",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "TDS 未具体指明树脂牌号; 需确认目标树脂类型(不饱和聚酯或乙烯基酯)",
+          "suggestion_source": "tds_gap",
+          "requires_confirmation": true
+        },
+        {
+          "field_name": "resin_volume",
+          "step_id": "S01",
+          "risk_level": "low",
+          "blocks_execution": false,
+          "suggestion": "实际批量体积未给出, 默认 100 份基础",
+          "suggestion_source": "tds_placeholder",
+          "requires_confirmation": true
+        },
+        {
+          "field_name": "stirring_conditions",
+          "step_id": "S01",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "未给出混合搅拌转速与时长; 需人工设置",
+          "suggestion_source": "tds_gap",
+          "requires_confirmation": true
+        }
+      ],
+      "device_binding": {
+        "device_id": null,
+        "capability_check": "unchecked"
+      },
+      "notes": "K-80 用量 1-3 phr。温度假设为室温(20C)。实际批量与树脂种类需人工确认。"
+    },
+    {
+      "step_id": "S02",
+      "action": "select_promoter",
+      "material": "促进剂体系",
+      "description": "选择固化促进剂体系: 钴促进剂(室温凝胶长, 用于大型件/长丝缠绕) 或 钒促进剂(室温凝胶短, 固化快)",
+      "amount": {
+        "value": null,
+        "unit": "phr",
+        "note": "促进剂用量见配方分支"
+      },
+      "temperature": {
+        "value": 20,
+        "unit": "celsius",
+        "ramp_rate": null,
+        "hold": false
+      },
+      "duration": null,
+      "stirring_speed": null,
+      "atmosphere": "air",
+      "evidence": [
+        {
+          "document": "DOC-TDS",
+          "evidence_type": "explicit",
+          "confidence": 0.9,
+          "quote": "低温需钴/钒催化; 与钴并用室温凝胶长(用于大型件/长丝缠绕); 与钒并用室温凝胶短固化快"
+        }
+      ],
+      "confidence": 0.8,
+      "status": "inferred",
+      "missing_fields": [
+        {
+          "field_name": "promoter_specific_product",
+          "step_id": "S02",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "具体钴/钒促进剂产品型号未见有明确指定; 示例用 Accelerator VN-2 (钒) 和 NL-49P (钴)",
+          "suggestion_source": "tds_example",
+          "requires_confirmation": true
+        },
+        {
+          "field_name": "promoter_dosage",
+          "step_id": "S02",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "促进剂用量未通用给出, 示例见 S03/S05",
+          "suggestion_source": "tds_gap",
+          "requires_confirmation": true
+        }
+      ],
+      "device_binding": {
+        "device_id": null,
+        "capability_check": "unchecked"
+      },
+      "notes": "促进体系选择为应用设计决策, 未在TDS强制指定。"
+    },
+    {
+      "step_id": "S03",
+      "action": "mix",
+      "material": "K-80 + 树脂 + 促进剂",
+      "description": "混合配方例1: 乙烯基树脂 100 份 + K-80 2 份 + Accelerator VN-2 1 份, 20C 下混合, 凝胶约 12 min",
+      "amount": {
+        "value": 2,
+        "unit": "phr",
+        "note": "K-80 2份 + Accelerator VN-2 1份 / 100份 乙烯基树脂"
+      },
+      "temperature": {
+        "value": 20,
+        "unit": "celsius",
+        "ramp_rate": null,
+        "hold": true
+      },
+      "duration": {
+        "value": 12,
+        "unit": "minute",
+        "note": "20C 凝胶时间约 12 min (配方例1)"
+      },
+      "stirring_speed": null,
+      "atmosphere": "air",
+      "evidence": [
+        {
+          "document": "DOC-TDS",
+          "evidence_type": "explicit",
+          "confidence": 0.95,
+          "quote": "乙烯基树脂100份 + K-80 2份 + Accelerator VN-2 1份, 20℃凝胶12min"
+        }
+      ],
+      "confidence": 0.9,
+      "status": "warning",
+      "missing_fields": [
+        {
+          "field_name": "stirring_speed",
+          "step_id": "S03",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "混合转速与时间未给出",
+          "suggestion_source": "tds_gap",
+          "requires_confirmation": true
+        },
+        {
+          "field_name": "gel_detection_method",
+          "step_id": "S03",
+          "risk_level": "low",
+          "blocks_execution": false,
+          "suggestion": "凝胶时间判定方法未说明",
+          "suggestion_source": "tds_gap",
+          "requires_confirmation": true
+        }
+      ],
+      "device_binding": {
+        "device_id": null,
+        "capability_check": "unchecked"
+      },
+      "notes": "此为 T 配方例1。凝胶时间即为操作窗口上限。"
+    },
+    {
+      "step_id": "S04",
+      "action": "apply_and_gel",
+      "material": "含促进剂与 K-80 的树脂",
+      "description": "施加/浸渍并在操作窗口内让树脂凝胶; 与钴并用凝胶较长可用于大型件/长丝缠绕, 与钒并用凝胶短; ≥35℃ 才有足够快凝胶",
+      "amount": null,
+      "temperature": {
+        "value": 35,
+        "unit": "celsius",
+        "ramp_rate": null,
+        "hold": false
+      },
+      "duration": {
+        "value": null,
+        "unit": "minute",
+        "note": "凝胶时间依配方/温度; ≥35℃ 才有足够快凝胶"
+      },
+      "stirring_speed": null,
+      "atmosphere": "air",
+      "evidence": [
+        {
+          "document": "DOC-TDS",
+          "evidence_type": "explicit",
+          "confidence": 0.9,
+          "quote": "≥35℃才有足够快凝胶"
+        }
+      ],
+      "confidence": 0.8,
+      "status": "inferred",
+      "missing_fields": [
+        {
+          "field_name": "environment_temperature",
+          "step_id": "S04",
+          "risk_level": "medium",
+          "blocks_execution": false,
+          "suggestion": "具体凝胶环境温度按目标工艺选择; ≥35℃ 实现快速凝胶",
+          "suggestion_source": "tds",
+          "requires_confirmation": true
+        },
+        {
+          "field_name": "gel_wait_condition",
+          "step_id": "S04",
+          "risk_level": "low",
+          "blocks_execution": false,
+          "suggestion": "凝胶判定时机未明确",
+          "suggestion_source": "tds_gap",
+          "requires_confirmation": true
+        }
+      ],
+      "device_binding": {
+        "device_id": null,
+        "capability_check": "unchecked"
+      },
+      "notes": "凝胶操作为温度与体系相关的关键控制点。"
+    },
+    {
+      "step_id": "S05",
+      "action": "cure",
+      "material": "凝胶后的复合材料 (例: 2mm 层压板)",
+      "description": "50℃固化层压板配方 (2mm): K-80 2phr + NL-49P 0.25phr; 20℃凝胶330min; 50℃固化凝胶62min, 达峰118min, 峰温117℃",
+      "amount": {
+        "value": 2,
+        "unit": "phr",
+        "note": "K-80 2 phr + NL-49P (钴促进剂) 0.25 phr"
+      },
+      "temperature": {
+        "value": 50,
+        "unit": "celsius",
+        "ramp_rate": null,
+        "hold": true
+      },
+      "duration": {
+        "value": 118,
+        "unit": "minute",
+        "note": "50℃固化曲线: 凝胶62min, 达峰118min, 峰温117℃"
+      },
+      "stirring_speed": null,
+      "atmosphere": "air",
+      "pressure": null,
+      "evidence": [
+        {
+          "document": "DOC-TDS",
+          "evidence_type": "explicit",
+          "confidence": 0.95,
+          "quote": "2mm层压板50℃固化: K-80 2phr + NL-49P 0.25phr, 20℃凝胶330min, 50℃固化凝胶62min, 达峰118min, 峰温117℃, Barcol硬度50"
+        }
+      ],
+      "confidence": 0.9,
+      "status": "warning",
+      "missing_fields": [
+        {
+          "field_name": "cure_ramp_rate",
+          "step_id": "S05",
+          "risk_level": "low",
+          "blocks_execution": false,
+          "suggestion": "升温至50℃的速率未给出",
+          "suggestion_source": "tds_gap",
+          "requires_confirmation": true
+        },
+        {
+          "field_name": "laminate_thickness_scope",
+          "step_id": "S05",
+          "risk_level": "low",
+          "blocks_execution": false,
+          "suggestion": "峰温和时间针对 2mm 层压板; 厚度变化需调整",
+          "suggestion_source": "tds_gap",
+          "requires_confirmation": true
+        }
+      ],
+      "device_binding": {
+        "device_id": null,
+        "capability_check": "unchecked"
+      },
+      "notes": "峰温 117℃ 为放热峰值; 注意避免过厚部件因放热失控(参见安全)."
+    },
+    {
+      "step_id": "S06",
+      "action": "inspect",
+      "material": "固化件",
+      "description": "固化完成与质量检验: 以 Barcol 硬度计测固化程度(层压板 Barcol 硬度 50)",
+      "amount": null,
+      "temperature": {
+        "value": 20,
+        "unit": "celsius",
+        "ramp_rate": null,
+        "hold": false
+      },
+      "duration": null,
+      "evidence": [
+        {
+          "document": "DOC-TDS",
+          "evidence_type": "explicit",
+          "confidence": 0.9,
+          "quote": "Barcol硬度50"
+        }
+      ],
+      "confidence": 0.85,
+      "status": "inferred",
+      "missing_fields": [
+        {
+          "field_name": "barcol_acceptance_criteria",
+          "step_id": "S06",
+          "risk_level": "low",
+          "blocks_execution": false,
+          "suggestion": "Barcol 硬度 50 为示例值, 验收阈值需按制品要求确定",
+          "suggestion_source": "tds_gap",
+          "requires_confirmation": true
+        }
+      ],
+      "device_binding": {
+        "device_id": null,
+        "capability_check": "unchecked"
+      },
+      "notes": "固化度检验步骤为推断补充, TDS 仅给出 Barcol 硬度示例值。"
+    }
+  ],
+  "equipment": [
+    {
+      "device_id": null,
+      "device_type": "balance",
+      "device_name": "电子秤/计量泵 (精确称量树脂与 K-80 份量)",
+      "config_path": null
+    },
+    {
+      "device_id": null,
+      "device_type": "mixer",
+      "device_name": "低速搅拌器/机械搅拌器 (树脂与促进剂混合)",
+      "config_path": null
+    },
+    {
+      "device_id": null,
+      "device_type": "oven",
+      "device_name": "固化烘箱 (50℃固化)",
+      "config_path": null
+    },
+    {
+      "device_id": null,
+      "device_type": "curing_monitor",
+      "device_name": "凝胶时间测定仪/温度记录(峰温测量)",
+      "config_path": null
+    },
+    {
+      "device_id": null,
+      "device_type": "hardness_measure",
+      "device_name": "Barcol 硬度计",
+      "config_path": null
+    },
+    {
+      "device_id": null,
+      "device_type": "fume_hood",
+      "device_name": "通风橱/排风 (处理苯乙烯挥发)",
+      "config_path": null
+    }
+  ],
+  "metadata": {
+    "version": "1.0.0",
+    "generated_at": "2026-08-07T10:00:00Z",
+    "compiler_version": "matflow-compiler/0.3.0",
+    "source_type": "tds",
+    "source_hash": "sha256:k80_tds",
+    "operator": "auto",
+    "lab_id": null,
+    "compilation_notes": "从 Trigonox K-80 技术数据表(TDS)编译的不饱和聚酯/乙烯基树脂固化应用/处理协议。协议为产品应用配方非文献合成。信息如实标注 explicit/derived/inferred。缺失项: 树脂类型/体积、促进剂具体型号与用量、搅拌条件、环境温度、固化升温速率等。无阻止执行的致命缺失, 状态 needs_review。"
+  },
+  "safety_checks": [
+    {
+      "check_id": "SAFE-K-001",
+      "check_type": "self_accelerating_decomposition",
+      "rule_id": "SAFE-P-002",
+      "target_step": "S01",
+      "status": "warning",
+      "message": "K-80 为有机过氧化物, SADT(Self-Accelerating Decomposition Temperature) 约 75℃。超过此温度可能发生自加速分解。避避免外部热源、火源。",
+      "details": {
+        "sadt_c": 75,
+        "max_storage_c": 40,
+        "peroxide_class": "F型"
+      }
+    },
+    {
+      "check_id": "SAFE-K-002",
+      "check_type": "flammable_decomposition_products",
+      "rule_id": "SAFE-C-005",
+      "target_step": "S05",
+      "status": "warning",
+      "message": "K-80 分解产物含甲烷(可燃性气体) 与 苯乙酮; 固化过程需通风并远离火源。",
+      "details": {
+        "products": "methane, acetophenone, 2-phenyl-2-propanol"
+      }
+    },
+    {
+      "check_id": "SAFE-K-003",
+      "check_type": "oxidizer_avoid_reducing",
+      "rule_id": "SAFE-C-006",
+      "target_step": "S02",
+      "status": "warning",
+      "message": "过氧化物严禁接触还原剂(胺类)、酸、碱和重金属, 否则可能引发剧烈分解/起火。",
+      "details": {
+        "incompatibles": "reducing (胺), acid, alkali, heavy metals"
+      }
+    },
+    {
+      "check_id": "SAFE-K-004",
+      "check_type": "fire_safety",
+      "rule_id": "SAFE-C-004",
+      "target_step": "S01",
+      "status": "warning",
+      "message": "操作环境应干燥通风, 远离热源与火源。树脂含易挥发性苯乙烯单体(闪点低)。",
+      "details": {
+        "styrene_flash": "关于苯乙烯单体易燃"
+      }
+    },
+    {
+      "check_id": "SAFE-K-005",
+      "check_type": "storage_limit",
+      "rule_id": "SAFE-T-001",
+      "target_step": "S01",
+      "status": "warning",
+      "message": "贮存温度最高 40℃, 最低 -30℃(防结晶)。贮存期 6 个月。超温贮存有热失稳风险。",
+      "details": {
+        "max_storage_c": 40,
+        "min_storage_c": -30,
+        "shelf_life_months": 6
+      }
+    },
+    {
+      "check_id": "SAFE-K-006",
+      "check_type": "dose_limit",
+      "rule_id": "SAFE-D-001",
+      "target_step": "S01",
+      "status": "warning",
+      "message": "必须按 TDS 建议配比(1-3 phr) 使用, 不可超量。超量可能引发放热失控,尤其是厚制品。",
+      "details": {
+        "recommended_phr": "1-3"
+      }
+    },
+    {
+      "check_id": "SAFE-K-007",
+      "check_type": "exothermic_cure",
+      "rule_id": "SAFE-H-005",
+      "target_step": "S05",
+      "status": "warning",
+      "message": "固化放热峰峰温可达 117℃(2mm 层压板)。厚截面蓄热可致峰值更高, 有局部过热乃至自燃风险, 需控制固化温度与厚度。",
+      "details": {
+        "peak_temp_c": 117,
+        "laminage_thickness_mm": 2
+      }
+    },
+    {
+      "check_id": "SAFE-K-008",
+      "check_type": "detox_first_aid",
+      "rule_id": "SAFE-H-006",
+      "target_step": "S01",
+      "status": "warning",
+      "message": "过氧化物中毒/接触应急处置: 皮肤眼接触立即用大量清水冲洗, 误服或吸入迅速脱离现场并就医; 备好灭火措施(禁用水直接冲击)。",
+      "details": {
+        "first_aid": "eye/skin: flush with water; ingestion: medical help"
+      }
+    },
+    {
+      "check_id": "SAFE-K-009",
+      "check_type": "contamination_check",
+      "rule_id": "SAFE-C-007",
+      "target_step": "S03",
+      "status": "warning",
+      "message": "K-80 与促进剂(K的输入钴/钒) 混合顺序与用量需按配方正确执行; 严禁 K-80 与还原促进剂直接大量混合(剧烈引发)。",
+      "details": {
+        "note": "遵循配方配比, 避免局部高浓度引发剂堆积"
+      }
+    }
+  ],
+  "checkpoints": [
+    {
+      "checkpoint_id": "CP-K-01",
+      "after_step": "S01",
+      "stored_state": [
+        { "name": "k80_dose_phr", "type": "number", "unit": "phr" },
+        { "name": "resin_type", "type": "string" },
+        { "name": "resin_volume", "type": "number", "unit": "parts" }
+      ],
+      "recovery_policy": {
+        "power_failure": "restart_step",
+        "temperature_deviation": { "threshold": 5, "action": "hold" }
+      }
+    },
+    {
+      "checkpoint_id": "CP-K-02",
+      "after_step": "S03",
+      "stored_state": [
+        { "name": "gel_time_min", "type": "number", "unit": "minute" },
+        { "name": "promoter_type", "type": "string" }
+      ],
+      "recovery_policy": {
+        "power_failure": "discard_and_restart",
+        "temperature_deviation": { "threshold": 5, "action": "abort" }
+      }
+    },
+    {
+      "checkpoint_id": "CP-K-03",
+      "after_step": "S05",
+      "stored_state": [
+        { "name": "cure_temp_c", "type": "number", "unit": "celsius" },
+        { "name": "peak_temp_c", "type": "number", "unit": "celsius" },
+        { "name": "peak_time_min", "type": "number", "unit": "minute" }
+      ],
+      "recovery_policy": {
+        "power_failure": "resume_from_checkpoint",
+        "temperature_deviation": { "threshold": 10, "action": "hold" }
+      }
+    },
+    {
+      "checkpoint_id": "CP-K-04",
+      "after_step": "S06",
+      "stored_state": [
+        { "name": "barcol_hardness", "type": "number", "unit": "Barcol" }
+      ],
+      "recovery_policy": {
+        "temperature_deviation": { "threshold": 5, "action": "continue" }
+      }
+    }
+  ],
+  "overall_confidence": 0.78,
+  "overall_status": "needs_review",
+  "confidence_score": {
+    "overall": 0.78,
+    "dimensions": {
+      "evidence_coverage": 0.85,
+      "explicit_ratio": 0.8,
+      "safety_pass_rate": 0.6,
+      "missing_field_penalty": 0.7
+    }
+  },
+  "block_reasons": []
+}

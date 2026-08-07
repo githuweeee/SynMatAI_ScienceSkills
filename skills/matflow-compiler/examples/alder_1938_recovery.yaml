@@ -1,0 +1,167 @@
+recovery_plan:
+  protocol_id: PROTO-DIELS-ALDER-a1b2c3d4
+  version: "1.0.0"
+  generated_at: "2026-08-07T10:00:00Z"
+  
+  # 检查点恢复策略
+  checkpoints:
+    - checkpoint_id: CP-01
+      after_step: S04
+      description: "高压反应完成后检查点"
+      stored_state:
+        - name: reaction_temperature
+          type: number
+          unit: celsius
+          description: "反应结束时的温度"
+        - name: reaction_pressure
+          type: number
+          unit: atm
+          description: "反应结束时的压力"
+        - name: step_progress
+          type: number
+          description: "步骤完成百分比"
+      recovery_policy:
+        power_failure:
+          action: abort
+          reason: "高压反应中断后不可恢复，必须终止并安全泄压"
+          steps:
+            - "立即切断加热源"
+            - "等待反应釜自然冷却"
+            - "通过安全阀缓慢泄压"
+            - "在通风橱中打开反应釜"
+            - "废弃反应混合物，重新开始"
+        temperature_deviation:
+          threshold: 10
+          action: abort
+          reason: "温度偏差超过10°C可能导致副反应或安全问题"
+          steps:
+            - "立即停止加热"
+            - "记录温度偏差情况"
+            - "评估产物质量"
+            - "决定是否继续或终止"
+      
+    - checkpoint_id: CP-02
+      after_step: S08
+      description: "产物收集完成后检查点"
+      stored_state:
+        - name: product_yield
+          type: number
+          unit: g
+          description: "产物实际产量"
+        - name: purity
+          type: number
+          unit: percent
+          description: "产物纯度估计"
+      recovery_policy:
+        power_failure:
+          action: restart_step
+          reason: "产物收集步骤可重新执行"
+          steps:
+            - "检查产物状态"
+            - "重新进行表征分析"
+            - "记录产量数据"
+        temperature_deviation:
+          threshold: 5
+          action: alert
+          reason: "储存温度偏差可能影响产物稳定性"
+          steps:
+            - "检查储存条件"
+            - "记录温度偏差"
+            - "评估产物质量"
+
+  # 通用故障恢复
+  common_failures:
+    - failure_type: equipment_malfunction
+      affected_devices:
+        - DEV-AUTOCLAVE-01
+      detection: "压力或温度读数异常"
+      immediate_action:
+        - "立即停止反应"
+        - "启动安全泄压程序"
+        - "疏散人员"
+      recovery_steps:
+        - "检查设备故障原因"
+        - "维修或更换设备"
+        - "重新校准传感器"
+        - "重新开始实验"
+      
+    - failure_type: reagent_contamination
+      affected_reagents:
+        - 苯乙烯
+        - 丁二烯
+      detection: "产物收率异常低或杂质增多"
+      immediate_action:
+        - "停止使用可疑试剂"
+        - "隔离受污染批次"
+      recovery_steps:
+        - "更换新批次试剂"
+        - "检查储存条件"
+        - "重新开始实验"
+      
+    - failure_type: vacuum_failure
+      affected_devices:
+        - DEV-VACUUM-DIST-01
+      detection: "无法达到目标真空度"
+      immediate_action:
+        - "停止蒸馏"
+        - "检查真空系统"
+      recovery_steps:
+        - "检查真空泵油"
+        - "检查密封件"
+        - "检查冷阱"
+        - "修复后重新蒸馏"
+
+  # 数据备份策略
+  data_backup:
+    auto_backup_steps:
+      - S04
+      - S08
+    backup_interval: "每30分钟"
+    backup_content:
+      - "温度记录"
+      - "压力记录"
+      - "反应时间"
+      - "操作日志"
+    storage_location: "本地服务器+云存储"
+
+  # 人工干预点
+  manual_intervention:
+    - step_id: S04
+      trigger: "压力超过设定阈值"
+      action: "人工确认是否继续"
+      required_role: "高级实验员"
+      
+    - step_id: S07
+      trigger: "馏分分离不清晰"
+      action: "人工判断馏分切换时机"
+      required_role: "有机合成经验者"
+
+  # 回滚策略
+  rollback:
+    enabled: true
+    max_rollback_steps: 3
+    conditions:
+      - "产物收率<50%"
+      - "纯度明显低于预期"
+      - "设备故障导致中断"
+    rollback_procedure:
+      - "记录当前状态"
+      - "安全处理当前批次"
+      - "检查设备和试剂"
+      - "从上一个检查点重新开始"
+
+  # 联系信息
+  emergency_contacts:
+    - role: 实验室安全员
+      phone: "[待填写]"
+    - role: 设备维护
+      phone: "[待填写]"
+    - role: 化学专家
+      phone: "[待填写]"
+
+  # 特别注意事项
+  special_notes:
+    - "本协议涉及高压反应，恢复操作必须由有经验的人员执行"
+    - "丁二烯为易燃气体，任何恢复操作都必须在通风橱中进行"
+    - "高压反应釜的泄压操作必须严格按照操作规程执行"
+    - "建议在进行实际恢复操作前进行桌面演练"

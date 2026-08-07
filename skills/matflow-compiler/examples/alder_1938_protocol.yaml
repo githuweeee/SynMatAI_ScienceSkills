@@ -1,0 +1,332 @@
+protocol_id: PROTO-DIELS-ALDER-a1b2c3d4
+material: Diels-Alder加合物（1,2,5,6-四氢联苯衍生物）
+source_documents:
+  - doc_id: DOC-001
+    title: "Zur Kenntnis der Dien-Synthese, IV. Mitteil.: Über den Aufbau von Diphenyl- und Fluoren-Ringsystemen"
+    file_path: "paper/Alder和Rickert - 1938 - Zur Kenntnis der Dien-Synthese, IV. Mitteil. Über den Aufbau von Diphenyl- und Fluoren-Ringsystemen.pdf"
+    doc_type: paper
+
+steps:
+  - step_id: S01
+    action: weigh
+    material: 苯乙烯(Styrol)
+    amount:
+      value: 104
+      unit: g
+      tolerance: 1.0
+    evidence:
+      - document: DOC-001
+        page: 6
+        section: "Beschreibung der Versuche. 1) Addition von Butadien an Styrol"
+        quote: "104 g Styrol werden unter Zusatz von 1 g Acetylen-dicarbonsaure mit 140 ccm Butadien 14 Stdn. auf 170-180° erhitzt"
+        evidence_type: explicit
+        confidence: 0.95
+    confidence: 0.95
+    status: ready
+    missing_fields: []
+    device_binding:
+      device_id: DEV-BALANCE-01
+      capability_check: passed
+
+  - step_id: S02
+    action: weigh
+    material: 丁二烯(Butadien)
+    amount:
+      value: 140
+      unit: mL
+      tolerance: 5
+    evidence:
+      - document: DOC-001
+        page: 6
+        section: "Beschreibung der Versuche. 1) Addition von Butadien an Styrol"
+        quote: "104 g Styrol werden unter Zusatz von 1 g Acetylen-dicarbonsaure mit 140 ccm Butadien 14 Stdn. auf 170-180° erhitzt"
+        evidence_type: explicit
+        confidence: 0.95
+    confidence: 0.95
+    status: ready
+    missing_fields: []
+    device_binding:
+      device_id: DEV-BALANCE-01
+      capability_check: passed
+
+  - step_id: S03
+    action: add
+    material: 乙炔二羧酸(Acetylen-dicarbonsaure)
+    amount:
+      value: 1
+      unit: g
+      tolerance: 0.1
+    evidence:
+      - document: DOC-001
+        page: 6
+        section: "Beschreibung der Versuche. 1) Addition von Butadien an Styrol"
+        quote: "104 g Styrol werden unter Zusatz von 1 g Acetylen-dicarbonsaure mit 140 ccm Butadien 14 Stdn. auf 170-180° erhitzt"
+        evidence_type: explicit
+        confidence: 0.95
+    confidence: 0.95
+    status: ready
+    missing_fields: []
+    device_binding:
+      device_id: DEV-REACTOR-01
+      capability_check: passed
+
+  - step_id: S04
+    action: heat
+    material: 反应混合物
+    temperature:
+      value: 175
+      unit: celsius
+      ramp_rate:
+        value: 5
+        unit: celsius_per_minute
+      hold: true
+    duration:
+      value: 14
+      unit: hour
+    evidence:
+      - document: DOC-001
+        page: 6
+        section: "Beschreibung der Versuche. 1) Addition von Butadien an Styrol"
+        quote: "104 g Styrol werden unter Zusatz von 1 g Acetylen-dicarbonsaure mit 140 ccm Butadien 14 Stdn. auf 170-180° erhitzt"
+        evidence_type: explicit
+        confidence: 0.92
+    confidence: 0.85
+    status: warning
+    missing_fields:
+      - field_name: atmosphere
+        step_id: S04
+        risk_level: medium
+        blocks_execution: false
+        suggestion: 高压反应建议使用惰性气氛或密封体系
+        suggestion_source: safety_rule
+        requires_confirmation: true
+      - field_name: pressure
+        step_id: S04
+        risk_level: high
+        blocks_execution: true
+        suggestion: 丁二烯在175°C会产生显著蒸气压，需使用耐压反应器
+        suggestion_source: safety_rule
+        requires_confirmation: true
+    device_binding:
+      device_id: DEV-AUTOCLAVE-01
+      capability_check: unchecked
+    notes: Diels-Alder反应在密封高压釜中进行，丁二烯沸点-4.4°C，在175°C时蒸气压极高
+
+  - step_id: S05
+    action: cool
+    material: 反应混合物
+    temperature:
+      value: 25
+      unit: celsius
+    duration:
+      value: 2
+      unit: hour
+    evidence:
+      - document: DOC-001
+        page: 6
+        section: "Beschreibung der Versuche. 1) Addition von Butadien an Styrol"
+        quote: "Das leicht gefarbte flussige Reaktionsprodukt wird bei 11 mm destilliert"
+        evidence_type: inferred
+        confidence: 0.70
+        derivation: 蒸馏前需冷却至室温，文献未明确给出冷却步骤，按常规实验推断
+    confidence: 0.70
+    status: inferred
+    missing_fields:
+      - field_name: cooling_rate
+        step_id: S05
+        risk_level: low
+        blocks_execution: false
+        suggestion: 自然冷却至室温
+        suggestion_source: literature_default
+        requires_confirmation: false
+    device_binding:
+      device_id: DEV-REACTOR-01
+      capability_check: passed
+
+  - step_id: S06
+    action: transfer
+    material: 反应产物
+    evidence:
+      - document: DOC-001
+        page: 6
+        section: "Beschreibung der Versuche. 1) Addition von Butadien an Styrol"
+        quote: "Das leicht gefarbte flussige Reaktionsprodukt wird bei 11 mm destilliert"
+        evidence_type: explicit
+        confidence: 0.90
+    confidence: 0.85
+    status: warning
+    missing_fields:
+      - field_name: target_container
+        step_id: S06
+        risk_level: low
+        blocks_execution: false
+        suggestion: 转移至减压蒸馏装置
+        suggestion_source: literature_default
+        requires_confirmation: false
+    device_binding:
+      device_id: DEV-FUMEHOOD-01
+      capability_check: passed
+
+  - step_id: S07
+    action: heat
+    material: 反应产物
+    temperature:
+      value: 110
+      unit: celsius
+      hold: true
+    pressure:
+      value: 11
+      unit: mm
+    evidence:
+      - document: DOC-001
+        page: 6
+        section: "Beschreibung der Versuche. 1) Addition von Butadien an Styrol"
+        quote: "Das leicht gefarbte flussige Reaktionsprodukt wird bei 11 mm destilliert. Man erhalt zunachst 45 g dimeres Butadien, dann von 45-98° einen Zwischenlauf (12 g) und schliesslich von 98-115° 52 g 1.2.5.6-Tetrahydro-diphenyl (IX)"
+        evidence_type: explicit
+        confidence: 0.92
+    confidence: 0.88
+    status: warning
+    missing_fields:
+      - field_name: heating_rate
+        step_id: S07
+        risk_level: medium
+        blocks_execution: false
+        suggestion: 缓慢升温以分离不同馏分
+        suggestion_source: literature_default
+        requires_confirmation: true
+    device_binding:
+      device_id: DEV-VACUUM-DIST-01
+      capability_check: unchecked
+
+  - step_id: S08
+    action: collect
+    material: 1,2,5,6-四氢联苯(1.2.5.6-Tetrahydro-diphenyl)
+    evidence:
+      - document: DOC-001
+        page: 6
+        section: "Beschreibung der Versuche. 1) Addition von Butadien an Styrol"
+        quote: "schliesslich von 98-115° 52 g 1.2.5.6-Tetrahydro-diphenyl (IX)"
+        evidence_type: explicit
+        confidence: 0.95
+    confidence: 0.92
+    status: ready
+    missing_fields: []
+    device_binding:
+      device_id: DEV-FUMEHOOD-01
+      capability_check: passed
+
+reagents:
+  - name: 苯乙烯
+    cas_number: "100-42-5"
+    role: monomer
+    total_amount:
+      value: 104
+      unit: g
+    hazard_class: "Xi, N"
+  - name: 丁二烯
+    cas_number: "106-99-0"
+    role: monomer
+    total_amount:
+      value: 140
+      unit: mL
+    hazard_class: "F+, Xi, N, Carc. Cat. 2"
+  - name: 乙炔二羧酸
+    cas_number: "142-45-0"
+    role: catalyst
+    total_amount:
+      value: 1
+      unit: g
+    hazard_class: "C"
+
+equipment:
+  - device_id: DEV-BALANCE-01
+    device_type: balance
+    device_name: 分析天平
+    config_path: devices/balance_std.yaml
+  - device_id: DEV-AUTOCLAVE-01
+    device_type: reactor
+    device_name: 高压反应釜
+    config_path: devices/autoclave_std.yaml
+  - device_id: DEV-VACUUM-DIST-01
+    device_type: reactor
+    device_name: 减压蒸馏装置
+    config_path: devices/vacuum_distillation.yaml
+  - device_id: DEV-FUMEHOOD-01
+    device_type: fume_hood
+    device_name: 通风橱
+    config_path: devices/fume_hood_std.yaml
+
+metadata:
+  version: "1.0.0"
+  generated_at: "2026-08-07T10:00:00Z"
+  compiler_version: matflow-compiler/0.3.0
+  source_hash: sha256:alder1938germanocr
+  operator: auto
+  lab_id: LAB-MAT-001
+  document_quality: poor_ocr_german
+  ocr_degradation_note: "源文档为1938年德语文献，OCR识别质量有限，部分化学名称和数字可能存在识别误差"
+
+safety_checks:
+  - check_id: SAFE-001
+    check_type: high_pressure
+    rule_id: PRESSURE-001
+    target_step: S04
+    status: blocked
+    message: "步骤S04在175°C下进行丁二烯反应，会产生高压，必须使用认证的高压反应釜"
+    details:
+      temperature: 175
+      estimated_pressure: ">20 atm"
+      hazard: "丁二烯在高温下蒸气压极高，存在爆炸风险"
+  - check_id: SAFE-002
+    check_type: flammable_reagent
+    rule_id: FLAM-001
+    target_step: S02
+    status: warning
+    message: "丁二烯为极易燃气体，沸点-4.4°C，操作需在通风橱中进行"
+  - check_id: SAFE-003
+    check_type: inferred_parameter
+    rule_id: CONF-001
+    target_step: S05
+    status: warning
+    message: "步骤S05含推断参数(cooling_rate)，需人工确认"
+  - check_id: SAFE-004
+    check_type: missing_critical
+    rule_id: MISS-001
+    target_step: S04
+    status: blocked
+    message: "步骤S04缺少压力参数，丁二烯在高温反应中压力控制至关重要"
+
+checkpoints:
+  - checkpoint_id: CP-01
+    after_step: S04
+    stored_state:
+      - name: reaction_temperature
+        type: number
+        unit: celsius
+      - name: reaction_pressure
+        type: number
+        unit: atm
+      - name: step_progress
+        type: number
+    recovery_policy:
+      power_failure: abort
+      temperature_deviation:
+        threshold: 10
+        action: abort
+  - checkpoint_id: CP-02
+    after_step: S08
+    stored_state:
+      - name: product_yield
+        type: number
+        unit: g
+      - name: purity
+        type: number
+        unit: percent
+    recovery_policy:
+      power_failure: restart_step
+      temperature_deviation:
+        threshold: 5
+        action: alert
+
+overall_confidence: 0.72
+overall_status: blocked

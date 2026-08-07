@@ -1,0 +1,139 @@
+# 恢复与检查点方案
+## CN113574101A - 用卤化硼回收纤维增强环氧复合材料
+# 协议ID: MF-PAT-002
+# 来源: CN 113574101 A (克劳斯塔尔工业大学 / MPM)
+# 状态: needs_review
+
+protocol_id: "MF-PAT-002"
+material: "Fiber recovery from fiber-reinforced epoxy composites via BCl3/BBr3"
+total_steps: 8
+checkpoints:
+  - checkpoint_id: "CP-01"
+    after_step: "S04"
+    description: "密闭反应完成（55-60C, 68h）"
+    stored_state:
+      - name: "react_temp_c"
+        type: "number"
+        unit: "celsius"
+        description: "反应温度记录"
+      - name: "react_duration_h"
+        type: "number"
+        unit: "hour"
+        description: "加热搅拌时长"
+      - name: "vessel_sealed"
+        type: "boolean"
+        description: "容器是否保持密闭"
+      - name: "vessel_pressure_safe"
+        type: "boolean"
+        description: "压力是否在安全范围"
+    recovery_policy:
+      power_failure:
+        action: "restart_step"
+        max_tolerance_minutes: 30
+        description: "若断电>30min，重新加热补足剩余时间；若容器已降温需小心复温"
+      temperature_deviation:
+        threshold: 10
+        unit: "celsius"
+        action: "alert"
+        description: "温度偏差超10C触发警报"
+    verification:
+      - check: "冷却至室温后再开容器"
+      - check: "出现分层（纤维/有机相）"
+
+  - checkpoint_id: "CP-02"
+    after_step: "S06"
+    description: "淬灭及萃取完成"
+    stored_state:
+      - name: "quench_complete"
+        type: "boolean"
+        description: "是否完成冰水淬灭"
+      - name: "extraction_repeats"
+        type: "number"
+        description: "DCM萃取次数"
+      - name: "organic_layer_collected"
+        type: "boolean"
+        description: "有机层是否合并收集"
+    recovery_policy:
+      power_failure:
+        action: "resume_from_checkpoint"
+        max_tolerance_minutes: 30
+        description: "断电后继续分液萃取"
+      phase_separation_leak:
+        action: "abort_and_clean"
+        description: "分液泄漏则停止，清理酸液"
+    verification:
+      - check: "5次萃取完整"
+      - check: "纤维留在水相/界面"
+
+  - checkpoint_id: "CP-03"
+    after_step: "S07"
+    description: "真空干燥获得 VZ-G10-4-1"
+    stored_state:
+      - name: "crude_product_mg"
+        type: "number"
+        unit: "mg"
+        description: "粗产物质量（约775mg）"
+      - name: "evap_temp_c"
+        type: "number"
+        unit: "celsius"
+        description: "蒸发温度"
+      - name: "solvent_removed"
+        type: "boolean"
+        description: "溶剂是否去除"
+    recovery_policy:
+      power_failure:
+        action: "resume_from_checkpoint"
+        max_tolerance_minutes: 30
+        description: "真空蒸发中断可重新开启"
+    verification:
+      - "得到深色黏性油"
+
+  - checkpoint_id: "CP-04"
+    after_step: "S08"
+    description: "纤维回收完成"
+    stored_state:
+      - name: "fiber_recovered_mg"
+        type: "number"
+        unit: "mg"
+        description: "回收纤维重量（约1920mg）"
+      - name: "recovered_polymer_mg"
+        type: "number"
+        unit: "mg"
+        description: "回收聚合物总重（VZ-G10 若干）"
+      - name: "conversion"
+        type: "number"
+        unit: "percent"
+        description: "环氧转化率（实测约83%）"
+    recovery_policy:
+      power_failure:
+        action: "resume_from_checkpoint"
+        max_tolerance_minutes: 30
+        description: "洗涤干燥可中断后恢复"
+    verification:
+      - "计算转化率 = (回收聚合物质量/理论聚合物质量)"
+      - "纤维经甲醇/水/丙酮洗后真空干燥"
+global_recovery:
+  max_total_interruption_time: 240
+  restart_threshold: 3
+  safety_priority: "high"
+  data_logging:
+    required: true
+    interval_minutes: 5
+  emergency_shutdown:
+    trigger: "any_pressure_or_acid_leak"
+    action: "shutdown_heating_and_ventilate"
+    notification: "alert_operator"
+
+checkpoint_dependencies:
+  - from: "CP-01"
+    to: "CP-02"
+    required: true
+    description: "必须先冷却再淬灭"
+  - from: "CP-02"
+    to: "CP-03"
+    required: true
+    description: "萃取后合并有机层再干燥"
+  - from: "CP-03"
+    to: "CP-04"
+    required: true
+    description: "除溶剂后才能回收纤维"

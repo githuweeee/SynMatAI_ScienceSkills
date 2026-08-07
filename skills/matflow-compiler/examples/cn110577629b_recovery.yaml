@@ -1,0 +1,150 @@
+# 恢复与检查点方案
+## CN110577629B - 可降解环氧树脂（两步巯基-烯加成）
+# 协议ID: MF-PAT-001
+# 来源: CN 110577629 B (烟台大学)
+# 状态: needs_review
+
+protocol_id: "MF-PAT-001"
+material: "Degradable spiroacetal-containing epoxy resin"
+total_steps: 10
+checkpoints:
+  - checkpoint_id: "CP-01"
+    after_step: "S03"
+    description: "第一步巯基-烯反应（S1中间体）完成"
+    stored_state:
+      - name: "s1_product_formed"
+        type: "boolean"
+        description: "S1中间体是否已生成"
+      - name: "uv_duration_h"
+        type: "number"
+        unit: "hour"
+        description: "实际紫外照射时间"
+      - name: "uv_intensity_uwcm2"
+        type: "number"
+        unit: "uW/cm2"
+        description: "紫外光强读数"
+      - name: "reaction_appearance"
+        type: "string"
+        description: "反应液外观"
+    recovery_policy:
+      power_failure:
+        action: "restart_step"
+        max_tolerance_minutes: 10
+        description: "断电超过10min，重新进行S03紫外照射（补足剩余时间）"
+      uv_failure:
+        action: "restart_step"
+        description: "紫外灯故障则检修后重启，按剩余时间补照"
+    verification:
+      - check: "THF/乙醚沉淀后可分离出固体中间体"
+      - check: "紫外照射累计达3h"
+
+  - checkpoint_id: "CP-02"
+    after_step: "S08"
+    description: "第二步反应完成，获得可降解环氧树脂"
+    stored_state:
+      - name: "final_resin_mass_g"
+        type: "number"
+        unit: "g"
+        description: "终产物质量"
+      - name: "dry_constant_reached"
+        type: "boolean"
+        description: "真空干燥是否恒重"
+      - name: "product_mw"
+        type: "number"
+        unit: "g/mol"
+        description: "产物分子量（NMR推算约2874 g/mol）"
+    recovery_policy:
+      power_failure:
+        action: "resume_from_checkpoint"
+        max_tolerance_minutes: 30
+        description: "断电后可从中断步骤恢复"
+      temperature_deviation:
+        threshold: 5
+        unit: "celsius"
+        action: "continue"
+    verification:
+      - check: "沉淀3次完成"
+      - check: "产物呈均质状态"
+      - check: "恒重达成"
+
+  - checkpoint_id: "CP-03"
+    after_step: "S09"
+    description: "固化完成"
+    stored_state:
+      - name: "cure_temp_c"
+        type: "number"
+        unit: "celsius"
+        description: "固化温度记录"
+      - name: "cure_duration_h"
+        type: "number"
+        unit: "hour"
+        description: "固化时间"
+      - name: "cure_complete"
+        type: "boolean"
+        description: "固化是否完成（胶膜固化黑）"
+    recovery_policy:
+      power_failure:
+        action: "restart_step"
+        max_tolerance_minutes: 15
+        description: "固化中断（温度下降>20C），冷却后从150C重新固化补足时间"
+      temperature_deviation:
+        threshold: 10
+        unit: "celsius"
+        action: "alert"
+        description: "温度偏差超10C触发警报"
+    verification:
+      - check: "样品完全凝胶固化"
+      - check: "表面无残留溶剂"
+
+  - checkpoint_id: "CP-04"
+    after_step: "S10"
+    description: "酸降解完成（最终验证）"
+    stored_state:
+      - name: "degradation_complete"
+        type: "boolean"
+        description: "固化样品是否完全降解"
+      - name: "degradation_time_min"
+        type: "number"
+        unit: "minute"
+        description: "降解至澄清所需时间"
+      - name: "solution_clarity"
+        type: "string"
+        description: "溶液澄清度（澄清/浑浊）"
+    recovery_policy:
+      power_failure:
+        action: "resume_from_checkpoint"
+        max_tolerance_minutes: 30
+        description: "停电不影响既有降解，恢复后继续水浴至澄清"
+      acid_leak:
+        action: "abort"
+        description: "酸液泄漏则立即停止，用碱中和，清理"
+    verification:
+      - check: "120min内溶液透明澄清（实施例1）"
+
+# 全局恢复策略
+global_recovery:
+  max_total_interruption_time: 180  # 分钟
+  restart_threshold: 3
+  safety_priority: "high"
+  data_logging:
+    required: true
+    interval_minutes: 5
+  emergency_shutdown:
+    trigger: "any_blocked_safety_check"
+    action: "stop_uv_and_heating_stirring"
+    notification: "alert_operator"
+
+# 检查点依赖关系
+checkpoint_dependencies:
+  - from: "CP-01"
+    to: "CP-02"
+    required: true
+    description: "完成S1中间体后才能进行S2反应"
+  - from: "CP-02"
+    to: "CP-03"
+    required: true
+    description: "获得环氧树脂后才能固化"
+  - from: "CP-03"
+    to: "CP-04"
+    required: true
+    description: "固化后降解验证"
