@@ -13,4 +13,4 @@
 PyMuPDF>=1.23.0
 
 # 可选: MinerU 用于 OCR 扫描版 PDF 的高质量解析
-# mineru>=2.0.0
+mineru>=2.0.0
